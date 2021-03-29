@@ -1,0 +1,1982 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 2002:a5b:5d1:0:0:0:0:0 with SMTP id w17csp739594ybp;
+        Wed, 3 Feb 2021 16:03:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyrZDZcUgVCBZek4gOpXUQP30e5cCqfDaWlf2+jjXk8qNasR9du16hAqvWBkiRWKCZI7A+P
+X-Received: by 2002:a05:6a00:158c:b029:1bd:ea8:6d6d with SMTP id u12-20020a056a00158cb02901bd0ea86d6dmr5442511pfk.16.1612397018615;
+        Wed, 03 Feb 2021 16:03:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612397018; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rLgIr8SQufkQnMdN6PjS+T3hAXQJnv9hpkFCSaXkCOtOafY0yu/0z+K4GpSJ5I38AN
+         cqdTnCC+IJq/scl9SpLNjQAcEdTAGmmwkEYUIGpIUSIPMOYsr2Bl1douSqrmJRTPd1rZ
+         KN9dntni0KDiz5emV+dshT6NYN04IPzUTXMNxsCMkbsmnvCYsN/2r0jg/24x4KQ1wyK0
+         8IRQwcBQIn3S1hUAdFAtQl94EDYgHpg0FqqJvZZKvvb/SeZfLjiaMf/SVBva9VBsG7ml
+         PemfZYkpcP1b7rpcmMpQxn/Wyw55MRFrK4sjIJyHoZ5ux+PpOChHFonzEoSfAxqqdHWN
+         yp3g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:list-unsubscribe:mime-version:date:reply-to:to:from
+         :subject:dkim-signature:dkim-signature;
+        bh=4yV7sKOnzdMypadK/IgcgFBn9w59/P6XES6qtJr5IFs=;
+        b=T00tKJDktHdfwrDKIQpcYu02ht2G0SZze4ZCSZF4MbFvku6UdqZ88joo9HUiinfv4h
+         GcHI3YQr/Qq3+b0LduodrssaFhhua+FUMccqBPbZd+Uxtt9q1Ea5JQBGWpORTy4WjrtJ
+         dBVo0S3HpShG0cUY51gEvtF/fUmU43RQdXb6b3dzeGCQtn+AWuuWMBBXJaLitcArYnwV
+         tA2wnWNsELFSF8I6hH/y3qrT4t26DoNeLY508zNlUWBbXafj+BZCGWbbsUAsum+KdF8z
+         deESZdq9ihrZ8jg/fTMmELSCyb+S6ElGBf2xDpqnuYB2ug2KVKCaKvunLA1FYvVXViwX
+         6L2w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@stocktwits.com header.s=cm header.b=RZ85ge9u;
+       dkim=pass header.i=@cmail2.com header.s=cs2013 header.b=U0wZoPC7;
+       spf=pass (google.com: domain of stocktwitsdailyrip-mxttdt1vukukkjhl1t@cmail20.com designates 27.126.146.34 as permitted sender) smtp.mailfrom=StocktwitsDailyRip-mxttdt1vukukkjhl1t@cmail20.com
+Return-Path: <StocktwitsDailyRip-mxttdt1vukukkjhl1t@cmail20.com>
+Received: from mx34.b.outbound.createsend.com (mx34.b.outbound.createsend.com. [27.126.146.34])
+        by mx.google.com with ESMTPS id y18si3646333pfe.136.2021.02.03.16.03.35
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 03 Feb 2021 16:03:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of stocktwitsdailyrip-mxttdt1vukukkjhl1t@cmail20.com designates 27.126.146.34 as permitted sender) client-ip=27.126.146.34;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@stocktwits.com header.s=cm header.b=RZ85ge9u;
+       dkim=pass header.i=@cmail2.com header.s=cs2013 header.b=U0wZoPC7;
+       spf=pass (google.com: domain of stocktwitsdailyrip-mxttdt1vukukkjhl1t@cmail20.com designates 27.126.146.34 as permitted sender) smtp.mailfrom=StocktwitsDailyRip-mxttdt1vukukkjhl1t@cmail20.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=cm; d=stocktwits.com;
+ h=Subject:From:To:Reply-To:Date:MIME-Version:Content-Type:X-Feedback-ID:List-Unsubscribe:Message-ID; i=newsletter@stocktwits.com;
+ bh=8gk3f51mbLnpxFW2o+5ddkcfUGQ=;
+ b=RZ85ge9uzvWI6LhHIji5eWWK2kpd8it4cB6l3ptuvnNMhClPtbbs7v+lSldwC/0fhzExzXftoL4S
+   Y+a/nJUeoDR0WwEkAyFQQxyqIGSeHVXXmdUtjzupP64KDk1MRbW6T/MvbPJmQk6s6+85DPTwo/He
+   AWgo9q7Jyg3e6Jj30HY=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=cs2013; d=cmail2.com;
+ h=Subject:From:To:Reply-To:Date:MIME-Version:Content-Type:X-Feedback-ID:List-Unsubscribe:Message-ID;
+ bh=8gk3f51mbLnpxFW2o+5ddkcfUGQ=;
+ b=U0wZoPC7IGUGqEpa0utL4LgPWqLozv746oRqVJzvQrK94xgP2kvcUlbsPMwcY0RkQbWzMYY9JICN
+   mVtFHtRXA0zrw7MZeQOcPqQ8zQDA2LtMDmCqkGOAwwckrOytJICUcI13++ACXGC9Uc4O1jXy2eIG
+   DkYVrF1HaQkyGHgjMHo=
+Subject: =?utf-8?Q?The_World=e2=80=99s_Biggest_Drug_Deal?=
+From: "Stocktwits Daily Rip" <newsletter@stocktwits.com> 
+To: "Eduardo" <eduardo.sinning@gmail.com>
+Reply-To: newsletter@stocktwits.com
+Date: Thu, 04 Feb 2021 10:50:52 +1100
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_b96f86ef-2c8c-4175-b3c5-a6af7bfd296d_"; charset=utf-8
+X-Mailer: Create Send
+X-Complaints-To: abuse@cmail20.com
+X-Feedback-ID: CA1-t-mxttdt:LI1-t-yhzhlr:CL1-t-itbjr:createSEND
+List-Unsubscribe: <http://unsub.cmail20.com/t/t-u-mxttdt-vukukkjhl/>,
+ <mailto:unsubscribe-mxttdt2vukukkjhl2t-8C0B9DA4@cmail20.com?subject=Unsubscribe>
+Message-ID: <cm.1050526018851.mxttdt.vukukkjhl.t@cmail20.com>
+
+--_b96f86ef-2c8c-4175-b3c5-a6af7bfd296d_
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Jazz Pharma will acquire GW pharma for ~$7B. Pot stocks popped in respons=
+e. =F0=9F=8E=89
+
+Disclosures [http://content.stocktwits.com/disclosures]
+
+View this email in your browser. [https://dailyripblog.com/2021/02/03/th=
+e-worlds-biggest-drug-deal/]
+
+February 3, 2020
+
+The World=E2=80=99s Biggest Drug Deal          Tale of the Tape
+
+Good evening, folks. Happy hump day! =F0=9F=90=AA
+
+The S&P 500 rallied for the third straight day while the Nasdaq Composite=
+ was the only major index to close in negative territory.
+
+Energy flew 4%. Communications carried 1.34% while $XLC closed only $0.08=
+ away from its all-time high. =E2=9A=A1
+
+Ethereum ticked an all-time high=E2=80=94 the crypto crossed 1,650 for th=
+e first time ever. Bitcoin bounced 4%. Will $BTC.X break back to 40K? Pla=
+ce your bets=E2=80=A6
+
+Google gapped up and gained 7.4% after last night=E2=80=99s earnings. Mic=
+rosoft marched 1.46% and closed at a new all-time high.
+
+Virgin Galactic has been volatile af. =F0=9F=8C=8A $SPCE soared 17% today=
+, but in the last 6 sessions the stock has bounced between $40 and $60.
+
+The  MemeStocks [https://shop.stocktwits.com/collections/featured-home-p=
+age/products/memestock-dad-hat] were today=E2=80=99s  most active [https=
+://stocktwits.com/rankings/most-active] streams on Stocktwits. $AMC advan=
+ced 14.71% and $GME gained 2.68%.
+
+eBay and PayPal both popped after posting  earnings after the close [htt=
+ps://open.spotify.com/episode/4Z43GPrdvW03Rrb0v3ls2E?si=3DKJKoWDMfTpuqpE2=
+JPNofsQ]. See the Earnings Round-Up below.
+
+Here are the closing prints:
+
+S&P 500           3,830        +0.10%
+
+Nasdaq             13,610      -0.02%
+
+Russell 2000       2,159    +0.38%
+
+Dow Jones        30,723    +0.12%
+
+Earnings
+
+Earnings Round-Up=E2=80=8B
+
+Spotify reported Q4 2020 results that beat on subscriber and total user t=
+argets. =F0=9F=8E=B6 The report=E2=80=99s EPS and future outlook disappoi=
+nted, though.
+
+Here are the  numbers [https://investors.spotify.com/financials/press-re=
+lease-details/2021/Spotify-Technology-S.A.-Announces-Financial-Results-fo=
+r-Fourth-Quarter-2020/default.aspx]:
+
+EPS: ($0.79) vs ($0.69) est.
+
+Revenue: $2.58B, +26% YoY
+
+Monthly Active Users: 345M, +27% YoY
+
+Premium Subscribers: 155M, +24% YoY
+
+Here=E2=80=99s the daily chart:
+
+$SPOT sank 8%.
+
+Sony smashed earnings expectations and the company announced that it will=
+ change its ticker to  $SONY [https://www.sony.net/SonyInfo/IR/news/2021=
+0203_04E.pdf], effective April 1, 2021. (Please note, this is not an Apri=
+l Fools joke=E2=80=A6 =F0=9F=A4=A3)
+
+Here are the  stats [https://www.sony.net/SonyInfo/IR/library/presen/er/=
+pdf/20q3_sonypre.pdf]:
+
+EPS: $2.64 vs $0.80 est.
+
+Revenue: $25.82B, +9% YoY
+
+$SNE soared 12% and closed at its highest price since September 22, 2000.=
+ =F0=9F=91=80
+
+Paypal posted record numbers after the close and expects growth to contin=
+ue in 2021.
+
+Here are the  numbers [https://s1.q4cdn.com/633035571/files/doc_financia=
+ls/2020/q4/Q4-FY-20-PayPal-Earnings-Release.pdf]:
+
+EPS: $1.08 vs $1.01 est.
+
+Revenue: $6.12B, +23% YoY
+
+$PYPL popped 6.7% after hours.
+
+EBay topped earnings estimates after the close as revenue grew 28%.
+
+Here are the  details [https://ebay.q4cdn.com/610426115/files/doc_financ=
+ials/2020/q4/Exhibit-99.1-ER-eBay-Q4-2020_FINAL.pdf]:
+
+EPS: $0.86 vs $0.83 est.
+
+Revenue: $2.9B, +28% YoY
+
+$EBAY jumped 10% after hours to an all-time high.
+
+Digital Turbine blew out earnings, again. Accelerating platform momentum =
+led Q3 revenue growth, up 146% YoY.
+
+Here are the  numbers [https://ir.digitalturbine.com/press-releases/deta=
+il/600/digital-turbine-reports-fiscal-2021-third-quarter-results]:
+
+EPS: $0.21 vs $0.17 est.
+
+Revenue: $88.6M, +146% YoY
+
+Bill Stone, CEO of Digital Turbine, said:
+
+We once again set all-time quarterly records for revenue, profitability a=
+nd free cash flow.  Total revenue grew 146% year-over-year, as we saw str=
+ong demand for both our Application Media and Content Media service offer=
+ings. The amount of time and money spent by consumers within applications=
+ continues to rise, as consumers increasingly grow accustomed to consumin=
+g more content and spending greater share of their wallets using the appl=
+ications on their mobile devices.
+
+$APPS ascended 14% after hours to an all-time high.
+
+Sponsored
+
+Save $500 on your next adventure! Try the club for $1 today=E2=80=A6
+
+Try Dollar Flight Club for just $1  [https://signup.dollarflightclub.com=
+/stockwits]if you sign up in the next 48 hours. Their 1 million members s=
+ave up to 90% on round-trip flights. Think: Hawaii from $109 or Greece fr=
+om $247. Every deal has flexible change policies, so you can travel with =
+utmost peace of mind.   Try the club for just $1 today. [https://signup.=
+dollarflightclub.com/stockwits]
+
+Try for $1 [https://signup.dollarflightclub.com/stockwits]
+
+M&A
+
+The World=E2=80=99s Biggest Drug Deal
+
+Today, Jazz Pharmaceuticals  announced [https://investor.jazzpharma.com/=
+news-releases/news-release-details/jazz-pharmaceuticals-acquire-gw-pharma=
+ceuticals-plc-creating] the beginnings of its GW Pharmaceuticals acquisit=
+ion=E2=80=94 GW=E2=80=99s best known for its production of the first epil=
+epsy drug to utilize marijuana.
+
+GW Pharmaceuticals sold $510M worth of the drug last year, which helped f=
+inance other ventures in marijuana medicine. Currently, the company is te=
+sting drugs to treat autism, schizophrenia, and other health conditions.
+
+Jazz Pharma CEO Bruce Conzadd described the deal:
+
+We saw an opportunity to add near-term what we think is a blockbuster pro=
+duct in Epidiolex, as well as bring in a pipeline engineered around canna=
+binoids in neuroscience.
+
+Pot stocks popped on the news. $MSOS, the US Cannabis ETF, closed at an a=
+ll-time high today. =F0=9F=99=8C
+
+Crypto
+
+Ethereum Futures
+
+Ethereum broke above $1,600 today and is on its way to $1,700 as we speak=
+=2E The all time-high precedes the Chicago Mercantile Exchange=E2=80=99s  l=
+aunch of Ethereum futures [https://www.reuters.com/article/us-crypto-cur=
+rency-ethereum-idUSKBN2A320J] next week.
+
+JPMorgan strategists commented on the potential of CME=E2=80=99s futures:=
+
+
+The listing of ethereum futures on a regulated exchange should serve to e=
+nhance the crypto market structure by allowing investors to gain exposure=
+ to the second most important cryptocurrency as a diversifier to bitcoin,=
+ or for simply hedging existing ethereum exposures.
+
+Yesterday, Ethereum broke out of a ~4-week base. Will the crypto crack 2K=
+ next? Place your bets=E2=80=A6
+
+Shortage
+
+Uh oh, Where=E2=80=99d The Chips Go=E2=80=A6 =F0=9F=98=AC
+
+Today, GM  announced plans [https://investor.gm.com/news-releases/news-r=
+elease-details/general-motors-statement-regarding-production-impacts-cami=
+-san] to tighten production at several of its factories this month due to=
+ the semiconductor chip shortage that=E2=80=99s tanking global car manufa=
+cturing.
+
+GM will reduce production at 4 of its plants to sustain the company=E2=80=
+=99s factories making best-selling trucks and SUVs.  Volkswagen, Ford, Ni=
+ssan, and other companies have mentioned similar plans.
+
+Auto manufacturing requires tons of semiconductors, making the industry a=
+ huge purchaser of chips. But with China=E2=80=99s chip shortage still li=
+ngering from last year, it=E2=80=99s looking like global car manufacturin=
+g will take the hit.
+
+GM=E2=80=99ll release weekly production updates and more details about th=
+e shortage after its Feb. 10 earnings report. Here=E2=80=99s the  WSJ [h=
+ttps://www.wsj.com/articles/chip-shortage-hits-general-motors-leads-to-pr=
+oduction-cuts-11612382359?mod=3Dhp_lista_pos3] with more info.
+
+Energy
+
+Don=E2=80=99t Spoil the Oil
+
+After a long and tenuous policy meeting today, OPEC+ announced that it wi=
+ll be maintaining its current oil output levels. The decision comes as th=
+e price of crude is at its highest point since late February, 2020.
+
+In a draft statement, OPEC+ declared that it=E2=80=99s =E2=80=9COptimisti=
+c for a year of recovery in 2021.=E2=80=9D
+
+Currently, the benchmark price of Brent Crude is at $57.59. Remember when=
+ the  price of oil was negative [https://www.bbc.com/news/business-52350=
+082]... lol. =F0=9F=9B=A2=EF=B8=8F=F0=9F=91=8E
+
+Energy stocks were strong as $XLE had its best day since January 5, 2021.=
+ =F0=9F=94=8B
+
+Coming Soon...
+
+Earnings This Week
+
+Be sure to know when your stocks report earnings. Here=E2=80=99s the  ear=
+nings calendar [https://stocktwits.com/earnings-calendar].
+
+Links That Don't Suck:
+
+=F0=9F=9A=8F  All Roads [https://jacobybrandon.medium.com/all-roads-lead=
+-to-rome-6efffa58c6a8] Lead to Rome
+
+=F0=9F=8F=86  Wall Street is Undefeated [https://thereformedbroker.com/2=
+021/02/02/wall-street-is-undefeated-since-1792/] Since 1792
+
+=F0=9F=92=B0 Coin Metrics'  State of the Network [https://coinmetrics.su=
+bstack.com/p/coin-metrics-state-of-the-network-91d]: Issue 88
+
+=F0=9F=A4=AD An  Amazonian Transition [https://om.co/2021/02/02/andy-jas=
+sy-ceo-amazon/]
+
+=F0=9F=8E=B6 Talking Heads -  Stop Making Sense (1984) [https://www.yout=
+ube.com/watch?v=3Dh-1PXYM135I]
+
+=F0=9F=93=9A Jason Zweig =E2=80=93  Psychology, History & Writing [https=
+://www.infiniteloopspodcast.com/jason-zweig-psychology-history-writing-ep=
+32/]
+
+=F0=9F=8D=8E The  Irritable Steve Jobs and Apple Enterprise [https://how=
+ardlindzon.com/the-irritable-steve-jobs-and-apple-enterprise/]?
+
+Stocktwits
+
+1001 Avenue of the Americas
+
+New York, NY 10018   You are receiving this email because you subscribed =
+to the Daily Rip.
+
+Free trading of stocks and options refers to $0 commissions for ST Invest=
+ self-directed individual cash or margin brokerage accounts that trade U.=
+S. listed securities via mobile devices or Web. regulatory transaction fe=
+es may apply, as well as tax implications for realized gains. Please see =
+the Commissions and Fee Schedule.
+
+Content, news, research, tools, and securities symbols are for educationa=
+l and illustrative purposes only and do not imply a recommendation or sol=
+icitation to buy or sell a particular security or to engage in any partic=
+ular investment strategy. Companies that are not affiliated with us may s=
+upply some of the content. The source of all, third-party Content, in whi=
+ch Stocktwits, Inc. receives some sort of compensation, is clearly and pr=
+ominently identified herein as =E2=80=9CSponsored by=E2=80=9D or =E2=80=9C=
+Sponsored=E2=80=9D. We have not been involved in the preparation, adoptio=
+n or editing of third party content and we do not endorse or approve such=
+ content. The information provided is not warranted as to completeness or=
+ accuracy and is subject to change without notice. The projections or oth=
+er information regarding the likelihood of various investment outcomes ar=
+e hypothetical in nature, are not guaranteed for accuracy or completeness=
+, do not reflect actual investment results and are not guarantees of futu=
+re results. All investments involve risk, losses may exceed the principal=
+ invested, and the past performance of a security, industry, sector, mark=
+et, or financial product does not guarantee future results or returns. Be=
+fore investing in a fund, consider the fund=E2=80=99s investment objectiv=
+es, risks, charges, and expenses. Contact ST Invest LLC (https://tradeapp=
+=2Eme/) for a prospectus containing this information.
+
+Securities products and services offered to self-directed investors throu=
+gh ST Invest LLC d/b/a Trade App Member FINRA (/www.finra.org) / SIPC (ht=
+tps://www.sipc.org/). Stocktwits, Inc.. and ST Invest LLC  are separate b=
+ut affiliated companies.
+
+Please read important legal disclosures: http://content.stocktwits.com/di=
+sclosures.            Forward   https://stocktwits.forwardtomyfriend.com/=
+t-vukukkjhl-8C0B9DA4-mxttdt-l-jl             Preferen=
+ces https://stocktwits.updatemyprofile.com/t-mxttdt-8C0B9DA4-=
+vukukkjhl-jr  |   Unsubscribe https://stocktwits.cmail20.com/t/t-=
+u-mxttdt-vukukkjhl-jy/
+
+--_b96f86ef-2c8c-4175-b3c5-a6af7bfd296d_
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://w=
+ww.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><!--[if IE]><html xmlns=
+=3D"http://www.w3.org/1999/xhtml" class=3D"ie"><![endif]--><!--[if !IE]=
+><!--><html style=3D"margin: 0;padding: 0;" xmlns=3D"http://www.w3.org/19=
+99/xhtml"><!--<![endif]--><head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8">
+    <title></title>
+    <!--[if !mso]><!--><meta http-equiv=3D"X-UA-Compatible" content=3D"I=
+E=3Dedge"><!--<![endif]-->
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width"><style type=3D=
+"text/css">
+@media only screen and (min-width: 620px){.wrapper{min-width:600px !impor=
+tant}.wrapper h1{}.wrapper h1{font-size:22px !important;line-height:31px =
+!important}.wrapper h2{}.wrapper h2{font-size:20px !important;line-height=
+:28px !important}.wrapper h3{}.wrapper h3{font-size:18px !important;line-=
+height:26px !important}.column{}.wrapper .size-8{font-size:8px !important=
+;line-height:14px !important}.wrapper .size-9{font-size:9px !important;li=
+ne-height:16px !important}.wrapper .size-10{font-size:10px !important;lin=
+e-height:18px !important}.wrapper .size-11{font-size:11px !important;line=
+-height:19px !important}.wrapper .size-12{font-size:12px !important;line-=
+height:19px !important}.wrapper .size-13{font-size:13px !important;line-h=
+eight:21px !important}.wrapper .size-14{font-size:14px !important;line-he=
+ight:21px !important}.wrapper .size-15{font-size:15px !important;line-hei=
+ght:23px=20
+!important}.wrapper .size-16{font-size:16px !important;line-height:24px !=
+important}.wrapper .size-17{font-size:17px !important;line-height:26px !i=
+mportant}.wrapper .size-18{font-size:18px !important;line-height:26px !im=
+portant}.wrapper .size-20{font-size:20px !important;line-height:28px !imp=
+ortant}.wrapper .size-22{font-size:22px !important;line-height:31px !impo=
+rtant}.wrapper .size-24{font-size:24px !important;line-height:32px !impor=
+tant}.wrapper .size-26{font-size:26px !important;line-height:34px !import=
+ant}.wrapper .size-28{font-size:28px !important;line-height:36px !importa=
+nt}.wrapper .size-30{font-size:30px !important;line-height:38px !importan=
+t}.wrapper .size-32{font-size:32px !important;line-height:40px !important=
+}.wrapper .size-34{font-size:34px !important;line-height:43px !important}=
+=2Ewrapper .size-36{font-size:36px !important;line-height:43px !important}.=
+wrapper=20
+=2Esize-40{font-size:40px !important;line-height:47px !important}.wrapper .=
+size-44{font-size:44px !important;line-height:50px !important}.wrapper .s=
+ize-48{font-size:48px !important;line-height:54px !important}.wrapper .si=
+ze-56{font-size:56px !important;line-height:60px !important}.wrapper .siz=
+e-64{font-size:64px !important;line-height:63px !important}}
+</style>
+    <meta name=3D"x-apple-disable-message-reformatting">
+    <style type=3D"text/css">
+body {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+* {
+  line-height: inherit;
+}
+[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+=2Ewrapper .footer__share-button a:hover,
+=2Ewrapper .footer__share-button a:focus {
+  color: #ffffff !important;
+}
+=2Ebtn a:hover,
+=2Ebtn a:focus,
+=2Efooter__share-button a:hover,
+=2Efooter__share-button a:focus,
+=2Eemail-footer__links a:hover,
+=2Eemail-footer__links a:focus {
+  opacity: 0.8;
+}
+=2Epreheader,
+=2Eheader,
+=2Elayout,
+=2Ecolumn {
+  transition: width 0.25s ease-in-out, max-width 0.25s ease-in-out;
+}
+=2Epreheader td {
+  padding-bottom: 8px;
+}
+=2Elayout,
+div.header {
+  max-width: 400px !important;
+  -fallback-width: 95% !important;
+  width: calc(100% - 20px) !important;
+}
+div.preheader {
+  max-width: 360px !important;
+  -fallback-width: 90% !important;
+  width: calc(100% - 60px) !important;
+}
+=2Esnippet,
+=2Ewebversion {
+  Float: none !important;
+}
+=2Estack .column {
+  max-width: 400px !important;
+  width: 100% !important;
+}
+=2Efixed-width.has-border {
+  max-width: 402px !important;
+}
+=2Efixed-width.has-border .layout__inner {
+  box-sizing: border-box;
+}
+=2Esnippet,
+=2Ewebversion {
+  width: 50% !important;
+}
+=2Eie .btn {
+  width: 100%;
+}
+=2Eie .stack .column,
+=2Eie .stack .gutter {
+  display: table-cell;
+  float: none !important;
+}
+=2Eie div.preheader,
+=2Eie .email-footer {
+  max-width: 560px !important;
+  width: 560px !important;
+}
+=2Eie .snippet,
+=2Eie .webversion {
+  width: 280px !important;
+}
+=2Eie div.header,
+=2Eie .layout {
+  max-width: 600px !important;
+  width: 600px !important;
+}
+=2Eie .two-col .column {
+  max-width: 300px !important;
+  width: 300px !important;
+}
+=2Eie .three-col .column,
+=2Eie .narrow {
+  max-width: 200px !important;
+  width: 200px !important;
+}
+=2Eie .wide {
+  width: 400px !important;
+}
+=2Eie .stack.fixed-width.has-border,
+=2Eie .stack.has-gutter.has-border {
+  max-width: 602px !important;
+  width: 602px !important;
+}
+=2Eie .stack.two-col.has-gutter .column {
+  max-width: 290px !important;
+  width: 290px !important;
+}
+=2Eie .stack.three-col.has-gutter .column,
+=2Eie .stack.has-gutter .narrow {
+  max-width: 188px !important;
+  width: 188px !important;
+}
+=2Eie .stack.has-gutter .wide {
+  max-width: 394px !important;
+  width: 394px !important;
+}
+=2Eie .stack.two-col.has-gutter.has-border .column {
+  max-width: 292px !important;
+  width: 292px !important;
+}
+=2Eie .stack.three-col.has-gutter.has-border .column,
+=2Eie .stack.has-gutter.has-border .narrow {
+  max-width: 190px !important;
+  width: 190px !important;
+}
+=2Eie .stack.has-gutter.has-border .wide {
+  max-width: 396px !important;
+  width: 396px !important;
+}
+=2Eie .fixed-width .layout__inner {
+  border-left: 0 none white !important;
+  border-right: 0 none white !important;
+}
+=2Eie .layout__edges {
+  display: none;
+}
+=2Emso .layout__edges {
+  font-size: 0;
+}
+=2Elayout-fixed-width,
+=2Emso .layout-full-width {
+  background-color: #ffffff;
+}
+@media only screen and (min-width: 620px) {
+  .column,
+  .gutter {
+    display: table-cell;
+    Float: none !important;
+    vertical-align: top;
+  }
+  div.preheader,
+  .email-footer {
+    max-width: 560px !important;
+    width: 560px !important;
+  }
+  .snippet,
+  .webversion {
+    width: 280px !important;
+  }
+  div.header,
+  .layout,
+  .one-col .column {
+    max-width: 600px !important;
+    width: 600px !important;
+  }
+  .fixed-width.has-border,
+  .fixed-width.x_has-border,
+  .has-gutter.has-border,
+  .has-gutter.x_has-border {
+    max-width: 602px !important;
+    width: 602px !important;
+  }
+  .two-col .column {
+    max-width: 300px !important;
+    width: 300px !important;
+  }
+  .three-col .column,
+  .column.narrow,
+  .column.x_narrow {
+    max-width: 200px !important;
+    width: 200px !important;
+  }
+  .column.wide,
+  .column.x_wide {
+    width: 400px !important;
+  }
+  .two-col.has-gutter .column,
+  .two-col.x_has-gutter .column {
+    max-width: 290px !important;
+    width: 290px !important;
+  }
+  .three-col.has-gutter .column,
+  .three-col.x_has-gutter .column,
+  .has-gutter .narrow {
+    max-width: 188px !important;
+    width: 188px !important;
+  }
+  .has-gutter .wide {
+    max-width: 394px !important;
+    width: 394px !important;
+  }
+  .two-col.has-gutter.has-border .column,
+  .two-col.x_has-gutter.x_has-border .column {
+    max-width: 292px !important;
+    width: 292px !important;
+  }
+  .three-col.has-gutter.has-border .column,
+  .three-col.x_has-gutter.x_has-border .column,
+  .has-gutter.has-border .narrow,
+  .has-gutter.x_has-border .narrow {
+    max-width: 190px !important;
+    width: 190px !important;
+  }
+  .has-gutter.has-border .wide,
+  .has-gutter.x_has-border .wide {
+    max-width: 396px !important;
+    width: 396px !important;
+  }
+}
+@supports (display: flex) {
+  @media only screen and (min-width: 620px) {
+    .fixed-width.has-border .layout__inner {
+      display: flex !important;
+    }
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen a=
+nd (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel=
+-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen an=
+d (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .fblike {
+    background-image: url(http://i7.cmail20.com/static/eb/master/13-the-b=
+lueprint-3/images/fblike@2x.png) !important;
+  }
+  .tweet {
+    background-image: url(http://i8.cmail20.com/static/eb/master/13-the-b=
+lueprint-3/images/tweet@2x.png) !important;
+  }
+  .linkedinshare {
+    background-image: url(http://i9.cmail20.com/static/eb/master/13-the-b=
+lueprint-3/images/lishare@2x.png) !important;
+  }
+  .forwardtoafriend {
+    background-image: url(http://i10.cmail20.com/static/eb/master/13-the-=
+blueprint-3/images/forward@2x.png) !important;
+  }
+}
+@media (max-width: 321px) {
+  .fixed-width.has-border .layout__inner {
+    border-width: 1px 0 !important;
+  }
+  .layout,
+  .stack .column {
+    min-width: 320px !important;
+    width: 320px !important;
+  }
+  .border {
+    display: none;
+  }
+  .has-gutter .border {
+    display: table-cell;
+  }
+}
+=2Emso div {
+  border: 0 none white !important;
+}
+=2Emso .w560 .divider {
+  Margin-left: 260px !important;
+  Margin-right: 260px !important;
+}
+=2Emso .w360 .divider {
+  Margin-left: 160px !important;
+  Margin-right: 160px !important;
+}
+=2Emso .w260 .divider {
+  Margin-left: 110px !important;
+  Margin-right: 110px !important;
+}
+=2Emso .w160 .divider {
+  Margin-left: 60px !important;
+  Margin-right: 60px !important;
+}
+=2Emso .w354 .divider {
+  Margin-left: 157px !important;
+  Margin-right: 157px !important;
+}
+=2Emso .w250 .divider {
+  Margin-left: 105px !important;
+  Margin-right: 105px !important;
+}
+=2Emso .w148 .divider {
+  Margin-left: 54px !important;
+  Margin-right: 54px !important;
+}
+=2Emso .size-8,
+=2Eie .size-8 {
+  font-size: 8px !important;
+  line-height: 14px !important;
+}
+=2Emso .size-9,
+=2Eie .size-9 {
+  font-size: 9px !important;
+  line-height: 16px !important;
+}
+=2Emso .size-10,
+=2Eie .size-10 {
+  font-size: 10px !important;
+  line-height: 18px !important;
+}
+=2Emso .size-11,
+=2Eie .size-11 {
+  font-size: 11px !important;
+  line-height: 19px !important;
+}
+=2Emso .size-12,
+=2Eie .size-12 {
+  font-size: 12px !important;
+  line-height: 19px !important;
+}
+=2Emso .size-13,
+=2Eie .size-13 {
+  font-size: 13px !important;
+  line-height: 21px !important;
+}
+=2Emso .size-14,
+=2Eie .size-14 {
+  font-size: 14px !important;
+  line-height: 21px !important;
+}
+=2Emso .size-15,
+=2Eie .size-15 {
+  font-size: 15px !important;
+  line-height: 23px !important;
+}
+=2Emso .size-16,
+=2Eie .size-16 {
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+=2Emso .size-17,
+=2Eie .size-17 {
+  font-size: 17px !important;
+  line-height: 26px !important;
+}
+=2Emso .size-18,
+=2Eie .size-18 {
+  font-size: 18px !important;
+  line-height: 26px !important;
+}
+=2Emso .size-20,
+=2Eie .size-20 {
+  font-size: 20px !important;
+  line-height: 28px !important;
+}
+=2Emso .size-22,
+=2Eie .size-22 {
+  font-size: 22px !important;
+  line-height: 31px !important;
+}
+=2Emso .size-24,
+=2Eie .size-24 {
+  font-size: 24px !important;
+  line-height: 32px !important;
+}
+=2Emso .size-26,
+=2Eie .size-26 {
+  font-size: 26px !important;
+  line-height: 34px !important;
+}
+=2Emso .size-28,
+=2Eie .size-28 {
+  font-size: 28px !important;
+  line-height: 36px !important;
+}
+=2Emso .size-30,
+=2Eie .size-30 {
+  font-size: 30px !important;
+  line-height: 38px !important;
+}
+=2Emso .size-32,
+=2Eie .size-32 {
+  font-size: 32px !important;
+  line-height: 40px !important;
+}
+=2Emso .size-34,
+=2Eie .size-34 {
+  font-size: 34px !important;
+  line-height: 43px !important;
+}
+=2Emso .size-36,
+=2Eie .size-36 {
+  font-size: 36px !important;
+  line-height: 43px !important;
+}
+=2Emso .size-40,
+=2Eie .size-40 {
+  font-size: 40px !important;
+  line-height: 47px !important;
+}
+=2Emso .size-44,
+=2Eie .size-44 {
+  font-size: 44px !important;
+  line-height: 50px !important;
+}
+=2Emso .size-48,
+=2Eie .size-48 {
+  font-size: 48px !important;
+  line-height: 54px !important;
+}
+=2Emso .size-56,
+=2Eie .size-56 {
+  font-size: 56px !important;
+  line-height: 60px !important;
+}
+=2Emso .size-64,
+=2Eie .size-64 {
+  font-size: 64px !important;
+  line-height: 63px !important;
+}
+</style>
+   =20
+  <!--[if !mso]><!--><style type=3D"text/css">
+@import url(https://fonts.googleapis.com/css?family=3DSource+Sans+Pro:400=
+,700,400italic,700italic);
+</style><link href=3D"https://fonts.googleapis.com/css?family=3DSource+Sa=
+ns+Pro:400,700,400italic,700italic" rel=3D"stylesheet" type=3D"text/css">=
+<!--<![endif]--><style type=3D"text/css">
+body{background-color:#e8f3ff}.logo a:hover,.logo a:focus{color:#fff !imp=
+ortant}.mso .layout-has-border{border-top:1px solid #82beff;border-bottom=
+:1px solid #82beff}.mso .layout-has-bottom-border{border-bottom:1px solid=
+ #82beff}.mso .border,.ie .border{background-color:#82beff}.mso h1,.ie h1=
+{}.mso h1,.ie h1{font-size:22px !important;line-height:31px !important}.m=
+so h2,.ie h2{}.mso h2,.ie h2{font-size:20px !important;line-height:28px !=
+important}.mso h3,.ie h3{}.mso h3,.ie h3{font-size:18px !important;line-h=
+eight:26px !important}.mso .layout__inner,.ie .layout__inner{}.mso .foote=
+r__share-button p{}.mso .footer__share-button p{font-family:Source Sans P=
+ro,Apple SD Gothic Neo,PT Sans,Trebuchet MS,sans-serif}
+</style></head>
+<!--[if mso]>
+  <body class=3D"mso">
+<![endif]-->
+<!--[if !mso]><!-->
+  <body class=3D"full-padding" style=3D"margin: 0;padding: 0;-webkit-text=
+-size-adjust: 100%;">
+<!--<![endif]--><div style=3D"mso-hide:all;position:fixed;height:0;max-h=
+eight:0;overflow:hidden;font-size:0;">Jazz Pharma will acquire GW pharma =
+for ~$7B. Pot stocks popped in response. =F0=9F=8E=89 &#8204; &#8204; &#8=
+204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#82=
+04; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#820=
+4; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204=
+; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204;=
+ &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; =
+&#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &=
+#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#=
+8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8=
+204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#82=
+04; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#820=
+4; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204=
+; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204;=
+ &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; =
+&#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &=
+#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#=
+8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8=
+204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#82=
+04; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#820=
+4; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204=
+; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204;=
+ &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; =
+&#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &=
+#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#=
+8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8=
+204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#82=
+04; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#820=
+4; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204; &#8204=
+; &#8204;</div>
+    <table class=3D"wrapper" style=3D"border-collapse: collapse;table-lay=
+out: fixed;min-width: 320px;width: 100%;background-color: #e8f3ff;" cellp=
+adding=3D"0" cellspacing=3D"0" role=3D"presentation"><tbody><tr><td>
+      <div role=3D"banner">
+        <div class=3D"preheader" style=3D"Margin: 0 auto;max-width: 560px=
+;min-width: 280px; width: 280px;width: calc(28000% - 167440px);">
+          <div style=3D"border-collapse: collapse;display: table;width: 1=
+00%;">
+          <!--[if (mso)|(IE)]><table align=3D"center" class=3D"preheader=
+" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"><tr><td style=
+=3D"width: 280px" valign=3D"top"><![endif]-->
+            <div class=3D"snippet" style=3D"display: table-cell;Float: le=
+ft;font-size: 12px;line-height: 19px;max-width: 280px;min-width: 140px; w=
+idth: 140px;width: calc(14000% - 78120px);padding: 10px 0 5px 0;color: #b=
+bb;font-family: Source Sans Pro,Apple SD Gothic Neo,PT Sans,Trebuchet MS,=
+sans-serif;">
+              <p style=3D"Margin-top: 0;Margin-bottom: 0;">Jazz Pharma wi=
+ll acquire GW pharma for ~$7B. Pot stocks popped in response. &#127881;</=
+p>
+            </div>
+          <!--[if (mso)|(IE)]></td><td style=3D"width: 280px" valign=3D"=
+top"><![endif]-->
+            <div class=3D"webversion" style=3D"display: table-cell;Float:=
+ left;font-size: 12px;line-height: 19px;max-width: 280px;min-width: 139px=
+; width: 139px;width: calc(14100% - 78680px);padding: 10px 0 5px 0;text-a=
+lign: right;color: #bbb;font-family: Source Sans Pro,Apple SD Gothic Neo,=
+PT Sans,Trebuchet MS,sans-serif;">
+             =20
+            </div>
+          <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+          </div>
+        </div>
+       =20
+      </div>
+      <div>
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-10" style=3D"Margin-top: 0;Margin-bottom: 20px;f=
+ont-size: 10px;line-height: 18px;text-align: right;" lang=3D"x-size-10"><=
+span style=3D"color:#3e4143">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp;</span><a style=3D"text-decoration: underl=
+ine;transition: opacity 0.1s ease-in;color: #218dff;" href=3D"https://sto=
+cktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-r/" data-emb-iscopy=3D=
+"true">Disclosures</a></p>
+      </div>
+    </div>
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;line-height: 19px;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 236px;" alt=3D"" width=3D"236" src=3D"http://i1.cmail20.com/e=
+i/t/73/5AD/289/104432/csfinal/NewDailyRipLogo-99079e03cf028a3c.png">
+        </div>
+     =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 20px;">
+      <div class=3D"divider" style=3D"display: block;font-size: 2px;line-=
+height: 2px;Margin-left: auto;Margin-right: auto;width: 40px;background-c=
+olor: #82beff;Margin-bottom: 20px;">&nbsp;</div>
+    </div>
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;line-height: 19px;" align=3D"center">
+          <a style=3D"text-decoration: underline;transition: opacity 0.1s=
+ ease-in;color: #218dff;" href=3D"https://stocktwits.cmail20.com/t/t-l-mx=
+ttdt-vukukkjhl-y/"><img style=3D"border: 0;display: block;height=
+: auto;width: 100%;max-width: 100px;" alt=3D"" width=3D"100" src=3D"http:=
+//i2.cmail20.com/ei/t/73/5AD/289/104432/csfinal/CopyofCopyofCopyofCopyofT=
+ransparentSunsetDollarFli-990000000001453c.png"></a>
+        </div>
+     =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 20px;Margin-bottom: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 1px;font-s=
+ize: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;Margin-bottom: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-14" style=3D"Margin-top: 0;Margin-bottom: 0;font=
+-family: source sans pro,apple sd gothic neo,pt sans,trebuchet ms,sans-se=
+rif;font-size: 14px;line-height: 21px;text-align: center;" lang=3D"x-size=
+-14"><span class=3D"font-source-sans-pro"><a style=3D"text-decoration: un=
+derline;transition: opacity 0.1s ease-in;color: #218dff;" href=3D"https:/=
+/stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-j/">View this ema=
+il in your browser.</a></span></p>
+      </div>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-14" style=3D"Margin-top: 0;Margin-bottom: 20px;f=
+ont-size: 14px;line-height: 21px;" lang=3D"x-size-14"><span style=3D"colo=
+r:#218dff">February 3, 2020</span></p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <h2 style=3D"Margin-top: 0;Margin-bottom: 16px;font-style: normal=
+;font-weight: normal;color: #353638;font-size: 17px;line-height: 26px;"><=
+strong>The World&#8217;s Biggest Drug Deal</strong></h2>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;line-height: 19px;Margin-bottom: 20px;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 499px;" alt=3D"" width=3D"499" src=3D"http://i3.cmail20.com/e=
+i/t/73/5AD/289/104432/csfinal/giphy27-990b6d0b6d05143c.gif">
+        </div>
+      </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <h2 style=3D"Margin-top: 0;Margin-bottom: 16px;font-style: normal=
+;font-weight: normal;color: #353638;font-size: 17px;line-height: 26px;"><=
+strong>Tale of the Tape</strong></h2>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;">Good evening, folks.=
+ Happy hump day! &#128042;</p><p style=3D"Margin-top: 20px;Margin-bottom:=
+ 0;">The S&amp;P 500 rallied for the third straight day while the Nasdaq =
+Composite was the only major index to close in negative territory.&nbsp;<=
+/p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">Energy flew 4%. Commun=
+ications carried 1.34% while $XLC closed only $0.08 away from its all-tim=
+e high. &#9889;</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">Ethere=
+um ticked an all-time high&#8212; the crypto crossed 1,650 for the first =
+time ever. Bitcoin bounced 4%. Will $BTC.X break back to 40K? Place your =
+bets&#8230;&nbsp;</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">Goog=
+le gapped up and gained 7.4% after last night&#8217;s earnings. Microsoft=
+ marched 1.46% and closed at a new all-time high.&nbsp;</p><p style=3D"Ma=
+rgin-top: 20px;Margin-bottom:=20
+0;">Virgin Galactic has been volatile af. &#127754; $SPCE soared 17% toda=
+y, but in the last 6 sessions the stock has bounced between $40 and $60.&=
+nbsp;</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">The <em><a style=
+=3D"text-decoration: underline;transition: opacity 0.1s ease-in;color: #2=
+18dff;" href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-=
+vukukkjhl-t/">MemeStocks</a> </em>were today&#8217;s <a style=3D"text-decorat=
+ion: underline;transition: opacity 0.1s ease-in;color: #218dff;" href=3D"=
+https://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-i/">most a=
+ctive</a> streams on Stocktwits. $AMC advanced 14.71% and $GME gained 2.6=
+8%.</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">eBay and PayPal bo=
+th popped after posting <a style=3D"text-decoration: underline;transition=
+: opacity 0.1s ease-in;color: #218dff;"=20
+href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-d/=
+">earnings after the close</a>. See the Earnings Round-Up below.&nbsp;</p=
+><p style=3D"Margin-top: 20px;Margin-bottom: 20px;">Here are the closing =
+prints:&nbsp;</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;text-align: center;"><=
+strong>S&amp;P 500&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3,830&nbsp; &n=
+bsp; &nbsp; &nbsp;<span style=3D"color:#407514">&nbsp;+0.10%</span></stro=
+ng></p><p style=3D"Margin-top: 20px;Margin-bottom: 0;text-align: center;"=
+><strong>Nasdaq&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;13,610&nbs=
+p; &nbsp; &nbsp;<span style=3D"color:#ff002f"> -0.02%</span></strong></p>=
+<p style=3D"Margin-top: 20px;Margin-bottom: 0;text-align: center;"><stron=
+g>Russell 2000&nbsp; &nbsp; &nbsp; &nbsp;2,159&nbsp; &nbsp;<span style=3D=
+"color:#407514">&nbsp;+0.38%</span></strong></p><p style=3D"Margin-top: 2=
+0px;Margin-bottom: 0;text-align: center;"><strong>Dow Jones&nbsp; &nbsp; =
+&nbsp; &nbsp;&nbsp;30,723&nbsp; &nbsp;<span style=3D"color:#ff002f">&nbsp=
+;</span><span style=3D"color:#407514">+0.12%</span></strong></p>
+      </div>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-14" style=3D"Margin-top: 0;Margin-bottom: 20px;f=
+ont-size: 14px;line-height: 21px;" lang=3D"x-size-14"><span style=3D"colo=
+r:#218dff">Earnings</span></p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <h2 style=3D"Margin-top: 0;Margin-bottom: 16px;font-style: normal=
+;font-weight: normal;color: #353638;font-size: 17px;line-height: 26px;"><=
+strong>Earnings Round-Up&#8203;</strong></h2>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;"><strong>Spotify </st=
+rong>reported Q4 2020 results that beat on subscriber and total user targ=
+ets. &#127926; The report&#8217;s EPS and future outlook disappointed, th=
+ough.&nbsp;</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">Here are t=
+he <a style=3D"text-decoration: underline;transition: opacity 0.1s ease-i=
+n;color: #218dff;" href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-=
+vukukkjhl-h/">numbers</a>:</p><p style=3D"Margin-top: 20px;Margin-=
+bottom: 0;">EPS: ($0.79) vs ($0.69) est.<br>
+Revenue: $2.58B, +26% YoY<br>
+Monthly Active Users: 345M, +27% YoY<br>
+Premium Subscribers: 155M, +24% YoY</p><p style=3D"Margin-top: 20px;Margi=
+n-bottom: 20px;">Here&#8217;s the daily chart:</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;line-height: 19px;Margin-bottom: 20px;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 900px;" alt=3D"" width=3D"560" src=3D"http://i4.cmail20.com/e=
+i/t/73/5AD/289/104432/csfinal/SPOT-03_Feb_2021_16_05-990000079e04513c.png=
+">
+        </div>
+      </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;">$SPOT sank 8%.&nbsp;=
+</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;"><strong>Sony </strong=
+>smashed earnings expectations and the company announced that it will cha=
+nge its ticker to <a style=3D"text-decoration: underline;transition: opac=
+ity 0.1s ease-in;color: #218dff;" href=3D"https://stocktwits.cmail20.com/=
+t/t-l-mxttdt-vukukkjhl-k/">$SONY</a>, effective April 1, 2021. (=
+Please note, this is <em>not </em>an April Fools joke&#8230; &#129315;)&n=
+bsp;</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">Here are the <a s=
+tyle=3D"text-decoration: underline;transition: opacity 0.1s ease-in;color=
+: #218dff;" href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-=
+vukukkjhl-u/">stats</a>:</p><p style=3D"Margin-top: 20px;Margin-bottom: 0=
+;">EPS: $2.64 vs $0.80 est.<br>
+Revenue: $25.82B, +9% YoY</p><p style=3D"Margin-top: 20px;Margin-bottom: =
+0;">$SNE soared 12% and closed at its highest price since September 22, 2=
+000. &#128064;</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;"><strong=
+>Paypal</strong> posted record numbers after the close and expects growth=
+ to continue in 2021.&nbsp;</p><p style=3D"Margin-top: 20px;Margin-bottom=
+: 20px;">Here are the <a style=3D"text-decoration: underline;transition: =
+opacity 0.1s ease-in;color: #218dff;" href=3D"https://stocktwits.cmail20.=
+com/t/t-l-mxttdt-vukukkjhl-o/">numbers</a>:<br>
+<br>
+EPS: $1.08 vs $1.01 est.<br>
+Revenue: $6.12B, +23% YoY</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;line-height: 19px;Margin-bottom: 20px;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 900px;" alt=3D"" width=3D"560" src=3D"http://i5.cmail20.com/e=
+i/t/73/5AD/289/104432/csfinal/pastedimage023-990000079e04513c.png">
+        </div>
+      </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;">$PYPL popped 6.7% af=
+ter hours.&nbsp;</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;"><stro=
+ng>EBay </strong>topped earnings estimates after the close as revenue gre=
+w 28%.</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">Here are the <a=
+ style=3D"text-decoration: underline;transition: opacity 0.1s ease-in;col=
+or: #218dff;" href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-=
+vukukkjhl-b/">details</a>:<br>
+<br>
+EPS: $0.86 vs $0.83 est.<br>
+Revenue: $2.9B, +28% YoY</p><p style=3D"Margin-top: 20px;Margin-bottom: 0=
+;">$EBAY jumped 10% after hours to an all-time high.&nbsp;</p><p style=3D=
+"Margin-top: 20px;Margin-bottom: 0;"><strong>Digital Turbine</strong> ble=
+w out earnings, again. Accelerating platform momentum led Q3 revenue grow=
+th, up 146% YoY.</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">Here =
+are the <a style=3D"text-decoration: underline;transition: opacity 0.1s e=
+ase-in;color: #218dff;" href=3D"https://stocktwits.cmail20.com/t/t-l-mxtt=
+dt-vukukkjhl-n/">numbers</a>:</p><p style=3D"Margin-top: 20px;Ma=
+rgin-bottom: 0;">EPS: $0.21 vs $0.17 est.<br>
+Revenue: $88.6M, +146% YoY</p><p style=3D"Margin-top: 20px;Margin-bottom:=
+ 0;">Bill Stone, CEO of Digital Turbine, said:</p><p style=3D"Margin-top:=
+ 20px;Margin-bottom: 0;"><em>We once again set all-time quarterly records=
+ for revenue, profitability and free cash flow.&nbsp; Total revenue grew =
+146% year-over-year, as we saw strong demand for both our Application Med=
+ia and Content Media service offerings. The amount of time and money spen=
+t by consumers within applications continues to rise, as consumers increa=
+singly grow accustomed to consuming more content and spending greater sha=
+re of their wallets using the applications on their mobile devices.</em><=
+/p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">$APPS ascended 14% aft=
+er hours to an all-time high.</p>
+      </div>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-14" style=3D"Margin-top: 0;Margin-bottom: 20px;f=
+ont-size: 14px;line-height: 21px;" lang=3D"x-size-14"><span style=3D"colo=
+r:#218dff">Sponsored</span></p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 20px;text-align: center;=
+"><strong>Save $500 on your next adventure! Try the club for $1 today&#82=
+30;</strong></p>
+      </div>
+    </div>
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;line-height: 19px;" align=3D"center">
+          <a style=3D"text-decoration: underline;transition: opacity 0.1s=
+ ease-in;color: #218dff;" href=3D"https://stocktwits.cmail20.com/t/t-l-mx=
+ttdt-vukukkjhl-p/"><img style=3D"border: 0;display: block;height=
+: auto;width: 100%;max-width: 540px;" alt=3D"" width=3D"540" src=3D"http:=
+//i6.cmail20.com/ei/t/73/5AD/289/104432/csfinal/Stockwits-990000051404513=
+c.png"></a>
+        </div>
+     =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 20px;"><a style=3D"text-=
+decoration: underline;transition: opacity 0.1s ease-in;color: #218dff;" h=
+ref=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-x/"=
+>Try Dollar Flight Club for just $1 </a>if you sign up in the next 48 hou=
+rs. Their 1 million members save up to 90% on round-trip flights. Think: =
+Hawaii from $109 or Greece from $247. Every deal has flexible change poli=
+cies, so you can travel with utmost peace of mind.&nbsp; <a style=3D"text=
+-decoration: underline;transition: opacity 0.1s ease-in;color: #218dff;" =
+href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-m/=
+">Try the club for just $1 today.</a></p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 24px;">
+      <div class=3D"btn btn--flat btn--large" style=3D"text-align:center;=
+">
+        <![if !mso]><a style=3D"border-radius: 4px;display: inline-block=
+;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.=
+1s ease-in;color: #ffffff !important;background-color: #218dff;font-famil=
+y: Source Sans Pro, Apple SD Gothic Neo, PT Sans, Trebuchet MS, sans-seri=
+f;" href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-=
+vukukkjhl-c/">Try for $1</a><![endif]>
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rou=
+ndrect xmlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://stocktwi=
+ts.cmail20.com/t/t-l-mxttdt-vukukkjhl-c/" style=3D"width:113px" =
+arcsize=3D"9%" fillcolor=3D"#218DFF" stroke=3D"f"><v:textbox style=3D"mso=
+-fit-shape-to-text:t" inset=3D"0px,11px,0px,11px"><center style=3D"font-s=
+ize:14px;line-height:24px;color:#FFFFFF;font-family:Source Sans Pro,Apple=
+ SD Gothic Neo,PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-=
+height-rule:exactly;mso-text-raise:4px">Try for $1</center></v:textbox></=
+v:roundrect><![endif]--></div>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-14" style=3D"Margin-top: 0;Margin-bottom: 20px;f=
+ont-size: 14px;line-height: 21px;" lang=3D"x-size-14"><font color=3D"#218=
+dff">M&amp;A</font></p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-20" style=3D"Margin-top: 0;Margin-bottom: 20px;f=
+ont-size: 17px;line-height: 26px;" lang=3D"x-size-20"><strong>The World&#=
+8217;s Biggest Drug Deal</strong></p>
+      </div>
+    </div>
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;line-height: 19px;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 499px;" alt=3D"" width=3D"499" src=3D"http://i7.cmail20.com/e=
+i/t/73/5AD/289/104432/csfinal/giphy28-990b6d0b6d05143c.gif">
+        </div>
+     =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;">Today, Jazz Pharmace=
+uticals <a style=3D"text-decoration: underline;transition: opacity 0.1s e=
+ase-in;color: #218dff;" href=3D"https://stocktwits.cmail20.com/t/t-l-mxtt=
+dt-vukukkjhl-q/">announced</a> the beginnings of its GW Pharmace=
+uticals acquisition&#8212; GW&#8217;s best known for its production of th=
+e first epilepsy drug to utilize marijuana.</p><p style=3D"Margin-top: 20=
+px;Margin-bottom: 0;">GW Pharmaceuticals sold $510M worth of the drug las=
+t year, which helped finance other ventures in marijuana medicine. Curren=
+tly, the company is testing drugs to treat autism, schizophrenia, and oth=
+er health conditions.</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">=
+Jazz Pharma CEO Bruce Conzadd described the deal:</p><p style=3D"Margin-t=
+op: 20px;Margin-bottom: 0;"><em>We saw an opportunity to add near-term wh=
+at we think is a=20
+blockbuster product in Epidiolex, as well as bring in a pipeline engineer=
+ed around cannabinoids in neuroscience.</em></p><p style=3D"Margin-top: 2=
+0px;Margin-bottom: 20px;">Pot stocks popped on the news. $MSOS, the US Ca=
+nnabis ETF, closed at an all-time high today. &#128588;</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 24px;">
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;line-height: 19px;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 900px;" alt=3D"" width=3D"560" src=3D"http://i8.cmail20.com/e=
+i/t/73/5AD/289/104432/csfinal/MSOS-03_Feb_2021_16_08-990000079e04513c.png=
+">
+        </div>
+      </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-14" style=3D"Margin-top: 0;Margin-bottom: 20px;f=
+ont-size: 14px;line-height: 21px;" lang=3D"x-size-14"><font color=3D"#218=
+dff">Crypto</font></p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <h2 style=3D"Margin-top: 0;Margin-bottom: 16px;font-style: normal=
+;font-weight: normal;color: #353638;font-size: 17px;line-height: 26px;"><=
+strong>Ethereum Futures </strong></h2>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;">Ethereum broke above=
+ $1,600 today and is on its way to $1,700 as we speak. The all time-high =
+precedes the Chicago Mercantile Exchange&#8217;s <a style=3D"text-decorat=
+ion: underline;transition: opacity 0.1s ease-in;color: #218dff;" href=3D"=
+https://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-a/">launch=
+ of Ethereum futures</a> next week.&nbsp;</p><p style=3D"Margin-top: 20px=
+;Margin-bottom: 0;">JPMorgan strategists commented on the potential of CM=
+E&#8217;s futures:</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;"><em=
+>The listing of ethereum futures on a regulated exchange should serve to =
+enhance the crypto market structure by allowing investors to gain exposur=
+e to the second most important cryptocurrency as a diversifier to bitcoin=
+, or for simply hedging existing ethereum exposures. &nbsp;&nbsp;</em></p=
+><p=20
+style=3D"Margin-top: 20px;Margin-bottom: 20px;">Yesterday, Ethereum broke=
+ out of a ~4-week base. Will the crypto crack 2K next? Place your bets&#8=
+230;&nbsp;</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 24px;">
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;line-height: 19px;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 900px;" alt=3D"" width=3D"560" src=3D"http://i9.cmail20.com/e=
+i/t/73/5AD/289/104432/csfinal/ScreenShot2021-02-03at4.11.57PM-990000079e0=
+4513c.png">
+        </div>
+      </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-14" style=3D"Margin-top: 0;Margin-bottom: 20px;f=
+ont-size: 14px;line-height: 21px;" lang=3D"x-size-14"><span style=3D"colo=
+r:#218dff">Shortage</span></p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <h2 style=3D"Margin-top: 0;Margin-bottom: 16px;font-style: normal=
+;font-weight: normal;color: #353638;font-size: 17px;line-height: 26px;"><=
+strong>Uh oh, Where&#8217;d The Chips Go&#8230; &#128556;</strong></h2>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;">Today, GM <a style=3D=
+"text-decoration: underline;transition: opacity 0.1s ease-in;color: #218d=
+ff;" href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-=
+vukukkjhl-f/">announced plans</a> to tighten production at several of its factor=
+ies this month due to the semiconductor chip shortage that&#8217;s tankin=
+g global car manufacturing.&nbsp;</p><p style=3D"Margin-top: 20px;Margin-=
+bottom: 0;">GM will reduce production at 4 of its plants to sustain the c=
+ompany&#8217;s factories making best-selling trucks and SUVs.&nbsp; Volks=
+wagen, Ford, Nissan, and other companies have mentioned similar plans.&nb=
+sp;</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">Auto manufacturing=
+ requires tons of semiconductors, making the industry a huge purchaser of=
+ chips. But with China&#8217;s chip shortage still lingering from last ye=
+ar, it&#8217;s=20
+looking like global car manufacturing will take the hit.&nbsp;</p><p styl=
+e=3D"Margin-top: 20px;Margin-bottom: 0;">GM&#8217;ll release weekly produ=
+ction updates and more details about the shortage after its Feb. 10 earni=
+ngs report. Here&#8217;s the <a style=3D"text-decoration: underline;trans=
+ition: opacity 0.1s ease-in;color: #218dff;" href=3D"https://stocktwits.c=
+mail20.com/t/t-l-mxttdt-vukukkjhl-z/">WSJ</a> with more info.&nb=
+sp;</p>
+      </div>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-14" style=3D"Margin-top: 0;Margin-bottom: 20px;f=
+ont-size: 14px;line-height: 21px;" lang=3D"x-size-14"><span style=3D"colo=
+r:#218dff">Energy</span></p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <h2 style=3D"Margin-top: 0;Margin-bottom: 16px;font-style: normal=
+;font-weight: normal;color: #353638;font-size: 17px;line-height: 26px;"><=
+strong>Don&#8217;t Spoil the Oil</strong></h2>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;">After a long and ten=
+uous policy meeting today, OPEC+ announced that it will be maintaining it=
+s current oil output levels. The decision comes as the price of crude is =
+at its highest point since late February, 2020.</p><p style=3D"Margin-top=
+: 20px;Margin-bottom: 0;">In a draft statement, OPEC+ declared that it&#8=
+217;s <em>&#8220;Optimistic for a year of recovery in 2021.&#8221;</em></=
+p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">Currently, the benchmar=
+k price of Brent Crude is at $57.59. Remember when the <a style=3D"text-d=
+ecoration: underline;transition: opacity 0.1s ease-in;color: #218dff;" hr=
+ef=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-v/">=
+price of oil was negative</a>... lol. &#128738;&#65039;&#128078;</p><p st=
+yle=3D"Margin-top: 20px;Margin-bottom: 0;">Energy stocks were strong as $=
+XLE had its best=20
+day since January 5, 2021. &#128267;</p>
+      </div>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #ffffff;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #ffffff;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p class=3D"size-14" style=3D"Margin-top: 0;Margin-bottom: 20px;f=
+ont-size: 14px;line-height: 21px;" lang=3D"x-size-14"><span style=3D"colo=
+r:#218dff">Coming Soon...</span></p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <h2 style=3D"Margin-top: 0;Margin-bottom: 16px;font-style: normal=
+;font-weight: normal;color: #353638;font-size: 17px;line-height: 26px;"><=
+strong>Earnings This Week</strong></h2>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 20px;">Be sure to know w=
+hen your stocks report earnings. Here&#8217;s the <a style=3D"text-decora=
+tion: underline;transition: opacity 0.1s ease-in;color: #218dff;" href=3D=
+"https://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-e/" data-=
+emb-iscopy=3D"true">earnings calendar</a>.</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-bot=
+tom: 24px;">
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: nor=
+mal;line-height: 19px;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%=
+;max-width: 900px;" alt=3D"" width=3D"560" src=3D"http://i10.cmail20.com/=
+ei/t/73/5AD/289/104432/csfinal/earnings2.3.21-990000079e04513c.png">
+        </div>
+      </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 =
+auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% -=
+ 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: br=
+eak-word;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;background-color: #3e4143;">
+        <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" ce=
+llspacing=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" st=
+yle=3D"background-color: #3e4143;"><td style=3D"width: 600px" class=3D"w5=
+60"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #353638;=
+font-size: 17px;line-height: 26px;font-family: Source Sans Pro,Apple SD G=
+othic Neo,PT Sans,Trebuchet MS,sans-serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top=
+: 24px;Margin-bottom: 24px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;ve=
+rtical-align: middle;">
+        <h2 class=3D"size-22" style=3D"Margin-top: 0;Margin-bottom: 0;fon=
+t-style: normal;font-weight: normal;color: #353638;font-size: 18px;line-h=
+eight: 26px;" lang=3D"x-size-22"><span style=3D"color:#ffffff"><strong>Li=
+nks That Don't Suck:</strong></span></h2><p class=3D"size-17" style=3D"Ma=
+rgin-top: 16px;Margin-bottom: 0;font-size: 17px;line-height: 26px;" lang=3D=
+"x-size-17"><span style=3D"color:#ffffff">&#128655; </span><a style=3D"te=
+xt-decoration: underline;transition: opacity 0.1s ease-in;color: #218dff;=
+" href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-=
+s/"><span style=3D"color:#ffffff">All Roads</span></a><span style=3D"colo=
+r:#ffffff"> Lead to Rome</span></p><p class=3D"size-17" style=3D"Margin-t=
+op: 20px;Margin-bottom: 0;font-size: 17px;line-height: 26px;" lang=3D"x-s=
+ize-17"><span style=3D"color:#ffffff">&#127942; </span><a style=3D"text-d=
+ecoration: underline;transition:=20
+opacity 0.1s ease-in;color: #218dff;" href=3D"https://stocktwits.cmail20.=
+com/t/t-l-mxttdt-vukukkjhl-g/"><span style=3D"color:#ffffff">Wal=
+l Street is Undefeated</span></a><span style=3D"color:#ffffff"> Since 179=
+2</span></p><p class=3D"size-17" style=3D"Margin-top: 20px;Margin-bottom:=
+ 0;font-size: 17px;line-height: 26px;" lang=3D"x-size-17"><span style=3D"=
+color:#ffffff">&#128176; Coin Metrics' </span><a style=3D"text-decoration=
+: underline;transition: opacity 0.1s ease-in;color: #218dff;" href=3D"htt=
+ps://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-w/"><span sty=
+le=3D"color:#ffffff">State of the Network</span></a><span style=3D"color:=
+#ffffff">: Issue 88</span></p><p class=3D"size-17" style=3D"Margin-top: 2=
+0px;Margin-bottom: 0;font-size: 17px;line-height: 26px;" lang=3D"x-size-1=
+7"><span style=3D"color:#ffffff">&#129325; An </span><a style=3D"text-dec=
+oration:=20
+underline;transition: opacity 0.1s ease-in;color: #218dff;" href=3D"https=
+://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-yd/"><span styl=
+e=3D"color:#ffffff">Amazonian Transition</span></a></p><p class=3D"size-1=
+7" style=3D"Margin-top: 20px;Margin-bottom: 0;font-size: 17px;line-height=
+: 26px;" lang=3D"x-size-17"><span style=3D"color:#ffffff">&#127926; Talki=
+ng Heads - </span><a style=3D"text-decoration: underline;transition: opac=
+ity 0.1s ease-in;color: #218dff;" href=3D"https://stocktwits.cmail20.com/=
+t/t-l-mxttdt-vukukkjhl-yh/"><span style=3D"color:#ffffff">Stop M=
+aking Sense (1984)</span></a></p><p class=3D"size-17" style=3D"Margin-top=
+: 20px;Margin-bottom: 0;font-size: 17px;line-height: 26px;" lang=3D"x-siz=
+e-17"><span style=3D"color:#ffffff">&#128218; Jason Zweig &#8211; </span>=
+<a style=3D"text-decoration: underline;transition: opacity 0.1s ease-in;c=
+olor: #218dff;"=20
+href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-vukukkjhl-yk=
+/"><span style=3D"color:#ffffff">Psychology, History &amp; Writing</span>=
+</a></p><p class=3D"size-17" style=3D"Margin-top: 20px;Margin-bottom: 0;f=
+ont-size: 17px;line-height: 26px;" lang=3D"x-size-17"><span style=3D"colo=
+r:#ffffff">&#127822; The </span><a style=3D"text-decoration: underline;tr=
+ansition: opacity 0.1s ease-in;color: #218dff;" href=3D"https://stocktwit=
+s.cmail20.com/t/t-l-mxttdt-vukukkjhl-yu/"><span style=3D"color:#=
+ffffff">Irritable Steve Jobs and Apple Enterprise</span></a><span style=3D=
+"color:#ffffff">?</span></p>
+      </div>
+    </div>
+       =20
+          </div>
+        <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 15px;font-=
+size: 15px;">&nbsp;</div>
+ =20
+      </div>
+      <div role=3D"contentinfo">
+        <div class=3D"layout email-footer stack" style=3D"Margin: 0 auto;=
+max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 1674=
+00px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-w=
+ord;">
+          <div class=3D"layout__inner" style=3D"border-collapse: collapse=
+;display: table;width: 100%;">
+          <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation"><tr class=3D"layout-email-footer"=
+><td style=3D"width: 400px;" valign=3D"top" class=3D"w360"><![endif]-->
+            <div class=3D"column wide" style=3D"text-align: left;font-siz=
+e: 12px;line-height: 19px;color: #bbb;font-family: Source Sans Pro,Apple =
+SD Gothic Neo,PT Sans,Trebuchet MS,sans-serif;Float: left;max-width: 400p=
+x;min-width: 320px; width: 320px;width: calc(8000% - 47600px);">
+              <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-t=
+op: 10px;Margin-bottom: 10px;">
+                <table class=3D"email-footer__links" style=3D"border-coll=
+apse: collapse;table-layout: fixed;" role=3D"presentation" emb-web-links>=
+<tbody><tr role=3D"navigation">
+                <td style=3D"padding: 0;width: 26px;" emb-web-links><a st=
+yle=3D"text-decoration: underline;transition: opacity 0.1s ease-in;color:=
+ #bbb;" href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-=
+vukukkjhl-jj/"><img style=3D"border: 0;" src=3D"http://i3.cmail20.com/static/=
+eb/master/13-the-blueprint-3/images/twitter.png" width=3D"26" height=3D"2=
+6" alt=3D"Twitter"></a></td><td style=3D"padding: 0 0 0 3px;width: 26px;"=
+ emb-web-links><a style=3D"text-decoration: underline;transition: opacity=
+ 0.1s ease-in;color: #bbb;" href=3D"https://stocktwits.cmail20.com/t/t-l-=
+mxttdt-vukukkjhl-jt/"><img style=3D"border: 0;" src=3D"http://i5=
+=2Ecmail20.com/static/eb/master/13-the-blueprint-3/images/instagram.png" wi=
+dth=3D"26" height=3D"26" alt=3D"Instagram"></a></td><td style=3D"padding:=
+ 0 0 0 3px;width: 26px;" emb-web-links><a=20
+style=3D"text-decoration: underline;transition: opacity 0.1s ease-in;colo=
+r: #bbb;" href=3D"https://stocktwits.cmail20.com/t/t-l-mxttdt-=
+vukukkjhl-ji/"><img style=3D"border: 0;" src=3D"http://i7.cmail20.com/stati=
+c/eb/master/13-the-blueprint-3/images/website.png" width=3D"26" height=3D=
+"26" alt=3D"Website"></a></td>
+                </tr></tbody></table>
+                <div style=3D"font-size: 12px;line-height: 19px;Margin-to=
+p: 20px;">
+                  <div>Stocktwits<br>
+1001 Avenue of the Americas<br>
+New York,&nbsp;NY&nbsp;10018</div>
+                </div>
+                <div style=3D"font-size: 12px;line-height: 19px;Margin-to=
+p: 18px;">
+                  <div>You are receiving this email because you subscribe=
+d to the Daily Rip.<br>
+<br>
+Free trading of stocks and options refers to $0 commissions for ST Invest=
+ self-directed individual cash or margin brokerage accounts that trade U.=
+S. listed securities via mobile devices or Web. regulatory transaction fe=
+es may apply, as well as tax implications for realized gains. Please see =
+the Commissions and Fee Schedule.<br>
+<br>
+Content, news, research, tools, and securities symbols are for educationa=
+l and illustrative purposes only and do not imply a recommendation or sol=
+icitation to buy or sell a particular security or to engage in any partic=
+ular investment strategy. Companies that are not affiliated with us may s=
+upply some of the content. The source of all, third-party Content, in whi=
+ch Stocktwits, Inc. receives some sort of compensation, is clearly and pr=
+ominently identified herein as &#8220;Sponsored by&#8221; or &#8220;Spons=
+ored&#8221;. We have not been involved in the preparation, adoption or ed=
+iting of third party content and we do not endorse or approve such conten=
+t. The information provided is not warranted as to completeness or accura=
+cy and is subject to change without notice. The projections or other info=
+rmation regarding the likelihood of various investment outcomes are hypot=
+hetical in nature, are=20
+not guaranteed for accuracy or completeness, do not reflect actual invest=
+ment results and are not guarantees of future results. All investments in=
+volve risk, losses may exceed the principal invested, and the past perfor=
+mance of a security, industry, sector, market, or financial product does =
+not guarantee future results or returns. Before investing in a fund, cons=
+ider the fund&#8217;s investment objectives, risks, charges, and expenses=
+=2E Contact ST Invest LLC (https://tradeapp.me/)&nbsp;for a prospectus cont=
+aining this information.<br>
+<br>
+Securities products and services offered to self-directed investors throu=
+gh ST Invest LLC d/b/a Trade App Member FINRA (/www.finra.org) / SIPC (ht=
+tps://www.sipc.org/). Stocktwits, Inc.. and ST Invest LLC &nbsp;are separ=
+ate but affiliated companies.<br>
+<br>
+Please read important legal disclosures: http://content.stocktwits.com/di=
+sclosures.</div>
+                </div>
+                <!--[if mso]>&nbsp;<![endif]-->
+              </div>
+            </div>
+          <!--[if (mso)|(IE)]></td><td style=3D"width: 200px;" valign=3D=
+"top" class=3D"w160"><![endif]-->
+            <div class=3D"column narrow" style=3D"text-align: left;font-s=
+ize: 12px;line-height: 19px;color: #bbb;font-family: Source Sans Pro,Appl=
+e SD Gothic Neo,PT Sans,Trebuchet MS,sans-serif;Float: left;max-width: 32=
+0px;min-width: 200px; width: 320px;width: calc(72200px - 12000%);">
+              <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-t=
+op: 10px;Margin-bottom: 10px;">
+                <div class=3D"footer__share-button">
+                 =20
+                 =20
+                 =20
+                  <div style=3D"Margin-bottom: 6px;mso-line-height-rule: =
+exactly;">
+                    <a style=3D"text-decoration: none;transition: opacity=
+ 0.1s ease-in;color: #ffffff;border-radius: 2px;display: inline-block;fon=
+t-size: 11px;font-weight: bold;line-height: 19px;text-align: left;border-=
+style: solid;border-width: 4px 7px 3px 4px;mso-border-width-alt: 4px 8px =
+8px 8px;background-color: #747a80;border-color: #747a80;mso-border-color-=
+alt: #747a80;" href=3D"https://stocktwits.forwardtomyfriend.com/t-=
+vukukkjhl-8C0B9DA4-mxttdt-l-jd" lang=3D"en">
+                      &nbsp;<img style=3D"border: 0;display: inline-block=
+;margin-right: 2px;vertical-align: -3px;" src=3D"http://i2.cmail20.com/st=
+atic/eb/master/13-the-blueprint-3/images/forward-icon@2x.png" width=3D"16=
+" height=3D"16" border=3D"0" alt=3D"">
+                      <span style=3D"font-size: 11px;mso-text-raise: 3px;=
+">Forward&nbsp;</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+          </div>
+        </div>
+        <div class=3D"layout one-col email-footer" style=3D"Margin: 0 aut=
+o;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 16=
+7400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break=
+-word;">
+          <div class=3D"layout__inner" style=3D"border-collapse: collapse=
+;display: table;width: 100%;">
+          <!--[if (mso)|(IE)]><table align=3D"center" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation"><tr class=3D"layout-email-footer"=
+><td style=3D"width: 600px;" class=3D"w560"><![endif]-->
+            <div class=3D"column" style=3D"text-align: left;font-size: 12=
+px;line-height: 19px;color: #bbb;font-family: Source Sans Pro,Apple SD Go=
+thic Neo,PT Sans,Trebuchet MS,sans-serif;">
+              <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-t=
+op: 10px;Margin-bottom: 10px;">
+                <div style=3D"font-size: 12px;line-height: 19px;">
+                  <span><a style=3D"text-decoration: underline;transition=
+: opacity 0.1s ease-in;color: #bbb;" href=3D"https://stocktwits.updatemyp=
+rofile.com/t-mxttdt-8C0B9DA4-vukukkjhl-jh" lang=3D"en=
+">Preferences</a>&nbsp;&nbsp;|&nbsp;&nbsp;</span><a style=3D"text-decorat=
+ion: underline;transition: opacity 0.1s ease-in;color: #bbb;" href=3D"htt=
+ps://stocktwits.cmail20.com/t/t-u-mxttdt-vukukkjhl-jk/">Unsubscr=
+ibe</a>
+                </div>
+              </div>
+            </div>
+          <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+          </div>
+        </div>
+      </div>
+      <div style=3D"line-height:40px;font-size:40px;">&nbsp;</div>
+    </td></tr></tbody></table>
+  <img style=3D"overflow: hidden;position: fixed;visibility: hidden !impo=
+rtant;display: block !important;height: 1px !important;width: 1px !import=
+ant;border: 0 !important;margin: 0 !important;padding: 0 !important;" src=
+=3D"https://stocktwits.cmail20.com/t/t-o-mxttdt-vukukkjhl/o.gif"=
+ width=3D"1" height=3D"1" border=3D"0" alt=3D"">
+</body></html>=
+
+
+
+
+--_b96f86ef-2c8c-4175-b3c5-a6af7bfd296d_--

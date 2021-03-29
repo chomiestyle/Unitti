@@ -1,0 +1,476 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 10.12.190.145 with SMTP id n17csp1022449qvi;
+        Fri, 20 Apr 2018 07:46:18 -0700 (PDT)
+X-Google-Smtp-Source: AIpwx48L3G6Ryyo2TvTxKvJl/X/ALQZRTsIqX+Y48uUodYdK4E/SHUAqe2rhDeunJEWKoQPPefgE
+X-Received: by 10.80.139.69 with SMTP id l63mr1462510edl.240.1524235578480;
+        Fri, 20 Apr 2018 07:46:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1524235578; cv=none;
+        d=google.com; s=arc-20160816;
+        b=0mXtib2gYyoVNXSjkFxNhAXtU1ZEVaj0fVpYu7c8XbIhSvkBbUqcim0UwMr7VGcl67
+         TDrgKL2UGg36dn8uHIfOVGfdrzbCwwXRfV5zCiHaHLkBdbnjFYMx5W6I5IK7RdJwbCww
+         3tjwhZ4uekKQZJQuWbpLT1Kzs+QMDiVVvhvTI1qvkVa4C8roo/DmdGmxltQ40em6kja1
+         Uv0tgUXjSZ+ZKdnxTeJeAdc0wtHvNH6JGBz1QNVVykohnY61TQ9Qbhz8kKvasgp+naRp
+         CKRUlldXozhjNSLGfN5b8jFrOUXGDm3oO8b9/OzFvBXvVdN2HB0VRg0CzddK5I61A8EM
+         6peQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:from:subject:date:list-unsubscribe:reply-to
+         :mime-version:to:dkim-signature:arc-authentication-results;
+        bh=fToKqW8pozYEim2YG457PfaM0O7EU6rCEq+gb/8EHpc=;
+        b=rE4Kc95pMMsBp0SjiNA+Izu7POQKCxJCqVOZL1D52hNbELOAt6WlA3exGP75+wa2ow
+         mCY8TOgvSvEUl8Aztaksyno/xpS6EV63HLTVkCiHSa+HptoeO+lGlZDNNBVNUlKWiZkB
+         DRyZjqzdlhZIAzLNvGdASX42kalFSeqoRRm9Nm0zS5rKBG4nDxzMJDjrqW06V7sG5VhG
+         HXggQ1HEOsgMdYdzLadPaH6ICLx2NPDJ1x7Pz1qUMG7oeBETykow3ajiFyL25w5+g5WW
+         EPkhgU72abARz9gty4T/pYKaTqcmE3zyNFA+0ldBA/hcs5CSWg5LItO5qafH0N26Yp/i
+         GTYA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@buda.com header.s=intercom header.b=dImvo1s0;
+       spf=pass (google.com: domain of bounces+15878445909@intercom.mail.e.sparkpost.com designates 52.27.255.198 as permitted sender) smtp.mailfrom=bounces+15878445909@intercom.mail.e.sparkpost.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+Return-Path: <bounces+15878445909@intercom.mail.e.sparkpost.com>
+Received: from mta1a3.spe.intercom-mail.com (mta1a3.spe.intercom-mail.com. [52.27.255.198])
+        by mx.google.com with ESMTPS id c11si5165872edm.289.2018.04.20.07.46.17
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Apr 2018 07:46:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+15878445909@intercom.mail.e.sparkpost.com designates 52.27.255.198 as permitted sender) client-ip=52.27.255.198;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@buda.com header.s=intercom header.b=dImvo1s0;
+       spf=pass (google.com: domain of bounces+15878445909@intercom.mail.e.sparkpost.com designates 52.27.255.198 as permitted sender) smtp.mailfrom=bounces+15878445909@intercom.mail.e.sparkpost.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=buda.com;
+	s=intercom; t=1524235573; i=@buda.com;
+	bh=fToKqW8pozYEim2YG457PfaM0O7EU6rCEq+gb/8EHpc=;
+	h=To:Content-Type:Date:Subject:From:Message-ID;
+	b=dImvo1s0nmm4zwHYprpC+JwV5bzz4i6d5w+293LbGCNs4hETHHp3YyMKZ0/ihz3sh
+	 QQK+zVFjy7PHBowWcYGY0fDnjzVK4dGKkg3yrhOQlX8qRaZZGoDtdCBH7vkMrVHbVw
+	 M1VZq+hMfl6OBeFMRiAjw69TZLE/KBb2x5fQPrRk=
+X-MSFBL: zaSp37F0jiCza1i36h/6owWWjipBDdTAwW9+JHFyXx8=|eyJ0ZW5hbnRfaWQiOiJ
+	pbnRlcmNvbSIsInJjcHRfbWV0YSI6eyAiY29udmVyc2F0aW9uX2lkIjogIjE1ODc
+	4NDQ1OTA5IiwgInVzZXJfaWQiOiAiNWE1ODE3ZmQyZjExNjEzODFkNDE4Y2RmIiw
+	gImFwcF9pZCI6ICJsbWdhZXF4ZCIsICJiaW5kaW5nIjogIjIwMCIsICJpbnRlcmN
+	vbV9tZXNzYWdlX2lkIjogIjIwMTI2MTgwMyIgfSwidGVtcGxhdGVfaWQiOiJ0ZW1
+	wbGF0ZV80ODgxNDkxMDIyMjQyNzk3MSIsIm1lc3NhZ2VfaWQiOiIwMDAyMzVmZGQ
+	5NWFmZThlYjQxYyIsInJjcHRfdGFncyI6WyBdLCJ0cmFuc21pc3Npb25faWQiOiI
+	0ODgxNDkxMDIyMjQyNzk3MSIsInIiOiJlZHVhcmRvLnNpbm5pbmdAZ21haWwuY29
+	tIiwiZnJpZW5kbHlfZnJvbSI6InNvcG9ydGVAYnVkYS5jb20iLCJjdXN0b21lcl9
+	pZCI6IjEiLCJiIjoiaXBfNTIuMjcuMjU1LjE5OCIsImciOiIyMDAiLCJzdWJhY2N
+	vdW50X2lkIjoiNzU1MSIsInRlbXBsYXRlX3ZlcnNpb24iOiIwIn0=
+To: eduardo.sinning@gmail.com
+Content-Type: multipart/alternative; boundary="_----dCVS2mlP5p9yJ7rRi8nCzw===_8A/C1-36606-53DF9DA5"
+MIME-Version: 1.0
+Reply-To: "Equipo Buda.com" <soporte@buda.com>
+List-Unsubscribe: <mailto:unsubscribe+15878445909_5a5817fd2f1161381d418cdf@unsubscribes.intercom-mail.com>, <https://lmgaeqxd.intercom-mail.com/unsubscribe?app_id=lmgaeqxd&conversation_id=15878445909&sample=false&user_id=5a5817fd2f1161381d418cdf>
+Date: Fri, 20 Apr 2018 14:46:12 +0000
+Subject: Actualizamos el dominio de nuestra API Buda
+X-Mailgun-Tag: user-custom
+X-Intercom-App-Id: lmgaeqxd
+X-Intercom-Bin: 200
+From: "Equipo Buda.com" <soporte@buda.com>
+Message-ID: <ff4dde91-e9aaad23-1524235572-15878445909@intercom-mail.com>
+X-Mailgun-Track-Clicks: no
+X-Mailgun-Track-Opens: no
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Mailgun-Variables: {"app_id":"lmgaeqxd","conversation_id":"15878445909","intercom_message_id":201261803,"user_id":"5a5817fd2f1161381d418cdf"}
+Feedback-ID: 201261803:lmgaeqxd:intercom
+
+--_----dCVS2mlP5p9yJ7rRi8nCzw===_8A/C1-36606-53DF9DA5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola eduardo, =0A Este correo te lleg=C3=B3 porque en alg=C3=BAn momento cr=
+easte una API key en tu cuenta de Buda.com. =0A Te informamos que a partir =
+del 26 de abril nuestra api ya no estar=C3=A1 disponible en el dominio www.=
+surbtc.com. =0A Es necesario que cambies la url de conexi=C3=B3n reemplazan=
+do "surbtc.com" por "buda.com", a m=C3=A1s tardar el 25 de abril. =0A Graci=
+as =0A Equipo Buda.=0A=0A
+--_----dCVS2mlP5p9yJ7rRi8nCzw===_8A/C1-36606-53DF9DA5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">=0A<html>=0A<head>=0A<meta content=3D"text/html;=
+ charset=3Dutf-8" http-equiv=3D"Content-Type">=0A<meta name=3D"viewport" co=
+ntent=3D"width=3Ddevice-width">=0A<meta name=3D"format-detection" content=
+=3D"telephone=3Dno">=0A=0A=0A<style type=3D"text/css" data-premailer=3D"ign=
+ore">=0A=0A  #outlook a{=0A    padding: 0;=0A  }=0A  body{=0A    -webkit-te=
+xt-size-adjust: none;=0A    -ms-text-size-adjust: none;=0A    margin: 0;=0A=
+    padding: 0;=0A  }=0A  .ReadMsgBody{=0A    width: 100%;=0A  }=0A  .Exter=
+nalClass{=0A    width: 100%;=0A  }=0A  img {=0A    border: 0;=0A    max-wid=
+th: 100%;=0A    height: auto;=0A    outline: none;=0A    display: inline-bl=
+ock;=0A    margin: 0;=0A    padding: 0;=0A    text-decoration: none;=0A    =
+line-height: 100%;=0A  }=0A  #backgroundTable{=0A    height: 100% !importan=
+t;=0A    margin: 0;=0A    padding: 0;=0A    width: 100% !important;=0A  }=
+=0A</style>=0A=0A=0A=0A=0A<style type=3D"text/css">=0A  /**=0A   * Generic=
+=0A   */=0A=0A  .main {=0A    font-family: 'SF Text Regular',Helvetica,Aria=
+l,serif;=0A    letter-spacing: 0;=0A  border-radius: 6px;=0A  }=0A=0A  .mai=
+n .main-td {=0A    padding: 20px;=0A=0A  }=0A=0A  table {=0A    border-spac=
+ing: 0;=0A    border-collapse: separate;=0A    table-layout: fixed;=0A  }=
+=0A=0A  td {=0A    font-size: 16px;=0A    padding: 0;=0A    font-family: 'S=
+F Text Light',Helvetica,Arial,serif;=0A  }=0A=0A  a {=0A    border: none;=
+=0A    outline: none !important;=0A    color: #408FEC;=0A  }=0A=0A=0A  /**=
+=0A   * Header=0A   */=0A=0A  .header td img {=0A    padding: 0 0 20px 0;=
+=0A    text-align: center;=0A  }=0A=0A  .header .logo {=0A    text-align: c=
+enter;=0A  }=0A=0A  /**=0A   * Content=0A   */=0A=0A  .content-td {=0A    f=
+ont-size: 16px;=0A    line-height: 24px;=0A    padding: 0;=0A    color: #21=
+0E4A;=0A    padding: 32px 24px;=0A  }=0A=0A  .content-td > :first-child {=
+=0A    margin-top: 0;=0A  }=0A=0A  .content-td h1 {=0A    line-height: 32px=
+;=0A    color: #210E4A;=0A    margin-bottom: 8px;=0A    margin-top: 32px;=
+=0A    font-family:'SF Text Light',Helvetica,Arial,serif;=0A    font-size: =
+24px;=0A    font-weight: 200;=0A  }=0A=0A  .content-td h2 {=0A    font-size=
+: 18px;=0A    color: #210E4A;=0A    margin-top: 32px;=0A    margin-bottom: =
+8px;=0A  }=0A=0A  .content-td h1 + h2 {=0A    margin-top: 0px !important;=
+=0A  }=0A=0A  .content-td h2 + h1 {=0A    margin-top: 0px !important;=0A  }=
+=0A=0A  .content-td h3 ,=0A  .content-td h4 ,=0A  .content-td h5 {=0A    fo=
+nt-size: 16px;=0A    font-weight: normal;=0A    margin-bottom: 8px;=0A  }=
+=0A=0A  .content-td p {=0A    margin: 0 0 16px 0;=0A    line-height: 1.5;=
+=0A  }=0A=0A  .content-td p img,=0A  .content-td h1 img,=0A  .content-td h2=
+ img,=0A  .content-td li img,=0A  .content-td .intercom-h2b-button img {=0A=
+    margin: 0;=0A    padding: 0;=0A  }=0A=0A  .content-td p.intro {=0A    f=
+ont-size: 20px;=0A    line-height: 30px;=0A  }=0A=0A  .content-td blockquot=
+e {=0A    margin: 40px 0;=0A    font-style: italic;=0A    color: #8C8C8C;=
+=0A    font-size: 18px;=0A    text-align: center;=0A    padding: 0 30px;=0A=
+    font-family: 'SF Text Light',Helvetica,Arial,serif;=0A    quotes: none;=
+=0A  }=0A=0A  .content-td blockquote a {=0A    color: #8C8C8C;=0A  }=0A=0A =
+ .content-td ul {=0A    list-style: disc;=0A    margin: 0 0 20px 40px;=0A  =
+  padding: 0;=0A  }=0A=0A  .content-td ol {=0A    list-style: decimal;=0A  =
+  margin: 0 0 20px 40px;=0A    padding: 0;=0A  }=0A=0A  .content-td img {=
+=0A    max-width: 100%;=0A    margin: 17px 0;=0A  }=0A=0A  .content-td .int=
+ercom-container {=0A    margin-bottom: 16px;=0A  }=0A=0A  .content-td hr {=
+=0A    border: none;=0A    border-top: 1px solid #DDD;=0A    margin: 50px 3=
+0% 50px 30%;=0A  }=0A=0A  .content-td table {=0A    border-collapse: collap=
+se;=0A    border-spacing: 0;=0A    margin-bottom: 20px;=0A  }=0A=0A  .conte=
+nt-td td,=0A  .content-td th {=0A    padding: 5px 7px;=0A    border: 1px so=
+lid #DADADA;=0A    text-align: left;=0A    vertical-align: top;=0A  }=0A=0A=
+  .content-td th {=0A    font-weight: normal;=0A    background: #F6F6F6;=0A=
+  }=0A=0A  .content-td a {=0A    color: #4F90FF;=0A  }=0A=0A  .content td.c=
+ontent-td table.intercom-container {=0A    margin: 17px 0;=0A  }=0A  .conte=
+nt td.content-td table.intercom-container.intercom-align-center {=0A    mar=
+gin-left: auto;=0A    margin-right: auto;=0A  }=0A=0A  .content td.content-=
+td table.intercom-container td {=0A    background-color: #210E4A;=0A    pad=
+ding: 12px 36px;=0A    border-radius: 3px;=0A    font-family: 'SF Text Ligh=
+t',Helvetica,Arial,serif;=0A    margin: 0;=0A    border: none;=0A  }=0A=0A =
+ .content td.content-td table.intercom-container .intercom-h2b-button {=0A =
+   display: inline-block;=0A    color: white;=0A    font-weight: 400;=0A   =
+ font-size: 16px;=0A    text-decoration: none;=0A    background-color: #4F9=
+0FF;=0A    border: none !important;=0A    border-radius: 32px;=0A  }=0A=0A =
+ .footer-td {=0A    text-align: center;=0A    padding: 24px 0 24px 0;=0A   =
+ font-size: 14px;=0A    color: #A19FCD;=0A  }=0A=0A  .footer-td a {=0A    t=
+ext-decoration: none;=0A  }=0A=0A  .footer-td p.address {=0A    margin-top:=
+ 9px;=0A    line-height: 1.5em;=0A  }=0A=0A  .footer-td p.powered-by {=0A  =
+  margin-top: 14px;=0A  }=0A=0A  .footer-td p.unsub {=0A    margin: 0;=0A  =
+}=0A=0A  .footer .unsub a {=0A    text-decoration: underline;=0A    display=
+: block;=0A    margin: 12px 0 0;=0A  }=0A=0A  p.unsub a {=0A    text-decora=
+tion: underline;=0A  }=0A=0A  .footer-td p.powered-by a {=0A    font-weight=
+: bold;=0A  }=0A=0A  .footer-td textarea {=0A    text-decoration: none;=0A =
+   font-size: 12px;=0A    color: #A19FCD;=0A    font-family: 'SF Text Regul=
+ar',Helvetica,Arial,serif;=0A    padding: 9px 0;=0A    font-weight: 300;=0A=
+    line-height: normal;=0A  }=0A=0A  .footer-td__address {=0A    margin-bo=
+ttom: 6px;=0A  }=0A=0A  .footer-social img {=0A    display: block;=0A  }=0A=
+=0A  .footer-social__table {=0A    margin: 0;=0A  }=0A=0A  .footer-social__=
+icon {=0A    padding: 4px;=0A  }=0A=0A  a.intercom-h2b-button {=0A    backg=
+round-color: #4F90FF;=0A    font-size: 14px;=0A    color: #FFF;=0A    font-=
+weight: normal;=0A    border-radius: 24px;=0A    display: inline-block;=0A =
+   text-decoration: none;=0A    padding: 12px 35px;=0A    =0A  }=0A</style>=
+=0A=0A=0A<style type=3D"text/css" data-premailer=3D"ignore">=0A  @media scr=
+een and (max-width: 645px) {=0A    body {=0A      padding: 10px !important;=
+=0A    }=0A    .main {=0A      width: 100% !important;=0A    }=0A    .main =
+.main-td {=0A      padding: 20px !important;=0A    border-radius:6px;=0A  =
+  }=0A    .header td {=0A      text-align: center;=0A    }=0A    .footer-co=
+ntainer {=0A      padding: 0 10px;=0A    }=0A    .footer-logo {=0A      dis=
+play: none;=0A    }=0A    .footer-td {=0A      text-align: left;=0A      pa=
+dding: 15px 0;=0A    }=0A  }=0A=0A  .content-td blockquote + * {=0A    marg=
+in-top: 20px !important;=0A  }=0A=0A  .ExternalClass .content-td h1 {=0A   =
+ padding: 20px 0 !important;=0A  }=0A=0A  .ExternalClass .content-td h2 {=
+=0A    padding: 0 0 5px !important;=0A  }=0A=0A  .ExternalClass .content-td=
+ p {=0A    padding: 10px 0 !important;=0A  }=0A=0A  .ExternalClass .content=
+-td .intercom-container {=0A    padding: 5px 0 !important;=0A  }=0A=0A  .Ex=
+ternalClass .content-td hr + * {=0A    padding-top: 30px !important;=0A  }=
+=0A=0A  .ExternalClass .content-td ol ,=0A  .ExternalClass .content-td ul {=
+=0A    padding: 0 0 20px 40px !important;=0A    margin: 0 !important;=0A  }=
+=0A=0A  .ExternalClass .content-td ol li,=0A  .ExternalClass .content-td ul=
+ li {=0A    padding: 3px 0 !important;=0A    margin: 0 !important;=0A  }=0A=
+=0A  .ExternalClass table .footer-td p {=0A    padding: 0 0 6px 0 !importan=
+t;=0A    margin: 0 !important;=0A  }=0A=0A  .ExternalClass table .footer-td=
+ p.powered-by ,=0A  .ExternalClass table .footer-td p.unsub {=0A    padding=
+-top: 16px;=0A  }=0A=0A</style>=0A=0A=0A<style type=3D"text/css">=0A  .inte=
+rcom-align-right {=0A  text-align: right !important;=0A}=0A.intercom-align-=
+center {=0A  text-align: center !important;=0A}=0A.intercom-align-left {=0A=
+  text-align: left !important;=0A}=0A/* Over-ride for RTL */=0A.right-to-le=
+ft .intercom-align-right{=0A  text-align: left !important;=0A}=0A.right-to-=
+left .intercom-align-left{=0A  text-align: right !important;=0A}=0A.right-t=
+o-left .intercom-align-left {=0A  text-align:right !important;=0A}=0A.right=
+-to-left li {=0A  text-align:right !important;=0A  direction: rtl;=0A}=0A.r=
+ight-to-left .intercom-align-left img,=0A.right-to-left .intercom-align-lef=
+t .intercom-h2b-button {=0A  margin-left: 0 !important;=0A}=0A.intercom-att=
+achment,=0A.intercom-attachments,=0A.intercom-attachments td,=0A.intercom-a=
+ttachments th,=0A.intercom-attachments tr,=0A.intercom-attachments tbody,=
+=0A.intercom-attachments .icon,=0A.intercom-attachments .icon img {=0A  bor=
+der: none !important;=0A  box-shadow: none !important;=0A  padding: 0 !impo=
+rtant;=0A  margin: 0 !important;=0A}=0A.intercom-attachments {=0A  margin: =
+10px 0 !important;=0A}=0A.intercom-attachments .icon,=0A.intercom-attachmen=
+ts .icon img {=0A  width: 16px !important;=0A  height: 16px !important;=0A}=
+=0A.intercom-attachments .icon {=0A  padding-right: 5px !important;=0A}=0A.=
+intercom-attachment {=0A  display: inline-block !important;=0A  margin-bott=
+om: 5px !important;=0A}=0A=0A.intercom-interblocks-content-card {=0A  width=
+: 334px !important;=0A  max-height: 136px !important;=0A  max-width: 100% !=
+important;=0A  overflow: hidden !important;=0A  border-radius: 20px !import=
+ant;=0A  font-size: 16px !important;=0A  border: 1px solid #e0e0e0 !importa=
+nt;=0A}=0A=0A.intercom-interblocks-link,=0A.intercom-interblocks-article-ca=
+rd {=0A  text-decoration: none !important;=0A}=0A=0A.intercom-interblocks-a=
+rticle-icon {=0A  width: 22.5% !important;=0A  height: 136px !important;=0A=
+  float: left !important;=0A  background-color: #fafafa !important;=0A  bac=
+kground-image: url('https://static.intercom-mail-200.com/assets/article_boo=
+k-1a595be287f73c0d02f548f513bfc831.png') !important;=0A  background-repeat:=
+ no-repeat !important;=0A  background-size: 32px !important;=0A  background=
+-position: center !important;=0A}=0A=0A.intercom-interblocks-article-text {=
+=0A  width: 77.5% !important;=0A  float: right !important;=0A  background-c=
+olor: #fff !important;=0A}=0A=0A.intercom-interblocks-link-title,=0A.interc=
+om-interblocks-article-title {=0A  color: #519dd4 !important;=0A  font-size=
+: 15px !important;=0A  margin: 16px 18px 12px !important;=0A  line-height: =
+1.3em !important;=0A  overflow: hidden !important;=0A}=0A=0A.intercom-inter=
+blocks-link-description,=0A.intercom-interblocks-article-body {=0A  margin:=
+ 0 18px 12px !important;=0A  font-size: 14px !important;=0A  color: #65757c=
+ !important;=0A  line-height: 1.3em !important;=0A}=0A=0A.intercom-interblo=
+cks-link-author,=0A.intercom-interblocks-article-author {=0A  margin: 10px =
+15px !important;=0A  height: 24px !important;=0A  line-height: normal !impo=
+rtant;=0A}=0A=0A.intercom-interblocks-link-author-avatar,=0A.intercom-inter=
+blocks-article-author-avatar {=0A  width: 16px !important;=0A  height: 16px=
+ !important;=0A  display: inline-block !important;=0A  vertical-align: midd=
+le !important;=0A  float: left;=0A  margin-right: 5px;=0A}=0A=0A.intercom-i=
+nterblocks-link-author-avatar-image,=0A.intercom-interblocks-article-author=
+-avatar-image {=0A  width: 16px !important;=0A  height: 16px !important;=0A=
+  border-radius: 50% !important;=0A  margin: 0 !important;=0A  vertical-ali=
+gn: top !important;=0A  font-size: 12px !important;=0A}=0A=0A.intercom-inte=
+rblocks-link-author-name,=0A.intercom-interblocks-article-author-name {=0A =
+ color: #74848b !important;=0A  margin: 0 0 0 5px !important;=0A  font-size=
+: 12px !important;=0A  font-weight: 500 !important;=0A  overflow: hidden !i=
+mportant;=0A}=0A=0A.intercom-interblocks-article-written-by {=0A  color: #8=
+897a4 !important;=0A  margin: 1px 0 0 5px !important;=0A  font-size: 12px !=
+important;=0A  overflow: hidden !important;=0A  vertical-align: middle !imp=
+ortant;=0A  float: left !important;=0A}=0A=0A</style>=0A=0A<style>=0A      =
+=0A=0A/** Bold */=0A@font-face {=0A  font-family: "SF Text Bold";=0A  font-=
+weight: 700;=0A  =0A}=0A=0A/** Light */=0A@font-face {=0A  font-family: "SF=
+ Text Light";=0A  font-weight: 200;=0A  =0A}=0A=0A/** Regular */=0A@font-fa=
+ce {=0A  font-family: "SF Text Regular";=0A  font-weight: 400;=0A  =0A}=0A=
+=0A=0A    =0Ah1{font-family:'SF Text Light',Helvetica,Arial,serif;=0Afont-s=
+ize: 24px;=0Afont-weight: 200;=0Acolor: #210E4A;}=0A    =0Ah2{font-family:'=
+SF Text Light',Helvetica,Arial,serif;=0Afont-size: 20px;=0Afont-weight: 200=
+;=0Acolor: #210E4A;}=0A  =0Ah3{font-family:'SF Text Regular',Helvetica,Aria=
+l,serif;=0Afont-size: 18px;=0Afont-weight: 400;}=0A    =0Ap{=0Afont-family:=
+'SF Text Light',Helvetica,Arial,serif;=0Afont-size: 16px;=0Afont-weight: 20=
+0;=0Acolor: #210E4A;}=0A=0Ap.strong{=0Afont-family:'SF Text Regular',Helvet=
+ica,Arial,serif;=0Afont-size: 16px;=0Afont-weight: 400;=0Acolor: #210E4A;}=
+=0A=0Astrong, b {=0Afont-family:'SF Text Bold',Helvetica,Arial,serif;=0Afon=
+t-size: 16px;=0Afont-weight: 700;=0Acolor: #210E4A;}=0A    =0Ali, ul{=0Afon=
+t-family:'SF Text Regular',Helvetica,Arial,serif;=0Afont-size:16px;}=0A</st=
+yle>=0A=0A<style>.intercom-align-right {=0A  text-align: right !important;=
+=0A}=0A.intercom-align-center {=0A  text-align: center !important;=0A}=0A.i=
+ntercom-align-left {=0A  text-align: left !important;=0A}=0A/* Over-ride fo=
+r RTL */=0A.right-to-left .intercom-align-right{=0A  text-align: left !impo=
+rtant;=0A}=0A.right-to-left .intercom-align-left{=0A  text-align: right !im=
+portant;=0A}=0A.right-to-left .intercom-align-left {=0A  text-align:right !=
+important;=0A}=0A.right-to-left li {=0A  text-align:right !important;=0A  d=
+irection: rtl;=0A}=0A.right-to-left .intercom-align-left img,=0A.right-to-l=
+eft .intercom-align-left .intercom-h2b-button {=0A  margin-left: 0 !importa=
+nt;=0A}=0A.intercom-attachment,=0A.intercom-attachments,=0A.intercom-attach=
+ments td,=0A.intercom-attachments th,=0A.intercom-attachments tr,=0A.interc=
+om-attachments tbody,=0A.intercom-attachments .icon,=0A.intercom-attachment=
+s .icon img {=0A  border: none !important;=0A  box-shadow: none !important;=
+=0A  padding: 0 !important;=0A  margin: 0 !important;=0A}=0A.intercom-attac=
+hments {=0A  margin: 10px 0 !important;=0A}=0A.intercom-attachments .icon,=
+=0A.intercom-attachments .icon img {=0A  width: 16px !important;=0A  height=
+: 16px !important;=0A}=0A.intercom-attachments .icon {=0A  padding-right: 5=
+px !important;=0A}=0A.intercom-attachment {=0A  display: inline-block !impo=
+rtant;=0A  margin-bottom: 5px !important;=0A}=0A=0A.intercom-interblocks-co=
+ntent-card {=0A  width: 334px !important;=0A  max-height: 136px !important;=
+=0A  max-width: 100% !important;=0A  overflow: hidden !important;=0A  borde=
+r-radius: 20px !important;=0A  font-size: 16px !important;=0A  border: 1px =
+solid #e0e0e0 !important;=0A}=0A=0A.intercom-interblocks-link,=0A.intercom-=
+interblocks-article-card {=0A  text-decoration: none !important;=0A}=0A=0A.=
+intercom-interblocks-article-icon {=0A  width: 22.5% !important;=0A  height=
+: 136px !important;=0A  float: left !important;=0A  background-color: #fafa=
+fa !important;=0A  background-image: url('https://static.intercom-mail-200.=
+com/assets/article_book-1a595be287f73c0d02f548f513bfc831.png') !important;=
+=0A  background-repeat: no-repeat !important;=0A  background-size: 32px !im=
+portant;=0A  background-position: center !important;=0A}=0A=0A.intercom-int=
+erblocks-article-text {=0A  width: 77.5% !important;=0A  float: right !impo=
+rtant;=0A  background-color: #fff !important;=0A}=0A=0A.intercom-interblock=
+s-link-title,=0A.intercom-interblocks-article-title {=0A  color: #519dd4 !i=
+mportant;=0A  font-size: 15px !important;=0A  margin: 16px 18px 12px !impor=
+tant;=0A  line-height: 1.3em !important;=0A  overflow: hidden !important;=
+=0A}=0A=0A.intercom-interblocks-link-description,=0A.intercom-interblocks-a=
+rticle-body {=0A  margin: 0 18px 12px !important;=0A  font-size: 14px !impo=
+rtant;=0A  color: #65757c !important;=0A  line-height: 1.3em !important;=0A=
+}=0A=0A.intercom-interblocks-link-author,=0A.intercom-interblocks-article-a=
+uthor {=0A  margin: 10px 15px !important;=0A  height: 24px !important;=0A  =
+line-height: normal !important;=0A}=0A=0A.intercom-interblocks-link-author-=
+avatar,=0A.intercom-interblocks-article-author-avatar {=0A  width: 16px !im=
+portant;=0A  height: 16px !important;=0A  display: inline-block !important;=
+=0A  vertical-align: middle !important;=0A  float: left;=0A  margin-right: =
+5px;=0A}=0A=0A.intercom-interblocks-link-author-avatar-image,=0A.intercom-i=
+nterblocks-article-author-avatar-image {=0A  width: 16px !important;=0A  he=
+ight: 16px !important;=0A  border-radius: 50% !important;=0A  margin: 0 !im=
+portant;=0A  vertical-align: top !important;=0A  font-size: 12px !important=
+;=0A}=0A=0A.intercom-interblocks-link-author-name,=0A.intercom-interblocks-=
+article-author-name {=0A  color: #74848b !important;=0A  margin: 0 0 0 5px =
+!important;=0A  font-size: 12px !important;=0A  font-weight: 500 !important=
+;=0A  overflow: hidden !important;=0A}=0A=0A.intercom-interblocks-article-w=
+ritten-by {=0A  color: #8897a4 !important;=0A  margin: 1px 0 0 5px !importa=
+nt;=0A  font-size: 12px !important;=0A  overflow: hidden !important;=0A  ve=
+rtical-align: middle !important;=0A  float: left !important;=0A}=0A</style>=
+=0A</head>=0A=0A<body style=3D"background-color: #FFFFFF; margin: 0px; padd=
+ing: 24px" bgcolor=3D"#FFFFFF">=0A  <table width=3D"100%" class=3D"header" =
+style=3D"border-collapse: separate; border-spacing: 0; table-layout: fixed"=
+>=0A    <tbody>=0A<tr>=0A      <td class=3D"logo" style=3D"font-family: 'SF=
+ Text Light',Helvetica,Arial,serif; font-size: 16px; padding: 0; text-align=
+: center" align=3D"center"><a href=3D"https://via.intercom-mail-200.com/e=
+=3Fob=3D%2FmJVi%2FpWv13gExRnAMwqRbKIH0PEvdin6KNWJJQIrl4%3D&h=3D2db9ea9ed6a2=
+03be8e435cdb29b79de39802b4a5-15878445909" style=3D"border: none; color: #40=
+8FEC; outline: none !important"><img src=3D"https://i.imgur.com/gHD9AA6.png=
+" height=3D"32" width=3D"162" alt=3D"Buda.com" style=3D"padding: 0 0 20px; =
+text-align: center"></a></td>=0A    </tr>=0A  </tbody>=0A</table>=0A  <tabl=
+e cellspacing=3D"0" border=3D"0" cellpadding=3D"0" align=3D"center" width=
+=3D"595" bgcolor=3D"#FAFAFA" class=3D"main" style=3D"border-collapse: separ=
+ate; border-radius: 6px; border-spacing: 0; font-family: 'SF Text Regular',=
+Helvetica,Arial,serif; letter-spacing: 0; table-layout: fixed">=0A    <tbod=
+y>=0A<tr>=0A      <td class=3D"main-td" style=3D"font-family: 'SF Text Ligh=
+t',Helvetica,Arial,serif; font-size: 16px; padding: 20px">=0A        <table=
+ width=3D"100%" class=3D"content" style=3D"border-collapse: separate; borde=
+r-spacing: 0; table-layout: fixed">=0A          <tbody>=0A<tr>=0A          =
+  <td class=3D"content-td" style=3D"color: #210E4A; font-family: 'SF Text L=
+ight',Helvetica,Arial,serif; font-size: 16px; line-height: 24px; padding: 3=
+2px 24px">=0A<p class=3D"intercom-align-left" style=3D"color: #210E4A; font=
+-family: 'SF Text Light',Helvetica,Arial,serif; font-size: 16px; font-weigh=
+t: 200; line-height: 1.5; margin: 0 0 16px; text-align: left !important" al=
+ign=3D"left">Hola eduardo,</p>=0A<p class=3D"intercom-align-left" style=3D"=
+color: #210E4A; font-family: 'SF Text Light',Helvetica,Arial,serif; font-si=
+ze: 16px; font-weight: 200; line-height: 1.5; margin: 0 0 16px; text-align:=
+ left !important" align=3D"left">Este correo te lleg=C3=B3 porque en alg=C3=
+=BAn momento creaste una API key en tu cuenta de Buda.com.</p>=0A<p class=
+=3D"intercom-align-left" style=3D"color: #210E4A; font-family: 'SF Text Lig=
+ht',Helvetica,Arial,serif; font-size: 16px; font-weight: 200; line-height: =
+1.5; margin: 0 0 16px; text-align: left !important" align=3D"left">Te infor=
+mamos que a partir del 26 de abril nuestra api ya no estar=C3=A1 disponible=
+ en el dominio <a href=3D"https://via.intercom-mail-200.com/e=3Fob=3DTFTute=
+B8v99BuEzvsYQIq%2BynrXj%2F7gWMMJP24NQj9rc%3D&h=3D7d4a680702a753e34ee1fc10d5=
+5044c707705c60-15878445909" target=3D"_blank" style=3D"border: none; color:=
+ #4F90FF; outline: none !important">www.surbtc.com</a>.</p>=0A<p class=3D"i=
+ntercom-align-left" style=3D"color: #210E4A; font-family: 'SF Text Light',H=
+elvetica,Arial,serif; font-size: 16px; font-weight: 200; line-height: 1.5; =
+margin: 0 0 16px; text-align: left !important" align=3D"left">Es necesario =
+que cambies la url de conexi=C3=B3n reemplazando "<a href=3D"https://via.in=
+tercom-mail-200.com/e=3Fob=3DTFTuteB8v99BuEzvsYQIq%2BynrXj%2F7gWMMJP24NQj9r=
+c%3D&h=3D7d4a680702a753e34ee1fc10d55044c707705c60-15878445909" target=3D"_b=
+lank" style=3D"border: none; color: #4F90FF; outline: none !important">surb=
+tc.com</a>" por "<a href=3D"https://via.intercom-mail-200.com/e=3Fob=3D7UUh=
+YkIwUMCyBQByENO66v3KFYEFXOPla6Pe3VblWuo%3D&h=3D8bc608cb3e5ca88babba4a1a9ef8=
+a2c30e79beec-15878445909" target=3D"_blank" style=3D"border: none; color: #=
+4F90FF; outline: none !important">buda.com</a>", a m=C3=A1s tardar el 25 de=
+ abril.</p>=0A<p class=3D"intercom-align-left" style=3D"color: #210E4A; fon=
+t-family: 'SF Text Light',Helvetica,Arial,serif; font-size: 16px; font-weig=
+ht: 200; line-height: 1.5; margin: 0 0 16px; text-align: left !important" a=
+lign=3D"left">Gracias</p>=0A<p class=3D"intercom-align-left" style=3D"color=
+: #210E4A; font-family: 'SF Text Light',Helvetica,Arial,serif; font-size: 1=
+6px; font-weight: 200; line-height: 1.5; margin: 0 0 16px; text-align: left=
+ !important" align=3D"left">Equipo Buda.</p>=0A</td>=0A          </tr>=0A  =
+      </tbody>=0A</table>=0A      </td>=0A    </tr>=0A  </tbody>=0A</table>=
+=0A  <table cellspacing=3D"0" border=3D"0" cellpadding=3D"0" align=3D"cente=
+r" width=3D"595" class=3D"main" style=3D"border-collapse: separate; border-=
+radius: 6px; border-spacing: 0; font-family: 'SF Text Regular',Helvetica,Ar=
+ial,serif; letter-spacing: 0; table-layout: fixed">=0A    <tbody>=0A<tr>=0A=
+      <td height=3D"273" class=3D"footer-container" style=3D"font-family: '=
+SF Text Light',Helvetica,Arial,serif; font-size: 16px; padding: 0">=0A     =
+   <table cellspacing=3D"0" border=3D"0" cellpadding=3D"0" align=3D"center"=
+ width=3D"100%" style=3D"border-collapse: separate; border-spacing: 0; tabl=
+e-layout: fixed">=0A          <tbody>=0A<tr>=0A            <td class=3D"foo=
+ter-logo" align=3D"left" style=3D"font-family: 'SF Text Light',Helvetica,Ar=
+ial,serif; font-size: 16px; padding: 0">=0A<a href=3D"https://via.intercom-=
+mail-200.com/e=3Fob=3DZ0zBlwfXujnj%2BOKzkY3LP1hoDB%2FJ0jCcm%2BiRVeqpYDQ%3D&=
+h=3D5d8e5977038aa20e323a882bdedd747f0e8ae68d-15878445909" style=3D"border: =
+none; color: #408FEC; outline: none !important">=0A<img src=3D"https://i.im=
+gur.com/l3r16zm.png" alt=3D"Buda.com"></a>=0A            </td>=0A          =
+  <td class=3D"footer-td" width=3D"70%" style=3D"color: #A19FCD; font-famil=
+y: 'SF Text Light',Helvetica,Arial,serif; font-size: 14px; padding: 24px 0;=
+ text-align: center" align=3D"center">=0A              <div class=3D"footer=
+-td__address" style=3D"margin-bottom: 6px">=0A                Buda.com <br>=
+Providencia, Santiago de Chile=0A              </div>=0A              =C2=
+=BFTe molestan nuestros mails=3F <a href=3D"https://lmgaeqxd.intercom-mail.=
+com/unsubscribe=3Fapp_id=3Dlmgaeqxd&conversation_id=3D15878445909&sample=3D=
+false&user_id=3D5a5817fd2f1161381d418cdf" style=3D"border: none; color: #A1=
+9FCD; font-size: 13px; outline: none !important; text-align: center; text-d=
+ecoration: underline">Av=C3=ADsanos</a>=0A            </td>=0A            <=
+td class=3D"footer-social" align=3D"right" style=3D"font-family: 'SF Text L=
+ight',Helvetica,Arial,serif; font-size: 16px; padding: 0">=0A              =
+<table class=3D"footer-social__table" cellspacing=3D"0" border=3D"0" cellpa=
+dding=3D"0" style=3D"border-collapse: separate; border-spacing: 0; margin: =
+0; table-layout: fixed">=0A                <tbody>=0A<tr>=0A               =
+   <td class=3D"footer-social__icon" style=3D"font-family: 'SF Text Light',=
+Helvetica,Arial,serif; font-size: 16px; padding: 4px">=0A<a href=3D"https:/=
+/via.intercom-mail-200.com/e=3Fob=3DrrooF5Axvz5DNlpCumJNKPy9wMgvdpycTo1Mc55=
+op5Q%3D&h=3De67e5d9de2a48149b5373652e6885daca4fb9c5c-15878445909" style=3D"=
+border: none; color: #408FEC; outline: none !important"><img src=3D"https:/=
+/i.imgur.com/3UqHSAN.png" width=3D"20" height=3D"20" alt=3D"Medium" style=
+=3D"display: block"></a>=0A</td>=0A                  <td class=3D"footer-so=
+cial__icon" style=3D"font-family: 'SF Text Light',Helvetica,Arial,serif; fo=
+nt-size: 16px; padding: 4px">=0A<a href=3D"https://via.intercom-mail-200.co=
+m/e=3Fob=3DvNI2D3Yg9jzPzy02%2BRAc0uvQaamCzE0P7%2BTGUbIHla8%3D&h=3Dfcfd5b185=
+ef73fa7082746646fa42549cedf5496-15878445909" style=3D"border: none; color: =
+#408FEC; outline: none !important"><img src=3D"https://i.imgur.com/f7FhSGo.=
+png" width=3D"20" height=3D"20" alt=3D"Twitter" style=3D"display: block"></=
+a>=0A</td>=0A                </tr>=0A                <tr>=0A               =
+   <td class=3D"footer-social__icon" style=3D"font-family: 'SF Text Light',=
+Helvetica,Arial,serif; font-size: 16px; padding: 4px">=0A<a href=3D"https:/=
+/via.intercom-mail-200.com/e=3Fob=3DTUy54JFkQinBgBzJh6Lt6gYt%2Ff5ayUryAetJD=
+D8JH5s%3D&h=3D717030bfe0463f70efca6b6c216c4e247a5d266a-15878445909" style=
+=3D"border: none; color: #408FEC; outline: none !important"><img src=3D"htt=
+ps://i.imgur.com/Xq2wgUZ.png" width=3D"20" height=3D"20" alt=3D"Facebook" s=
+tyle=3D"display: block"></a>=0A</td>=0A                  <td class=3D"foote=
+r-social__icon" style=3D"font-family: 'SF Text Light',Helvetica,Arial,serif=
+; font-size: 16px; padding: 4px">=0A<a href=3D"https://via.intercom-mail-20=
+0.com/e=3Fob=3DilJ%2BJFptMKsrpteIIkgBXHM6%2FjZa8NUXkFWsH9jGpphtzGAnsc84gC6f=
+aP3NI1ZI&h=3D85076c8ce7bcc9b4e970bedbefb606a401da9606-15878445909" style=3D=
+"border: none; color: #408FEC; outline: none !important"><img src=3D"https:=
+//i.imgur.com/l6pLecb.png" width=3D"20" height=3D"20" alt=3D"Linkedin" styl=
+e=3D"display: block"></a>=0A</td>=0A                </tr>=0A              <=
+/tbody>=0A</table>=0A            </td>=0A          </tr>=0A        </tbody>=
+=0A</table>=0A        <table width=3D"100%" border=3D"0" style=3D"border-co=
+llapse: separate; border-spacing: 0; table-layout: fixed">=0A          <tbo=
+dy>=0A            <tr>=0A              <td style=3D"font-family: 'SF Text L=
+ight',Helvetica,Arial,serif; font-size: 16px; height: 40px; padding: 0">=0A=
+<p style=3D"color: #210E4A; font-family: 'SF Text Light',Helvetica,Arial,se=
+rif; font-size: 16px; font-weight: 200">=C2=A0</p>=0A              <p style=
+=3D"color: #210E4A; font-family: 'SF Text Light',Helvetica,Arial,serif; fon=
+t-size: 16px; font-weight: 200; margin: 0px 4px 0px 0px"><a href=3D"https:/=
+/via.intercom-mail-200.com/e=3Fob=3D6dJDRNh9FxId4MhDTxj1iFEm22ZBCX3q3Xz9NbK=
+DJQRhSrhSnBOaadLcaaLpmf2zHDg%2F9lVjN5fcH7dm5BT31w%3D%3D&h=3D3c7362eea6fd173=
+f5a5d041b49e7e037b3ca535d-15878445909" style=3D"border: none; color: #408FE=
+C; outline: none !important"><img src=3D"https://i.imgur.com/DZlsLTy.png" a=
+lt=3D"Descarga nuestra app para Android" width=3D"100" height=3D"34" align=
+=3D"right"></a></p>=0A</td>=0A              <td style=3D"font-family: 'SF T=
+ext Light',Helvetica,Arial,serif; font-size: 16px; height: 40px; padding: 0=
+">=0A<p style=3D"color: #210E4A; font-family: 'SF Text Light',Helvetica,Ari=
+al,serif; font-size: 16px; font-weight: 200">=C2=A0</p>=0A              <p =
+style=3D"color: #210E4A; font-family: 'SF Text Light',Helvetica,Arial,serif=
+; font-size: 16px; font-weight: 200; margin: 0px 0px 0px 4px"><a href=3D"ht=
+tps://via.intercom-mail-200.com/e=3Fob=3DkDOgiAPCXVZswApTA80b0I1u4yPBbcHE0J=
+d53URH4dMB%2BYvN%2FtoVZsmh0%2Fc%2BN2Y%2BO36dNOB2vkL%2FOieQrq1w4vWUeHfI08gqY=
+49lAwlDSlbPGUKJuoIg5TVqVfrVhyFY&h=3D19f07b1a91629e95ae200238f62076470e23142=
+b-15878445909" style=3D"border: none; color: #408FEC; outline: none !import=
+ant"><img src=3D"https://i.imgur.com/EXzGtuo.png" alt=3D"Descarga nuestra a=
+pp para iOS" width=3D"100" height=3D"34" align=3D"left"></a></p>=0A</td>=0A=
+            </tr>=0A          </tbody>=0A        </table>=0A        <p styl=
+e=3D"color: #A19FCD; font-family: 'SF Text Light',Helvetica,Arial,serif; fo=
+nt-size: 13px; font-weight: 200; text-align: center; text-decoration: none"=
+ align=3D"center">Enviado con =F0=9F=92=99  desde Buda</p>=0A        <p sty=
+le=3D"color: #A19FCD; font-family: 'SF Text Light',Helvetica,Arial,serif; f=
+ont-size: 13px; font-weight: 200; line-height: 2px; text-align: center; tex=
+t-decoration: none" align=3D"center">=C2=A9 2018 Buda.com</p>=0A      </td>=
+=0A    </tr>=0A  </tbody>=0A</table>=0A=0A=0A<img src=3D"https://via.interc=
+om-mail-200.com/o=3Fh=3D8c2903e2eb3c3f77c1a4752753f9d6964f6c3ef8-1587844590=
+9" width=3D"1" height=3D"1" style=3D"display: block;" alt=3D"intercom">=0A=
+=0D=0A<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"http://spe=
+.via.intercom-mail.com/q/UXBf2ZoLOOd6-j6Y1FCf1w~~/AAAAAQA~/RgRcvII1PlcIaW5=
+0ZXJjb21YBAAAHX9CCgACNf3ZWv6OtBxSGWVkdWFyZG8uc2lubmluZ0BnbWFpbC5jb20~">=0D=
+=0A</body>=0A</html>=0A
+--_----dCVS2mlP5p9yJ7rRi8nCzw===_8A/C1-36606-53DF9DA5--
+

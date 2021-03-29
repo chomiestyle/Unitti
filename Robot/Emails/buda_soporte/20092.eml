@@ -1,0 +1,360 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 2002:a5b:5d1:0:0:0:0:0 with SMTP id w17csp493436ybp;
+        Fri, 12 Feb 2021 05:48:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJw4tEiN+y8tm1zh91kdPOZX7tdX/h8QYVz20l0Oh/Bl7HMV+ykHotH0vr84IXcOM9Xf2mew
+X-Received: by 2002:a17:906:1249:: with SMTP id u9mr3194867eja.484.1613137704935;
+        Fri, 12 Feb 2021 05:48:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613137704; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Z8MQfmXeGCj5NLRMjWG56ky6WL246HIoE9sxSTtGYsXDCpshwCUeb6aIuN4FqjDD/M
+         mRgfHiFmqnPKZwpVbpwfjIHH9IaMcJLnniwdEuT6zPvOtA+wv8/OoTM37t3iqFK8Ds+e
+         bDr7IGtbfm20pw+0/S2OxrnNjiHfzxjZ/JWtcyQVNBWin6PPYN9ZHSBpqr9T6v0JUJei
+         NPmupqeYW6uXfO0ARaRHMvS5f//zh/XpkK27iCMKBC6PRludZ8zcqC/8NzZmu7X/iXDC
+         7wG2el6Xysfrh7C3S5ADXeiZzGVG0877CR8hU6fMuOLf898dTNp+0hILhpQjMymhLzjZ
+         2PjQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:subject:message-id:mime-version:from:date:dkim-signature
+         :dkim-signature;
+        bh=Feh+X39ek7Wkb0JAnAke6jvz1Z+w/PiSDf1w5QR0psU=;
+        b=JfXJzD65VL4zw9gvpZSDmvzGm39IYFzdk6zmDGbwkPkPdUuF8TAZ+DbsgAWE/dTfKY
+         uuu3j7PRq2vYPz3wMOqw/LNNDjjTqXnVaAZaScR+tHYFmxoXjP9HoVRn3frfjkgfb1vd
+         NVGHjAryJ/AsHuQKAIIUxqyjU1BjA6bP4l8cxLONv2wCASuRwxPFWrOhP1Mq0qQsBXIO
+         xfOktTdxUjMfaYlNMo2RGkQPhLXopTy9MnXUxM3X3GCVB4QbaPzH7Xs43MFmoPWcc1bK
+         RkTGqq8625CfPbblh6wBf2RwBu3+PO4MnIvitcW/VHOvzMTmJPqeC4DEPB5lY5EMTYZX
+         AuLw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@buda.com header.s=s1 header.b=YKZDJT3M;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=a2LS1nam;
+       spf=pass (google.com: domain of bounces+19777618-1af1-eduardo.sinning=gmail.com@em623.buda.com designates 149.72.67.78 as permitted sender) smtp.mailfrom="bounces+19777618-1af1-eduardo.sinning=gmail.com@em623.buda.com";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+Return-Path: <bounces+19777618-1af1-eduardo.sinning=gmail.com@em623.buda.com>
+Received: from o2.mail.buda.com (o2.mail.buda.com. [149.72.67.78])
+        by mx.google.com with ESMTPS id v17si6038783ejy.545.2021.02.12.05.48.24
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 12 Feb 2021 05:48:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+19777618-1af1-eduardo.sinning=gmail.com@em623.buda.com designates 149.72.67.78 as permitted sender) client-ip=149.72.67.78;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@buda.com header.s=s1 header.b=YKZDJT3M;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=a2LS1nam;
+       spf=pass (google.com: domain of bounces+19777618-1af1-eduardo.sinning=gmail.com@em623.buda.com designates 149.72.67.78 as permitted sender) smtp.mailfrom="bounces+19777618-1af1-eduardo.sinning=gmail.com@em623.buda.com";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=buda.com;
+	h=content-type:from:mime-version:subject:x-feedback-id:to;
+	s=s1; bh=Feh+X39ek7Wkb0JAnAke6jvz1Z+w/PiSDf1w5QR0psU=;
+	b=YKZDJT3MnXnclr+riCTqpTKhclYMQLHdaGxVNGms4cCVVyTEEbNxNwzHRUuNm/ecYpkm
+	1pa8Cp1XE8quL6wNaGu5gmCpKzAbuUI+EWDiCwtI4s4iKvma3Y5RblF+Pah+veWwa8tsoG
+	3vOKw6+jWKGVUbJjhsi4DyeS/3DuDpUwQ=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sendgrid.info;
+	h=content-type:from:mime-version:subject:x-feedback-id:to;
+	s=smtpapi; bh=Feh+X39ek7Wkb0JAnAke6jvz1Z+w/PiSDf1w5QR0psU=;
+	b=a2LS1namdDSeKc7mk428gHukcD5CHDQsKH/QXrjN8mcrZ/stUrosCvodf/qvqe41Ok+1
+	L2t+ejF+oDIxuhaNMSYjoVQNTvT5sddCAnqxAX8aHMFUgmQmp3lAsLCaEShmI08I8HueI0
+	UrvPCZ25uSItiOPhaK1cNKCM88+ckLxbg=
+Received: by filterdrecv-p3iad2-fdf5ff85d-8sb8z with SMTP id filterdrecv-p3iad2-fdf5ff85d-8sb8z-18-60268727-97
+        2021-02-12 13:48:23.857216176 +0000 UTC m=+226845.631973802
+Received: from MTk3Nzc2MTg (unknown)
+	by geopod-ismtpd-3-4 (SG) with HTTP
+	id WumIB3ZFTQSDAuS5VSJpVQ
+	Fri, 12 Feb 2021 13:48:23.824 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=cf20fdb8a37e923ababf6a0ebf11b48b3c4dc5aef049f5f5aec0ba6e9a16
+Date: Fri, 12 Feb 2021 13:48:23 +0000 (UTC)
+From: "Buda.com" <soporte@buda.com>
+Mime-Version: 1.0
+Message-ID: <WumIB3ZFTQSDAuS5VSJpVQ@geopod-ismtpd-3-4>
+Subject: Recibimos dinero en tu cuenta
+X-Feedback-ID: 19777618:SG
+X-SG-EID: 
+ =?us-ascii?Q?2awymddKD3RAzUu=2FjVf=2FTG75=2F0VWbNVpMqZjEVToTYIrZ1iFCMbNzS6va1knI8?=
+ =?us-ascii?Q?8TlCAjJEre3rSOJOI9GHKc8DSKCb69L2yvCeZ+l?=
+ =?us-ascii?Q?QiH0nSo3wqNK4aR1bziG5hJ40l0brX1ohTzvxHK?=
+ =?us-ascii?Q?XGfHEjbGfQn3Mbl0O+JJsB1BZ32oH5ElvXa0F=2FA?=
+ =?us-ascii?Q?WCnpmRR6IznP8BAKd2KZLocjJ2poM0VQtWoKOsM?=
+ =?us-ascii?Q?fjqY6BzaeXQ1ff44TFCSwviKn1CNzRekCojVev?=
+X-SG-ID: 
+ =?us-ascii?Q?N2C25iY2uzGMFz6rgvQsb7MB6fpEggBti1riqSEZY1mS3STWeEz69Y4Edlsz5U?=
+ =?us-ascii?Q?zlNcMa6GyGpK9nYk+R8rL3E47UBpSvYcOddPQg+?=
+ =?us-ascii?Q?KzKbYwph+GwoOkSLF9KhznaaeH6tSC4lSV7nvr=2F?=
+ =?us-ascii?Q?vfg70mORS8y+olWiRltScs7cwU=2F4EN12cfhfNsd?=
+ =?us-ascii?Q?mWUxtooJLACc3BhfUGYDLUxo83zotcDIEDEKbqH?=
+ =?us-ascii?Q?VNtg7xRlDRPP1cw95OsKSPnqoowbDBtz4zAz7UO?=
+ =?us-ascii?Q?pV6tvL0TtP4mFcAK6uwOQ=3D=3D?=
+To: eduardo.sinning@gmail.com
+X-Entity-ID: 5MK7wtjnhUrq0x2LAhbLNw==
+
+--cf20fdb8a37e923ababf6a0ebf11b48b3c4dc5aef049f5f5aec0ba6e9a16
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Mime-Version: 1.0
+
+Hola eduardo nicolas,
+-------------------
+
+Tu abono ya est=E1 disponible en tu cuenta de Buda.com.
+
+Saludos,
+
+El equipo Buda.com
+
+=BFNo fuiste t=FA?
+Bloquea tu cuenta ( https://u19777618.ct.sendgrid.net/ls/click?upn=3DoIs-2B=
+Pqgh3JA7WgNYIF1Qs7pFUEQcSg539cCV3R83vuuMXw1URt3rQSxVsHLsK-2Fc8Sr-2BdjmmaAPT=
+3xZuIszf91tSNysAFpcQFbyccPv-2BlxnEQfkPNKIK01I9ffsYXUS10cEZk_zdujN-2FH-2Bo1h=
+KZ5YQhYiJBnQ92ggU8p0XsHk1x-2BLXigQ8bte9Ckb9-2FLl581m-2FaHJSX-2FV24F7Yu9T6vL=
+X-2F1wPvBWKbJGHRIl9O-2FT2AF-2BaItyWw7gO-2BIz6RzdmLDQ5veDwm-2Bq69bmWho1mSRdg=
+1jxJVdcZKRp1cepndAImBQQZXrlh6vM-2FaATcYapyG0uyGjWRKf5ZZ-2FhzJjkksevSloOx-2F=
+8YV-2FHuVKj-2FPL0Oz5pPHOV8lDykDF-2FPbD-2F7Q1xP-2BgdybHWfAaKwgbL3906OrJcHCYX=
+7XvYhkelB7bOKeeavrV9RrwrhRBK1oS-2FnrW-2B16Bd8aJ )
+
+
+Buda.com
+Providencia, Santiago de Chile
+Somos Carbono Neutral ( https://u19777618.ct.sendgrid.net/ls/click?upn=3DoI=
+s-2BPqgh3JA7WgNYIF1Qs7v-2BXwsdSpL1Zq92gtHQhi80Wj4i8QPUv5LXWfh0o5Xa4tuU_zduj=
+N-2FH-2Bo1hKZ5YQhYiJBnQ92ggU8p0XsHk1x-2BLXigQ8bte9Ckb9-2FLl581m-2FaHJSX-2FV=
+24F7Yu9T6vLX-2F1wPvBWJ9xNZarHkyRymGOleTNPVUBSocgPvhtqswmwkzM94vnRsnCNbOe9m0=
+TNBB7E6DUB4epdV-2BGryNnfLuPoP1Id6xrWIeteqDNY-2FSEvzpoqrP2g52UTbrscqi4QDuqaz=
+VGKCgGaEPnpIlKg0ZpjOuca6Ki74Uv-2BmYXO7r8ezUU3xi8TOrqqUtTPKbpay96zAybtE46ttV=
+1ja8T1A8TMFmUHnN-2B3SA77hfilFZiq3phRHC )
+--cf20fdb8a37e923ababf6a0ebf11b48b3c4dc5aef049f5f5aec0ba6e9a16
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=iso-8859-1
+Mime-Version: 1.0
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/htm=
+l4/strict.dtd">
+<html>
+<head>
+<meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Type">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+
+<style type=3D"text/css" data-premailer=3D"ignore">
+  #outlook a{
+    padding: 0;
+  }
+  body{
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    margin: 0;
+    padding: 0;
+  }
+  .ReadMsgBody{
+    width: 100%;
+  }
+  .ExternalClass{
+    width: 100%;
+  }
+  img {
+    border: 0;
+    max-width: 100%;
+    height: auto;
+    outline: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    line-height: 100%;
+  }
+  #backgroundTable{
+    height: 100% !important;
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+  }
+</style>
+<style type=3D"text/css" data-premailer=3D"ignore">
+  @media screen and (max-width: 645px) {
+    body {
+      padding: 10px !important;
+    }
+    .main {
+      width: 100% !important;
+    }
+    .main .main-td {
+      padding: 20px !important;
+		border-radius:6px;
+    }
+    .header td {
+      text-align: center;
+    }
+    .footer-container {
+      padding: 0 10px;
+    }
+    .footer-logo {
+      display: none;
+    }
+    .footer-td {
+      text-align: left;
+      padding: 15px 0;
+    }
+  }
+
+  .content-td blockquote + * {
+    margin-top: 20px !important;
+  }
+
+  .ExternalClass .content-td h1 {
+    padding: 20px 0 !important;
+  }
+
+  .ExternalClass .content-td h2 {
+    padding: 0 0 5px !important;
+  }
+
+  .ExternalClass .content-td p {
+    padding: 10px 0 !important;
+  }
+
+  .ExternalClass .content-td .intercom-container {
+    padding: 5px 0 !important;
+  }
+
+  .ExternalClass .content-td hr + * {
+    padding-top: 30px !important;
+  }
+
+  .ExternalClass .content-td ol ,
+  .ExternalClass .content-td ul {
+    padding: 0 0 20px 40px !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass .content-td ol li,
+  .ExternalClass .content-td ul li {
+    padding: 3px 0 !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass table .footer-td p {
+    padding: 0 0 6px 0 !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass table .footer-td p.powered-by ,
+  .ExternalClass table .footer-td p.unsub {
+    padding-top: 16px;
+  }
+</style>
+</head>
+<body style=3D"margin: 0px; padding: 24px;" bgcolor=3D"#ffffff">
+  <table class=3D"header" width=3D"100%" style=3D"border-spacing: 0; border=
+-collapse: separate; table-layout: fixed;">
+    <tbody>
+<tr>
+      <td class=3D"logo" style=3D"font-size: 14px; font-family: -apple-syst=
+em, system-ui, BlinkMacSystemFont, Roboto, sans-serif; font-weight: 300; pa=
+dding: 0;" align=3D"center"><img src=3D"https://i.imgur.com/gHD9AA6.png" al=
+t=3D"Buda.com" width=3D"160px" height=3D"32px" style=3D"text-align: center;=
+ padding: 16px 0 20px;"></td>
+    </tr>
+  </tbody>
+</table>
+  <table class=3D"main" width=3D"595" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0" bgcolor=3D"white" align=3D"center" style=3D"font-family: -apple=
+-system, system-ui, BlinkMacSystemFont, Roboto, sans-serif; font-weight: 30=
+0; letter-spacing: 0; border-radius: 6px; border-spacing: 0; border-collaps=
+e: separate; table-layout: fixed;">
+    <tbody>
+<tr>
+      <td class=3D"main-td" style=3D"border-radius: 6px; font-size: 14px; f=
+ont-family: -apple-system, system-ui, BlinkMacSystemFont, Roboto, sans-seri=
+f; font-weight: 300; padding: 20px; border: #d1d1e6;" bgcolor=3D"#fafafa">
+        <table class=3D"content" width=3D"100%" style=3D"border-spacing: 0;=
+ border-collapse: separate; table-layout: fixed;">
+          <tbody>
+<tr>
+              <td class=3D"content-td" style=3D"font-size: 14px; font-famil=
+y: -apple-system, system-ui, BlinkMacSystemFont, Roboto, sans-serif; font-w=
+eight: 300; line-height: 24px; color: #1f0c48; padding: 24px;">
+                <h3 style=3D"margin-top: 0; font-size: 14px; font-weight: b=
+old; margin-bottom: 8px;">Hola eduardo nicolas,</h3>
+<p style=3D"line-height: 1.5; margin: 0 0 16px;">Tu abono ya est=E1 disponi=
+ble en tu cuenta de Buda.com.</p>
+<p style=3D"line-height: 1.5; margin: 0 0 16px;">Saludos,</p>
+<p style=3D"line-height: 1.5; margin: 0 0 16px;">El equipo Buda.com</p>
+                <div class=3D"lock-account" style=3D"" align=3D"center">=BF=
+No fuiste t=FA?<br>
+                <a target=3D"_blank" class=3D"lock-account__button" href=3D=
+"https://u19777618.ct.sendgrid.net/ls/click?upn=3DoIs-2BPqgh3JA7WgNYIF1Qs7p=
+FUEQcSg539cCV3R83vuuMXw1URt3rQSxVsHLsK-2Fc8Sr-2BdjmmaAPT3xZuIszf91tSNysAFpc=
+QFbyccPv-2BlxnEQfkPNKIK01I9ffsYXUS10ZmkC_zdujN-2FH-2Bo1hKZ5YQhYiJBnQ92ggU8p=
+0XsHk1x-2BLXigQ8bte9Ckb9-2FLl581m-2FaHJSX-2FV24F7Yu9T6vLX-2F1wPvBRInTBpfgwJ=
+Eui7Ce3GLEYqcNg9JyJXGx5DjcumaVfRjPHnk8OcrAC-2BgeYbm-2FLLZtSzBjJPvR4SApDYn-2=
+FkrXibe0pzwCSLdhpTzyZwSWBZ2C8ef-2BHzu2PB7hKwLFggdLi-2Fx99j80dvDpb3vdofdAanl=
+FwZQjMx6olSxZ9ySdCVsbJg3ZnWOcOqlDvQI3DhsRXKdTIro1VqGwQtoIh3B6mBW5AraG5Wv78o=
+aWGo3LW6qf" style=3D"color: #fff !important; background-color: #b9b5c7; bor=
+der-radius: 3px; display: inline-block; font-size: 11px; font-weight: 600; =
+letter-spacing: 1px; margin-top: 5px; text-align: center; text-decoration: =
+none; text-transform: uppercase; width: 160px; outline: none !important; pa=
+dding: 6px; border: none;" bgcolor=3D"#b9b5c7" align=3D"center" width=3D"16=
+0">Bloquea tu cuenta</a>
+                </div>
+               =20
+              </td>
+          </tr>
+        </tbody>
+</table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+  <table class=3D"main" width=3D"595" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0" align=3D"center" style=3D"font-family: -apple-system, system-ui=
+, BlinkMacSystemFont, Roboto, sans-serif; font-weight: 300; letter-spacing:=
+ 0; border-radius: 6px; border-spacing: 0; border-collapse: separate; table=
+-layout: fixed;">
+    <tbody>
+<tr>
+      <td class=3D"footer-container" style=3D"font-size: 14px; font-family:=
+ -apple-system, system-ui, BlinkMacSystemFont, Roboto, sans-serif; font-wei=
+ght: 300; padding: 0;">
+        <table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D=
+"0" align=3D"center" style=3D"border-spacing: 0; border-collapse: separate;=
+ table-layout: fixed;">
+          <tbody>
+            <tr>
+              <td class=3D"footer-td" width=3D"70%" style=3D"font-size: 14p=
+x; font-family: -apple-system, system-ui, BlinkMacSystemFont, Roboto, sans-=
+serif; font-weight: 300; color: #a19fcd; padding: 24px 0;" align=3D"center"=
+>
+                <div class=3D"footer-td__address" style=3D"margin-bottom: 6=
+px;">
+                  Buda.com <br>
+                  Providencia, Santiago de Chile <br>
+                  <a href=3D"https://u19777618.ct.sendgrid.net/ls/click?upn=
+=3DoIs-2BPqgh3JA7WgNYIF1Qs7v-2BXwsdSpL1Zq92gtHQhi80Wj4i8QPUv5LXWfh0o5XaSPhH=
+_zdujN-2FH-2Bo1hKZ5YQhYiJBnQ92ggU8p0XsHk1x-2BLXigQ8bte9Ckb9-2FLl581m-2FaHJS=
+X-2FV24F7Yu9T6vLX-2F1wPvBRk0x7DZtubop1uDSWfrkxSgYKq1hoYPZduMAar7oOVbNUKQSbn=
+oBzjBLwT4wGMfX2c5EupAEqw1sOJnKbmkWMnlvInZBKgip2DyCZcrTmrf3lO-2Bz-2BOvSwx0-2=
+FallBECrZRDIjtdVQWo-2Fy3GtJc2MJHLNuJ4viRhBC5Wk1uGvXbs7nUz29TKw8BXLOau2NUYDi=
+0ea012E1ZbZ7Hq6UgcWKOD2cQ-2Fl7YNTBgoU4W9DB9e2" style=3D"outline: none !impo=
+rtant; color: #408fec; text-decoration: none; border: none;">
+                    <img class=3D"footer-carbon__icon" width=3D"18" src=3D"=
+https://i.imgur.com/NrzJ9Y5.png" style=3D"vertical-align: middle;">
+                    <span class=3D"footer-carbon__text" style=3D"color: #1f=
+0c48; font-weight: 600;">Somos Carbono Neutral</span>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<img src=3D"https://u19777618.ct.sendgrid.net/wf/open?upn=3DA4wPItE17ns82-2=
+FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjBis5QYArbsMDJczbc-2BoEyY0ULQnKWL-2F0ZHPP-2=
+Ba0pfwNSZeFQjSOJa4-2BANRLeEq37Ccn4FizlV-2BivbSFM3dL-2Bb4Xfs6H4U9oRsh20TeSU8=
+1h8o2LLFv-2BDcwgdQHbSvKxMsbugUwTv-2FpTLXUWE6Iq1wiSlu-2BYCy8XGjppWNm6kys-2B9=
+6h8lIH-2B-2B22FkF6pb2F4FmuAi47G9KjgM7-2Boh7TgUhpO0znpFqgNYsPVz-2FtwqYfTFKJd=
+OtJlz4RWO3-2FVrSTuS96ScEib-2BviSeCrmOuaiH-2Bc" alt=3D"" width=3D"1" height=
+=3D"1" border=3D"0" style=3D"height:1px !important;width:1px !important;bor=
+der-width:0 !important;margin-top:0 !important;margin-bottom:0 !important;m=
+argin-right:0 !important;margin-left:0 !important;padding-top:0 !important;=
+padding-bottom:0 !important;padding-right:0 !important;padding-left:0 !impo=
+rtant;"/></body>
+</html>
+
+--cf20fdb8a37e923ababf6a0ebf11b48b3c4dc5aef049f5f5aec0ba6e9a16--

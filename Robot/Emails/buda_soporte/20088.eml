@@ -1,0 +1,1039 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 2002:a5b:5d1:0:0:0:0:0 with SMTP id w17csp451129ybp;
+        Fri, 12 Feb 2021 04:46:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJysleyJUTRr5oFE2VDbBleyHDtrvXioZiK/PWchbKZEPbWJeB7+Tq8/yxuyGQJO2JCP7IMU
+X-Received: by 2002:a17:90a:ce89:: with SMTP id g9mr2601217pju.42.1613134013824;
+        Fri, 12 Feb 2021 04:46:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1613134013; cv=none;
+        d=google.com; s=arc-20160816;
+        b=t8oYmeoj70Y8ZT27lM1pPvmj7Ldg2KKTotB8eyhGa/5Ka7TYtSP6eqt2u/ciImoZPJ
+         t9vJAM/Pz1YFJedt56l4T1KyO+BXewm9bJM+i+5HJ329sW4IQJ/qdxyOHl5oXXxZ8Zav
+         dy1NlM7q/+yonRJWqDDcYFL75MoeD9Mu7AbDKgBEvsQzK1wd2NYF5Vmq31XrHa/SJNPw
+         Tijfx2aWD1BWZOAIZnI2tk2MOz/XtbG6AClAVOzAmlMcmHt4rDNajYk26wX/40TweSHm
+         Vo4tKEOb18XO94FENjZhmSNNKYVzEI87lHBi1pel/8+E0WOYANAA5YL7ax2ppWMecK+j
+         FDbA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:from:message-id:subject:reply-to:date:list-unsubscribe
+         :mime-version:to:dkim-signature;
+        bh=UR8072EIHlJZ/j/iqpf7MxHI2xoIco6Bh63KaTMwcBs=;
+        b=vq96nmcWawGGsnh1L7YvWzM6Sy1bjxG0TOolLbrur6ZuTtxcTry6aqftDC4lPByLLO
+         zUqozkmyPSPfL0IVrbgJ++NPsl7gQb9yDiphzjz6d0BTp44Thw87B2X0NxR/9xAoCPn7
+         5wWRUXm1AlqLohar8jygpRygnVBmRgFwG5RcFjYbXznK9OPq1ThTpU3n4/Nb7XaaK+SI
+         uoFMEpJXDNl1gdNLFah85ApsW2xMZZ2Vm2U+6/Z8SAVaePze3ZkHorLY/E6Z2ybLkPLJ
+         8BwvPKGUzo+mH+T047s3rr0uyn3mwHx/q/9hIe9eayf1TKEvj6lGKgpE7fH7Q0BugEmm
+         PRRw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@buda.com header.s=intercom header.b=E5PUM9ga;
+       spf=pass (google.com: domain of bounces+62058607636568@rp.budacom.intercom-mail.com designates 192.174.84.121 as permitted sender) smtp.mailfrom=bounces+62058607636568@rp.budacom.intercom-mail.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+Return-Path: <bounces+62058607636568@rp.budacom.intercom-mail.com>
+Received: from mta-174-84-121.intercom.com.sparkpostmail.com (mta-174-84-121.intercom.com.sparkpostmail.com. [192.174.84.121])
+        by mx.google.com with ESMTPS id gj9si7523821pjb.46.2021.02.12.04.46.53
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 12 Feb 2021 04:46:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+62058607636568@rp.budacom.intercom-mail.com designates 192.174.84.121 as permitted sender) client-ip=192.174.84.121;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@buda.com header.s=intercom header.b=E5PUM9ga;
+       spf=pass (google.com: domain of bounces+62058607636568@rp.budacom.intercom-mail.com designates 192.174.84.121 as permitted sender) smtp.mailfrom=bounces+62058607636568@rp.budacom.intercom-mail.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+X-MSFBL: xRngRPYoL4O7iEicRfhTbAlKHU3+w0NYjsRp9D5JdMI=|eyJyIjoiZWR1YXJkby5
+	zaW5uaW5nQGdtYWlsLmNvbSIsInN1YmFjY291bnRfaWQiOiI3NTUxIiwidGVuYW5
+	0X2lkIjoiaW50ZXJjb20iLCJjdXN0b21lcl9pZCI6IjEiLCJtZXNzYWdlX2lkIjo
+	iNjAyMWJkNzgyNjYwODVlNjNmNzcifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=buda.com;
+	s=intercom; t=1613134013; i=@buda.com;
+	bh=UR8072EIHlJZ/j/iqpf7MxHI2xoIco6Bh63KaTMwcBs=;
+	h=To:Content-Type:Date:Subject:Message-ID:From;
+	b=E5PUM9gaPHdyrtmsRyYOdnk6BJcNFZconuiKXY3hwM3/Yn+3Qlr9yyE4JWFObOqbf
+	 JtIxpbpgAAyAk1/6uSniA9ZUbj9jShvjEqkJzUmcO3Dz5bZ48sSeQ671gbPbQQ+hqE
+	 YUqde9rq+ii0i00IO5HoQ52zTVfRaq7259/C1Xxw=
+To: eduardo.sinning@gmail.com
+Content-Type: multipart/alternative; boundary="_----0xI8Bi1WGKDYnKRoB5y0pA===_A3/77-48573-DB876206"
+MIME-Version: 1.0
+List-Unsubscribe: <mailto:unsubscribe_62058607636568_5a5817fd2f1161381d418cdf@budacom.intercom-mail.com>, <https://budacom.intercom-mail.com/subscriptions/unsubscribe?app_id=lmgaeqxd&conversation_id=62058607636568&user_id=5a5817fd2f1161381d418cdf>
+Date: Fri, 12 Feb 2021 12:46:53 +0000
+Reply-To: "Diego de Buda.com" <diego.vera@budacom.intercom-mail.com>
+X-Mailgun-Tag: user-personal
+X-Intercom-App-Id: lmgaeqxd
+X-Intercom-Bin: 160
+Subject: =?utf-8?B?8J+agCBHcmFkdWFsbHksIHRoZW4gc3VkZGVubHk=?=
+Message-ID: <4e26a6c1-62dd3f2b-1613134012-62058607636568@budacom.intercom-mail-160.com>
+X-Report-Abuse: Please report spam or abuse to abuse@intercom.io
+From: "Diego de Buda.com" <soporte@buda.com>
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Mailgun-Variables: {"app_id":"lmgaeqxd","conversation_id":"62058607636568","user_id":"5a5817fd2f1161381d418cdf","intercom_localized_email_content_id":"2938892"}
+Feedback-ID: email:40894948:lmgaeqxd:intercom
+
+--_----0xI8Bi1WGKDYnKRoB5y0pA===_A3/77-48573-DB876206
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Que gusto verte por ac=C3=A1. Esta semana ha sido impresionante en t=C3=A9r=
+minos de adopci=C3=B3n, nunca hab=C3=ADamos visto empresas tan grandes como=
+ las que te contaremos ac=C3=A1 comprando bitcoins o al menos interesadas e=
+n saber m=C3=A1s. =0D=0A Escucha el Bud=C3=ADn Semanal ac=C3=A1 =0D=0A [Ima=
+ge "spotify-podcast-badge-wht-grn-330x80.png"] (Click aqu=C3=AD si no tiene=
+s Spotify) =0D=0A Me imagino que ya lo sabes, y si no, te lo digo ahora: Te=
+sla compr=C3=B3 bitcoins. Si quieres saber cu=C3=A1nto y por qu=C3=A9, te r=
+ecomiendo que sigas leyendo... =0D=0A [Image "Tabla+precios+Diego+%2821%29.=
+png"] IR A BUDA.COM Bitcoin en el top 10 de activos m=C3=A1s valiosos del m=
+undo =0D=0A As=C3=AD es, le=C3=ADste bien, Bitcoin ya se encuentra dentro d=
+e los 10 activos m=C3=A1s valiosos de todo el mundo, superando a Tesla, Vis=
+a, Facebook, entre otros gigantes. Ac=C3=A1 te dejo la imagen: =0D=0A [Imag=
+e "8FttrjwmjEerQUPmHzK2H4MLWvajnfHGL6Juo9MTcayrjPoNWaDQoJGeNdeXPVB8hCTF0r-5=
+i4wwDtOjMZopGhqmIepsvqfII0qmXSoC8drY7XhgKrkNqEmeuR07hBavi9RbdCTe"] (Toca la=
+ imagen para ir a la tabla completa) =0D=0A Gracias Batman =0D=0A Luego de =
+la reciente compra de bitcoins por parte de Tesla (detalles m=C3=A1s abajo)=
+, la capitalizaci=C3=B3n de mercado de Bitcoin est=C3=A1 cercana a los USD =
+$900 billones y su precio ronda los USD $48.000. =0D=0A No podemos ver esta=
+ tabla sin agradecer al justiciero de Bitcoin entre las grandes empresas, a=
+s=C3=AD es, estoy nuevamente hablando del CEO de MicroStrategy, Michael Say=
+lor. Aparentemente, y seg=C3=BAn sus palabras en una entrevista en televisi=
+=C3=B3n estadounidense, Saylor podr=C3=ADa haber sido el responsable (en pa=
+rte) de la masiva compra de bitcoins de Tesla. Esto respondi=C3=B3 cuando l=
+e preguntaron si hab=C3=ADa hablado con Elon Musk: =0D=0A =E2=80=9CEstoy li=
+mitado a lo que puedo decir, porque hay reglas de negocios que no me permit=
+en comunicar ciertas cosas, pero ya sabes lo que dijimos en Twitter y lo qu=
+e hemos venido diciendo, que es una estupenda idea=E2=80=9D. =0D=0A Esa res=
+puesta, al menos a mi parecer, suena a que si convers=C3=B3 con el CEO de T=
+esla. =0D=0A [Image "E1Ans1qEvNjC_hBhdYP_ax56qXThyID-RzsdswZNmZjRxy3celKuOE=
+zslU4F2uSUJe2kveBtncJM5viFxncZAbAngKeygwQPR9CtVbZltUhCGkRG4bhLmW9n1K-XoTYmK=
+Hif_h9B"] =E2=80=9CFelicitaciones y gracias a Elon Musk y Tesla por haber a=
+gregado Bitcoin a su hoja de balance. El mundo entero se beneficiar=C3=A1 d=
+e su liderazgo=E2=80=9D. =0D=0A Hace unos cuantos d=C3=ADas, te cont=C3=A1b=
+amos que MicroStrategy hab=C3=ADa organizado una convenci=C3=B3n para conta=
+rle a las empresas su estrategia en la compra de bitcoins. Saylor dice que =
+m=C3=A1s de 7.000 empresarios asistieron a ese evento. =0D=0A Captando al o=
+ro y =C2=BFa Apple=3F =0D=0A En la tabla de arriba puedes ver que el oro si=
+gue siendo el activo m=C3=A1s valioso del mundo por capitalizaci=C3=B3n de =
+mercado, con cerca de USD $11.7 trillones. En este newsletter pasado, te co=
+nt=C3=A1bamos que los inversionistas estaban prefiriendo Bitcoin al oro, y =
+con esta movida de Tesla vemos que claramente esta tendencia se acent=C3=BA=
+a, pero hay otro jugador que podr=C3=ADa entrar a la cancha con m=C3=A1s de=
+ USD $4 billones, estoy hablando de Apple. Veamos: =0D=0A - Tesla invirti=
+=C3=B3 aprox. un 6.5% (USD $1.5 b) de sus reservas de dinero en Bitcoin. =
+=0D=0A- El patrimonio total (total equity) de Tesla a diciembre del 2020 er=
+a de aprox. USD $22 billones. =0D=0A- El patrimonio total de Apple a fines =
+del a=C3=B1o pasado era de USD $65.3 billones. =0D=0A- Si Apple decide segu=
+ir los pasos de Tesla e invertir el 6.5% de sus reservas de dinero, estar=
+=C3=ADamos hablando de USD $4.2 billones a Bitcoin. =0D=0A- S=C3=B3lo con e=
+sa inversi=C3=B3n agregada a la capitalizaci=C3=B3n de mercado de Bitcoin, =
+el precio superar=C3=ADa los USD $50.000. =0D=0A =C2=BFEs esto posible=3F =
+=C2=BFPodr=C3=ADa Apple realmente comprar bitcoins=3F Algunos expertos, com=
+o Mitch Steves, analista de RBC Capital Markets, creen que si, o al menos e=
+s lo que deber=C3=ADan hacer. =0D=0A =E2=80=9CLa empresa (Apple) podr=C3=AD=
+a generar f=C3=A1cilmente USD $40 billones de d=C3=B3lares en ingresos anua=
+les si decidiera incluir criptomonedas en su Apple Wallet. Es una oportunid=
+ad multimillonaria para la firma=E2=80=9D, dijo el analista de la firma can=
+adiense a sus clientes. =0D=0A No sabemos si Apple realmente decidir=C3=A1 =
+hacer como Tesla e invertir en Bitcoin, pero sin duda ser=C3=ADa una notici=
+a espectacular que la empresa que transa en bolsa m=C3=A1s grande del mundo=
+ decida hacerlo. Tantas buenas noticias y estamos reci=C3=A9n en febrero, q=
+u=C3=A9 tremendo a=C3=B1o se nos viene para esta industria!! ATENCI=C3=93N:=
+ Recuerda que si est=C3=A1s pensando seguir los pasos de Tesla y comprar bi=
+tcoins, debes hacerlo siempre lo m=C3=A1s informado y responsablemente posi=
+ble, te aseguro que todas las empresas que han entrado a la industria lo ha=
+cen despu=C3=A9s de haberlo estudiado mucho. Nunca le env=C3=ADes dinero o =
+criptomonedas a nadie que te asegure ganancias. NO existen las rentabilidad=
+es aseguradas. =0D=0A Lee ac=C3=A1 nuestra Gu=C3=ADa de Inversi=C3=B3n Resp=
+onsable =0D=0A Vamos con las noticias cripto de la semana =0D=0A =0D=0A Tes=
+la compr=C3=B3 USD $1.5 billones en bitcoins =0D=0A [Image "b6v-nR5i8FENaWU=
+2tteNIaAXU5dLW-tpdJ0sQusKjhlojocWWrgyRZ0TUFSb8I7rfsk9IbKLQS_HGxsvr1bLLRXeuS=
+BIvB8Ks8x6LvF7kerGf7iS2j10_xdBnfgnvBjWBmA3gXaO"] La empresa del multimillon=
+ario Elon Musk compr=C3=B3 42.857 bitcoins a un total de USD $1.5 billones.=
+ =0D=0A La transacci=C3=B3n fue informada por la firma a la Comisi=C3=B3n d=
+e Bolsa y Valores de Estados Unidos (SEC) el lunes. =0D=0A - Adem=C3=A1s, e=
+n el documento que puedes leer ac=C3=A1, Tesla dijo que esperan aceptar bit=
+coins como m=C3=A9todo de pago para sus productos en un futuro cercano. =0D=
+=0A- El precio de Bitcoin aument=C3=B3 cerca de USD $9.000 despu=C3=A9s del=
+ anuncio, anotando as=C3=AD el alza m=C3=A1s grande de la criptomoneda en u=
+n s=C3=B3lo d=C3=ADa. =0D=0A- Actualmente los bitcoins de Tesla tienen un v=
+alor de aprox. USD $2 billones. =0D=0A Ahora, la capitalizaci=C3=B3n de mer=
+cado de Bitcoin es mayor a la de Tesla. =0D=0A Leer m=C3=A1s... =0D=0A Mast=
+ercard permitir=C3=A1 aceptar pagos con criptomonedas =0D=0A El CEO de la e=
+mpresa dijo que integrar=C3=A1n pagos con criptos =E2=80=9Cdirectamente es =
+su red=E2=80=9D. =0D=0A El gigante de pagos Mastercard estar=C3=ADa cerca d=
+e aceptar pagos con criptomonedas seg=C3=BAn su CEO, Michael Miebach, aunqu=
+e a=C3=BAn no especifican cu=C3=A1l usar=C3=A1n. =0D=0A - La iniciativa per=
+mitir=C3=A1 que los due=C3=B1os de negocios acepten pagos con criptos direc=
+tamente. =0D=0A- La noticia viene despu=C3=A9s de que la semana pasada se s=
+upiera que su principal competencia, Visa, est=C3=A1 trabajando en un progr=
+ama relacionado con Bitcoin. =0D=0A El vicepresidente del =C3=A1rea de Bloc=
+kchain y activos digitales de Mastercard dijo: =0D=0A =E2=80=9CNuestra filo=
+sof=C3=ADa respecto a las criptomonedas es sencilla: Se trata de poder deci=
+dir. Mastercard no est=C3=A1 aqu=C3=AD para recomendarte usar criptomonedas=
+, pero estamos para permitirle a nuestros usuarios, comerciantes y empresar=
+ios mover valor digital, al fin y al cabo, es tu dinero=E2=80=9D. =0D=0A Le=
+er m=C3=A1s... =0D=0A Chile avanza en la Ley Fintech =0D=0A Hace un par de =
+d=C3=ADas, la Comisi=C3=B3n para el Mercado Financiero (CMF) public=C3=B3 u=
+n documento (que puedes leer ac=C3=A1) en el cual presentan un anteproyecto=
+ de Ley Fintech entregado al Ministerio de Hacienda hace 3 meses. =0D=0A Es=
+te anteproyecto espera "otorgar un marco jur=C3=ADdico y reglamentario a la=
+s plataformas de financiamiento colectivo -conocidas como Crowfunding- y ot=
+ras actividades Fintech relacionadas al mercado de valores" y consta de 5 p=
+ilares fundamentales: =0D=0A - Proporcionalidad =0D=0A- Neutralidad =0D=0A-=
+ Integralidad =0D=0A- Flexibilidad =0D=0A- Modularidad =0D=0A Si quieres ah=
+ondar en qu=C3=A9 significa cada t=C3=A9rmino te invito a leer el anteproye=
+cto ac=C3=A1. =0D=0A Uno de los elementos clave de la propuesta es que en l=
+a denominaci=C3=B3n de =E2=80=9Cinstrumentos financieros=E2=80=9D se incluy=
+=C3=B3 a los criptoactivos y se les defini=C3=B3 como la =E2=80=9Crepresent=
+aci=C3=B3n digital de unidades de intercambio de dinero, bienes o servicios=
+=E2=80=9D. =0D=0A En Buda.com estamos muy entusiasmados con que la anhelada=
+ Ley Fintech est=C3=A9 viendo, de a poco, la luz y d=C3=B3nde tenemos un ca=
+mino importante por recorrer. Estamos convencidos de que esta iniciativa es=
+ una oportunidad =C3=BAnica para el Estado de trabajar en un marco regulato=
+rio acorde que permita la entrada de nuevos actores, mejore la libre compet=
+encia, la competitividad y el normal desarrollo de la innovaci=C3=B3n, comp=
+atibilizando el resguardo por la estabilidad del sistema financiero junto c=
+on la transparencia, integridad y protecci=C3=B3n de los consumidores. =0D=
+=0A Jim Cramer dice que es irresponsable que una empresa no tenga bitcoins =
+=0D=0A El ex administrador de fondos de cobertura y presentador de TV estad=
+ounidense dijo en CNBC que =E2=80=9Ctodos los tesoreros (de empresas) deber=
+=C3=ADan ir donde los directores y proponerles asignar una peque=C3=B1a par=
+te de su dinero a Bitcoin=E2=80=9D. =0D=0A - Cramer agreg=C3=B3 que es =E2=
+=80=9Ccasi irresponsable no inclu=C3=ADrlo=E2=80=9D, refiriendose a las emp=
+resas. =0D=0A- Adem=C3=A1s, advirti=C3=B3 que la bolsa de valores est=C3=A1=
+ en una =E2=80=9Ccarretera hacia una zona peligrosa=E2=80=9D. =0D=0A Jim Cr=
+amer tiene bitcoins desde septiembre del a=C3=B1o pasado, como te lo contam=
+os en este newsletter. =0D=0A Leer m=C3=A1s... =0D=0A Twitter est=C3=A1 eva=
+luando invertir en Bitcoin =0D=0A El Director Financiero de Twitter dijo en=
+ CNBC que incluso est=C3=A1n evaluando pagar a empleados con la criptomoned=
+a. =0D=0A En entrevista con la cadena de televisi=C3=B3n estadounidense CNB=
+C, el Director Financiero de Twitter, Ned Segal, dijo que =E2=80=9Cest=C3=
+=A1n mirando de cerca las acciones de las otras empresas (refiri=C3=A9ndose=
+ a la reciente compra de Tesla)=E2=80=9D. =0D=0A - Segal agreg=C3=B3 que es=
+t=C3=A1n pensando en incluir bitcoin en su balance corporativo, pero que a=
+=C3=BAn no han hecho cambios. =0D=0A- =E2=80=9CHemos pensado en c=C3=B3mo p=
+agar=C3=ADamos a nuestros empleados y vendedores en bitcoins si as=C3=AD lo=
+ pidieran=E2=80=9D, dijo el Director Financiero de la empresa. =0D=0A Ned S=
+egal estableci=C3=B3 que uno de las principales razones por las que comprar=
+=C3=ADan bitcoin es si las personas les pidieran hacer transacciones con la=
+ criptomoneda. Al parecer nos est=C3=A1 invitando a que sigamos twitteando =
+sobre Bitcoin... =0D=0A - Recordemos que el cofundador y CEO de Twitter, Ja=
+ck Dorsey, ha apoyado constantemente a Bitcoin. Incluso llev=C3=B3 a su otr=
+a empresa, Square, a comprar bitcoins el a=C3=B1o pasado por una suma de US=
+D $ 50 millones. =0D=0A Leer m=C3=A1s... =0D=0A =C2=A1No te lo pierdas! =0D=
+=0A El pr=C3=B3ximo lunes 15 de febrero estar=C3=A1n conversando el CEO de =
+Buda.com, Guillermo Torrealba y la cofundadora de Economina, Javiera Quirog=
+a sobre =E2=80=9CAdopci=C3=B3n masiva en Bitcoin=E2=80=9D. =0D=0A [Image "G=
+r%C3%A1ficas+para+el+blog+y+newsletter%2869%29.png"] Tocar=C3=A1n todos los=
+ temas que ac=C3=A1 arriba te contamos y har=C3=A1n un an=C3=A1lisis de lo =
+que se viene para Bitcoin en materia de adopci=C3=B3n por parte de empresas=
+ y personas. =0D=0A - Horario: =F0=9F=87=A8=F0=9F=87=B1 Chile y =F0=9F=87=
+=A6=F0=9F=87=B7 Argentina: 21:00 hrs. | =F0=9F=87=A8=F0=9F=87=B4 Colombia y=
+ =F0=9F=87=B5=F0=9F=87=AA Per=C3=BA: 19:00 hrs. =0D=0A - Lugar: Instagram d=
+e Buda.com @budapuntocom y Economina @economina_cl =0D=0A =C2=A1=C2=A1Te es=
+peramos!! =0D=0A S=C3=ADguenos en redes sociales: =0D=0A YouTube | Twitter =
+| Instagram | Facebook | LinkedIn
+--_----0xI8Bi1WGKDYnKRoB5y0pA===_A3/77-48573-DB876206
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w=
+3.org/TR/REC-html40/loose.dtd">=0D=0A<html>=0D=0A<head>=0D=0A<meta http-equ=
+iv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">=0D=0A<style typ=
+e=3D"text/css">=0D=0A  #PreviewIntercomModal .ic_message_content h1,=0D=0A =
+ #PreviewIntercomModal .ic_message_content h2 {=0D=0A    color: #0072b0 !im=
+portant;=0D=0A  }=0D=0A  #PreviewIntercomModal .ic_message_without_image > =
+.ic_message_internals > .ic_message_content {=0D=0A    border-color: #0072=
+b0 !important;=0D=0A  }=0D=0A  #PreviewIntercomModal .ic_user_comment_body =
+{=0D=0A    background-color: #0072b0 !important;=0D=0A    border-color: #00=
+72b0 !important;=0D=0A  }=0D=0A  #PreviewIntercomModal .ic_message_content =
+a {=0D=0A    color: #0072b0 !important;=0D=0A  }=0D=0A  #PreviewIntercomMod=
+al .ic_message_content a:hover {=0D=0A    color: #0072b0 !important;=0D=0A =
+ }=0D=0A  #PreviewIntercomModal .ic_user_comment_body {=0D=0A    background=
+-color: #0072b0 !important;=0D=0A    border-color: #0072b0 !important;=0D=
+=0A  }=0D=0A  .intercom-h2b-button br {=0D=0A    display: none;=0D=0A  }=0D=
+=0A</style>=0D=0A<style type=3D"text/css" data-premailer=3D"ignore">=0D=0A =
+ /* styles in here will not be inlined. Use for media queries etc */=0D=0A =
+ /* force Outlook to provide a "view in browser" menu link. */=0D=0A  #outl=
+ook a {padding:0;}=0D=0A  /* prevent Webkit and Windows Mobile platforms fr=
+om changing default font sizes.*/=0D=0A  body{width:100% !important; -webki=
+t-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}=
+=0D=0A  /* force Hotmail to display emails at full width */=0D=0A  .Externa=
+lClass {width:100%;}=0D=0A  /* force Hotmail to display normal line spacing=
+. http://www.emailonacid.com/forum/viewthread/43/ */=0D=0A  .ExternalClass=
+, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClas=
+s td, .ExternalClass div {line-height: 100%;}=0D=0A  /* fix a padding issue=
+ on Outlook 07, 10 */=0D=0A  table td {border-collapse: collapse;}=0D=0A  t=
+able {=0D=0A    table-layout: fixed;=0D=0A  }=0D=0A=0D=0A  @media only scre=
+en and (max-width: 480px)=0D=0A  {=0D=0A    br.hidden { display: block !imp=
+ortant; }=0D=0A    td.padding_cell { display: none !important; }=0D=0A    t=
+able.message_footer_table td {=0D=0A      font-size: 11px !important;=0D=0A=
+    }=0D=0A  }=0D=0A  @media only screen and (max-device-width: 480px)=0D=
+=0A  {=0D=0A    br.hidden { display: block !important; }=0D=0A    td.paddin=
+g_cell { display: none !important; }=0D=0A    table.message_footer_table td=
+ {=0D=0A      font-size: 11px !important;=0D=0A    }=0D=0A  }=0D=0A</style>=
+=0D=0A=0D=0A<style type=3D"text/css" data-premailer=3D"ignore">=0D=0A  /* s=
+tyles in here will not be inlined. Use for media queries etc */=0D=0A  /* f=
+orce Outlook to provide a "view in browser" menu link. */=0D=0A  #outlook a=
+ {padding:0;}=0D=0A  /* prevent Webkit and Windows Mobile platforms from ch=
+anging default font sizes.*/=0D=0A  body{width:100% !important; -webkit-tex=
+t-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}=0D=0A =
+ /* force Hotmail to display emails at full width */=0D=0A  .ExternalClass =
+{width:100%;}=0D=0A  /* force Hotmail to display normal line spacing. http:=
+//www.emailonacid.com/forum/viewthread/43/ */=0D=0A  .ExternalClass, .Exter=
+nalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .E=
+xternalClass div {line-height: 100%;}=0D=0A  /* fix a padding issue on Outl=
+ook 07, 10 */=0D=0A  table td {border-collapse: collapse;}=0D=0A=0D=0A  @me=
+dia only screen and (max-width: 480px)=0D=0A  {=0D=0A    br.hidden { displa=
+y: block !important; }=0D=0A    td.padding_cell { display: none !important;=
+ }=0D=0A    table.message_footer_table td {=0D=0A      font-size: 11px !imp=
+ortant;=0D=0A    }=0D=0A  }=0D=0A  @media only screen and (max-device-width=
+: 480px)=0D=0A  {=0D=0A    br.hidden { display: block !important; }=0D=0A  =
+  td.padding_cell { display: none !important; }=0D=0A    table.message_foot=
+er_table td {=0D=0A      font-size: 11px !important;=0D=0A    }=0D=0A  }=0D=
+=0A</style>=0D=0A=0D=0A<style type=3D"text/css">=0D=0A=0D=0A  .admin_name b=
+ {=0D=0A    color: #6f6f6f;=0D=0A  }=0D=0A=0D=0A  .date_cell a {=0D=0A    c=
+olor: #999999;=0D=0A  }=0D=0A=0D=0A  .comment_header_td {=0D=0A    width: 1=
+00%;=0D=0A    background: #210e4a;=0D=0A    border: none;=0D=0A    font-fam=
+ily: 'Helvetica Neue',Arial,sans-serif=0D=0A  }=0D=0A=0D=0A  .content-td {=
+=0D=0A    color: #525252;=0D=0A    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.=
+05);=0D=0A    font-family: Helvetica, Arial, sans-serif;=0D=0A  }=0D=0A=0D=
+=0A  .content-td h1 {=0D=0A    font-size: 26px;=0D=0A    line-height: 33px;=
+=0D=0A    color: #282F33;=0D=0A    margin-bottom: 7px;=0D=0A    margin-top:=
+ 30px;=0D=0A    font-weight: normal;=0D=0A  }=0D=0A=0D=0A  .content-td h1 a=
+ {=0D=0A    color: #282F33;=0D=0A  }=0D=0A=0D=0A  .content-td h2 {=0D=0A   =
+ font-size: 18px;=0D=0A    font-weight: bold;=0D=0A    color: #282F33;=0D=
+=0A    margin: 30px 0 7px;=0D=0A  }=0D=0A=0D=0A  .content-td h2 a {=0D=0A  =
+  color: #282F33;=0D=0A  }=0D=0A=0D=0A  .content-td h1 + h2 {=0D=0A    marg=
+in-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .content-td h2 + h1 {=0D=0A    =
+margin-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .content-td h3 ,=0D=0A  .co=
+ntent-td h4 ,=0D=0A  .content-td h5 {=0D=0A    font-size: 16px;=0D=0A    fo=
+nt-weight: bold;=0D=0A    margin-bottom: 5px;=0D=0A  }=0D=0A=0D=0A  .conten=
+t-td p {=0D=0A    margin: 0 0 17px 0;=0D=0A    line-height: 1.5;=0D=0A  }=
+=0D=0A=0D=0A  .content-td p img,=0D=0A  .content-td h1 img,=0D=0A  .content=
+-td h2 img,=0D=0A  .content-td li img,=0D=0A  .content-td .intercom-h2b-but=
+ton img {=0D=0A    margin: 0;=0D=0A    padding: 0;=0D=0A  }=0D=0A=0D=0A  .c=
+ontent-td a {=0D=0A    color: #1251ba;=0D=0A  }=0D=0A=0D=0A  .content-td p.=
+intro {=0D=0A    font-size: 20px;=0D=0A    line-height: 30px;=0D=0A  }=0D=
+=0A=0D=0A  .content-td blockquote {=0D=0A    margin: 40px 0;=0D=0A    font-=
+style: italic;=0D=0A    color: #8C8C8C;=0D=0A    font-size: 18px;=0D=0A    =
+text-align: center;=0D=0A    padding: 0 30px;=0D=0A    font-family: Georgia=
+, sans-serif;=0D=0A    quotes: none;=0D=0A  }=0D=0A=0D=0A  .content-td bloc=
+kquote a {=0D=0A    color: #8C8C8C;=0D=0A  }=0D=0A=0D=0A  .content-td ul {=
+=0D=0A    list-style: disc;=0D=0A    margin: 0 0 20px 40px;=0D=0A    paddin=
+g: 0;=0D=0A  }=0D=0A=0D=0A  .content-td ol {=0D=0A    list-style: decimal;=
+=0D=0A    margin: 0 0 20px 40px;=0D=0A    padding: 0;=0D=0A  }=0D=0A=0D=0A =
+ .content-td img {=0D=0A    margin: 0;=0D=0A    max-width: 100%;=0D=0A  }=
+=0D=0A=0D=0A  .content-td .intercom-container {=0D=0A    margin-bottom: 16p=
+x;=0D=0A  }=0D=0A=0D=0A  .content-td div.intercom-container {=0D=0A    marg=
+in-bottom: 17px;=0D=0A    margin-top: 17px;=0D=0A    line-height: 0;=0D=0A =
+ }=0D=0A=0D=0A  .content-td hr {=0D=0A    border: none;=0D=0A    border-top=
+: 1px solid #DDD;=0D=0A    border-bottom: 0;=0D=0A    margin: 50px 30% 50px=
+ 30%;=0D=0A  }=0D=0A=0D=0A  /**/=0D=0A  .content-td pre {=0D=0A    margin: =
+0 0 10px;=0D=0A    padding: 10px;=0D=0A    background-color: #f5f5f5;=0D=0A=
+    overflow: auto;=0D=0A  }=0D=0A=0D=0A  .content-td pre code {=0D=0A    f=
+ont-family: Courier, monospace;=0D=0A    font-size: 14px;=0D=0A    line-hei=
+ght: 1.4;=0D=0A    white-space: nowrap;=0D=0A  }=0D=0A=0D=0A  table.interco=
+m-container {=0D=0A    margin: 17px 0;=0D=0A  }=0D=0A  table.intercom-conta=
+iner.intercom-align-center {=0D=0A    margin-left: auto;=0D=0A    margin-ri=
+ght: auto;=0D=0A  }=0D=0A=0D=0A  table.intercom-container td {=0D=0A    bac=
+kground-color: #210e4a;=0D=0A    padding: 12px 35px;=0D=0A    border-radius=
+: 3px;=0D=0A    font-family: Helvetica, Arial, sans-serif;=0D=0A    margin:=
+ 0;=0D=0A  }=0D=0A=0D=0A  .content-td .intercom-h2b-button {=0D=0A    font-=
+size: 14px;=0D=0A    color: #FFF;=0D=0A    font-weight: bold;=0D=0A    disp=
+lay: inline-block;=0D=0A    text-decoration: none;=0D=0A    background-colo=
+r: #210e4a;=0D=0A    border: none !important;=0D=0A    =0D=0A  }=0D=0A=0D=
+=0A  a.intercom-h2b-button {=0D=0A    background-color: #0E4595;=0D=0A    b=
+order-radius: 5px;=0D=0A    border: 1px solid rgba(0,0,0,0.2);=0D=0A    col=
+or:#fff;=0D=0A    display: inline-block;=0D=0A    font-size: 15px;=0D=0A   =
+ font-weight: bold;=0D=0A    min-height: 20px;=0D=0A    text-decoration: no=
+ne;=0D=0A  }=0D=0A=0D=0A  .content-td .intercom-h2b-button:hover {=0D=0A   =
+ background-color:#261057;=0D=0A  }=0D=0A=0D=0A  .message_footer_table .ava=
+tar {=0D=0A    -ms-interpolation-mode: bicubic;=0D=0A    -webkit-background=
+-clip: padding-box;=0D=0A    -webkit-border-radius: 20px;=0D=0A    backgrou=
+nd-clip: padding-box;=0D=0A    border-radius: 20px;=0D=0A    display: inlin=
+e-block;=0D=0A    height: 40px;=0D=0A    max-width: 100%;=0D=0A    outline:=
+ none;=0D=0A    text-decoration: none;=0D=0A    width: 40px;=0D=0A  }=0D=0A=
+=0D=0A  .powered-by-table .powered-by-text a {=0D=0A    font-weight: bold;=
+=0D=0A    text-decoration: none;=0D=0A    color: #999;=0D=0A  }=0D=0A=0D=0A=
+  .main_wrapper {=0D=0A    padding: 0 20px;=0D=0A  }=0D=0A=0D=0A  .margin-a=
+rrow {=0D=0A    display: none;=0D=0A    =0D=0A    visibility:hidden;=0D=0A =
+   width:0;=0D=0A    height:0;=0D=0A    max-width: 0;=0D=0A    max-height: =
+0;=0D=0A    overflow: hidden;=0D=0A    opacity: 0;=0D=0A  }=0D=0A=0D=0A  .c=
+ontent-td > :first-child {=0D=0A    margin-top: 0;=0D=0A    padding-top: 0;=
+=0D=0A  }=0D=0A=0D=0A  table.intercom-container td > a.intercom-h2b-button =
+{=0D=0A     padding: 0px;=0D=0A   }=0D=0A</style>=0D=0A=0D=0A<!-- Responsiv=
+e-->=0D=0A<style type=3D"text/css" data-premailer=3D"ignore">=0D=0A=0D=0A  =
+@media screen and (max-width: 635px) {=0D=0A    .main-wrap {=0D=0A      wid=
+th: 100% !important;=0D=0A    }=0D=0A  }=0D=0A=0D=0A  @media screen and (ma=
+x-width: 480px) {=0D=0A    .content-td {=0D=0A      padding: 30px 15px !imp=
+ortant;=0D=0A    }=0D=0A    .content-td h1 {=0D=0A      margin-bottom: 5px;=
+=0D=0A    }=0D=0A    .message_footer_table .space {=0D=0A      width: 20px =
+!important;=0D=0A    }=0D=0A=0D=0A    .message_footer_table .arrow-wrap {=
+=0D=0A      padding-left: 20px !important;=0D=0A    }=0D=0A=0D=0A    .messa=
+ge_footer_table .admin_name b{=0D=0A      display: block !important;=0D=0A =
+   }=0D=0A=0D=0A    .main_wrapper {=0D=0A      padding: 0;=0D=0A    }=0D=0A=
+=0D=0A    .image-arrow {=0D=0A      display: none !important;=0D=0A    }=0D=
+=0A=0D=0A    .margin-arrow {=0D=0A      display: table !important;=0D=0A   =
+   visibility:visible !important;=0D=0A      width: 100% !important;=0D=0A =
+     height: auto !important;=0D=0A      max-width: none !important;=0D=0A =
+     max-height: none !important;=0D=0A      opacity: 1 !important;=0D=0A  =
+    overflow: visible !important;=0D=0A    }=0D=0A=0D=0A    .comment_body {=
+=0D=0A      border-bottom: 1px solid #DDD !important;=0D=0A    }=0D=0A=0D=
+=0A    .footer-td-wrapper {=0D=0A      display: block !important;=0D=0A    =
+  width: 100% !important;=0D=0A      text-align: left !important;=0D=0A    =
+}=0D=0A    .footer-td-wrapper .date_cell {=0D=0A      text-align: left !imp=
+ortant;=0D=0A      padding: 15px 0 0 20px !important;=0D=0A    }=0D=0A  }=
+=0D=0A=0D=0A</style>=0D=0A=0D=0A=0D=0A<style type=3D"text/css" data-premail=
+er=3D"ignore">=0D=0A  .content-td blockquote + * {=0D=0A    margin-top: 20p=
+x !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content-td h1 {=0D=0A  =
+  padding: 20px 0 !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content=
+-td h2 {=0D=0A    padding: 0 0 5px !important;=0D=0A  }=0D=0A=0D=0A  .Exter=
+nalClass .content-td p {=0D=0A    padding: 10px 0 !important;=0D=0A  }=0D=
+=0A=0D=0A.ExternalClass .content-td .intercom-container {=0D=0A    padding:=
+ 5px 0 !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content-td hr + * =
+{=0D=0A    padding-top: 30px !important;=0D=0A  }=0D=0A=0D=0A  .ExternalCla=
+ss .content-td ol ,=0D=0A  .ExternalClass .content-td ul {=0D=0A    padding=
+: 0 0 20px 40px !important;=0D=0A    margin: 0 !important;=0D=0A  }=0D=0A=
+=0D=0A  .ExternalClass .content-td ol li,=0D=0A  .ExternalClass .content-td=
+ ul li {=0D=0A    padding: 3px 0 !important;=0D=0A    margin: 0 !important;=
+=0D=0A  }=0D=0A  .content-td > :first-child {=0D=0A    margin-top: 0 !impor=
+tant;=0D=0A    padding-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .ExternalCl=
+ass .content-td > :first-child {=0D=0A    margin-top: 0 !important;=0D=0A  =
+  padding-top: 0 !important;=0D=0A  }=0D=0A</style>=0D=0A=0D=0A=0D=0A=0D=0A=
+<style type=3D"text/css">=0D=0A  .intercom-align-right {=0D=0A  text-align:=
+ right !important;=0D=0A}=0D=0A.intercom-align-center {=0D=0A  text-align: =
+center !important;=0D=0A}=0D=0A.intercom-align-left {=0D=0A  text-align: le=
+ft !important;=0D=0A}=0D=0A/* Over-ride for RTL */=0D=0A.right-to-left .int=
+ercom-align-right{=0D=0A  text-align: left !important;=0D=0A}=0D=0A.right-t=
+o-left .intercom-align-left{=0D=0A  text-align: right !important;=0D=0A}=0D=
+=0A.right-to-left .intercom-align-left {=0D=0A  text-align:right !important=
+;=0D=0A}=0D=0A.right-to-left li {=0D=0A  text-align:right !important;=0D=0A=
+  direction: rtl;=0D=0A}=0D=0A.right-to-left .intercom-align-left img,=0D=
+=0A.right-to-left .intercom-align-left .intercom-h2b-button {=0D=0A  margin=
+-left: 0 !important;=0D=0A}=0D=0A.intercom-attachment,=0D=0A.intercom-attac=
+hments,=0D=0A.intercom-attachments td,=0D=0A.intercom-attachments th,=0D=0A=
+.intercom-attachments tr,=0D=0A.intercom-attachments tbody,=0D=0A.intercom=
+-attachments .icon,=0D=0A.intercom-attachments .icon img {=0D=0A  border: n=
+one !important;=0D=0A  box-shadow: none !important;=0D=0A  padding: 0 !impo=
+rtant;=0D=0A  margin: 0 !important;=0D=0A}=0D=0A.intercom-attachments {=0D=
+=0A  margin: 10px 0 !important;=0D=0A}=0D=0A.intercom-attachments .icon,=0D=
+=0A.intercom-attachments .icon img {=0D=0A  width: 16px !important;=0D=0A  =
+height: 16px !important;=0D=0A}=0D=0A.intercom-attachments .icon {=0D=0A  p=
+adding-right: 5px !important;=0D=0A}=0D=0A.intercom-attachment {=0D=0A  dis=
+play: inline-block !important;=0D=0A  margin-bottom: 5px !important;=0D=0A}=
+=0D=0A=0D=0A.intercom-interblocks-content-card {=0D=0A  width: 334px !impor=
+tant;=0D=0A  max-height: 136px !important;=0D=0A  max-width: 100% !importan=
+t;=0D=0A  overflow: hidden !important;=0D=0A  border-radius: 20px !importan=
+t;=0D=0A  font-size: 16px !important;=0D=0A  border: 1px solid #e0e0e0 !imp=
+ortant;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link,=0D=0A.intercom-interb=
+locks-article-card {=0D=0A  text-decoration: none !important;=0D=0A}=0D=0A=
+=0D=0A.intercom-interblocks-article-icon {=0D=0A  width: 22.5% !important;=
+=0D=0A  height: 136px !important;=0D=0A  float: left !important;=0D=0A  bac=
+kground-color: #fafafa !important;=0D=0A  background-image: url('https://bu=
+dacom.intercom-mail.com/assets/article_book-1a595be287f73c0d02f548f513bfc83=
+1.png') !important;=0D=0A  background-repeat: no-repeat !important;=0D=0A  =
+background-size: 32px !important;=0D=0A  background-position: center !impor=
+tant;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-article-text {=0D=0A  width: =
+77.5% !important;=0D=0A  float: right !important;=0D=0A  background-color: =
+#fff !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-title,=0D=0A.=
+intercom-interblocks-article-title {=0D=0A  color: #519dd4 !important;=0D=
+=0A  font-size: 15px !important;=0D=0A  margin: 16px 18px 12px !important;=
+=0D=0A  line-height: 1.3em !important;=0D=0A  overflow: hidden !important;=
+=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-description,=0D=0A.intercom-i=
+nterblocks-article-body {=0D=0A  margin: 0 18px 12px !important;=0D=0A  fon=
+t-size: 14px !important;=0D=0A  color: #65757c !important;=0D=0A  line-heig=
+ht: 1.3em !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-author,=
+=0D=0A.intercom-interblocks-article-author {=0D=0A  margin: 10px 15px !impo=
+rtant;=0D=0A  height: 24px !important;=0D=0A  line-height: normal !importan=
+t;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-author-avatar,=0D=0A.interc=
+om-interblocks-article-author-avatar {=0D=0A  width: 16px !important;=0D=0A=
+  height: 16px !important;=0D=0A  display: inline-block !important;=0D=0A  =
+vertical-align: middle !important;=0D=0A  float: left;=0D=0A  margin-right:=
+ 5px;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-author-avatar-image,=0D=
+=0A.intercom-interblocks-article-author-avatar-image {=0D=0A  width: 16px !=
+important;=0D=0A  height: 16px !important;=0D=0A  border-radius: 50% !impor=
+tant;=0D=0A  margin: 0 !important;=0D=0A  vertical-align: top !important;=
+=0D=0A  font-size: 12px !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks=
+-link-author-name,=0D=0A.intercom-interblocks-article-author-name {=0D=0A  =
+color: #74848b !important;=0D=0A  margin: 0 0 0 5px !important;=0D=0A  font=
+-size: 12px !important;=0D=0A  font-weight: 500 !important;=0D=0A  overflow=
+: hidden !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-article-writte=
+n-by {=0D=0A  color: #8897a4 !important;=0D=0A  margin: 1px 0 0 5px !import=
+ant;=0D=0A  font-size: 12px !important;=0D=0A  overflow: hidden !important;=
+=0D=0A  vertical-align: middle !important;=0D=0A  float: left !important;=
+=0D=0A}=0D=0A=0D=0A</style>=0D=0A=0D=0A=0D=0A=0D=0A=0D=0A</head>=0D=0A<body=
+>=0D=0A<div style=3D"color:transparent;visibility:hidden;opacity:0;font-siz=
+e:0px;border:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width=
+:0px!important;display:none!important;line-height:0px!important;"><img bord=
+er=3D"0" width=3D"1" height=3D"1" src=3D"https://budacom.intercom-mail.com/=
+q/klUuDvSGxSVzLOO8reHlYQ~~/AAAAAQA~/RgRiCP29PVcIaW50ZXJjb21CCmAhvXgmYIXmP3d=
+SGWVkdWFyZG8uc2lubmluZ0BnbWFpbC5jb21YBAAAHX8~"/></div>=0D=0A=0D=0A=0D=0A=0D=
+=0A<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"bgtc pe=
+rsonal" align=3D"center" style=3D"background-color: #f9f9f9; border-collaps=
+e: collapse; line-height: 100% !important; margin: 0; padding: 0; width: 10=
+0% !important" bgcolor=3D"#f9f9f9">=0D=0A  <tbody>=0D=0A<tr>=0D=0A    <td>=
+=0D=0A    <!--[if (gte mso 10)]>=0D=0A      <tr>=0D=0A      <td>=0D=0A     =
+ <table style=3D"width: 600px">=0D=0A    <![endif]-->=0D=0A      <table sty=
+le=3D"border-collapse: collapse; margin: auto; max-width: 635px; min-width:=
+ 320px; width: 100%" class=3D"main-wrap">=0D=0A        <tbody>=0D=0A<tr>=0D=
+=0A          <td valign=3D"top">=0D=0A            <table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" class=3D"reply_header_table" style=3D"border=
+-collapse: collapse; color: #c0c0c0; font-family: 'Helvetica Neue',Arial,sa=
+ns-serif; font-size: 13px; line-height: 26px; margin: 0 auto 26px; width: 1=
+00%">=0D=0A            </table>=0D=0A          </td>=0D=0A        </tr>=0D=
+=0A        <tr>=0D=0A          <td valign=3D"top" class=3D"main_wrapper" st=
+yle=3D"padding: 0 20px">=0D=0A=0D=0A            <table cellpadding=3D"0" ce=
+llspacing=3D"0" border=3D"0" class=3D"comment_wrapper_table admin_comment" =
+align=3D"center" style=3D"-webkit-background-clip: padding-box; -webkit-bor=
+der-radius: 3px; background-clip: padding-box; border-collapse: collapse; b=
+order-radius: 3px; color: #545454; font-family: 'Helvetica Neue',Arial,sans=
+-serif; font-size: 13px; line-height: 20px; margin: 0 auto; width: 100%">=
+=0D=0A              <tbody>=0D=0A<tr>=0D=0A                <td valign=3D"to=
+p" class=3D"comment_wrapper_td">=0D=0A                  <table cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0" class=3D"comment_header" style=3D"bor=
+der: none; border-collapse: separate; font-size: 1px; height: 2px; line-hei=
+ght: 3px; width: 100%">=0D=0A                    <tbody>=0D=0A<tr>=0D=0A   =
+                   <td valign=3D"top" class=3D"comment_header_td" style=3D"=
+background-color: #210e4a; border: none; font-family: 'Helvetica Neue',Aria=
+l,sans-serif; width: 100%" bgcolor=3D"#210e4a">=C2=A0</td>=0D=0A           =
+         </tr>=0D=0A                  </tbody>=0D=0A</table>=0D=0A         =
+         <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"c=
+omment_body" style=3D"-webkit-background-clip: padding-box; -webkit-border-=
+radius: 0 0 3px 3px; background-clip: padding-box; border-collapse: collaps=
+e; border-color: #dddddd; border-radius: 0 0 3px 3px; border-style: solid s=
+olid none; border-width: 0 1px 1px; width: 100%">=0D=0A                    =
+<tbody>=0D=0A<tr>=0D=0A                      <td class=3D"comment_body_td c=
+ontent-td" style=3D"-webkit-background-clip: padding-box; -webkit-border-ra=
+dius: 0 0 3px 3px; background-clip: padding-box; background-color: white; b=
+order-radius: 0 0 3px 3px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05); col=
+or: #525252; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: 15p=
+x; line-height: 22px; overflow: hidden; padding: 40px 40px 30px" bgcolor=3D=
+"white">=0D=0A                        =0D=0A=0D=0A                        =
+=0D=0A                          <p class=3D"intercom-align-left" style=3D"l=
+ine-height: 1.5; margin: 0 0 17px; padding-top: 0; text-align: left !import=
+ant" align=3D"left"><b>Que gusto verte por ac=C3=A1</b>. Esta semana ha sid=
+o impresionante en t=C3=A9rminos de adopci=C3=B3n, nunca hab=C3=ADamos vist=
+o <b>empresas tan grandes</b> como las que te contaremos ac=C3=A1 <b>compra=
+ndo bitcoins</b> o al menos interesadas en saber m=C3=A1s.=C2=A0</p>=0D=0A<=
+h2 class=3D"intercom-align-center" style=3D"color: #282F33; font-size: 18px=
+; font-weight: bold; margin: 30px 0 7px; text-align: center !important" ali=
+gn=3D"center">Escucha el Bud=C3=ADn Semanal ac=C3=A1</h2>=0D=0A<div class=
+=3D"intercom-container intercom-align-center" style=3D"line-height: 0; marg=
+in-bottom: 17px; margin-top: 17px; text-align: center !important" align=3D"=
+center"><a target=3D"_blank" href=3D"https://budacom.intercom-clicks.com/vi=
+a/e=3Fob=3DFZF3YB%2F4kB6CYbGVVpz6fvzZxsIqddoL6uvgAsDxzebbNGLD3c5tFbMQ1cXczl=
+aZ2Dn6HbgTaae%2BNpCvqmYmzFtHBZGVxJ91NVQ%2Fl6XxjvqtMPh3bXA8hj2PSahRvgfZ&h=3D=
+e40db5eb7a58c7781ea41cbcb66cb45f1ae242b0-lmgaeqxd_62058607636568&l=3Dee841d=
+53805344605e8e41e261ea3395859f0f68-6583428" style=3D"color: #1251ba"><img s=
+rc=3D"https://budacom.intercom-mail.com/i/o/296047551/7be9fcecc16deb740e189=
+6f5/spotify-podcast-badge-wht-grn-330x80.png" style=3D"margin: 0; max-width=
+: 100%"></a></div>=0D=0A<p class=3D"intercom-align-center" style=3D"line-he=
+ight: 1.5; margin: 0 0 17px; text-align: center !important" align=3D"center=
+"><a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3DKHexSy5NdRsBf=
+6gQoZoE1IdhzfIpJXU2%2FFs3irN2mYk%3D&h=3D5eeee3a482191619d400a973a6a88a027ae=
+42c22-lmgaeqxd_62058607636568&l=3Dcdb86df451203f1897b6b4844027f7b521f43df8-=
+6581796" target=3D"_blank" style=3D"color: #1251ba">(Click aqu=C3=AD si no =
+tienes Spotify)</a></p>=0D=0A<p class=3D"intercom-align-left" style=3D"line=
+-height: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left"=
+>Me imagino que ya lo sabes, y si no, te lo digo ahora: <b>Tesla compr=C3=
+=B3 bitcoins</b>. Si quieres saber cu=C3=A1nto y por qu=C3=A9, te recomiend=
+o que sigas leyendo...</p>=0D=0A<hr style=3D"border-bottom-width: 0; border=
+-style: solid none none; border-top-color: #DDD; border-top-width: 1px; mar=
+gin: 50px 30%">=0D=0A<div class=3D"intercom-container intercom-align-left" =
+style=3D"line-height: 0; margin-bottom: 17px; margin-top: 17px; text-align:=
+ left !important" align=3D"left"><img src=3D"https://budacom.intercom-mail.=
+com/i/o/299046412/a78a7db470998ef54811aa2c/Tabla+precios+Diego+%2821%29.png=
+" style=3D"margin: 0; max-width: 100%"></div>=0D=0A<table class=3D"intercom=
+-container intercom-align-center" align=3D"center" style=3D"margin: 17px au=
+to 16px; text-align: center !important"><tbody><tr><td style=3D"background-=
+color: #210e4a; border-radius: 3px; font-family: Helvetica, Arial, sans-ser=
+if; margin: 0; padding: 12px 35px" bgcolor=3D"#210e4a"><a class=3D"intercom=
+-h2b-button" target=3D"_blank" href=3D"https://budacom.intercom-clicks.com/=
+via/e=3Fob=3DNomWNLdMQ0qXkrz5Hs1juWggnWaWRAyD%2FgJS8N%2BIv%2FMy25A3p4K6EWFz=
+EwqA8HTJWVhgB4SM%2BzrXQzboO23%2FEhenFKnb2oI2g1bewYg5rq0EClndFLhepE%2FZla9xj=
+PK3&h=3Ddaf9963985e2abc432ff6b43b5b54e983b3e0fb1-lmgaeqxd_62058607636568&l=
+=3D8764b07b4586f11065fe8389b0ded60fcb6ad3a6-6581797" style=3D"background-co=
+lor: #210e4a; border: 1px none rgba(0,0,0,0.2); border-radius: 5px; color: =
+#FFF; display: inline-block; font-size: 14px; font-weight: bold; min-height=
+: 20px; padding: 0px; text-decoration: none">IR A BUDA.COM</a></td></tr></t=
+body></table>=0D=0A<hr style=3D"border-bottom-width: 0; border-style: solid=
+ none none; border-top-color: #DDD; border-top-width: 1px; margin: 50px 30%=
+">=0D=0A<h1 class=3D"intercom-align-left" style=3D"color: #282F33; font-siz=
+e: 26px; font-weight: normal; line-height: 33px; margin-bottom: 7px; margin=
+-top: 30px; text-align: left !important" align=3D"left">Bitcoin en el top 1=
+0 de activos m=C3=A1s valiosos del mundo</h1>=0D=0A<p class=3D"intercom-ali=
+gn-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !imp=
+ortant" align=3D"left">As=C3=AD es, le=C3=ADste bien, Bitcoin ya se encuent=
+ra dentro de los <b>10 activos m=C3=A1s valiosos de todo el mundo</b>, supe=
+rando a Tesla, Visa, Facebook, entre otros gigantes. Ac=C3=A1 te dejo la im=
+agen:=C2=A0</p>=0D=0A<div class=3D"intercom-container intercom-align-center=
+" style=3D"line-height: 0; margin-bottom: 17px; margin-top: 17px; text-alig=
+n: center !important" align=3D"center"><a target=3D"_blank" href=3D"https:/=
+/budacom.intercom-clicks.com/via/e=3Fob=3Dws6bjcOaWlnHRbZOFtFO2hTD%2BlVsEnt=
+lStTtgo8jDX7YLbWabtDBiK0ogJtQLlZ2a1Uj9NxU0h9ePBMsYRrNTw%3D%3D&h=3Dd10b03f77=
+6125d78b1545399b09d2f4608a9d8e2-lmgaeqxd_62058607636568&l=3De9cb9cb8ac02acc=
+57b9d0d0995c0e988f5c467d6-6581798" style=3D"color: #1251ba"><img src=3D"htt=
+ps://budacom.intercom-mail.com/i/o/299085714/3a2ec68728e6f1a08858fdf5/8Fttr=
+jwmjEerQUPmHzK2H4MLWvajnfHGL6Juo9MTcayrjPoNWaDQoJGeNdeXPVB8hCTF0r-5i4wwDtOj=
+MZopGhqmIepsvqfII0qmXSoC8drY7XhgKrkNqEmeuR07hBavi9RbdCTe" style=3D"margin: =
+0; max-width: 100%"></a></div>=0D=0A<p class=3D"intercom-align-left" style=
+=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !important" align=
+=3D"left">(Toca la imagen para ir a la tabla completa)</p>=0D=0A<h2 class=
+=3D"intercom-align-left" style=3D"color: #282F33; font-size: 18px; font-wei=
+ght: bold; margin: 30px 0 7px; text-align: left !important" align=3D"left">=
+Gracias Batman</h2>=0D=0A<p class=3D"intercom-align-left" style=3D"line-hei=
+ght: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left">Lue=
+go de la reciente compra de bitcoins por parte de Tesla (detalles m=C3=A1s =
+abajo), la capitalizaci=C3=B3n de mercado de Bitcoin est=C3=A1 cercana a lo=
+s USD $900 billones y su precio ronda los USD $48.000.=C2=A0</p>=0D=0A<p cl=
+ass=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; te=
+xt-align: left !important" align=3D"left">No podemos ver esta tabla sin agr=
+adecer al justiciero de Bitcoin entre las grandes empresas, as=C3=AD es, es=
+toy nuevamente hablando del <b>CEO de MicroStrategy, Michael Saylor</b>. Ap=
+arentemente, y seg=C3=BAn sus palabras en una entrevista en televisi=C3=B3n=
+ estadounidense, <b>Saylor podr=C3=ADa haber sido el responsable</b> (en pa=
+rte) de la masiva compra de bitcoins de Tesla. Esto respondi=C3=B3 cuando l=
+e preguntaron si hab=C3=ADa hablado con Elon Musk:</p>=0D=0A<h2 class=3D"in=
+tercom-align-center" style=3D"color: #282F33; font-size: 18px; font-weight:=
+ bold; margin: 30px 0 7px; text-align: center !important" align=3D"center">=
+=E2=80=9CEstoy limitado a lo que puedo decir, porque hay reglas de negocios=
+ que no me permiten comunicar ciertas cosas, pero ya sabes lo que dijimos e=
+n Twitter y lo que hemos venido diciendo, que es una estupenda idea=E2=80=
+=9D.=C2=A0</h2>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height:=
+ 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left">Esa res=
+puesta, al menos a mi parecer, suena a que si convers=C3=B3 con el CEO de T=
+esla.=C2=A0</p>=0D=0A<div class=3D"intercom-container intercom-align-left" =
+style=3D"line-height: 0; margin-bottom: 17px; margin-top: 17px; text-align:=
+ left !important" align=3D"left"><img src=3D"https://budacom.intercom-mail.=
+com/i/o/299085716/490403ca6b440c6d75d15143/E1Ans1qEvNjC_hBhdYP_ax56qXThyID-=
+RzsdswZNmZjRxy3celKuOEzslU4F2uSUJe2kveBtncJM5viFxncZAbAngKeygwQPR9CtVbZltUh=
+CGkRG4bhLmW9n1K-XoTYmKHif_h9B" style=3D"margin: 0; max-width: 100%"></div>=
+=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0=
+ 0 17px; text-align: left !important" align=3D"left">=E2=80=9CFelicitacione=
+s y gracias a Elon Musk y Tesla por haber agregado Bitcoin a su hoja de bal=
+ance. El mundo entero se beneficiar=C3=A1 de su liderazgo=E2=80=9D.=C2=A0</=
+p>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin:=
+ 0 0 17px; text-align: left !important" align=3D"left">Hace unos cuantos d=
+=C3=ADas, te cont=C3=A1bamos que MicroStrategy hab=C3=ADa organizado una co=
+nvenci=C3=B3n para contarle a las empresas su estrategia en la compra de bi=
+tcoins. Saylor dice que m=C3=A1s de<b> 7.000 empresarios asistieron a ese e=
+vento</b>.</p>=0D=0A<h2 class=3D"intercom-align-left" style=3D"color: #282F=
+33; font-size: 18px; font-weight: bold; margin: 30px 0 7px; text-align: lef=
+t !important" align=3D"left">Captando al oro y =C2=BFa Apple=3F</h2>=0D=0A<=
+p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px=
+; text-align: left !important" align=3D"left">En la tabla de arriba puedes =
+ver que <b>el oro sigue siendo el activo m=C3=A1s valioso del mundo</b> por=
+ capitalizaci=C3=B3n de mercado, con cerca de USD $11.7 trillones. En <a hr=
+ef=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3D%2B1zsnTa6pMv3f8%2B3=
+QqdNT0MoKYVAqfNyhBNH0Enw50wYPlYYWOCRuMq5wJljdO%2FmXd%2B2g8lGhJNEj4BtmTXYMA%=
+3D%3D&h=3D9e85cbada9a9bc21992ae1d0276b9b493206dafe-lmgaeqxd_62058607636568&=
+l=3D9d07dbcb01f717703cf6c1e040264c34de47f2a9-6581799" target=3D"_blank" sty=
+le=3D"color: #1251ba">este newsletter pasado</a>, te cont=C3=A1bamos que lo=
+s inversionistas estaban prefiriendo Bitcoin al oro, y con esta movida de T=
+esla vemos que claramente esta tendencia se acent=C3=BAa, pero hay otro jug=
+ador que podr=C3=ADa entrar a la cancha con m=C3=A1s de <b>USD $4 billones<=
+/b>, estoy hablando de <b>Apple</b>. Veamos:=C2=A0</p>=0D=0A<ul style=3D"li=
+st-style-type: disc; margin: 0 0 20px 40px; padding: 0">=0D=0A<li>Tesla inv=
+irti=C3=B3 aprox. un 6.5% (USD $1.5 b) de sus reservas de dinero en Bitcoin=
+.</li>=0D=0A<li>El patrimonio total (total equity) de Tesla a diciembre de=
+l 2020 era de aprox. <a href=3D"https://budacom.intercom-clicks.com/via/e=
+=3Fob=3DumHpi68U9ECMgBdi%2Bxhhk6Rpgss%2F7YY36s6ZehwebIfEVpLuv%2FUN1RJyy035H=
+wJLsYvRUroeOsKkODn%2FYpYikw%3D%3D&h=3Db614a149532f4c5c155142539f832018d60ff=
+bd2-lmgaeqxd_62058607636568&l=3D77913543ca35ce050c9cc7dbe5285577924b96c0-65=
+81800" target=3D"_blank" style=3D"color: #1251ba">USD $22 billones</a>.</li=
+>=0D=0A<li>El patrimonio total de Apple a fines del a=C3=B1o pasado era de =
+<a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3D8GC3RkYtm3d0wNE=
+lb7cwHZoA5GxJ0YbYSWMe1vMkZp4hgubZxDSzRQcHMtcmzrYEcKY82iWPJmLWpXMHlMxjJQ%3D%=
+3D&h=3Daa93a2af86164d9d14ec7b78aa2bfe501c4ffe0e-lmgaeqxd_62058607636568&l=
+=3Df912cb1f682ff841cd611a2cc0285020b370356e-6581801" target=3D"_blank" styl=
+e=3D"color: #1251ba">USD $65.3 billones</a>.</li>=0D=0A<li>=0D=0A<b>Si Appl=
+e decide seguir los pasos de Tesla e invertir el 6.5% de sus reservas de di=
+nero, estar=C3=ADamos hablando de USD $4.2 billones a Bitcoin</b>.</li>=0D=
+=0A<li>S=C3=B3lo con esa inversi=C3=B3n agregada a la capitalizaci=C3=B3n d=
+e mercado de Bitcoin, el precio superar=C3=ADa los USD $50.000.</li>=0D=0A<=
+/ul>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margi=
+n: 0 0 17px; text-align: left !important" align=3D"left">=C2=BFEs esto posi=
+ble=3F =C2=BFPodr=C3=ADa Apple realmente comprar bitcoins=3F Algunos expert=
+os, como Mitch Steves, analista de RBC Capital Markets, creen que si, o al =
+menos es lo que deber=C3=ADan hacer.=C2=A0</p>=0D=0A<h2 class=3D"intercom-a=
+lign-center" style=3D"color: #282F33; font-size: 18px; font-weight: bold; m=
+argin: 30px 0 7px; text-align: center !important" align=3D"center">=E2=80=
+=9CLa empresa (Apple) podr=C3=ADa generar f=C3=A1cilmente USD $40 billones =
+de d=C3=B3lares en ingresos anuales si decidiera incluir criptomonedas en s=
+u Apple Wallet. Es una oportunidad multimillonaria para la firma=E2=80=9D, =
+dijo el analista de la firma canadiense a sus clientes.</h2>=0D=0A<p class=
+=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-=
+align: left !important" align=3D"left">No sabemos si Apple realmente decidi=
+r=C3=A1 hacer como Tesla e invertir en Bitcoin, pero sin duda ser=C3=ADa un=
+a noticia espectacular que la <b>empresa que transa en bolsa m=C3=A1s grand=
+e del mundo</b> decida hacerlo. Tantas buenas noticias y estamos reci=C3=A9=
+n en febrero, qu=C3=A9 tremendo a=C3=B1o se nos viene para esta industria!!=
+<br><br><b>ATENCI=C3=93N</b>: =C2=A0Recuerda que si est=C3=A1s pensando seg=
+uir los pasos de Tesla y comprar bitcoins, <b>debes hacerlo siempre lo m=C3=
+=A1s informado y responsablemente posible</b>, te aseguro que todas las emp=
+resas que han entrado a la industria lo hacen despu=C3=A9s de haberlo estud=
+iado mucho. Nunca le env=C3=ADes dinero o criptomonedas a nadie que te aseg=
+ure ganancias. <b>NO existen las rentabilidades aseguradas</b>.=C2=A0</p>=
+=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0=
+ 0 17px; text-align: left !important" align=3D"left"><a href=3D"https://bud=
+acom.intercom-clicks.com/via/e=3Fob=3DDGqnrr3cUuWEB7Nn671X6V%2BcuCb3uM%2B5V=
+N62%2BTFwuoxuTU19JaSQJ5evKoZEchfC&h=3Db6bdcdd07c4cbbe2829ba41d1608bf0214c47=
+f3b-lmgaeqxd_62058607636568&l=3D8aa6201a3896327e9e06055207613890cae40744-65=
+81802" target=3D"_blank" style=3D"color: #1251ba">Lee ac=C3=A1 nuestra Gu=
+=C3=ADa de Inversi=C3=B3n Responsable</a></p>=0D=0A<hr style=3D"border-bott=
+om-width: 0; border-style: solid none none; border-top-color: #DDD; border-=
+top-width: 1px; margin: 50px 30%">=0D=0A<h1 class=3D"intercom-align-left" s=
+tyle=3D"color: #282F33; font-size: 26px; font-weight: normal; line-height: =
+33px; margin-bottom: 7px; margin-top: 30px; text-align: left !important" al=
+ign=3D"left">Vamos con las noticias cripto de la semana</h1>=0D=0A<p class=
+=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-=
+align: left !important" align=3D"left"></p>=0D=0A<h2 class=3D"intercom-alig=
+n-left" style=3D"color: #282F33; font-size: 18px; font-weight: bold; margin=
+: 30px 0 7px; text-align: left !important" align=3D"left">Tesla compr=C3=B3=
+ USD $1.5 billones en bitcoins</h2>=0D=0A<div class=3D"intercom-container i=
+ntercom-align-left" style=3D"line-height: 0; margin-bottom: 17px; margin-to=
+p: 17px; text-align: left !important" align=3D"left"><img src=3D"https://bu=
+dacom.intercom-mail.com/i/o/299085719/470a49411b9b276a653c26bb/b6v-nR5i8FEN=
+aWU2tteNIaAXU5dLW-tpdJ0sQusKjhlojocWWrgyRZ0TUFSb8I7rfsk9IbKLQS_HGxsvr1bLLRX=
+euSBIvB8Ks8x6LvF7kerGf7iS2j10_xdBnfgnvBjWBmA3gXaO" style=3D"margin: 0; max-=
+width: 100%"></div>=0D=0A<p class=3D"intercom-align-left" style=3D"line-hei=
+ght: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left">La =
+empresa del multimillonario Elon Musk<b> compr=C3=B3 42.857 bitcoins</b> a =
+un total de <b>USD $1.5 billones</b>.=C2=A0</p>=0D=0A<p class=3D"intercom-a=
+lign-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !i=
+mportant" align=3D"left">La transacci=C3=B3n fue informada por la firma a l=
+a Comisi=C3=B3n de Bolsa y Valores de Estados Unidos (SEC) el lunes.=C2=A0<=
+/p>=0D=0A<ul style=3D"list-style-type: disc; margin: 0 0 20px 40px; padding=
+: 0">=0D=0A<li>Adem=C3=A1s, en el <a href=3D"https://budacom.intercom-click=
+s.com/via/e=3Fob=3DSWxQEX0anw%2FCNfvfuz9Tv5aPmXh%2FjTZf36p1ePBpxg4ucE%2B1X0=
+%2Fs18%2Fp0siPXs3AChIPnNXlerKy5EjcA8%2Fmg4S8Q8zW3%2FLcvW2qu4RS70gFJLCSqnyrb=
+75wJn8nFzfwcdN2BVkzAHJngcQZQM5bfQ%3D%3D&h=3D50594d85c99ca8c14d5327e3ae34bf9=
+6173f765c-lmgaeqxd_62058607636568&l=3D5a202a71a42fb4413b20916c000816e99127c=
+2a7-6581803" target=3D"_blank" style=3D"color: #1251ba">documento que puede=
+s leer ac=C3=A1</a>, Tesla dijo que esperan <b>aceptar bitcoins como m=C3=
+=A9todo de pago</b> para sus productos en un futuro cercano.</li>=0D=0A<li>=
+El precio de Bitcoin aument=C3=B3 cerca de USD $9.000 despu=C3=A9s del anun=
+cio, anotando as=C3=AD el alza m=C3=A1s grande de la criptomoneda en un s=
+=C3=B3lo d=C3=ADa.</li>=0D=0A<li>Actualmente los bitcoins de Tesla tienen u=
+n valor de aprox. USD $2 billones.</li>=0D=0A</ul>=0D=0A<p class=3D"interco=
+m-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left=
+ !important" align=3D"left">Ahora, <b>la capitalizaci=C3=B3n de mercado de =
+Bitcoin es mayor a la de Tesla</b>.</p>=0D=0A<p class=3D"intercom-align-lef=
+t" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !important=
+" align=3D"left"><a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=
+=3DChRgG6CTkzq2aHaUKOXxeWjC64EpPpLPUngWA4wRzpN7oluo4N7TMpJMOVYc4ADRDvb4aP1t=
+6nj73iQntig%2BpoZLz1UUStRAXyBzwby0l%2FQ%3D&h=3D5ec7f3fe9060d1cf454e96e3f2c1=
+8b319b781613-lmgaeqxd_62058607636568&l=3Da382f2437289702b18f4724af8fd2a36bb=
+17b7bc-6581804" target=3D"_blank" style=3D"color: #1251ba">Leer m=C3=A1s...=
+</a></p>=0D=0A<hr style=3D"border-bottom-width: 0; border-style: solid none=
+ none; border-top-color: #DDD; border-top-width: 1px; margin: 50px 30%">=0D=
+=0A<h2 class=3D"intercom-align-left" style=3D"color: #282F33; font-size: 18=
+px; font-weight: bold; margin: 30px 0 7px; text-align: left !important" ali=
+gn=3D"left">Mastercard permitir=C3=A1 aceptar pagos con criptomonedas</h2>=
+=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0=
+ 0 17px; text-align: left !important" align=3D"left">El CEO de la empresa d=
+ijo que integrar=C3=A1n pagos con criptos =E2=80=9Cdirectamente es su red=
+=E2=80=9D.</p>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: =
+1.5; margin: 0 0 17px; text-align: left !important" align=3D"left">El gigan=
+te de pagos Mastercard estar=C3=ADa cerca de <b>aceptar pagos con criptomon=
+edas</b> seg=C3=BAn su CEO, Michael Miebach, aunque a=C3=BAn no especifican=
+ cu=C3=A1l usar=C3=A1n.</p>=0D=0A<ul style=3D"list-style-type: disc; margin=
+: 0 0 20px 40px; padding: 0">=0D=0A<li>La iniciativa permitir=C3=A1 que los=
+ due=C3=B1os de negocios acepten pagos con criptos directamente.</li>=0D=0A=
+<li>La noticia viene despu=C3=A9s de que la semana pasada se supiera que su=
+ principal competencia, Visa, est=C3=A1 trabajando en un <a href=3D"https:/=
+/budacom.intercom-clicks.com/via/e=3Fob=3DBwP9Bb1JdIMPQrbpeTrs5Rle3hT1CMkzD=
+TbTeSZXIXV%2Bf7MfR1pQJVLKhbNRdPleCITGIjQ5XfGng19c%2BtYCNWoFrq2P%2FIYlm9DHO1=
+2vmnXjU1JaXJDEOQeHTwdbfXuX&h=3D22803233fff44a0121b203af6ec0e7fd649dde99-lmg=
+aeqxd_62058607636568&l=3Da5f596667ef25091b1d43de43ea0a088b76cb711-6581805" =
+target=3D"_blank" style=3D"color: #1251ba">programa relacionado con Bitcoin=
+</a>.</li>=0D=0A</ul>=0D=0A<p class=3D"intercom-align-left" style=3D"line-h=
+eight: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left">E=
+l vicepresidente del =C3=A1rea de Blockchain y activos digitales de Masterc=
+ard dijo:=C2=A0</p>=0D=0A<p class=3D"intercom-align-left" style=3D"line-hei=
+ght: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left">=E2=
+=80=9CNuestra filosof=C3=ADa respecto a las criptomonedas es sencilla: Se t=
+rata de poder decidir. Mastercard no est=C3=A1 aqu=C3=AD para recomendarte =
+usar criptomonedas, pero estamos para<b> permitirle a nuestros usuarios, co=
+merciantes y empresarios mover valor digital</b>, al fin y al cabo, es tu d=
+inero=E2=80=9D.=C2=A0</p>=0D=0A<p class=3D"intercom-align-left" style=3D"li=
+ne-height: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"lef=
+t"><a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3Du9JU5qGxunRw=
+vlaSE02N5q1xIfgGdWXKZHVtKjjfArbJKlPjKAGSici7tHGZdUL83BrHx00h8qvIGxePKvynnlZ=
+5GvtVryj475oxRgimtb4ZJM4aFJ8RO73IdB3g54ma8JeT37T1nmXo9UaTAZ6DCQ%3D%3D&h=3D6=
+c24ac504ec19330ae7c00d0433a62ca27ffabab-lmgaeqxd_62058607636568&l=3D37320ff=
+a42888418863e00a10ce00b3403387a98-6581806" target=3D"_blank" style=3D"color=
+: #1251ba">Leer m=C3=A1s...</a></p>=0D=0A<hr style=3D"border-bottom-width: =
+0; border-style: solid none none; border-top-color: #DDD; border-top-width:=
+ 1px; margin: 50px 30%">=0D=0A<h2 class=3D"intercom-align-left" style=3D"co=
+lor: #282F33; font-size: 18px; font-weight: bold; margin: 30px 0 7px; text-=
+align: left !important" align=3D"left">Chile avanza en la Ley Fintech</h2>=
+=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0=
+ 0 17px; text-align: left !important" align=3D"left">Hace un par de d=C3=AD=
+as, la Comisi=C3=B3n para el Mercado Financiero (CMF) public=C3=B3 un docum=
+ento (<a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3DIXBUb2rVq=
+uePsY1GKSCXIKX7k7n6kPbwz3PB5c3%2FGA1l%2FDc4BLhf3n0s0dzItlJtOVVLEfuW175pxXdn=
+5a%2FiE7mFsgVFg%2Bq3oYGcnkRcyRY%3D&h=3D737608e4a35fe192239eba1c1bac5d92f8e5=
+74ea-lmgaeqxd_62058607636568&l=3D863e6f181dd65b34c6f223acc9722574fc8bca1d-6=
+581865" target=3D"_blank" style=3D"color: #1251ba">que puedes leer ac=C3=A1=
+</a>) en el cual presentan un <b>anteproyecto de Ley Fintech</b> entregado =
+al Ministerio de Hacienda hace 3 meses.</p>=0D=0A<p class=3D"intercom-align=
+-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !impor=
+tant" align=3D"left">Este anteproyecto espera "otorgar un marco jur=C3=ADdi=
+co y reglamentario a las plataformas de financiamiento colectivo -conocidas=
+ como Crowfunding- y otras actividades Fintech relacionadas al mercado de v=
+alores" y consta de<b> 5 pilares fundamentales</b>:=C2=A0</p>=0D=0A<ul styl=
+e=3D"list-style-type: disc; margin: 0 0 20px 40px; padding: 0">=0D=0A<li>Pr=
+oporcionalidad</li>=0D=0A<li>Neutralidad</li>=0D=0A<li>Integralidad</li>=0D=
+=0A<li>Flexibilidad</li>=0D=0A<li>Modularidad</li>=0D=0A</ul>=0D=0A<p class=
+=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-=
+align: left !important" align=3D"left">Si quieres ahondar en qu=C3=A9 signi=
+fica cada t=C3=A9rmino te invito a <a href=3D"https://budacom.intercom-clic=
+ks.com/via/e=3Fob=3DM5M4khn8%2BkRaNFmZLDfeeNneyrr5L7qLqHUYEm8ZoWs6hk4rzkeSk=
+GTTJIgGU1%2BZpeFTDOmNfmG4oULIUlUuQDi%2F6OtIOYnxckEDEOK%2BhF4%3D&h=3D6694495=
+f91448c107c7422060b88dc637c2d22f1-lmgaeqxd_62058607636568&l=3Dd7872d4883558=
+9dcb85da972c64e273d860394e3-6581962" target=3D"_blank" style=3D"color: #125=
+1ba">leer el anteproyecto ac=C3=A1</a>.</p>=0D=0A<p class=3D"intercom-align=
+-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !impor=
+tant" align=3D"left">Uno de los elementos clave de la propuesta es que en l=
+a denominaci=C3=B3n de =E2=80=9Cinstrumentos financieros=E2=80=9D <b>se inc=
+luy=C3=B3 a los criptoactivos</b> y se les defini=C3=B3 como la =E2=80=9Cre=
+presentaci=C3=B3n digital de unidades de intercambio de dinero, bienes o se=
+rvicios=E2=80=9D.</p>=0D=0A<p class=3D"intercom-align-left" style=3D"line-h=
+eight: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left">E=
+n Buda.com estamos muy entusiasmados con que la anhelada Ley Fintech est=C3=
+=A9 viendo, de a poco, la luz y d=C3=B3nde tenemos un camino importante por=
+ recorrer. Estamos convencidos de que esta iniciativa es una oportunidad =
+=C3=BAnica para el Estado de trabajar en un marco regulatorio acorde que pe=
+rmita la entrada de nuevos actores,<b> mejore la libre competencia, la comp=
+etitividad y el normal desarrollo de la innovaci=C3=B3n</b>, compatibilizan=
+do el resguardo por la estabilidad del sistema financiero junto con la tran=
+sparencia, integridad y protecci=C3=B3n de los consumidores.</p>=0D=0A<hr s=
+tyle=3D"border-bottom-width: 0; border-style: solid none none; border-top-c=
+olor: #DDD; border-top-width: 1px; margin: 50px 30%">=0D=0A<h2 class=3D"int=
+ercom-align-left" style=3D"color: #282F33; font-size: 18px; font-weight: bo=
+ld; margin: 30px 0 7px; text-align: left !important" align=3D"left">Jim Cra=
+mer dice que es irresponsable que una empresa no tenga bitcoins</h2>=0D=0A<=
+p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px=
+; text-align: left !important" align=3D"left">El ex administrador de fondos=
+ de cobertura y presentador de TV estadounidense dijo en CNBC que =E2=80=9C=
+todos los tesoreros (de empresas) deber=C3=ADan ir donde los directores y p=
+roponerles asignar una peque=C3=B1a parte de su dinero a Bitcoin=E2=80=9D.<=
+/p>=0D=0A<ul style=3D"list-style-type: disc; margin: 0 0 20px 40px; padding=
+: 0">=0D=0A<li>Cramer agreg=C3=B3 que es =E2=80=9C<b>casi irresponsable no =
+inclu=C3=ADrlo</b>=E2=80=9D, refiriendose a las empresas.</li>=0D=0A<li>Ade=
+m=C3=A1s, advirti=C3=B3 que la bolsa de valores est=C3=A1 en una =E2=80=9Cc=
+arretera hacia una zona peligrosa=E2=80=9D.</li>=0D=0A</ul>=0D=0A<p class=
+=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-=
+align: left !important" align=3D"left">Jim Cramer tiene bitcoins desde sept=
+iembre del a=C3=B1o pasado, como te lo contamos en <a href=3D"https://budac=
+om.intercom-clicks.com/via/e=3Fob=3DHoHy4kWmJ4czrKn3YTMPEoJq%2FYovN1%2FBULr=
+SR30g8QWKXHnaPzDuNiwA8z5DrsiQWPa1Yq%2FGCZ%2Bbvx2SX8szAk7v3ALISALvvu5302iQE2=
+k%3D&h=3D42dfaf988879daecaa2700dfca0927e9c064fe2e-lmgaeqxd_62058607636568&l=
+=3Db21079c84947717e8f6f580ec55e4f80fa10454f-6581807" target=3D"_blank" styl=
+e=3D"color: #1251ba">este newsletter</a>.=C2=A0</p>=0D=0A<p class=3D"interc=
+om-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: lef=
+t !important" align=3D"left"><a href=3D"https://budacom.intercom-clicks.com=
+/via/e=3Fob=3DnrDymdwwiuHY8Wa058oT7kA6PCxKxvUVcT%2FZnTQlYm7TZYYEPFlqVxG%2Fr=
+MiM0BUGzh3YOEpADaHIaEfZC%2BiEQCtCWBykGG8KdGDD35MocxQPBl12wFNKIb46v0SMyLdYnK=
+TT8GMfK1WsXJHSEqUym6lSV9ZZSZ8b5NrQjmBPu0Q%3D&h=3Df2a400891cc0778ff5bce960f6=
+6bfd1ae7b4d811-lmgaeqxd_62058607636568&l=3Decda59966a832b32d84e37bb5641e7b2=
+65ad07d5-6581808" target=3D"_blank" style=3D"color: #1251ba">Leer m=C3=A1s.=
+..</a></p>=0D=0A<hr style=3D"border-bottom-width: 0; border-style: solid n=
+one none; border-top-color: #DDD; border-top-width: 1px; margin: 50px 30%">=
+=0D=0A<h2 class=3D"intercom-align-left" style=3D"color: #282F33; font-size:=
+ 18px; font-weight: bold; margin: 30px 0 7px; text-align: left !important" =
+align=3D"left">Twitter est=C3=A1 evaluando invertir en Bitcoin</h2>=0D=0A<p=
+ class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px;=
+ text-align: left !important" align=3D"left">El Director Financiero de Twit=
+ter dijo en CNBC que incluso est=C3=A1n evaluando <b>pagar a empleados con =
+la criptomoneda</b>.</p>=0D=0A<p class=3D"intercom-align-left" style=3D"lin=
+e-height: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left=
+">En entrevista con la cadena de televisi=C3=B3n estadounidense CNBC, el Di=
+rector Financiero de Twitter, Ned Segal, dijo que =E2=80=9Cest=C3=A1n miran=
+do de cerca las acciones de las otras empresas (refiri=C3=A9ndose a la reci=
+ente compra de Tesla)=E2=80=9D.</p>=0D=0A<ul style=3D"list-style-type: disc=
+; margin: 0 0 20px 40px; padding: 0">=0D=0A<li>Segal agreg=C3=B3 que est=C3=
+=A1n pensando en i<b>ncluir bitcoin en su balance corporativo</b>, pero que=
+ a=C3=BAn no han hecho cambios.</li>=0D=0A<li>=E2=80=9CHemos pensado en c=
+=C3=B3mo pagar=C3=ADamos a nuestros empleados y vendedores =C2=A0en bitcoin=
+s si as=C3=AD lo pidieran=E2=80=9D, dijo el Director Financiero de la empre=
+sa.</li>=0D=0A</ul>=0D=0A<p class=3D"intercom-align-left" style=3D"line-hei=
+ght: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left">Ned=
+ Segal estableci=C3=B3 que uno de las principales razones por las que compr=
+ar=C3=ADan bitcoin es si las personas les pidieran hacer transacciones con =
+la criptomoneda. Al parecer nos est=C3=A1 invitando a que sigamos twitteand=
+o sobre Bitcoin...</p>=0D=0A<ul style=3D"list-style-type: disc; margin: 0 0=
+ 20px 40px; padding: 0">=0D=0A<li>Recordemos que el cofundador y CEO de Twi=
+tter, Jack Dorsey, ha apoyado constantemente a Bitcoin. Incluso llev=C3=B3 =
+a su otra empresa, Square, a comprar bitcoins el a=C3=B1o pasado por una su=
+ma de USD $ 50 millones.</li>=0D=0A</ul>=0D=0A<p class=3D"intercom-align-le=
+ft" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !importan=
+t" align=3D"left"><a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=
+=3DNdJwHI0Y57zg38ttwGEqzh%2FUgf%2Fbs19VyA2YPEWab8ml2V2TJw20AXXRJGUljrD6cfBK=
+OdGYiqGpyFxtYNF742qjLyJ%2B7SiGKKJteFE61jQ%3D&h=3D8df0e56bbd4450f646c04b080a=
+e28de290b2a3c4-lmgaeqxd_62058607636568&l=3Dc79ba3ad18fbdc0a862a80ff77415dd7=
+1cd128ed-6581809" target=3D"_blank" style=3D"color: #1251ba">Leer m=C3=A1s.=
+..</a></p>=0D=0A<hr style=3D"border-bottom-width: 0; border-style: solid n=
+one none; border-top-color: #DDD; border-top-width: 1px; margin: 50px 30%">=
+=0D=0A<h1 class=3D"intercom-align-left" style=3D"color: #282F33; font-size:=
+ 26px; font-weight: normal; line-height: 33px; margin-bottom: 7px; margin-t=
+op: 30px; text-align: left !important" align=3D"left">=C2=A1No te lo pierda=
+s!</h1>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; ma=
+rgin: 0 0 17px; text-align: left !important" align=3D"left">El pr=C3=B3ximo=
+<b> lunes 15 de febrero</b> estar=C3=A1n conversando el CEO de Buda.com, Gu=
+illermo Torrealba y la cofundadora de Economina, Javiera Quiroga sobre =E2=
+=80=9C<b>Adopci=C3=B3n masiva en Bitcoin</b>=E2=80=9D.=C2=A0</p>=0D=0A<div =
+class=3D"intercom-container intercom-align-left" style=3D"line-height: 0; m=
+argin-bottom: 17px; margin-top: 17px; text-align: left !important" align=3D=
+"left"><img src=3D"https://budacom.intercom-mail.com/i/o/299024583/3757a00a=
+6dd2d33a3ef52f4a/Gr%C3%A1ficas+para+el+blog+y+newsletter%2869%29.png" style=
+=3D"margin: 0; max-width: 100%"></div>=0D=0A<p class=3D"intercom-align-left=
+" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !important"=
+ align=3D"left">Tocar=C3=A1n todos los temas que ac=C3=A1 arriba te contamo=
+s y har=C3=A1n un an=C3=A1lisis de lo que se viene para Bitcoin en materia =
+de adopci=C3=B3n por parte de empresas y personas.</p>=0D=0A<ul style=3D"li=
+st-style-type: disc; margin: 0 0 20px 40px; padding: 0">=0D=0A<li>=0D=0A<b>=
+Horario</b>: <img src=3D"https://budacom.intercom-mail.com/images/emojis/v2=
+/72x72/1f1e8-1f1f1.png" width=3D"16" height=3D"16" alt=3D"" class=3D"ic_emo=
+ji_img" style=3D"height: 16px; margin: 0; max-width: 16px; min-height: 16px=
+; padding: 0; width: 16px"> Chile y <img src=3D"https://budacom.intercom-ma=
+il.com/images/emojis/v2/72x72/1f1e6-1f1f7.png" width=3D"16" height=3D"16" a=
+lt=3D"" class=3D"ic_emoji_img" style=3D"height: 16px; margin: 0; max-width:=
+ 16px; min-height: 16px; padding: 0; width: 16px"> Argentina: 21:00 hrs. | =
+<img src=3D"https://budacom.intercom-mail.com/images/emojis/v2/72x72/1f1e8-=
+1f1f4.png" width=3D"16" height=3D"16" alt=3D"" class=3D"ic_emoji_img" style=
+=3D"height: 16px; margin: 0; max-width: 16px; min-height: 16px; padding: 0;=
+ width: 16px"> Colombia y <img src=3D"https://budacom.intercom-mail.com/ima=
+ges/emojis/v2/72x72/1f1f5-1f1ea.png" width=3D"16" height=3D"16" alt=3D"" cl=
+ass=3D"ic_emoji_img" style=3D"height: 16px; margin: 0; max-width: 16px; min=
+-height: 16px; padding: 0; width: 16px"> Per=C3=BA: 19:00 hrs.</li>=0D=0A</=
+ul>=0D=0A<ul style=3D"list-style-type: disc; margin: 0 0 20px 40px; padding=
+: 0">=0D=0A<li>=0D=0A<b>Lugar</b>: Instagram de Buda.com <a href=3D"https:/=
+/budacom.intercom-clicks.com/via/e=3Fob=3DxbhBxep2NxeXgH6x95mBXO2JyeK3w%2B%=
+2Fglss%2BUHZKJ%2FoIryyIGLSSSZ5LIcrM5AiS&h=3D70c51c59d1a56bd96751ca64af21c3e=
+3372a248f-lmgaeqxd_62058607636568&l=3De1ca3f2d1965c81318ab8ce6fc2f9b904bef1=
+56c-6581811" target=3D"_blank" style=3D"color: #1251ba">@budapuntocom</a> y=
+ Economina <a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3DzAVS=
+02aCIGAVofWz9JnaENHNtT9rdBfpMVzSphKXpA7z7IkS4S5DPVtG6dwz%2BvoM&h=3Ded311fba=
+9feb38b6d7059269d5765a90f9f99c78-lmgaeqxd_62058607636568&l=3D777594626d32bf=
+c22be0c157fdfcc034a268613f-6581812" target=3D"_blank" style=3D"color: #1251=
+ba">@economina_cl</a>=0D=0A</li>=0D=0A</ul>=0D=0A<h2 class=3D"intercom-alig=
+n-left" style=3D"color: #282F33; font-size: 18px; font-weight: bold; margin=
+: 30px 0 7px; text-align: left !important" align=3D"left">=C2=A1=C2=A1Te es=
+peramos!!</h2>=0D=0A<hr style=3D"border-bottom-width: 0; border-style: soli=
+d none none; border-top-color: #DDD; border-top-width: 1px; margin: 50px 30=
+%">=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin=
+: 0 0 17px; text-align: left !important" align=3D"left">S=C3=ADguenos en re=
+des sociales:</p>=0D=0A<p class=3D"intercom-align-left" style=3D"line-heigh=
+t: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left"><a hr=
+ef=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3D%2BFEbzq%2FMLNJodRbK=
+FPr5rYkgGw2lZkBLJ9AY%2FRvdZbA2rFsOX907LJvcGSjSJ%2Fehtede9FTkmpUQUglVzR44nA%=
+3D%3D&h=3D705b572ab91c2daec1137b3b553c9679e9721637-lmgaeqxd_62058607636568&=
+l=3Db1a91589c970a631745fe5f52b0faaf455964bb7-6581813" target=3D"_blank" sty=
+le=3D"color: #1251ba">YouTube</a> | <a href=3D"https://budacom.intercom-cli=
+cks.com/via/e=3Fob=3D%2BFEbzq%2FMLNJodRbKFPr5rYkgGw2lZkBLJ9AY%2FRvdZbA2rFsO=
+X907LJvcGSjSJ%2Fehtede9FTkmpUQUglVzR44nA%3D%3D&h=3D705b572ab91c2daec1137b3b=
+553c9679e9721637-lmgaeqxd_62058607636568&l=3Db1a91589c970a631745fe5f52b0faa=
+f455964bb7-6581813" target=3D"_blank" style=3D"color: #1251ba">Twitter</a> =
+| <a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3DxbhBxep2NxeXg=
+H6x95mBXO2JyeK3w%2B%2Fglss%2BUHZKJ%2FoIryyIGLSSSZ5LIcrM5AiS&h=3D70c51c59d1a=
+56bd96751ca64af21c3e3372a248f-lmgaeqxd_62058607636568&l=3De1ca3f2d1965c8131=
+8ab8ce6fc2f9b904bef156c-6581811" target=3D"_blank" style=3D"color: #1251ba"=
+>Instagram</a> | <a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=
+=3D6xylGLW1lm2iebKBpHi9rkj7cL3nS74qvvkpZn826nPDMdqB8yxYDWWw1zZUqsEY&h=3D54f=
+710b2c20c9911870220d6fcdaa23610aa1a4b-lmgaeqxd_62058607636568&l=3Db40ddb9d4=
+044a99af1e8375453a1234aa6909f75-6581814" target=3D"_blank" style=3D"color: =
+#1251ba">Facebook</a> | <a href=3D"https://budacom.intercom-clicks.com/via/=
+e=3Fob=3D5O5ECv2FqQ4wCYympbKvSWYpEl%2FqyOfoHLRfMgi15Nekp4h0z7vnrQq4GV472nLu=
+&h=3Db65356593eb6317df2c448708ec900a2c632d6a6-lmgaeqxd_62058607636568&l=3D8=
+d147c4c9d251cfe18b2bb5342ab1d5a8c8a4cec-6581815" target=3D"_blank" style=3D=
+"color: #1251ba">LinkedIn</a></p>=0D=0A                        =0D=0A=0D=0A=
+                        =0D=0A                      </td>=0D=0A            =
+        </tr>=0D=0A                   </tbody>=0D=0A</table>=0D=0A         =
+         </td>=0D=0A                 </tr>=0D=0A                </tbody>=0D=
+=0A</table>=0D=0A=0D=0A                <div class=3D"margin-arrow" style=3D=
+"display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflo=
+w: hidden; visibility: hidden; width: 0">=0D=0A                  <table cel=
+lpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"message_footer_table=
+ margin-arrow" align=3D"center" style=3D"border-collapse: collapse; color: =
+#545454; display: none; font-family: 'Helvetica Neue',Arial,sans-serif; fon=
+t-size: 13px; height: 0; line-height: 20px; margin: 0 auto; max-height: 0; =
+max-width: 100%; opacity: 0; overflow: hidden; visibility: hidden; width: 1=
+00%">=0D=0A                    <tbody>=0D=0A<tr>=0D=0A                     =
+ <td valign=3D"top" width=3D"80" class=3D"arrow-wrap" style=3D"color: #2727=
+27; height: 18px; padding-left: 40px; text-align: left" align=3D"left">=0D=
+=0A                        <img alt=3D"Triangle" class=3D"image_fix" height=
+=3D"18" src=3D"https://budacom.intercom-mail.com/assets/email/personal/tria=
+ngle-8747882e9ef8882f9bc057241fd3c049.png" style=3D"-ms-interpolation-mode:=
+ bicubic; display: inline-block; margin-top: -1px; max-width: 100%; outline=
+: none; text-decoration: none" width=3D"40">=0D=0A                      </t=
+d>=0D=0A                    </tr>=0D=0A                  </tbody>=0D=0A</ta=
+ble>=0D=0A                </div>=0D=0A                <div class=3D"image-a=
+rrow">=0D=0A                  <table cellpadding=3D"0" cellspacing=3D"0" bo=
+rder=3D"0" class=3D"message_footer_table image-arrow" align=3D"center" styl=
+e=3D"border-collapse: collapse; margin: 0 auto; max-width: 100%; width: 100=
+%">=0D=0A                    <tbody>=0D=0A<tr>=0D=0A                      <=
+td valign=3D"top" width=3D"100%">=0D=0A                        <img alt=3D"=
+" src=3D"https://budacom.intercom-mail.com/assets/email/personal/arrow-37f6=
+774809df6fd083bfc98e9d562e23ca6ede618e2b5e10c042de88d2f858dd.png" style=3D"=
+max-width: 100%; width: 100%">=0D=0A                      </td>=0D=0A      =
+              </tr>=0D=0A                  </tbody>=0D=0A</table>=0D=0A    =
+            </div>=0D=0A                <table cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" class=3D"message_footer_table" align=3D"center" style=
+=3D"border-collapse: collapse; color: #545454; font-family: 'Helvetica Neue=
+',Arial,sans-serif; font-size: 13px; line-height: 20px; margin: 0 auto; max=
+-width: 100%; width: 100%">=0D=0A                  <tbody><tr>=0D=0A       =
+           </tr></tbody>=0D=0A</table>=0D=0A<table width=3D"100%" cellpaddi=
+ng=3D"0" cellspacing=3D"0" border=3D"0">=0D=0A                      <tbody>=
+=0D=0A<tr>=0D=0A                        <td width=3D"75%" class=3D"footer-t=
+d-wrapper">=0D=0A                          <table width=3D"100%" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse: collapse; =
+color: #545454; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: =
+13px; line-height: 20px; margin: 0 auto; max-width: 100%; width: 100%" clas=
+s=3D"message_footer_table">=0D=0A                            <tbody>=0D=0A<=
+tr>=0D=0A                              <td width=3D"40" class=3D"space">=C2=
+=A0</td>=0D=0A                              =0D=0A                         =
+     <td class=3D"admin_name" style=3D"color: #999999">=0D=0A              =
+                  <b style=3D"color: #6f6f6f">Diego de Buda.com</b> =0D=0A=
+=0D=0A                              </td>=0D=0A                            =
+</tr>=0D=0A                          </tbody>=0D=0A</table>=0D=0A          =
+              </td>=0D=0A                        <td width=3D"25%" class=3D=
+"footer-td-wrapper">=0D=0A                          <table width=3D"100%" c=
+ellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse: c=
+ollapse; color: #545454; font-family: 'Helvetica Neue',Arial,sans-serif; fo=
+nt-size: 13px; line-height: 20px; margin: 0 auto; max-width: 100%; width: 1=
+00%" class=3D"message_footer_table">=0D=0A                            <tbod=
+y>=0D=0A<tr>=0D=0A                              <td valign=3D"middle" align=
+=3D"right" class=3D"date_cell" style=3D"color: #999999; font-size: 11px; te=
+xt-align: right">=0D=0A=0D=0A                                =0D=0A        =
+                          =0D=0A                                    <a href=
+=3D"https://budacom.intercom-mail.com/subscriptions/unsubscribe=3Fapp_id=3D=
+lmgaeqxd&conversation_id=3D62058607636568&user_id=3D5a5817fd2f1161381d418cd=
+f" style=3D"color: #999999">Cancelar suscripci=C3=B3n a nuestros correos el=
+ectr=C3=B3nicos</a>=0D=0A                                  =0D=0A          =
+                      =0D=0A                              </td>=0D=0A      =
+                      </tr>=0D=0A<tr>=0D=0A                          </tr>=
+=0D=0A</tbody>=0D=0A</table>=0D=0A                        </td>=0D=0A      =
+                </tr>=0D=0A                    </tbody>=0D=0A</table>=0D=0A=
+                  </td>=0D=0A</tr>=0D=0A                </tbody>=0D=0A</tab=
+le>=0D=0A              </td>=0D=0A            </tr>=0D=0A            <tr>=
+=0D=0A              <td valign=3D"top" height=3D"20"></td>=0D=0A           =
+ </tr>=0D=0A          </tbody>=0D=0A</table>=0D=0A          <!--[if (gte ms=
+o 10)]>=0D=0A            </td>=0D=0A            </tr>=0D=0A            </ta=
+ble>=0D=0A          <![endif]-->=0D=0A        =0D=0A      =0D=0A    =0D=0A =
+   =0D=0A        <table style=3D"background-color: #f9f9f9; border-collapse=
+: collapse; color: #545454; font-family: 'Helvetica Neue',Arial,sans-serif;=
+ font-size: 13px; letter-spacing: 0.02em; line-height: 20px; margin: 0 auto=
+; max-width: 100%; width: 100%" class=3D"powered-by-table" bgcolor=3D"#f9f9=
+f9">=0D=0A          <tbody>=0D=0A<tr>=0D=0A            <td class=3D"powered=
+-by-text" style=3D"color: #999999; font-size: 11px; padding: 15px 0; text-a=
+lign: center; width: 100%" align=3D"center">=0D=0A              Con la tecn=
+olog=C3=ADa de <a href=3D"https://budacom.intercom-mail.com/via/e=3Fob=3DIf=
+Uo%2Fl4fsW2ThVW5d5IfmBZV%2FnQgAtOjzFx9mg45Qb2MN9PixLsno6mABXtEwJK%2BMDmOwqM=
+h0MzNDL8YDGNwJaUDP7GNXKcsUe6YIaUd6g0%3D&h=3D5d20b9b04dd6433918a17a6cf8b39b5=
+470518b43-lmgaeqxd_62058607636568" style=3D"color: #999; font-weight: bold;=
+ text-decoration: none">Intercom</a><br>=0D=0A            </td>=0D=0A      =
+    </tr>=0D=0A        </tbody>=0D=0A</table>=0D=0A    =0D=0A=0D=0A=0D=0A<i=
+mg src=3D"https://budacom.intercom-mail.com/via/o=3Fh=3D830db72758b81fb02d3=
+c105dee1a1ca25a0ad2b4-lmgaeqxd_62058607636568" width=3D"1" height=3D"1" sty=
+le=3D"display: block;" alt=3D"intercom">=0D=0A=0D=0A<img border=3D"0" width=
+=3D"1" height=3D"1" alt=3D"" src=3D"https://budacom.intercom-mail.com/q/2b-=
+4OsQk1jStQU6iyizGUQ~~/AAAAAQA~/RgRiCP29PlcIaW50ZXJjb21CCmAhvXgmYIXmP3dSGWVk=
+dWFyZG8uc2lubmluZ0BnbWFpbC5jb21YBAAAHX8~">=0D=0A</body>=0D=0A</html>
+--_----0xI8Bi1WGKDYnKRoB5y0pA===_A3/77-48573-DB876206--
+

@@ -1,0 +1,1533 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 10.12.132.35 with SMTP id l32csp1425585qva;
+        Thu, 22 Feb 2018 16:31:25 -0800 (PST)
+X-Google-Smtp-Source: AG47ELsYYsYG8js6Nlu5CwALta+vQr48wDDpJngChdQNlRflkZ1UD/qL116F4wThgru6I1eelPvg
+X-Received: by 10.55.94.4 with SMTP id s4mr14418836qkb.156.1519345884999;
+        Thu, 22 Feb 2018 16:31:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1519345884; cv=none;
+        d=google.com; s=arc-20160816;
+        b=S2FUeqojkB3Pjz2I2xMiXm4EGr3wUkVCW/JFtb0bAlqYW9MMAmAkpQme0fg3uZ4bwz
+         ef5bvxvfS6eck2OP9l6aV1CUrpyfqaE02e80no417MmNtpLWFB5VA1UiGswj8nlJlfJp
+         B7D+FxS8T9QX70QlJJk6er8WfV4K5yrbJ0B2dJLYg9yi+dEoi2vk9IpBG7sk0cRPP9rL
+         6MGoj8ri6NRkK59aqxLCKEml3rNacduuB7BGpwzuP9mBXBy+KJFtoGrFZfEUb4BhGxq4
+         qhpuRrsUH8794d1lAboBtHpjD6cb9RWWSETcokTaxykYMiNs5qfM86v1FmUS1nvZOsFM
+         PkMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:to:subject:reply-to:mime-version:from:date
+         :dkim-signature:dkim-signature:arc-authentication-results;
+        bh=9XC/kscohSR5kPX5uQaLS0KW6BHq1RcqVSCu+MUICow=;
+        b=b+dDKxnTAPXulm0npwtZ3JURAjDrQ+r+CgX9KFJ6oMtczuy+pSv/KiBYBFiHmhP2wj
+         GIWTS/50OuvsWktoTeKHFMY9Lf/Vywt1J9WabUGru/dRYTX25Gk0ng4rwbbizR/MT3sv
+         UEfr18abELAGdhoyMVBE6j3gY5X9sn7RSMEpNgEg4TamRrSDE2kIPrjuLw1NSNRBs2NC
+         QfDe+okk80T8uJhoWYfymmusq0k9Br/Q9fppLMRUdKGTze1zis0/H9IWm+KGHwJtKXW2
+         vGdaTjY5Fh9ANI3sNMU2yGboPjzKfNtHAyjYy7GGKNHray47acWcv9Cb+6i9TqJFn01u
+         wmSQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@stocktwits.com header.s=s1 header.b=dZzJaILM;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=MaRmYN0l;
+       spf=pass (google.com: domain of bounces+5843922-7cc9-eduardo.sinning=gmail.com@abmail.stocktwits.com designates 168.245.92.140 as permitted sender) smtp.mailfrom=bounces+5843922-7cc9-eduardo.sinning=gmail.com@abmail.stocktwits.com
+Return-Path: <bounces+5843922-7cc9-eduardo.sinning=gmail.com@abmail.stocktwits.com>
+Received: from o619.abmail.stocktwits.com (o619.abmail.stocktwits.com. [168.245.92.140])
+        by mx.google.com with ESMTPS id q21si1329551qta.39.2018.02.22.16.31.24
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Feb 2018 16:31:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+5843922-7cc9-eduardo.sinning=gmail.com@abmail.stocktwits.com designates 168.245.92.140 as permitted sender) client-ip=168.245.92.140;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@stocktwits.com header.s=s1 header.b=dZzJaILM;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=MaRmYN0l;
+       spf=pass (google.com: domain of bounces+5843922-7cc9-eduardo.sinning=gmail.com@abmail.stocktwits.com designates 168.245.92.140 as permitted sender) smtp.mailfrom=bounces+5843922-7cc9-eduardo.sinning=gmail.com@abmail.stocktwits.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=stocktwits.com; 
+	h=content-type:from:mime-version:reply-to:subject:to; s=s1; 
+	bh=9Cl42UZ8pnSGjEJxQlenqNJcnyk=; b=dZzJaILMw6doFsdQ/a1RXKY9WC97a
+	q7hKKpshqORi2BIzxE+UjdHG84FAUFVcGJTHm/FLpTDnj4xFoqBLiIdZj9cISClx
+	5RvqlXHoNVTckZLhuCq6Ev39EqX3nNLsk4MaqXlWYc8y1llepq6E4L2nKUnVNT8w
+	Izaw5+xZlUOSOo=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; d=sendgrid.info; 
+	h=content-type:from:mime-version:reply-to:subject:to:x-feedback-id; 
+	s=smtpapi; bh=9Cl42UZ8pnSGjEJxQlenqNJcnyk=; b=MaRmYN0lvN23Jv3FTY
+	Ew66aIIqle5uPhZ+w0PAIN3UXQRk9URWRPDVgy6QkkvuEMB7LHBCVwQhGkkDi0Ap
+	Hc7LLxojnzsLFWZtQ1YmTIOqJhVTtUYw/IznujAe5f3u/YlJp1v6KASnlaM5WSR1
+	qTEo+Otv8cx+qY46kUpZefiaA=
+Received: by filter0084p1las1.sendgrid.net with SMTP id filter0084p1las1-20887-5A8F6094-19
+        2018-02-23 00:30:12.49826478 +0000 UTC
+Received: from NTg0MzkyMg (ec2-54-167-103-131.compute-1.amazonaws.com [54.167.103.131])
+	by ismtpd0010p1iad1.sendgrid.net (SG) with HTTP id 4YLWULmvQkSbB8CNbn1K8A
+	for <no-reply@notifications.braze.com>; Fri, 23 Feb 2018 00:30:12.317 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=cd2acaff2a7f7bb4294cf78efd6745abb5918d9c0b549d6132157964e6e7
+Date: Fri, 23 Feb 2018 00:30:12 +0000 (UTC)
+From: "StockTwits" <newsletter@stocktwits.com>
+Mime-Version: 1.0
+Reply-to: newsletter@stocktwits.com
+Subject: =?UTF-8?B?VGhlICJFdmVyeXRoaW5nIiBCdWJibGUuIPCfkYnwn5S18J+SpQ==?=
+To: eduardo.sinning@gmail.com
+Message-ID: <4YLWULmvQkSbB8CNbn1K8A@ismtpd0010p1iad1.sendgrid.net>
+X-SG-EID: xtMkdHdGijQBvrxvlO+9EL+0MY6MtQVuYn1gHQEKhqiv7h6kWGOkub10CJsdoV4UQ8+4mf1TEzq80+
+ SiA+R0UloAGC2bP81DlZDweMNENI92asmPCSCs2cO7bOiid70hgiacz/+KGeGZ6uIhV5FTboQ/ppM2
+ dYzOJgGU4FkiXb/XnNqRTxySgyws5XrUC6p2M2qk72YazMcbInRtE5xjU15r+Sp2Ht8MwhLJM6oYZz
+ Q=
+X-SG-ID: YH5d4/1v5/Fxu07BGLsJZ7bc7HHosFyNr0od5mMMdM87CnQ06BIYX8TtZclUFdAZ69Q+g1Kr266/3O
+ M5AfB8V+PRNmBv/id+99udmncWjTKFhEwHxwA7QCN0pCbkhh7yzEW67/3hmeB88bQhDLBsbTjyMGh0
+ +GPt7f3F+udnCfMpYP2U5gTU52Sx6OFpmSHP7TT8hqOHZ4dx7jdqj1cHtyq4nL5fQ5lWbKklMHcJdM
+ ZIc1lCSZVo80o1sEh9Yrij
+X-Feedback-ID: 5843922:XfQUq0E0IbDY2y+qQlo2wuT9alGI6xUf5K8KQtGRzik=:6ei7XjQmPplPjqCRdQkAWw+li7FvcVxwgnza1UE94WkX0SYEZKVd7/d/hP/17QWw:SG
+
+--cd2acaff2a7f7bb4294cf78efd6745abb5918d9c0b549d6132157964e6e7
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Mime-Version: 1.0
+
+( http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWoUEFC1C=
+aAF-2Bvgh-2BZKnW9YlNaI-2BsJUW4fM0YVKwO-2BEY8UQ0dJi883rzXromn8IKYEX-2FL3nkH2=
+et6f0xnzFg0A5vZ1I5-2FXiwY-2FcA-2F5-2FkyU-2BuLZB2-2FWPA8BhNi5vz7baubR-2BoZrh=
+sTeFFAVQPauDyuMDvcISLILZXLUJKVs3P8KPNoOGT-2FxU2vx1QRpX1hApbSmpZw79OcMPUrMaS=
+fI306oRLqFMBu11PggYNcCKKM8EjD_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2B=
+lFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNDjm4aqFilunX1-2BpZ2pVdTOdI-=
+2BhCxuWRQT8CCfD-2FaPZkrPkTQ78dAHg1jAGoznKr5a-2F7cCVYRfBn9YZ8rdJWtYU1ioAcbNg=
+-2BNvDcAtU8d5VEu3c59E1IwMLVpBnBMpnAYFy8gFFdAQJpDPhknc80fG8M0PG-2F8PNlstvEFv=
+S7iXIAtmeRcPaMP89-2BBmF0NbMxC9Lr-2Brb-2BMPpa3u1AqQGEauzXOWC74IzZo5YARXMzgmM=
+VoR8zgT-2BPff36vq46JkdX-2Fg02UF4Rz-2BwTmQyWLjepH29XZaCk0fwdMa9OVpfzyDxyQ84W=
+SHZNgEebdcncFJMgR3umiRPAWkRafUOHco396O5G8N0c0jTBVDZR26s7IRw2hIUMs-2BxMqo6E5=
+oCEidxImQ-3D-3D )
+
+
+poppin' bubbles
+
+Is this time different?
+
+Most say a market bubble can only be spotted after the fact. The
+current market we are in is being termed the "everything
+bubble".&nbsp;One chart is showing us
+near what has been a critical point=20
+( http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWv2O8ZZ0=
+kAIh13ofy8er8LdLbQ3YktlwTtTl1e5reHa-2BRU65ABBFUZMOnrPAWFb0IA-3D-3D_A4wPItE1=
+7ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6=
+zbcRRgtTRNOcJj2DRiEWkiM-2BehYKkGcSyKOWyPcDIjEr5-2FlXmjBou-2BfTBb-2Fzq2E5U3c=
+5FRHotsmFn-2BVLF9O2gS2wV8W1aCRjXr8pdD4PoSqtWA075oUKo3UkAD-2B2TTe0xax2s56Jje=
+xEx6pfg29BuECIJpBGq7-2Bda76cTbFVrfBBW7GcRUH-2FfZOYfMmv7NO00DYPD3Nw3hekqvWEr=
+nbIXLRetzlCFb0PQW-2BJmQn4IJFDlVr6kEajJHdAeDgwByWOvCRAKQq47Qvzk69X7Jbf95bHGF=
+IwXxpwuVwzEA4o2y2LBJkCtaK-2FOErdN-2Fpj4HwjTO1PoEgIeyMkJc8NybwK5FZ-2FNuYWLE9=
+HVhCJNP4IOPE2zccX-2FqYAdzVnR-2Bbg2Wy5xGq0nIsEZaA-3D-3D )
+&nbsp;in the
+past.&nbsp;The big question, is this
+time different?
+
+Special note:&nbsp;Make
+sure you =E2=80=9Cwhitelist=E2=80=9D us to ensure you receive
+all&nbsp;Daily
+Rip&nbsp;emails. One important step is
+to add us to your&nbsp;address book.
+Go to the "From" line and add our email to your contacts.
+
+influencer impact
+
+Kylie Jenner crushes Snapchat stock.
+
+Shares of $SNAP fell -6% today, after Kylie
+Jenner tweeted out "sooo does anyone else not open Snapchat
+anymore? Or is it just me... ugh this is so sad".=20
+( http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWk8LJ3If=
+oi9PNuQXBvijVYi6PZwhK4ZY8qvlqZZUsky6-2F1pmH1pq1JhoYsWE2Z8JTXOj9VV-2F-2FU1RM=
+ZmxX1bvzYS7N-2F0btiMiN57GjOHOfwvPFLwFfox7mdm2xlS-2FpXDtwN3heV1kwlLkifS9YlNk=
+Ip4-3D_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNy=
+aeyuRjec9aTRxx6zbcRRgtTRNBHkWxNoxXcMyNUjc2Sw-2BVOsrUd-2Fi0qq9UpAk6s2bathxjb=
+dnQ2RFnHrp0Upo0IeZpKsdXOOyeN4Zx3ZcxrnZ42xrM3yueffm5ecLohcUVDOcNEwYpEFucEd3Q=
+kdpUiJa-2FTOYTcvPJlCPWqButQ8DadSgfOb-2B9QJ-2BDFR4-2BndfyYYD6YcbJExWHg5mqz4F=
+sAX0hc6iFXLcSySNv9hZWIRd927uH-2BSehnoEHkfL0wJjAkGM0qtwgzv6zkpLwVrqRWK1nFbOd=
+2WFpyc4n8I1ZMExKIvdbGQzVHXeeF-2FsEG9oczEGiu0UfjbqvwzzjscZHj-2FuapvinxqHGWY7=
+hqotztZbYOY-2Fw7kex2mRZKXeTV6je7EN-2BVLjYDvtHi5iF2qusuNzw-3D-3D )
+ This wiped out $1.3 BILLION in market cap at one point. Snap
+has recieved a lot of push-back on their new redesign. Over
+1.2million users even signed a petition against it.
+
+Meet Our Sponsor
+
+Are you prepared for when BTFD stops working?
+
+All market regimes end. All bull markets end.
+These are facts. By some measures we are nearly 9 years into a
+bull market that rates among history=E2=80=99s best in both duration and
+total return. But this too shall pass. StockTwits users, get
+Trade Ideas=E2=80=99 Trade of the Week delivered to your inbox FREE
+
+
+( http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWuzicKEF=
+juYY0K4blcs-2FYCt-2Brc4PtuVIOJOFKtgN0IYQgmFZZMo42WOsDDC7uMoK7-2FHaC6dvD2NyE=
+kaG-2FHz7GNYMYqWzK7lSGIl6fs2uyfHNTNE6rcumAzWSewoMiF5rqkUmFopab37Qaz09-2FOfn=
+R6Wcbb3lXVN9UUutPxC9id7jfVvtnCL9WPZZZKAokL0f3A-3D-3D_A4wPItE17ns82-2FB9uPGT=
+5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNOmmw=
+mjftE844-2FIVu4qYbuqbZVTrz9HWux-2BRzUkb4eGQSOcC6iHraTFi-2FxXuazBLrXjHaiOz80=
+lQh0nqgSRNBOsgYGncedttsxB82TL7f7PHDfRM7H1zgzRd0tNwF4QBVUni3jQHd1NCaq5jgZchR=
+i2vmFC1NTF2GO01HI7iQJnwbEkg1I8-2F6cheVsoZW23zJ0D2Lkxoj18TLPDpBDsSXHV7KThX0k=
+mkh9c1xXVGhY6delUj1-2F6c7DXykNyMoU5x8y73YVbV08eMDKzAEWBhbvF-2FjyzJvgGZ3llRG=
+uBLPz6evmEgpu9wGHY9L76iY6q2WXyPzbXRhWfyu-2FDoN76H-2BcfeD6-2F5KEvzsL0i-2Bb3h=
+dicdz1coZ96qaowe9dIamHtfwA-3D-3D )
+
+
+hodl in style
+
+We dropped the freshest HODL tees.
+
+Bitcoin may have tested under $10,000 today, but
+if you are HODLing you'll want to sport these fresh t-shirts.=20
+( http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWkL0wPtk=
+FXrGPx2l53xC-2BEolXT5QhTOqhYwlR3GROC1-2BIidLI0yt9voj3zmEQdZvGF-2FIMdmR35zG5=
+MVpb-2FF2O9MFI9DiYKdGiXgrYCRV4OA0xPdH4PmfEaa5jGPTPmIOdJk7WE8Fky-2F0-2Br15da=
+np6tRiCIwJ1pvpCQ23TfjbYr6Q_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFj=
+B-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNNvM4d8usBrvaUw-2F3WZ2Ka1A8M-2F=
+lfMtKmaJVOZ4iORUDZCAMdWP8NKk1O-2ByvK-2BvwdSMeNAv-2B-2BwawDmns8p6FtFNwVDF26S=
+7Qp2bWLrZiW2a24gcdTnpqJOwtvNDFarposniRGtwRojiCaLDR-2BprB5tq9X6vW60AgxDI7qQa=
+4Sk4mH7lf-2BGT8MmYsERHn541fFgHP03Qx-2Bz7aHs7ipCHM6E-2BLagHLm3Hqz6VzHAbxASG1=
+DxiKA1XNuw3oKNBhPIUvjcJBH69EEPanx6gWKIc9wxvjVIwl7c8jjWfGKBb5HHcY1dVzgTfBE0p=
+75P50zZYGpCqSCmnqdrglk-2FTlSTEDjEhRhIwjdArs7DsoLPS-2FwyfM7-2FkwkPax0Rx51q9m=
+lTsaDA-3D-3D )
+
+
+earnings
+
+A tale of two HPs.
+
+When Hewlett-Packard split in 2015, two distinctly
+different companies were created: Hewlett Packard Enterprise
+Company ($HPE), a business technology provider (not unlike the
+modern IBM) and HP Inc. ($HPQ), the company making the printer
+you likely use.&nbsp;Today, both
+companies reported an earnings beat, and saw equally-impressive
+after-hours gains. $HPE beat on EPS and increased guidance, as
+did $HPQ.
+
+Check out the earnings highlights from both
+companies.=20
+( http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWvladNUG=
+pVLrMwxuSY-2BExZVWiUUCaO7sL6aPR07FpjzDj7hqyTF-2B3iQ34ytOZ4-2BCWBGw-2FvVRapL=
+1uw50xsyf-2F-2B2-2F3hiGo-2BhxHZqTVy0CMVZu_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr8=
+06FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNKrFu37N2FwNCPys=
+ciU2Rbs6C6QELdNDtVLzFti6hiVr31g3r6ta-2F2HUGV8z-2Flz1ZT5W86UJ1eEmy02vUIYlDhT=
+iw0d-2FdnLKFfWHiqRJh-2BlIYoxAhEAyAeQaZQX-2FoQuxPsmwOBSlSkMO6HUZAH-2BEusNN4U=
+ikcavxBExKkhbJeF9j7N0t35wM7cgzK5VjO4MU7ep5rDE-2Fo91QOekvxGMtjUl-2FkhpZBQF9M=
+Drrhf97ieCQ8euDSNDFVD8nJ0dF69QQpnwg9w2HAInp7OqB6OAtKD9dugu74DlqqaDi2ZrAZrf1=
+GSkDYTfJ6m0g1hwv2uGDatAq0sdmP3FN-2FhM80qlEoews-2B2frhuE7UR7JAcnuetJxUiRzDxC=
+bpne-2FHREF9AU55w-3D-3D )
+
+
+Market Humor
+
+Musk hates one movie.
+
+&nbsp;
+
+Can you guess what it is?=20
+( http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWsU5dv2P=
+kbAlJfaESP5-2F7MTs-2FAJNcki3SX7VVQNgXxwhzCpVkqGTEVI5Gh3xRZDu-2BASYU19OeCpw-=
+2FV8Bgwu47xCcc3CnOKll9rfJq508Uvq2iLIVTdFnAxhOqAsN0VP8xMKiNuj72XAUmpAC4yWsq2=
+I-3D_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyae=
+yuRjec9aTRxx6zbcRRgtTRNJTt9vvtelJ-2B44OwCdRZgqdlIk6HMI3tWh6IZUIlqYBMtjJxfC9=
+la0EdSyaJjmOBlSuaDEIIfcsDaDz9Jd4shNbJR6FAS-2BR-2BVtMBzNA-2BTxml5TrA6QkMLZWQ=
+BsE-2B2j4luIAkeKsef2miUY7JO-2FglEJraYIHH82Wg2VPR2rfb0pX-2Biotx9xMOcxCVeBNXK=
+EaLDL8t4-2BlDR3Bse-2BcXtKdIGSfZxgjfjg9uO8a-2FfeJpnytBcSS9D5vOn2of2YkvjUx3Mp=
+VqvmiXJXpSq-2B-2Fq4hQ-2FVYEb8Lv4-2F9OOGp3Qr1EI2VlYh3-2BF-2FoluMpGEWHUTiBhvl=
+KMjWB8AasceeVqV1ftTcFBid-2F4xymUEpQucTAnduDJDkkYFASTOpk4n4wU61Rt-2BOw-3D-3D=
+ )
+&nbsp;=F0=9F=9A=97
+
+Our mailing address is:
+
+StockTwits, Inc.
+
+1001 Avenue of the Americas=20
+( http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWvwvyAGw=
+wZYEr-2FC5sfrwiEjxuwOpzqa6sED6ONdP6nLoNIlJlZ2eOwHUzHZaQUFZWdNc8H-2B-2FXHXgN=
+Y0A78ViptWz0hXyVIHyUOMQr5YQGMOGljqEo5OzUCQgU1e8ZNkp5A-3D-3D_A4wPItE17ns82-2=
+FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgt=
+TRNAJ0Zi40A8327haPe100zv6U9xNYphIKq0wlsI2sta2wrV-2BbLnJyCQVuOY8iSHumMIVQ9Cp=
+79g-2BVsGBHLk415B85e3APgy7azGjfl59kgwUNvJ7vf0gn0JsA6MlArkqnxmo1t9nHYRMvNgFW=
+1NZs4JcTDf-2B7U1MZrZv0eNO2cpp7MLvQVZjpIpfKjsVASQyK-2FWOOiCluo9IWOCg4lV-2BkH=
+53hpzAE5eOHBtrmx00T-2Bqb-2FXuEa-2FF0Tgq4d6n704fKOsSC5f-2FnAnYJqjN4Nz8lGqx2G=
+ReEPDw8kEzlqO4DQFU2JqS3FLZE5yaubQnWiKMLubXGoLNuzERNbcS3PDOB8MY-2FFTelq7oo61=
+kjWvHYomUDidbw0jM3xOo77dA16AW-2BU5A-3D-3D )
+
+
+New York, New York 10018
+
+Copyright =C2=A9 2017 StockTwits, Inc., All rights
+reserved.
+
+&nbsp;
+
+If you want to get a friend on this
+list,&nbsp;send them to this page!=20
+( http://ablinks.stocktwits.com/wf/click?upn=3Dua-2FnbSX1f8HpE-2BQkvZv9SWhl=
+AeKqt8cTCPzZ6rJW3iYP188ZLQoWkKWwdX1F3Vo5zFgdqlsi8ZCGItwTmSBkyUC-2FSphrmik9k=
+RlwjOIz6uBsgV-2B-2BMIO0-2BH1ndqfswBsAj-2BruGVpuAI8CkTN-2F5VfF2SCrieKQlnaKxd=
+vorfEeVS0K02pZurWaCtzjwuNOmGZcexW79jU-2BQrzEyWSDtsf7YCe5KUDrU5NklbsH-2BaSAf=
+PHgC1l6xTgd2m4WmFYNAZVcgCFxjFSt5kYBXfpEp404TJgJuoosbVBaabe9EW31bB1WYbAX6Z-2=
+F-2FgZHtz-2FfiOacwccWELDjVK6HNCEwvSvFcROeIMVeaueLRG21LSBap0SDSUJAVX-2F2TSIc=
+VAe1XLSxCY7SbG3pFFixnHoWm39EzeTpJPjKqzDIpo7H0MSJ6hEavJSNWwDE0HUfSpOxQe3weKK=
+Wg9rFxrcwqRIcDgrpeISAiIHKEKpxgIImwI2OXHBNfxPNGYMo4p-2B0RS9setPH51cpTc5ErlIq=
+JpEjEjyqNR5UHz2M5HeQoGeORxrRoOoHKGqLzFcPYDgvTCkmzN5VeCw0p8WlKAnDrOgyMJd9bG4=
+v1nqSHfPzP-2Bo-2BGVsW-2Fk0zyW0o0620V7uHz7UYVfTgCT4sPNKhw2GdERzbgkRYNoRhfmkl=
+vIX1KnQFI40HZ7nCBOBoqmREZwS-2BQxsjdFtL4o2VwBH7TJyykkcqudhESVrZUl4bKunWktNCd=
+GxRBg2Nisxka2yDKIcTNHmMjSQ6YuCIxX-2BBcQXgow3nArNRK1xWjJ3RynOMvWOh-2Fm07B4gd=
+qZvK0FxIxgy0uTYb8m1lCtEkswBiLkYhGCAd0-2BRaqx9ZYDl83N5qnsl0ONwuQiRIPsZoTfHbN=
+iwNbtaUtBUOh_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2h=
+Ar8TNyaeyuRjec9aTRxx6zbcRRgtTRNAAPtffWTmtZpR2WvKWmixy7KWOJ2BLPb0SzYLcV1g8FK=
+vWysFVZCDN9neLn1UvR-2Fi9PMdcZk9p3jVaq-2BE18ZXLaT3AD0Id6oG7YlX3K9xHAHhytIuXg=
+mNfQD4-2BSukBStjdP34-2Bo4jcjFmAsODRVxyGMEAhHRWtl0tOOSjFSCdplUP1f1464cffG-2F=
+nllI1eqo21xZOVbu8003esqZ90z3L8oElmwlzz9zi9XDgNnK-2FFOVySfXxJj98ywl6kaTc-2F9=
+jU12F229UJf7c52ffe5jEW7XDP5t6f7pRAPMmKdHJn0Y7ggp1Q2yhGv2RM1nP12-2FeLFe-2Bbz=
+N4iQDG40FnSOaSrmc6PcjjN0sFVqj8s8MUndOWC3fym3OU5pHBoKBtmBaVA-3D-3D )
+
+
+MEET THE CURATOR
+
+OF THIS
+EMAIL:&nbsp;@scheplick=20
+( http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWlx7YpBL=
+HdltMnvBmMNft-2FAPzzQ9i8aOCpOya7SKUO5X_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806F=
+jaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNKf3Y1u-2F9vUHgYgSn=
+PgkD-2FOda-2B6WWLIH3Ulqp0PU4yg-2B5Kc0nS252nYARKDwApMA-2BYxOK6NPUOQlRBT9fGjq=
+tNX4pM09x9iC6QK1TiF-2F77AoJEfcH6rSzfxuSr5ePHEV3tSWA0vSAmNmVab-2F1NrSpFNAeXV=
+rhOPUzVRWm-2FuZcdPYHhlkiersvEFkpm3VjoorW6supuqZwXWJHhiKIJRNxUM4d3lKUd5EM2A2=
+l4njQRKQoVStymUa3MXupHtPbB-2F2he72U7qOQ-2FCvdqRoRx-2FNJe5dnYTJYwbgK4xW70K56=
+DpiQYb7I4-2Fhn1UxDDSlyHPdCpOYKwMKAm9oC4FGSQwBVvKadaGyMdF34S549doeZM6s1XRGYo=
+5Rr-2BX42kf7JxpciQ-3D-3D )
+
+WANT TO WORK FOR
+
+STOCKTWITS?:&nbsp;APPLY
+HERE ( http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWi9=
+FG-2BmhZhm6KxbkNp-2FT9A6xOs1O0abP3o7UNbOFWOd8_A4wPItE17ns82-2FB9uPGT5mN-2BD=
+wxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNFDWw-2BvloK=
+k3NbOhUnGJtaNIvEunCS8WrHJjJCNyMOI3DW4s0zffHWMXpOnk-2BPCGYwhr2mZIOq-2FR9JcIn=
+AX506Ch4pzve4DuQQMacsWD4EHX4Nf1oZbGDAmsOsxo2mficdXd0DYwCulHLqu0QqNZlZNwrSlm=
+t82Kr9iMHzwhUj0WRMMVwgoYc2TNu1MBmZyc-2FbvPFa9VBs5Kb-2BrhZ2pRGrfPoMKYI-2Bt8t=
+oD-2FNKJWF4KH30dolVJmGzPx47RG-2B0cwn-2Bip85wTqqlhGQRvAnJI3ocCQd8jJBUtxzQB47=
+7yI-2BJbmAMsUnCp7tDl1KibKM1rocpDFnanbfapp2xVwVqdNdg8SA-2BYxCeh-2BQE-2BEtJQB=
+xbbBEYpXWDdVlKbD8JXyuoe8w-3D-3D )
+
+&nbsp;
+
+This email was sent by StockTwits. We send it to
+everyone who has signed up. If you no longer want investing ideas
+from the world's largest market community, you can unsubscribe. (
+http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWpBNNo1GxT=
+Y-2BLHI4lL0ZsBxhzkylBZRECTeR4YyP3SiXjPbY9bHuEX-2Bisi945gsnioPwMeHaHBLB2urE6=
+L9hVWxmJsHEKz6Q-2FVQDBxMXA2YUiVKZFAj60LWQVVVvCTRXdsL2siF-2BxBWkjAqMD29EEFRB=
+Em2RtcvWnj86wSvN3uil45UpKL8I9bvNZs8EHCqis5DfxgTFL3SKTCkKqQk86ah-2FzoVfYtGI9=
+beI0XbPupMuc5kAycmPjUDnCTfNTr3FwmgN6gFmajDs9kxroq8GWEYVDjdNe94VwW7OpKmGiFxb=
+_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRj=
+ec9aTRxx6zbcRRgtTRNAetbuqmYgHyN9mu1Efl5n6zbA81-2FTPbIJrueSRH5LmMSIM53aSDuu6=
+PMKbBOxC2bIuh8H9xUnzUkqVn2-2Bz4MSGSBliNMjFDqP5rhsq11Ez2R-2FOp3nglTzx69MVM91=
+BPD3wrHj6OCHjfhbkad-2Ftre3ztgAN-2BklgK9ZTKLJPF1saLXoz4qtcPrpdyWBJhs6WDofjs-=
+2FQEvlpTvqfeMs0vwszLsLbdSEQllzkt1Krec3omGO8zLJw0Y8Pp8nlnIr7spgVm54i9-2BGY7F=
+V2tcTowHS6w3kYysypbKohkz4jMsE4oF4HSn8KmiqeAR0YQLfzWUbctgkgRku97qMpFR8fKEM2a=
+DmSVoxkeJtfns2Oqvqf7eC5v0SWqgVaXh-2FCeYvni8Rg-3D-3D )
+
+-->=
+
+--cd2acaff2a7f7bb4294cf78efd6745abb5918d9c0b549d6132157964e6e7
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html xmlns:fb=3D"http://www.facebook.com/2008/fbml" xmlns:og=3D"http://ope=
+ngraph.org/schema/" style=3D"border-top-width: 40px !important; border-top-=
+color: #fff !important; border-top-style: solid !important;">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<meta property=3D"og:title" content=3D"Banks Are Buying Back Stock. =F0=9F=
+=92=B0">
+<meta property=3D"fb:page_id" content=3D"43929265776">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1,=
+ maximum-scale=3D1">
+<!-- NAME: 1 COLUMN --><!--[if gte mso 15]>
+		<xml>
+			<o:OfficeDocumentSettings>
+			<o:AllowPNG/>
+			<o:PixelsPerInch>96</o:PixelsPerInch>
+			</o:OfficeDocumentSettings>
+		</xml>
+		<![endif]--><meta charset=3D"UTF-8">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1">
+	<title>The StockTwits Daily Rip</title>
+=09
+=09
+=09
+=09
+<style>img {
+border: 0; height: auto; outline: none; text-decoration: none;
+}
+body {
+height: 100%; margin: 0; padding: 0; width: 100%;
+}
+img {
+-ms-interpolation-mode: bicubic;
+}
+.ReadMsgBody {
+width: 100%;
+}
+.ExternalClass {
+width: 100%;
+}
+body {
+-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;
+}
+.ExternalClass {
+line-height: 100%;
+}
+body {
+background-color: #ffffff;
+}
+body#archivebody {
+margin: 0; padding: 0;
+}
+#awesomewrap a:hover {
+color: #000 !important;
+}
+#awesomebar > li > a:hover {
+background: #fff;
+}
+#awesomebar > li.more > a:after {
+content: ' '; display: block; float: right; position: relative; top: 17px; =
+left: 5px; width: 0; height: 0; border-left: 5px solid transparent; border-=
+right: 5px solid transparent; border-top: 5px solid #444;
+}
+#awesomebar > li.more > a.is-active:after {
+border-top: none; border-bottom: 5px solid #444;
+}
+#translate a:hover {
+background: #fff;
+}
+#awesomeshare .btn:hover {
+border-color: #333; background-color: #888; color: #fff;
+}
+#awesomeshare li:hover a {
+color: #fff !important;
+}
+#awesomeshare li.fbk:hover {
+border-color: #3a589d; background-color: #5472b7;
+}
+#awesomeshare li.fbk:hover b {
+border-color: #3a589d;
+}
+#awesomeshare li.fbk a:hover b {
+background-color: #e6ebf7;
+}
+#awesomeshare li.fbk a:hover.fbk-like b {
+background-position: right -39px;
+}
+#awesomeshare li.fbk a:hover.fbk-comment b {
+background-position: right -119px;
+}
+#awesomeshare li.twt:hover {
+border-color: #4c90c6; background-color: #61aed5;
+}
+#awesomeshare li.twt:hover b {
+border-color: #4c90c6;
+}
+#awesomeshare li.twt a:hover b {
+background: #e6f2f8; border-left-color: #4c90c6;
+}
+#awesomeshare li.ggl:hover {
+border-color: #c24531; background-color: #dd4c35;
+}
+#awesomeshare li.ggl:hover b {
+border-color: #d33c28;
+}
+#awesomeshare li.ggl a:hover b {
+background: #fae2de; border-left-color: #d33c28;
+}
+#copyURL:hover {
+border-color: #555;
+}
+#copyURL:hover a {
+background-color: #999; border-left-color: #555; color: #fff;
+}
+#social-proxy_close:hover {
+background-position: 0 -240px;
+}
+@media only screen and (min-width:768px) {
+  .templateContainer {
+    width: 600px !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  body {
+    -webkit-text-size-adjust: none !important;
+  }
+  table {
+    -webkit-text-size-adjust: none !important;
+  }
+  td {
+    -webkit-text-size-adjust: none !important;
+  }
+  p {
+    -webkit-text-size-adjust: none !important;
+  }
+  a {
+    -webkit-text-size-adjust: none !important;
+  }
+  li {
+    -webkit-text-size-adjust: none !important;
+  }
+  blockquote {
+    -webkit-text-size-adjust: none !important;
+  }
+  body {
+    width: 100% !important; min-width: 100% !important;
+  }
+  #bodyCell {
+    padding-top: 10px !important;
+  }
+  .mcnImage {
+    width: 100% !important;
+  }
+  .mcnCartContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnCaptionTopContent {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnRecContentContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnCaptionBottomContent {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnTextContentContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnBoxedTextContentContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnImageGroupContentContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnCaptionLeftTextContentContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnCaptionRightTextContentContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnCaptionLeftImageContentContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnCaptionRightImageContentContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnImageCardLeftTextContentContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnImageCardRightTextContentContainer {
+    max-width: 100% !important; width: 100% !important;
+  }
+  .mcnBoxedTextContentContainer {
+    min-width: 100% !important;
+  }
+  .mcnImageGroupContent {
+    padding: 9px !important;
+  }
+  .mcnCaptionLeftContentOuter .mcnTextContent {
+    padding-top: 9px !important;
+  }
+  .mcnCaptionRightContentOuter .mcnTextContent {
+    padding-top: 9px !important;
+  }
+  .mcnImageCardTopImageContent {
+    padding-top: 18px !important;
+  }
+  .mcnCaptionBlockInner .mcnCaptionTopContent:last-child .mcnTextContent {
+    padding-top: 18px !important;
+  }
+  .mcnImageCardBottomImageContent {
+    padding-bottom: 9px !important;
+  }
+  .mcnImageGroupBlockInner {
+    padding-top: 0 !important; padding-bottom: 0 !important;
+  }
+  .mcnImageGroupBlockOuter {
+    padding-top: 9px !important; padding-bottom: 9px !important;
+  }
+  .mcnTextContent {
+    padding-right: 18px !important; padding-left: 18px !important;
+  }
+  .mcnBoxedTextContentColumn {
+    padding-right: 18px !important; padding-left: 18px !important;
+  }
+  .mcnImageCardLeftImageContent {
+    padding-right: 18px !important; padding-bottom: 0 !important; padding-l=
+eft: 18px !important;
+  }
+  .mcnImageCardRightImageContent {
+    padding-right: 18px !important; padding-bottom: 0 !important; padding-l=
+eft: 18px !important;
+  }
+  .mcpreview-image-uploader {
+    display: none !important; width: 100% !important;
+  }
+  h1 {
+    font-size: 22px !important; line-height: 125% !important;
+  }
+  h2 {
+    font-size: 20px !important; line-height: 125% !important;
+  }
+  h3 {
+    font-size: 18px !important; line-height: 125% !important;
+  }
+  h4 {
+    font-size: 16px !important; line-height: 150% !important;
+  }
+  .mcnBoxedTextContentContainer .mcnTextContent {
+    font-size: 14px !important; line-height: 150% !important;
+  }
+  .mcnBoxedTextContentContainer .mcnTextContent p {
+    font-size: 14px !important; line-height: 150% !important;
+  }
+  #templatePreheader {
+    display: block !important;
+  }
+  #templatePreheader .mcnTextContent {
+    font-size: 14px !important; line-height: 150% !important;
+  }
+  #templatePreheader .mcnTextContent p {
+    font-size: 14px !important; line-height: 150% !important;
+  }
+  #templateHeader .mcnTextContent {
+    font-size: 16px !important; line-height: 150% !important;
+  }
+  #templateHeader .mcnTextContent p {
+    font-size: 16px !important; line-height: 150% !important;
+  }
+  #templateBody .mcnTextContent {
+    font-size: 16px !important; line-height: 150% !important;
+  }
+  #templateBody .mcnTextContent p {
+    font-size: 16px !important; line-height: 150% !important;
+  }
+  #templateFooter .mcnTextContent {
+    font-size: 14px !important; line-height: 150% !important;
+  }
+  #templateFooter .mcnTextContent p {
+    font-size: 14px !important; line-height: 150% !important;
+  }
+  .pi_10048 .pi_container {
+    width: 100% !important;
+  }
+  .pi_10048 .pi_fallback {
+    width: 100% !important;
+  }
+  .pi_10048 .pi_twocol {
+    width: 100% !important;
+  }
+  .pi_10048 .pi_twocolspace {
+    width: 100% !important;
+  }
+  .pi_10048 .pi_col {
+    width: 49% !important;
+  }
+  .pi_10048 .pi_colspace {
+    width: 2% !important;
+  }
+  .pi_10048 .pi_col img {
+    display: block !important; width: 100% !important; max-width: 200px; ma=
+rgin: 0 auto;
+  }
+}
+</style>
+</head>
+<body id=3D"archivebody" style=3D"height: 100%; width: 100%; -ms-text-size-=
+adjust: 100%; -webkit-text-size-adjust: 100%; margin: 0; padding: 0;" bgcol=
+or=3D"#ffffff">
+<center>
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" he=
+ight=3D"100%" id=3D"bodyTable" style=3D"border-collapse: collapse; mso-tabl=
+e-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-t=
+ext-size-adjust: 100%; height: 100%; width: 100%; margin: 0; padding: 0;" w=
+idth=3D"100%" bgcolor=3D"#ffffff">
+	<tbody>
+		<tr>
+			<td align=3D"center" id=3D"bodyCell" style=3D"mso-line-height-rule: exac=
+tly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; height: 10=
+0%; width: 100%; border-top-width: 0; margin: 0; padding: 10px;" valign=3D"=
+top">
+			<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"templat=
+eContainer" style=3D"border-collapse: collapse; mso-table-lspace: 0pt; mso-=
+table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 10=
+0%; max-width: 600px !important; border: 0;" width=3D"100%">
+				<tbody>
+					<tr>
+						<td id=3D"templateHeader" style=3D"mso-line-height-rule: exactly; -ms=
+-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-top-width: =
+0; border-bottom-width: 0; padding-top: 9px; padding-bottom: 0; background:=
+ none no-repeat center / cover;" valign=3D"top" bgcolor=3D"#FFFFFF">
+<a href=3D"www.trade-ideas.com/ti2018-5-ways-win-post-btfd-stocktwits?utm_s=
+ource=3Dstocktwits&amp;utm_medium=3Demail&amp;utm_campaign=3Dstocktwits&amp=
+;utm_term=3Dbtfd" style=3D"mso-line-height-rule: exactly; -ms-text-size-adj=
+ust: 100%; -webkit-text-size-adjust: 100%;"><img alt=3D"" src=3D"https://ap=
+pboy-images.com/appboy/communication/assets/image_assets/images/5a873ac41b0=
+e4d3bb6cea2ba/original.jpg?1518811844" style=3D"width: 600px; height: 90px;=
+ outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; bor=
+der: 0;" align=3D"right"></a><a href=3D"http://ablinks.stocktwits.com/wf/cl=
+ick?upn=3Dl2azkiz6fH4mVhzIZrpqWoUEFC1CaAF-2Bvgh-2BZKnW9YlNaI-2BsJUW4fM0YVKw=
+O-2BEY8UQ0dJi883rzXromn8IKYEX-2FL3nkH2et6f0xnzFg0A5vZ1I5-2FXiwY-2FcA-2F5-2F=
+kyU-2BuLZB2-2FWPA8BhNi5vz7baubR-2BoZrhsTeFFAVQPauDyuMDvcISLILZXLUJKVs3P8KPN=
+oOGT-2FxU2vx1QRpX1hApbSmpZw79OcMPUrMaSfI306oRLqFMBu11PggYNcCKKM8EjD_A4wPItE=
+17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx=
+6zbcRRgtTRNCe79TbTizb-2Bo9QvAtbEXeH1HM-2Binwu96dKHXc50O7XaENGsW4D9nAF5iOH2a=
+H7laFxmlNPInWV5YZHzdNBpDVpB4CejN-2FSbjhVypN-2FllfG5aQU5gLjPUGqS8ak4OhwnnqYY=
+Cru2HT56MT6z7A04-2BMXbl3uXq7EBosFeiNNTy7aiDJVdwOXTJfRaEvSzNrdDFXoQh8seTRIEr=
+hMQ0U3VkIs2HCNhpFbPQ606YWhENRcWehATNmwlZSt9LTi6aqYkmTyosGLG9E-2BnC4vZg7RjHA=
+l8J3m86Xjea3Ewh7XLEdwhiHzPfTkuaPf5asYighEHHALDqL-2F0i-2BCwgIwUi6dgNF7u6-2F6=
+rhuZkgwp-2FEpmns8yZB9lKRlW-2FZWMlk1JFSapx-2Bg-3D-3D" style=3D"mso-line-heig=
+ht-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100=
+%;"><img data-bind=3D"attr: {'title': $data.name, 'src': $data.fullUrl}" sr=
+c=3D"https://appboy-images.com/appboy/communication/assets/image_assets/ima=
+ges/59c9711a1b0e4d6ff20649e9/original.?1506373914" style=3D"width: 600px; h=
+eight: 150px; outline: none; text-decoration: none; -ms-interpolation-mode:=
+ bicubic; border: 0;" title=3D"original.png"></a>
+						<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnT=
+extBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table-ls=
+pace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-=
+size-adjust: 100%;" width=3D"100%">
+							<tbody class=3D"mcnTextBlockOuter">
+								<tr>
+									<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; mso-lin=
+e-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjus=
+t: 100%;" valign=3D"top">
+									<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 100%; min-widt=
+h: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace=
+: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width=
+=3D"100%">
+										<tbody>
+											<tr>
+												<td class=3D"mcnTextContent" style=3D"mso-line-height-rule: exa=
+ctly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-brea=
+k: break-word; color: #202020; font-family: Helvetica; font-size: 16px; lin=
+e-height: 150%; padding: 0 18px 9px;" valign=3D"top" align=3D"left">
+												<div style=3D"color: #2f435d; border-bottom-width: 3px; border-=
+bottom-color: #2f435d; border-bottom-style: solid; margin-top: 10px; paddin=
+g-bottom: 5px; font-size: 16px; font-weight: bold; text-transform: uppercas=
+e;">poppin' bubbles</div>
+
+												<div style=3D"color: #2f435d; font-size: 32px; font-weight: bol=
+d; line-height: 1.1; margin-top: 10px; margin-bottom: 0;">Is this time diff=
+erent?</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnT=
+extBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table-ls=
+pace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-=
+size-adjust: 100%;" width=3D"100%">
+							<tbody class=3D"mcnTextBlockOuter">
+								<tr>
+									<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; mso-lin=
+e-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjus=
+t: 100%;" valign=3D"top">
+<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" =
+width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]--><!--[if mso]>
+				<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+				<![endif]-->
+									<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 100%; min-widt=
+h: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace=
+: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width=
+=3D"100%">
+										<tbody>
+											<tr>
+												<td class=3D"mcnTextContent" style=3D"text-size-adjust: 100%; w=
+ord-break: break-word; color: rgb(32, 32, 32); font-family: Helvetica; line=
+-height: 150%; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -=
+webkit-text-size-adjust: 100%; font-size: 16px; padding: 0px 18px 9px;" val=
+ign=3D"top" align=3D"left">
+												<div style=3D"" align=3D"center">
+												<div style=3D"" align=3D"left">
+<span style=3D"font-size: 18px;">Most say a market bubble can only be spott=
+ed after the fact. The current market we are in is being termed the "everyt=
+hing bubble".&nbsp;<a href=3D"http://ablinks.stocktwits.com/wf/click?upn=3D=
+l2azkiz6fH4mVhzIZrpqWv2O8ZZ0kAIh13ofy8er8LdLbQ3YktlwTtTl1e5reHa-2BRU65ABBFU=
+ZMOnrPAWFb0IA-3D-3D_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka=
+1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNPVDWGBpig-2FwchUBPYUhhq9UIQrZlAmn4GSx=
+hy28Swqtrk-2B1jzWXC1CYDJSoOCpqDGk7xQAmGJ-2BwKmeo7RGXrjzCHo6vIM3GDDf0yzZlJI0=
+dG5OhQYMSSHKX40dGXIbht9Kf4t7N5vyvlSEwSXtjrU-2F-2B9XR1Z64-2BrsTccAtrq3LesD8O=
+Jki0HsQN-2BnRGQA2uYxecM7q9GR9zIkIGvWwFS3PmUk0U-2FGd0F2bA3FkvqieGTxMFE-2FlIh=
+g9dWX-2F9occ26ZeCA-2FSltWATWNZ-2FZBQ6xrOhgXlfVHGP0Jxzawf4-2ByIsVjxSPA1KVJJw=
+JX-2Fx0EtP1TFlvlQzwL4RzN3jayxj1VkRTe8iZi-2BEyWBTGkGAa1hLOg2YvDTLo5ZECku3DvN=
+yAg-3D-3D" style=3D"mso-line-height-rule: exactly; -ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; color: #2BAADF; font-weight: normal; te=
+xt-decoration: underline;">One chart is showing us near what has been a cri=
+tical point</a>&nbsp;in the past.&nbsp;The big question, is this time diffe=
+rent?</span><br>
+												<br>
+												<em style=3D"font-size: 16px;">Special note:&nbsp;Make sure you=
+ =E2=80=9Cwhitelist=E2=80=9D us to ensure you receive all&nbsp;Daily Rip&nb=
+sp;emails. One important step is to add us to your&nbsp;address book. Go to=
+ the "From" line and add our email to your contacts.</em>
+</div>
+												</div>
+												</td>
+											</tr>
+											<tr>
+												<td class=3D"mcnTextContent" style=3D"text-size-adjust: 100%; w=
+ord-break: break-word; color: rgb(32, 32, 32); font-family: Helvetica; line=
+-height: 150%; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -=
+webkit-text-size-adjust: 100%; font-size: 16px; padding: 0px 18px 9px;" val=
+ign=3D"top" align=3D"left"></td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnT=
+extBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table-ls=
+pace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-=
+size-adjust: 100%;" width=3D"100%">
+							<tbody class=3D"mcnTextBlockOuter">
+								<tr>
+									<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; mso-lin=
+e-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjus=
+t: 100%;" valign=3D"top">
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnTextBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table=
+-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-te=
+xt-size-adjust: 100%;" width=3D"100%">
+										<tbody class=3D"mcnTextBlockOuter">
+											<tr>
+												<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; mso-=
+line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-ad=
+just: 100%;" valign=3D"top">
+												<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"mcnTextBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webk=
+it-text-size-adjust: 100%;" width=3D"100%">
+													<tbody class=3D"mcnTextBlockOuter">
+														<tr>
+															<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; m=
+so-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size=
+-adjust: 100%;" valign=3D"top">
+															<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 100%; min-=
+width: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" wid=
+th=3D"100%">
+																<tbody>
+																	<tr>
+																		<td class=3D"mcnTextContent" style=3D"mso-line-height-rul=
+e: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; wor=
+d-break: break-word; color: #202020; font-family: Helvetica; font-size: 16p=
+x; line-height: 150%; padding: 0 18px 9px;" valign=3D"top" align=3D"left">
+																		<div style=3D"color: rgb(47, 67, 93); border-bottom-width=
+: 3px; border-bottom-color: rgb(47, 67, 93); border-bottom-style: solid; ma=
+rgin-top: 10px; padding-bottom: 5px; font-size: 16px; font-weight: bold; te=
+xt-transform: uppercase;">influencer impact</div>
+
+																		<div style=3D"color: rgb(47, 67, 93); font-size: 32px; fo=
+nt-weight: bold; line-height: 1.1; margin-top: 10px; margin-bottom: 0px;">K=
+ylie Jenner crushes Snapchat stock.</div>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+
+															<div>
+<!--[if mso]>
+				</td>
+				<![endif]--><!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+</div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"mcnTextBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webk=
+it-text-size-adjust: 100%;" width=3D"100%">
+													<tbody class=3D"mcnTextBlockOuter">
+														<tr>
+															<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; m=
+so-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size=
+-adjust: 100%;" valign=3D"top">
+															<div>
+<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" =
+width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]--><!--[if mso]>
+				<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+				<![endif]-->
+</div>
+
+															<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 100%; min-=
+width: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rs=
+pace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" wid=
+th=3D"100%">
+																<tbody>
+																	<tr>
+																		<td class=3D"mcnTextContent" style=3D"text-size-adjust: 1=
+00%; word-break: break-word; color: rgb(32, 32, 32); font-family: Helvetica=
+; line-height: 150%; mso-line-height-rule: exactly; -ms-text-size-adjust: 1=
+00%; -webkit-text-size-adjust: 100%; font-size: 16px; padding: 0px 18px 9px=
+;" valign=3D"top" align=3D"left">Shares of $SNAP fell -6% today, after Kyli=
+e Jenner tweeted out <a href=3D"http://ablinks.stocktwits.com/wf/click?upn=
+=3Dl2azkiz6fH4mVhzIZrpqWk8LJ3Ifoi9PNuQXBvijVYi6PZwhK4ZY8qvlqZZUsky6-2F1pmH1=
+pq1JhoYsWE2Z8JTXOj9VV-2F-2FU1RMZmxX1bvzYS7N-2F0btiMiN57GjOHOfwvPFLwFfox7mdm=
+2xlS-2FpXDtwN3heV1kwlLkifS9YlNkIp4-3D_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806Fj=
+aGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNHzYXq0l-2BnwP-2BidE=
+Y-2BjHfT6094YtCmaBYJNlJg7JEEtjy0CZlxeoGfrCJkw-2FuKGameRei7f9htIm4NjE8NjJbMt=
+XMSgWn3pzlP-2B3W5XaP5V1Krs2nxIX-2Fz5-2B3vG-2FDNcQGFxoe2yva3CDBEpTgSBCJwOPKP=
+W-2FIwTmbTf11WHWPCMSAIVRbvEVsZ862KMorNQuDkuqNk0JMVBQ4kcALQF8VSGol-2F4NRsZ4R=
+1-2BVJKnkFWJzXLqQArfklEodR1AMwaa7ezWlxNvxrW7HNuDO266dlI0weINqO5OhgtB1WPXTg7=
+bo4pPT-2B4-2FVfeFD-2F2zdjdGAKAxe6eukGeG8-2FbZvAlhf42GVnI-2FxVh0zG8wd51cNG3N=
+IK-2BXFd-2FMaAjtK563ZJtvT-2Bw-3D-3D" style=3D"mso-line-height-rule: exactly=
+; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #2BAAD=
+F; font-weight: normal; text-decoration: underline;">"sooo does anyone else=
+ not open Snapchat anymore? Or is it just me... ugh this is so sad".</a> Th=
+is wiped out $1.3 BILLION in market cap at one point. Snap has recieved a l=
+ot of push-back on their new redesign. Over 1.2million users even signed a =
+petition against it.</td>
+																	</tr>
+																</tbody>
+															</table>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 100%; min-wid=
+th: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspac=
+e: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width=
+=3D"100%">
+													<tbody>
+														<tr>
+															<td class=3D"mcnTextContent" style=3D"word-break: break-word=
+; color: rgb(32, 32, 32); font-family: Helvetica; line-height: 150%; mso-li=
+ne-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adju=
+st: 100%; font-size: 16px; padding: 0px 18px 9px;" valign=3D"top" align=3D"=
+left">
+															<div style=3D"font-size: 16px; color: rgb(47, 67, 93); borde=
+r-bottom-width: 3px; border-bottom-color: rgb(47, 67, 93); border-bottom-st=
+yle: solid; margin-top: 10px; padding-bottom: 5px; font-weight: bold; text-=
+transform: uppercase;">Meet Our Sponsor</div>
+
+															<div style=3D"font-size: 32px; color: rgb(47, 67, 93); font-=
+weight: bold; line-height: 1.1; margin-top: 10px; margin-bottom: 0px;">Are =
+you prepared for when BTFD stops working?</div>
+
+															<p style=3D"mso-line-height-rule: exactly; -ms-text-size-adj=
+ust: 100%; -webkit-text-size-adjust: 100%; color: #202020; font-family: Hel=
+vetica; font-size: 16px; line-height: 150%; margin: 10px 0; padding: 0;" al=
+ign=3D"left"><span style=3D"font-size: 18px;">All market regimes end. All b=
+ull markets end. These are facts. By some measures we are nearly 9 years in=
+to a bull market that rates among history=E2=80=99s best in both duration a=
+nd total return. But this too shall pass. StockTwits users, <a href=3D"http=
+://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWuzicKEFjuYY0K=
+4blcs-2FYCt-2Brc4PtuVIOJOFKtgN0IYQgmFZZMo42WOsDDC7uMoK7-2FHaC6dvD2NyEkaG-2F=
+Hz7GNYMYqWzK7lSGIl6fs2uyfHNTNE6rcumAzWSewoMiF5rqkUmFopab37Qaz09-2FOfnR6Wcbb=
+3lXVN9UUutPxC9id7jfVvtnCL9WPZZZKAokL0f3A-3D-3D_A4wPItE17ns82-2FB9uPGT5mN-2B=
+Dwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNBFoXcqW6wn=
+ldt70bxlqZsRGSjM7-2BDPwDwhZr-2BH2QGstzf0h2rp3V6iE7-2BZD3s-2BPLJ4AxviHiIKANJ=
+FIgyL4gZS7gpmBQR7zN6nSnCp-2BrRm2ExIbcOM-2B2kVC0-2BY8XC-2FsUze5v2EV8k7guFOoh=
+900YVb3UsCAZ4qA3j52FlbDurKLNYbbabEerGRCxnioCCM37BmuFEAp7A5a7x-2BIzzdEakwDsA=
+wxOdp6GY1xCHL4a1y-2BdgzYRt5no8JAuVnZCWBzpgN2BGSDMxHqgNxLwQhTidIpHZTDtkQqvHI=
+xjzqZD4pBp2gi0EeVQwwGdEzWWD8-2FfK18QgxGjgHa0r4Kory7gIbay2Fjz6PmwVAiJInOSVeA=
+ZL1SL9xrfJCAYYW2yfhP-2Bw-3D-3D" style=3D"mso-line-height-rule: exactly; -ms=
+-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #2BAADF; fo=
+nt-weight: normal; text-decoration: underline;">get Trade Ideas=E2=80=99 Tr=
+ade of the Week delivered to your inbox FREE<br>
+															<br>
+															<img alt=3D"" src=3D"https://appboy-images.com/appboy/commun=
+ication/assets/image_assets/images/5a8737335c5a68213680fb3c/original.jpg?15=
+18810931" style=3D"width: 550px; height: auto !important; outline: none; te=
+xt-decoration: none; -ms-interpolation-mode: bicubic; border: 0;"></a></spa=
+n></p>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td id=3D"templateBody" style=3D"mso-line-height-rule: exactly; -ms-t=
+ext-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-top-width: 0;=
+ border-bottom-width: 2px; border-bottom-color: #EAEAEA; border-bottom-styl=
+e: solid; padding-top: 0; padding-bottom: 9px; background: none no-repeat c=
+enter / cover;" valign=3D"top" bgcolor=3D"#ffffff">
+						<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnT=
+extBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table-ls=
+pace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-=
+size-adjust: 100%;" width=3D"100%">
+							<tbody class=3D"mcnTextBlockOuter">
+								<tr>
+									<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; mso-lin=
+e-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjus=
+t: 100%;" valign=3D"top">
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnTextBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table=
+-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-te=
+xt-size-adjust: 100%;" width=3D"100%">
+										<tbody class=3D"mcnTextBlockOuter">
+											<tr>
+												<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; mso-=
+line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-ad=
+just: 100%;" valign=3D"top">
+												<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 100%; min-wid=
+th: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspac=
+e: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width=
+=3D"100%">
+													<tbody>
+														<tr>
+															<td class=3D"mcnTextContent" style=3D"mso-line-height-rule: =
+exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-b=
+reak: break-word; color: #202020; font-family: Helvetica; font-size: 16px; =
+line-height: 150%; padding: 0 18px 9px;" valign=3D"top" align=3D"left">
+															<div style=3D"color: rgb(47, 67, 93); border-bottom-width: 3=
+px; border-bottom-color: rgb(47, 67, 93); border-bottom-style: solid; margi=
+n-top: 10px; padding-bottom: 5px; font-size: 16px; font-weight: bold; text-=
+transform: uppercase;">hodl in style</div>
+
+															<div style=3D"color: rgb(47, 67, 93); font-size: 32px; font-=
+weight: bold; line-height: 1.1; margin-top: 10px; margin-bottom: 0px;">We d=
+ropped the freshest HODL tees.</div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<div>
+<!--[if mso]>
+				</td>
+				<![endif]--><!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnTextBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table=
+-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-te=
+xt-size-adjust: 100%;" width=3D"100%">
+										<tbody class=3D"mcnTextBlockOuter">
+											<tr>
+												<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; mso-=
+line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-ad=
+just: 100%;" valign=3D"top">
+												<div>
+<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" =
+width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]--><!--[if mso]>
+				<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+				<![endif]-->
+</div>
+
+												<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 100%; min-wid=
+th: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspac=
+e: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width=
+=3D"100%">
+													<tbody>
+														<tr>
+															<td class=3D"mcnTextContent" style=3D"text-size-adjust: 100%=
+; word-break: break-word; color: rgb(32, 32, 32); font-family: Helvetica; l=
+ine-height: 150%; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%=
+; -webkit-text-size-adjust: 100%; font-size: 16px; padding: 0px 18px 9px;" =
+valign=3D"top" align=3D"left">Bitcoin may have tested under $10,000 today, =
+but if you are <a href=3D"http://ablinks.stocktwits.com/wf/click?upn=3Dl2az=
+kiz6fH4mVhzIZrpqWkL0wPtkFXrGPx2l53xC-2BEolXT5QhTOqhYwlR3GROC1-2BIidLI0yt9vo=
+j3zmEQdZvGF-2FIMdmR35zG5MVpb-2FF2O9MFI9DiYKdGiXgrYCRV4OA0xPdH4PmfEaa5jGPTPm=
+IOdJk7WE8Fky-2F0-2Br15danp6tRiCIwJ1pvpCQ23TfjbYr6Q_A4wPItE17ns82-2FB9uPGT5m=
+N-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNNPE-2F=
+jtC0vXG2c8PBrFz8kCiYEYmeTazVUbc-2BFjO9O4eXLJNuqdIkrsWAYfzoB3Z5SOBV6xgdbM8he=
+Bhro9-2Bxz9tPc-2BtnPONMpzyM40-2B-2B5XW13vms-2BuIzPT9XJksark88Zbi2ysy-2FoMvs=
+EtGt75XsIHCoUD0Gov4n-2FIt-2FvWe8u5so-2F1Yh-2FsDubZFrQPjFz5q-2BZNUXgqMqcHkbQ=
+9GOyTpo6-2F6TiF3m0YzZSY-2BbDJMBLN6T2xqxfFMjoMLZ5XkdePDOW57Fd4hrdwpoYld7KnmA=
+5l-2FRlvwC06qk4Y-2BL4rlGaqItfn9z5Bo4l6HEgRlyTa7TVQmNJMgA5Di1X4R0CgxO-2FKlFF=
+Vd4inDRkXVFhLQ8JMNBpnPXUssoANWgbu7GwT1OQ-3D-3D" style=3D"mso-line-height-ru=
+le: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; co=
+lor: #2BAADF; font-weight: normal; text-decoration: underline;">HODLing you=
+'ll want to sport these fresh t-shirts.</a>
+</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnTextBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table=
+-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-te=
+xt-size-adjust: 100%;" width=3D"100%">
+										<tbody class=3D"mcnTextBlockOuter">
+											<tr>
+												<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; mso-=
+line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-ad=
+just: 100%;" valign=3D"top">
+												<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 100%; min-wid=
+th: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspac=
+e: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width=
+=3D"100%">
+													<tbody>
+														<tr>
+															<td class=3D"mcnTextContent" style=3D"mso-line-height-rule: =
+exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-b=
+reak: break-word; color: #202020; font-family: Helvetica; font-size: 16px; =
+line-height: 150%; padding: 0 18px 9px;" valign=3D"top" align=3D"left">
+															<div style=3D"color: rgb(47, 67, 93); border-bottom-width: 3=
+px; border-bottom-color: rgb(47, 67, 93); border-bottom-style: solid; margi=
+n-top: 10px; padding-bottom: 5px; font-size: 16px; font-weight: bold; text-=
+transform: uppercase;">earnings</div>
+
+															<div style=3D"color: rgb(47, 67, 93); font-size: 32px; font-=
+weight: bold; line-height: 1.1; margin-top: 10px; margin-bottom: 0px;">A ta=
+le of two HPs.</div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<div>
+<!--[if mso]>
+				</td>
+				<![endif]--><!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnTextBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table=
+-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-te=
+xt-size-adjust: 100%;" width=3D"100%">
+										<tbody class=3D"mcnTextBlockOuter">
+											<tr>
+												<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; mso-=
+line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-ad=
+just: 100%;" valign=3D"top">
+												<div>
+<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" =
+width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]--><!--[if mso]>
+				<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+				<![endif]-->
+</div>
+
+												<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 100%; min-wid=
+th: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspac=
+e: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width=
+=3D"100%">
+													<tbody>
+														<tr>
+															<td class=3D"mcnTextContent" style=3D"text-size-adjust: 100%=
+; word-break: break-word; color: rgb(32, 32, 32); font-family: Helvetica; l=
+ine-height: 150%; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%=
+; -webkit-text-size-adjust: 100%; font-size: 16px; padding: 0px 18px 9px;" =
+valign=3D"top" align=3D"left">When Hewlett-Packard split in 2015, two disti=
+nctly different companies were created: Hewlett Packard Enterprise Company =
+($HPE), a business technology provider (not unlike the modern IBM) and HP I=
+nc. ($HPQ), the company making the printer you likely use.&nbsp;Today, both=
+ companies reported an earnings beat, and saw equally-impressive after-hour=
+s gains. $HPE beat on EPS and increased guidance, as did $HPQ.<br>
+															<br>
+															<a href=3D"http://ablinks.stocktwits.com/wf/click?upn=3Dl2az=
+kiz6fH4mVhzIZrpqWvladNUGpVLrMwxuSY-2BExZVWiUUCaO7sL6aPR07FpjzDj7hqyTF-2B3iQ=
+34ytOZ4-2BCWBGw-2FvVRapL1uw50xsyf-2F-2B2-2F3hiGo-2BhxHZqTVy0CMVZu_A4wPItE17=
+ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6z=
+bcRRgtTRNAA0OBPODnVZjo43P-2FWOJti-2FtWV3TJqUubvTkTwyXCuD7U7YavddOUYnhXBIX-2=
+FjbKtVOrKIgUPPXwrOIqWt-2FJ7Sm1EXaPkfYAYBIw4PyokYcalZTtf6sLLp2vXNCJmOj8g-2Ff=
+58NTMOqfqbipCzvJkuwyHqYSEaLpynKCr8VdC2cKazB-2BNqu3Qja4a9Mrw30ZudDYUiQDNYOpi=
+IUJBibtI5ALxcSv1OLJuMIh90GNk25qMUxEuabSALwTQQYfo-2BrH1FpVlV81Revfye5w7FVizI=
+juw-2F6TWuHAyeEPbB-2BX8fWoXYKnZSQR5JoZYuJmA6bAU6M9v1-2Bvh3fedu9ujsAcqXdXuan=
+zjV-2BsYHX4vNu7VqqH0pU6qgf1gQsUjBZVASZAGQ-3D-3D" style=3D"mso-line-height-r=
+ule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; c=
+olor: #2BAADF; font-weight: normal; text-decoration: underline;">Check out =
+the earnings highlights from both companies.</a>
+</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 100%; min-widt=
+h: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace=
+: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;" width=
+=3D"100%">
+										<tbody>
+											<tr>
+												<td class=3D"mcnTextContent" style=3D"text-size-adjust: 100%; w=
+ord-break: break-word; color: rgb(32, 32, 32); font-family: Helvetica; line=
+-height: 150%; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -=
+webkit-text-size-adjust: 100%; font-size: 16px; padding: 0px 18px 9px;" val=
+ign=3D"top" align=3D"left">
+												<div style=3D"font-size: 16px; color: rgb(47, 67, 93); border-b=
+ottom-width: 3px; border-bottom-color: rgb(47, 67, 93); border-bottom-style=
+: solid; margin-top: 10px; padding-bottom: 5px; font-weight: bold; text-tra=
+nsform: uppercase;">Market Humor</div>
+
+												<div style=3D"font-size: 32px; color: rgb(47, 67, 93); font-wei=
+ght: bold; line-height: 1.1; margin-top: 10px; margin-bottom: 0px;">Musk ha=
+tes one movie.<br>
+												&nbsp;</div>
+
+												<div>
+<a href=3D"http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrp=
+qWsU5dv2PkbAlJfaESP5-2F7MTs-2FAJNcki3SX7VVQNgXxwhzCpVkqGTEVI5Gh3xRZDu-2BASY=
+U19OeCpw-2FV8Bgwu47xCcc3CnOKll9rfJq508Uvq2iLIVTdFnAxhOqAsN0VP8xMKiNuj72XAUm=
+pAC4yWsq2I-3D_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2=
+hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNK8D4IaVqhY1BZUSNfwdLf8h98RxcjNe-2FyGDd6S-2B=
+icY1WgLoiJXZHwwSD63pGxZmZEYewHTV6n5LP-2FBCPXLSdKjVDNSxl0Jx4vfri7N05c0hHFRuh=
+WSbrCxSDDR78-2B5lE065cs-2FNYQEPsfJB3hYRHMiL6z5IrCS1iN4TwH9fdl97kjgt7K6K-2Ft=
+LrSqnuOf5UiJKiRBc-2BR-2F9uCEWpxS3Z1oPZ6iijcFWB-2BSlFksJ-2FdAMb9UqZG7G0nmyKw=
+DDk-2F-2FfZFHQyV6vTUBK8ncgmMtSJuLSfclQlpjmYGTfcbAn2VDYGm75BWQNFUAK7wOcrW-2F=
+Fip-2BWMSmy9-2F-2BZ53wOdErv7kwVkhj4m5F65nj1l4blafC-2FeBOZ6hG9FGFtxqIAjHwVUu=
+Q-3D-3D" style=3D"mso-line-height-rule: exactly; -ms-text-size-adjust: 100%=
+; -webkit-text-size-adjust: 100%; color: #2BAADF; font-weight: normal; text=
+-decoration: underline;">Can you guess what it is?</a>&nbsp;=F0=9F=9A=97</d=
+iv>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<div>
+<!--[if mso]>
+				</td>
+				<![endif]--><!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td id=3D"templateFooter" style=3D"mso-line-height-rule: exactly; -ms=
+-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-top-width: =
+0; border-bottom-width: 0; padding-top: 9px; padding-bottom: 9px; backgroun=
+d: none no-repeat center / cover;" valign=3D"top" bgcolor=3D"#FAFAFA">
+						<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnT=
+extBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table-ls=
+pace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-=
+size-adjust: 100%;" width=3D"100%">
+							<tbody class=3D"mcnTextBlockOuter">
+								<tr>
+									<td class=3D"mcnTextBlockInner" style=3D"padding-top: 9px; mso-lin=
+e-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjus=
+t: 100%;" valign=3D"top">
+									<div>
+<!--[if mso]>
+				<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" =
+width=3D"100%" style=3D"width:100%;">
+				<tr>
+				<![endif]--><!--[if mso]>
+				<td valign=3D"top" width=3D"299" style=3D"width:299px;">
+				<![endif]-->
+</div>
+
+									<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 299px; border-=
+collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-=
+size-adjust: 100%; -webkit-text-size-adjust: 100%;" width=3D"100%">
+										<tbody>
+											<tr>
+												<td class=3D"mcnTextContent" style=3D"mso-line-height-rule: exa=
+ctly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-brea=
+k: break-word; color: #656565; font-family: Helvetica; font-size: 12px; lin=
+e-height: 150%; padding: 0 18px 9px;" valign=3D"top" align=3D"center">
+												<p style=3D"mso-line-height-rule: exactly; -ms-text-size-adjust=
+: 100%; -webkit-text-size-adjust: 100%; color: #656565; font-family: Helvet=
+ica; font-size: 12px; line-height: 150%; margin: 10px 0; padding: 0;" align=
+=3D"left">Our mailing address is:<br>
+												StockTwits, Inc.<br>
+												<a href=3D"http://ablinks.stocktwits.com/wf/click?upn=3Dl2azkiz=
+6fH4mVhzIZrpqWvwvyAGwwZYEr-2FC5sfrwiEjxuwOpzqa6sED6ONdP6nLoNIlJlZ2eOwHUzHZa=
+QUFZWdNc8H-2B-2FXHXgNY0A78ViptWz0hXyVIHyUOMQr5YQGMOGljqEo5OzUCQgU1e8ZNkp5A-=
+3D-3D_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNya=
+eyuRjec9aTRxx6zbcRRgtTRNOd3Jk6wWl5KOz-2F19H2apjkd6GkLt2yVyixTnH50UOoyGlRGtH=
+UREdxpV2vrxpCMVq2bI-2FeLXH-2FH1H4lzNEFlKmjVXXar-2FNQ33sCYqOu2ACsGady4AqKAOv=
+Ra8o0VROR-2Bi5-2FRaA6w-2Bh0PltSjVBTDoP5kg08ygh9bd9yuHYX8v5pPtwwkKONadLA9C-2=
+B-2BBPa5LD2ZpoMA9TnjjDH5O-2FzOTX7zIuhETuCXZ6T6dI7k-2FJizUANrXWLR0GqLZileuzl=
+n6QTL4HqyFcSn2-2BiPLnE9IIMjq-2F6mAaOXnD4hbZ9TFjyQLjIul1xSJGHkcf1aMyyBePjvjn=
+nsJUVGr5-2F8ZqIFbmpwVsuwZqy-2FrhOFp9Qvm0cy2YFcFTC-2BFRRncKAlvU-2Fhuw-3D-3D"=
+ style=3D"mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webki=
+t-text-size-adjust: 100%; color: #656565; font-weight: normal; text-decorat=
+ion: underline;">1001 Avenue of the Americas</a><br>
+												New York, New York 10018</p>
+
+												<div style=3D"" align=3D"left">Copyright =C2=A9 2017 StockTwits=
+, Inc., All rights reserved.<br>
+												&nbsp;</div>
+
+												<table style=3D"border-collapse: collapse; mso-table-lspace: 0p=
+t; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-adj=
+ust: 100%;">
+													<tbody>
+														<tr>
+															<td style=3D"mso-line-height-rule: exactly; -ms-text-size-ad=
+just: 100%; -webkit-text-size-adjust: 100%;">
+															<table style=3D"border-collapse: collapse; mso-table-lspace:=
+ 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-text-size-=
+adjust: 100%;">
+																<tbody>
+																	<tr>
+																		<td style=3D"mso-line-height-rule: exactly; -ms-text-size=
+-adjust: 100%; -webkit-text-size-adjust: 100%;" align=3D"left">If you want =
+to get a friend on this list,&nbsp;<a data-saferedirecturl=3D"https://www.g=
+oogle.com/url?hl=3Den&amp;q=3Dhttp://ablinks.stocktwits.com/wf/click?upn%3D=
+uf-2BZqBgoy-2FhIF3WXajBlDrapDJABhiXnknsMx-2BW23Mf6J96iYZzSCfiOFc1Aui2dLQZwf=
+ShpueLb-2FiA9FIRBRg-3D-3D_-2FmMd5KLcJYyyIX-2FuE5a4Rja2SK9lvdIk2-2Fm4ezb-2Fw=
+VfUZVeKAM6gXlvYNMEyia0wYCn-2BnjEJ3O-2FRMMM-2BUzoayxrmFcuTRU-2FkLvzql2LeHy1y=
+-2BMlAAPEkQk5JR-2FHrhtxrPX4ebduzzgWdApAMlTCkwZnPmc-2BWSwdKOADsFhJzoJvabaq6Z=
+L0Sc5-2BRhRI85uydaLTUQDjMAp1OvWRvfjy3l38AQ9QwyQyLPGfCAcMQrnsEC6ASA-2BMH28k-=
+2BHVcy8ZWyKXY6ijgsTaORVOXmadsLBb-2FQznyuLF3sMZJ5IwfbVHxqM30r8Dm3JIBnjq3xBVT=
+qPqIZCJLQIikn4qzF0AN0PAqTQ4ypZ-2FrokGEbmlfSwMXIZOmyBfQIWXAN2kU1N-2F9SD3X5t-=
+2BcLHRBBK3gKQoAljVO1cN-2BBo4VjlwbtAV-2FDgXbPcgHYfBRyzfVWc2jQVyRWCMT9El5qlID=
+O-2BqR2D4huaw-3D-3D&amp;source=3Dgmail&amp;ust=3D1515539060026000&amp;usg=
+=3DAFQjCNG_FS990Y90UTUSCN1C3IdHhVrlrA" href=3D"http://ablinks.stocktwits.co=
+m/wf/click?upn=3Dua-2FnbSX1f8HpE-2BQkvZv9SWhlAeKqt8cTCPzZ6rJW3iYP188ZLQoWkK=
+WwdX1F3Vo5zFgdqlsi8ZCGItwTmSBkyUC-2FSphrmik9kRlwjOIz6uBsgV-2B-2BMIO0-2BH1nd=
+qfswBsAj-2BruGVpuAI8CkTN-2F5VfF2SCrieKQlnaKxdvorfEeVS0K02pZurWaCtzjwuNOmGZc=
+exW79jU-2BQrzEyWSDtsf7YCe5KUDrU5NklbsH-2BaSAfPHgC1l6xTgd2m4WmFYNAZVcgCFxjFS=
+t5kYBXfpEp404TJgJuoosbVBaabe9EW31bB1WYbAX6Z-2F-2FgZHtz-2FfiOacwccWELDjVK6HN=
+CEwvSvFcROeIMVeaueLRG21LSBap0SDSUJAVX-2F2TSIcVAe1XLSxCY7SbG3pFFixnHoWm39Eze=
+TpJPjKqzDIpo7H0MSJ6hEavJSNWwDE0HUfSpOxQe3weKKWg9rFxrcwqRIcDgrpeISAiIHKEKpxg=
+IImwI2OXHBNfxPNGYMo4p-2B0RS9setPH51cpTc5ErlIqJpEjEjyqNR5UHz2M5HeQoGeORxrRoO=
+oHKGqLzFcPYDgvTCkmzN5VeCw0p8WlKAnDrOgyMJd9bG4v1nqSHfPzP-2Bo-2BGVsW-2Fk0zyW0=
+o0620V7uHz7UYVfTgCT4sPNKhw2GdERzbgkRYNoRhfmklvIX1KnQFI40HZ7nCBOBoqmREZwS-2B=
+QxsjdFtL4o2VwBH7TJyykkcqudhESVrZUl4bKunWktNCdGxRBg2Nisxka2yDKIcTNHmMjSQ6YuC=
+IxX-2BBcQXgow3nArNRK1xWjJ3RynOMvWOh-2Fm07B4gdqZvK0FxIxgy0uTYb8m1lCtEkswBiLk=
+YhGCAd0-2BRaqx9ZYDl83N5qnsl0ONwuQiRIPsZoTfHbNiwNbtaUtBUOh_A4wPItE17ns82-2FB=
+9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTR=
+NAKO5MsjsSyjszHtKkHyipC0OpnNpJohzACYFUhrHQeNsuQUCoiKW5jEZJqquAJzKoWm-2BuDc8=
+PuirhhY6tFnU5cCYeqMVMsWemgHh9pNDjc-2F73-2Fm6HLA2rtEKv1QZsMOTNL7MwC4ngGiL7RZ=
+uSoZa6Ym8k6DFyUpPLomisXiI3SGn8r34lpeWCT6JsSyEWJtGDVEVkKPHTqyXslGTHsfxPDqt6o=
+lYcK0qEXYYgm9EfwuD3-2FqeK7SwATDpudBu0FZCj2LzOq4vAsowx7RfbzdAaW3KKfPsbr9c41H=
+V-2FXtvUYiTS20k4uheYvR-2F5WZ4R8symAz8TUsFDLKuQPjQX796IIfI0R58OJRVpwqIklHbfR=
+Sz-2BMq-2BM7BSZbDGW2aNziFhA-3D-3D" target=3D"_blank" style=3D"mso-line-heig=
+ht-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100=
+%; color: #656565; font-weight: normal; text-decoration: underline;">send t=
+hem to this page!</a>
+</td>
+																	</tr>
+																</tbody>
+															</table>
+
+															<div style=3D"" align=3D"left"></div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<div><!--[if mso]>
+				</td>
+				<![endif]--></div>
+
+									<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mcnTextContentContainer" style=3D"max-width: 299px; border-=
+collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-=
+size-adjust: 100%; -webkit-text-size-adjust: 100%;" width=3D"100%">
+										<tbody>
+											<tr>
+												<td class=3D"mcnTextContent" style=3D"text-size-adjust: 100%; w=
+ord-break: break-word; color: rgb(101, 101, 101); font-family: Helvetica; f=
+ont-size: 12px; line-height: 150%; mso-line-height-rule: exactly; -ms-text-=
+size-adjust: 100%; -webkit-text-size-adjust: 100%; padding: 0px 18px 9px;" =
+valign=3D"top" align=3D"center">
+												<div style=3D"" align=3D"left">
+<span style=3D"font-size: 12px;"><span style=3D"font-family: arial,helvetic=
+a neue,helvetica,sans-serif;"><span style=3D"color: #000000;">MEET THE CURA=
+TOR<br>
+												OF THIS EMAIL:&nbsp;</span></span><a href=3D"http://ablinks.sto=
+cktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWlx7YpBLHdltMnvBmMNft-2FAPzz=
+Q9i8aOCpOya7SKUO5X_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1=
+CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNHVYbBw2XcOqVW-2BBA45SWSMVlDUmy9Jn8cimM=
+RJsuCuYr018t56U8nY-2FCrEbFTID8BN-2BlbPJIY-2FDRngd8JiR0UqEsnFg4AZId6ugykMYKY=
+kZx-2FbXOG-2BqEQOP4XuTHtqOyk-2BpXmpsBzM2ToVpaKZyXkIdJ8zVUubvoM5EuTjvSqfl84r=
+x9cN9-2BiTfwYyriHurSlcAd4DZDpeza5FfKcjlx0fRx8rI1ZKMhpiAVQ7UJ-2FB-2FuQjH1n6w=
+WSAxNHwFMau3GSNT1KKUyZOJIstESDlYI7HNdft2BVdEGTDLC0QJvH2nNWAE4Bb8ZTJ1AdvV74Z=
+oDi0mOVHyJ1vpIT3ZBKKHGbrIw4HJBTVrqbZRaFZ1Xg5fuTAonmZf2h4ffqHVobOCFQ-3D-3D" =
+style=3D"mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit=
+-text-size-adjust: 100%; color: #656565; font-weight: normal; text-decorati=
+on: underline;"><span style=3D"font-family: arial,helvetica neue,helvetica,=
+sans-serif;"><span style=3D"text-size-adjust: 100%; color: rgb(0, 0, 0); fo=
+nt-weight: normal; text-decoration: underline;">@scheplick</span></span></a=
+><br>
+												<br>
+												<span style=3D"font-family: arial,helvetica neue,helvetica,sans=
+-serif;"><span style=3D"color: #000000;">WANT TO WORK FOR<br>
+												STOCKTWITS?:&nbsp;</span></span><a href=3D"http://ablinks.stock=
+twits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWi9FG-2BmhZhm6KxbkNp-2FT9A6xOs=
+1O0abP3o7UNbOFWOd8_A4wPItE17ns82-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1=
+CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNJzz4-2B2QclHc7eONG-2FU-2FCjTwSzZFL7SU4=
+1a5i0clCmMAft2F-2FilOBJPlTEQTpbcOCTkOf41SXLHldEoykQFCydU0uJOUeg1f1akAPvFMb0=
+zvLppBuP2qlsQnMcQOf-2BsYklB0J8iShlbX5f7Y2jcfRh9gEyWnsEBSdJhav8MAjr7zbEASaO7=
+vecsAu-2Fv8ugHdHWRN-2FRiO5Y9njwtsPijViHegR9CygTZIHGRZddpGuksmUzY7HX0N1lsCwM=
+R-2BJY983KWoKruwri-2BZYcvOU32lMd2XlZrvRwO8S5pvUHKjHPF5qHKkS9TQOPvwF4EoJYiAs=
+7xUuJoWXO-2FrsMWn7vZLx-2FTOvWeA6UuR8xgYAwhY2IERg6FEHlfqvGHdoaWMRrZr1g-3D-3D=
+" style=3D"mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webk=
+it-text-size-adjust: 100%; color: #656565; font-weight: normal; text-decora=
+tion: underline;"><span style=3D"font-family: arial,helvetica neue,helvetic=
+a,sans-serif;"><span style=3D"color: #000000;">APPLY HERE</span></span></a>=
+</span><br>
+												&nbsp;</div>
+
+												<div style=3D"" align=3D"left">This email was sent by StockTwit=
+s. We send it to everyone who has signed up. If you no longer want investin=
+g ideas from the world's largest market community, <a href=3D"http://ablink=
+s.stocktwits.com/wf/click?upn=3Dl2azkiz6fH4mVhzIZrpqWpBNNo1GxTY-2BLHI4lL0Zs=
+BxhzkylBZRECTeR4YyP3SiXjPbY9bHuEX-2Bisi945gsnioPwMeHaHBLB2urE6L9hVWxmJsHEKz=
+6Q-2FVQDBxMXA2YUiVKZFAj60LWQVVVvCTRXdsL2siF-2BxBWkjAqMD29EEFRBEm2RtcvWnj86w=
+SvN3uil45UpKL8I9bvNZs8EHCqis5DfxgTFL3SKTCkKqQk86ah-2FzoVfYtGI9beI0XbPupMuc5=
+kAycmPjUDnCTfNTr3FwmgN6gFmajDs9kxroq8GWEYVDjdNe94VwW7OpKmGiFxb_A4wPItE17ns8=
+2-2FB9uPGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcR=
+RgtTRNAwL-2BDJ-2BNR38Fm7PmYvdY8t5L-2ByXJCGN0v2RrPomIndjC4A28o2vjM4IM30sb4sD=
+0Y68w2E5LUwem65ElIRr9c-2BxkrdzsIdKYVoDbEUSty832f-2BIpy8ta2K2rPAJSMDjfKR6Eqf=
+y9c7hjeVprF-2FtoZ954qdAXIpHsVOK2Q5TAE-2BM034CcjUsYaqGNzzgdNxOg5c-2BS8JmLW3o=
+mW5ookZIx3lZ-2FRpHiR4jWQtLv4RvjZjEHtHdDxXmPSKlIGixk0pkg24G5mIMF-2BP1WPVjeX9=
+mVzOELSH3FeEekT9SNsgV1NaIVFsuHLkWU3hZKYhFMwXXtinXev-2Fd4Agr0maS7jue0up1he9o=
+AfDgf6j-2FzD4T2xhMhzRiVpJq7hURj-2BWiIYTQjw-3D-3D" style=3D"mso-line-height-=
+rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; =
+color: #656565; font-weight: normal; text-decoration: underline;">you can u=
+nsubscribe.</a>
+</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<div>
+<!--[if mso]>
+				</td>
+				<![endif]--><!--[if mso]>
+				</tr>
+				</table>
+				<![endif]-->
+</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnD=
+ividerBlock" style=3D"min-width: 100%; border-collapse: collapse; mso-table=
+-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webkit-te=
+xt-size-adjust: 100%; table-layout: fixed !important;" width=3D"100%">
+							<tbody class=3D"mcnDividerBlockOuter">
+								<tr>
+									<td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%; mso-l=
+ine-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adj=
+ust: 100%; padding: 10px 18px 25px;">
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnDividerContent" style=3D"min-width: 100%; border-top-width: 2px; border-t=
+op-color: #EEEEEE; border-top-style: solid; border-collapse: collapse; mso-=
+table-lspace: 0pt; mso-table-rspace: 0pt; -ms-text-size-adjust: 100%; -webk=
+it-text-size-adjust: 100%;" width=3D"100%">
+										<tbody>
+											<tr>
+												<td style=3D"text-size-adjust: 100%; mso-line-height-rule: exac=
+tly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;"></td>
+											</tr>
+										</tbody>
+									</table>
+
+									<div><!--=20=20=20=20=20=20=20=20=20=20=20=20
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-colo=
+r:none; border-left-color:none; border-right-color:none; border-bottom-widt=
+h:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:=
+0; margin-bottom:0; margin-left:0;" />
+--></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div style=3D"" align=3D"left">
+<!--[if gte mso 9]>
+						</td>
+						</tr>
+						</table>
+						<![endif]--><!-- // END TEMPLATE -->
+</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</center>
+
+<img src=3D"http://ablinks.stocktwits.com/wf/open?upn=3DA4wPItE17ns82-2FB9u=
+PGT5mN-2BDwxr806FjaGSng-2BlFjB-2B4ka1CONx2hAr8TNyaeyuRjec9aTRxx6zbcRRgtTRNE=
+I424NYhJlOA6DcC3rTEZJ0gkkQ-2FCOQideM4pkUkCQMc01ujuPlS8H5MX14Qr2-2FAENFWUY-2=
+FuMBflY8-2FcmjEfdN2JX7wX25KOSi1zrZgz09OYx8nk0Y7LoxehH6-2FHjylDbsDppItr14wOJ=
+QnRDazhIz-2FzqlrhUWouxulBI26UH9iXbNb5IgzPPF3cshyGNgMeD-2BFDpcR61w7jccxgEDQw=
+KciN1E57PG7ehAn0gFe4jTd8L3fbIcY3JINax27kxe4itG14lyYE3hVP7xWzU7xWK1e7HLfy6iq=
+0MpbKj1qUMN-2BdxAZ6xqZI7MkHRDVr69eU0Q32H86zFGuJY8qmV0SkmVjPLWzI55BxjJzebpYN=
+1eIwdlFM002omGIfvCFmjuYzQ-3D-3D" alt=3D"" width=3D"1" height=3D"1" border=
+=3D"0" style=3D"height:1px !important;width:1px !important;border-width:0 !=
+important;margin-top:0 !important;margin-bottom:0 !important;margin-right:0=
+ !important;margin-left:0 !important;padding-top:0 !important;padding-botto=
+m:0 !important;padding-right:0 !important;padding-left:0 !important;"/>
+</body>
+</html>
+
+
+--cd2acaff2a7f7bb4294cf78efd6745abb5918d9c0b549d6132157964e6e7--

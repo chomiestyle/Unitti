@@ -1,0 +1,822 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 2002:ac0:a536:0:0:0:0:0 with SMTP id k51-v6csp6836645imk;
+        Mon, 27 Aug 2018 14:57:18 -0700 (PDT)
+X-Google-Smtp-Source: ANB0Vdb8rURL/5lD3mMzQYgH8Fxe5ye9YSPLR18uSdVunF/v3Ih+TZbAEo50xJkw9zqbc3tLNqTQ
+X-Received: by 2002:a25:7d44:: with SMTP id y65-v6mr7866530ybc.483.1535407038501;
+        Mon, 27 Aug 2018 14:57:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1535407038; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ex6fNmdbGfiduhQS4aSp5JoHO3AB6eJ/J5ONWiRqB+qQJUc/C5fMHhiyO0Ve0/3513
+         sbxvCqsZS4mZyQldSU8xsTYAZTP+CMPEXlKWAMTwLjmim4Fji/Cdhkgcu1vlMpgPxt0V
+         ak2Lpl9maqg8R0+uXsucWsfptL4d3P8z+4PYYxG1NkoRiVgoJ6yDVlgfUfSYJQ4qMXEX
+         XbCJTnbKWq1irPG+s5vpochIMYuGi0bi/QQzgYNYbuYp0k1R81FPOtEL5GdbHRnt72XC
+         KA9uMxQ/RTWfDiVHRE1JCs+VhvPsgwdcPX3uC8r6vUovExE0TlFK46UKGky6TARrcX1o
+         jvXg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:date:to:message-id:subject:from:dkim-signature
+         :dkim-signature:arc-authentication-results;
+        bh=b7RWnRhR0JbDCym4mpk6G1lFAowuxGvn2OB+/1bd9ac=;
+        b=ws1/qOcmoGogPaK65EMo/KNrnvtXR3kfk270Vr0yoeYyOBDZs1U9haJOEyoz+/Jc53
+         q2C9iqn0mp//+rg335T8cEnt7Jyia47buX3Kn83PCeug8K73U993ggbhsfcMx+PFKYAp
+         3kcQObRUGZ29YQb854JVvzpXeZ30GJzX2PLiWaPMhIxK3qgSBWLRDdTvSKiDWOExmkDg
+         nbrO14CkekuZ1cLVJ9Xef1p0tLfi1MDgiHprwt7z9ODpE9Vsf4zr/cMIY1dloP6WTLq4
+         lHmqTjiS8a41vHoy/KRC364SfPzaajHuwI0qBDjjrMoAKDMay2eTJf13JwVIzF3A1wGb
+         iTvA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@buda.com header.s=mandrill header.b=ZtzTCvvi;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=Pf8aJ0pt;
+       spf=pass (google.com: domain of bounce-md_30522314.5b8473bd.v1-f2cbc6bed3fe4af4a9aa877139cc660d@mandrillapp.com designates 198.2.133.23 as permitted sender) smtp.mailfrom=bounce-md_30522314.5b8473bd.v1-f2cbc6bed3fe4af4a9aa877139cc660d@mandrillapp.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+Return-Path: <bounce-md_30522314.5b8473bd.v1-f2cbc6bed3fe4af4a9aa877139cc660d@mandrillapp.com>
+Received: from mail133-23.atl131.mandrillapp.com (mail133-23.atl131.mandrillapp.com. [198.2.133.23])
+        by mx.google.com with ESMTPS id b14-v6si97331ybj.202.2018.08.27.14.57.18
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 27 Aug 2018 14:57:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-md_30522314.5b8473bd.v1-f2cbc6bed3fe4af4a9aa877139cc660d@mandrillapp.com designates 198.2.133.23 as permitted sender) client-ip=198.2.133.23;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@buda.com header.s=mandrill header.b=ZtzTCvvi;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=Pf8aJ0pt;
+       spf=pass (google.com: domain of bounce-md_30522314.5b8473bd.v1-f2cbc6bed3fe4af4a9aa877139cc660d@mandrillapp.com designates 198.2.133.23 as permitted sender) smtp.mailfrom=bounce-md_30522314.5b8473bd.v1-f2cbc6bed3fe4af4a9aa877139cc660d@mandrillapp.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mandrill; d=buda.com;
+ h=From:Subject:Message-Id:To:Date:MIME-Version:Content-Type; i=soporte@buda.com;
+ bh=b7RWnRhR0JbDCym4mpk6G1lFAowuxGvn2OB+/1bd9ac=;
+ b=ZtzTCvvi7GfbCRQSPah38wQ8IsVlULi31k63DqY9v3opsFwRrX10iuaQz7NrnXCFxJC6J62RJ6a2
+   oXnjRycUAAutb6iCnEnzbbetVzgS1VTnH1fPMEBMDMMjZYKJR8RAogRUNC5EPG3CqVoIMU3nzT7G
+   JCJRHITEyCNgnl6THCk=
+Received: from pmta02.mandrill.prod.atl01.rsglab.com (127.0.0.1) by mail133-23.atl131.mandrillapp.com id hghprs1sar8a for <eduardo.sinning@gmail.com>; Mon, 27 Aug 2018 21:57:18 +0000 (envelope-from <bounce-md_30522314.5b8473bd.v1-f2cbc6bed3fe4af4a9aa877139cc660d@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1535407037; h=From : 
+ Subject : Message-Id : To : Date : MIME-Version : Content-Type : From : 
+ Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=b7RWnRhR0JbDCym4mpk6G1lFAowuxGvn2OB+/1bd9ac=; 
+ b=Pf8aJ0ptLedV11gawKRLf3/vVm5+VB8xsoxSdvgyP0ALTqvLJD+fIiYbltleI7eODPzd+y
+ DLByxXw+s3lPD4qvMiGB+I7IumR3LJA/GUtLyj3V/GM/9MsUfunWdwuyvdZ3c5iC4URTW6MR
+ rTqtsa7hnHy3ATCp2MQr0v6inxwbQ=
+From: "'Buda.com'" <soporte@buda.com>
+Subject: =?utf-8?Q?Verifica=20tu=20inicio=20de=20sesi=C3=B3n=20(IP:=20186.105.85.29)?=
+Return-Path: <bounce-md_30522314.5b8473bd.v1-f2cbc6bed3fe4af4a9aa877139cc660d@mandrillapp.com>
+Received: from [35.196.194.164] by mandrillapp.com id f2cbc6bed3fe4af4a9aa877139cc660d; Mon, 27 Aug 2018 21:57:17 +0000
+Message-Id: <5b8473bd75030_13fb16230d99857314d@b3cbcfbab842.mail>
+To: <eduardo.sinning@gmail.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30522314.f2cbc6bed3fe4af4a9aa877139cc660d
+X-Mandrill-User: md_30522314
+Date: Mon, 27 Aug 2018 21:57:17 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="_av-jf1x_QoJ1DpZFFubXOqeCg"
+
+--_av-jf1x_QoJ1DpZFFubXOqeCg
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+                       Hemos detectado que intentaste iniciar sesi=C3=B3n d=
+esde
+la IP 186.105.85.29 (Santiago, Chile). 
+
+  Para poder ingresar, haz click en el bot=C3=B3n de abajo y vuelve a ingre=
+sar
+tus credenciales. 
+
+    Verificar inicio de sesi=C3=B3n
+<https://www.buda.com/users/confirm-location.61274?confirmation_token=3D0e0=
+89b5c7af6f808154c32adcc3e7eb9>
+    Saludos, 
+
+  Equipo Buda.com 
+
+ =C2=BFNo fuiste t=C3=BA?
+Bloquea tu cuenta
+<https://www.buda.com/bloquear_cuenta?block_account_token=3D53e1e9355c6bafc=
+65bfdfc8c43d0c9e3>
+                 Buda.com 
+ Providencia, Santiago de Chile <https://www.buda.com/blog>
+<https://twitter.com/BudaPuntoCom> <https://www.facebook.com/BudaPuntoCom/>
+<https://www.linkedin.com/company/9294718/>
+
+--_av-jf1x_QoJ1DpZFFubXOqeCg
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/htm=
+l4/strict.dtd">
+<html><head>
+<meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Type">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+
+<style type=3D"text/css">
+/* line 1, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.main {
+  font-family: 'San Francisco Light',Helvetica,Arial,serif;
+  letter-spacing: 0;
+  border-radius: 6px;
+}
+
+/* line 7, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.main .main-td {
+  padding: 20px;
+  background-color: #FAFAFA;
+  border: #D1D1E6;
+  border-radius: 6px 6px 6px 6px;
+}
+
+/* line 15, /app/app/assets/stylesheets/buda/user_mailer.scss */
+table {
+  border-spacing: 0;
+  border-collapse: separate;
+  table-layout: fixed;
+}
+
+/* line 21, /app/app/assets/stylesheets/buda/user_mailer.scss */
+td {
+  font-size: 14px;
+  padding: 0;
+  font-family: 'San Francisco Light',Helvetica,Arial,serif;
+}
+
+/* line 27, /app/app/assets/stylesheets/buda/user_mailer.scss */
+a {
+  border: none;
+  outline: none !important;
+  color: #408FEC;
+}
+
+/**
+ * Header
+ */
+/* line 38, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.header td img {
+  padding: 16px 0 20px;
+  text-align: center;
+}
+
+/* line 43, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.header .logo {
+  text-align: center;
+}
+
+/**
+ * Content
+ */
+/* line 51, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td {
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0;
+  color: #1F0C48;
+  padding: 32px 24px;
+}
+
+/* line 59, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td > :first-child {
+  margin-top: 0;
+}
+
+/* line 63, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td h1 {
+  font-size: 26px;
+  line-height: 32px;
+  color: #210E4A;
+  margin-bottom: 8px;
+  margin-top: 32px;
+  font-weight: normal;
+}
+
+/* line 72, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td h2 {
+  font-size: 18px;
+  color: #210E4A;
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+
+/* line 79, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td h1 + h2 {
+  margin-top: 0px !important;
+}
+
+/* line 83, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td h2 + h1 {
+  margin-top: 0px !important;
+}
+
+/* line 87, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td h3,
+.content-td h4,
+.content-td h5 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* line 95, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td p {
+  margin: 0 0 16px 0;
+  line-height: 1.5;
+}
+
+/* line 100, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td p img,
+.content-td h1 img,
+.content-td h2 img,
+.content-td li img,
+.content-td .intercom-h2b-button img {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 109, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td p.intro {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+/* line 114, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td blockquote {
+  margin: 40px 0;
+  font-style: italic;
+  color: #A19FCD;
+  font-size: 18px;
+  text-align: center;
+  padding: 0 30px;
+  font-family: 'San Francisco',Helvetica,Arial,serif;
+  quotes: none;
+}
+
+/* line 125, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td blockquote a {
+  color: #A19FCD;
+}
+
+/* line 129, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td ul {
+  list-style: disc;
+  margin: 0 0 20px 40px;
+  padding: 0;
+}
+
+/* line 135, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td ol {
+  list-style: decimal;
+  margin: 0 0 20px 40px;
+  padding: 0;
+}
+
+/* line 141, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td img {
+  max-width: 100%;
+  margin: 17px 0;
+}
+
+/* line 146, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td .intercom-container {
+  margin-bottom: 16px;
+}
+
+/* line 150, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td hr {
+  border: none;
+  border-top: 1px solid #A19FCD;
+  margin: 50px 30% 50px 30%;
+}
+
+/* line 156, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+/* line 162, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td td,
+.content-td th {
+  padding: 5px 7px;
+  border: 1px solid #A19FCD;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* line 170, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td th {
+  font-weight: bold;
+  background: #f8f8f8;
+}
+
+/* line 175, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content-td a {
+  color: #4F90FF;
+}
+
+/* line 179, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content td.content-td table.intercom-container {
+  margin: 17px 0;
+}
+
+/* line 182, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content td.content-td table.intercom-container.intercom-align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 187, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content td.content-td table.intercom-container td {
+  background-color: #ffffff;
+  padding: 12px 36px;
+  border-radius: 3px;
+  font-family: 'San Francisco Light',Helvetica,Arial,serif;
+  margin: 0;
+  border: none;
+}
+
+/* line 196, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.content td.content-td table.intercom-container .intercom-h2b-button {
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  background-color: #0aa89a;
+  border: none !important;
+  border-radius: 32px;
+}
+
+/* line 207, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-td {
+  text-align: center;
+  padding: 24px 0 24px 0;
+  font-size: 14px;
+  color: #A19FCD;
+}
+
+/* line 214, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-td a {
+  text-decoration: none;
+}
+
+/* line 218, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-td p.address {
+  margin-top: 9px;
+  line-height: 1.5em;
+}
+
+/* line 223, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-td p.powered-by {
+  margin-top: 14px;
+}
+
+/* line 227, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-td p.unsub {
+  margin: 0;
+}
+
+/* line 231, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer .unsub a {
+  text-decoration: underline;
+  display: block;
+  margin: 12px 0 0;
+}
+
+/* line 237, /app/app/assets/stylesheets/buda/user_mailer.scss */
+p.unsub a {
+  text-decoration: underline;
+}
+
+/* line 241, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-td p.powered-by a {
+  font-weight: bold;
+}
+
+/* line 245, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-td textarea {
+  text-decoration: none;
+  font-size: 12px;
+  color: #A19FCD;
+  font-family: 'San Francisco Light',Helvetica,Arial,serif;
+  padding: 9px 0;
+  font-weight: 300;
+  line-height: normal;
+}
+
+/* line 255, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-td__address {
+  margin-bottom: 6px;
+}
+
+/* line 259, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-social img {
+  display: block;
+}
+
+/* line 263, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-social__table {
+  margin: 0;
+}
+
+/* line 267, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.footer-social__icon {
+  padding: 4px;
+}
+
+/* line 271, /app/app/assets/stylesheets/buda/user_mailer.scss */
+a.intercom-h2b-button {
+  background-color: #4F90FF;
+  font-size: 14px;
+  color: #FFF;
+  font-weight: bold;
+  border-radius: 24px;
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px 35px;
+}
+
+/* line 283, /app/app/assets/stylesheets/buda/user_mailer.scss */
+td.action-button-container {
+  text-align: center;
+  border: 0;
+  padding: 0;
+}
+
+/* line 289, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.action-button {
+  display: inline-block;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 15px 20px;
+  font-family: sans-serif;
+  color: #fff !important;
+  background-color: #4f90ff;
+  font-family: 'San Francisco Light',Helvetica,Arial,serif;
+  font-size: 16px;
+}
+
+/* line 301, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.lock-account {
+  text-align: center;
+}
+/* line 304, /app/app/assets/stylesheets/buda/user_mailer.scss */
+.lock-account__button {
+  display: inline-block;
+  width: 160px;
+  background-color: #b9b5c7;
+  color: #fff !important;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 6px;
+  letter-spacing: 1px;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+</style>
+
+<style type=3D"text/css" data-premailer=3D"ignore">
+  #outlook a{
+    padding: 0;
+  }
+  body{
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    margin: 0;
+    padding: 0;
+  }
+  .ReadMsgBody{
+    width: 100%;
+  }
+  .ExternalClass{
+    width: 100%;
+  }
+  img {
+    border: 0;
+    max-width: 100%;
+    height: auto;
+    outline: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    line-height: 100%;
+  }
+  #backgroundTable{
+    height: 100% !important;
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+  }
+</style>
+
+<style type=3D"text/css" data-premailer=3D"ignore">
+  @media screen and (max-width: 645px) {
+    body {
+      padding: 10px !important;
+    }
+    .main {
+      width: 100% !important;
+    }
+    .main .main-td {
+      padding: 20px !important;
+=09=09border-radius:6px;
+    }
+    .header td {
+      text-align: center;
+    }
+    .footer-container {
+      padding: 0 10px;
+    }
+    .footer-logo {
+      display: none;
+    }
+    .footer-td {
+      text-align: left;
+      padding: 15px 0;
+    }
+  }
+
+  .content-td blockquote + * {
+    margin-top: 20px !important;
+  }
+
+  .ExternalClass .content-td h1 {
+    padding: 20px 0 !important;
+  }
+
+  .ExternalClass .content-td h2 {
+    padding: 0 0 5px !important;
+  }
+
+  .ExternalClass .content-td p {
+    padding: 10px 0 !important;
+  }
+
+  .ExternalClass .content-td .intercom-container {
+    padding: 5px 0 !important;
+  }
+
+  .ExternalClass .content-td hr + * {
+    padding-top: 30px !important;
+  }
+
+  .ExternalClass .content-td ol ,
+  .ExternalClass .content-td ul {
+    padding: 0 0 20px 40px !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass .content-td ol li,
+  .ExternalClass .content-td ul li {
+    padding: 3px 0 !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass table .footer-td p {
+    padding: 0 0 6px 0 !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass table .footer-td p.powered-by ,
+  .ExternalClass table .footer-td p.unsub {
+    padding-top: 16px;
+  }
+
+</style>
+
+<style>
+
+=09@font-face {
+font-family: "San Francisco";
+src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfranc=
+isco/sanfranciscodisplay-regular-webfont.woff') format("opentype");}
+
+@font-face {
+font-family: "San Francisco Light";
+src: url('https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfranc=
+isco/sanfranciscodisplay-light-webfont.woff') format("opentype");}
+
+=09h1{font-family:'San Francisco',Helvetica,Arial,serif;
+font-size: 24px;
+font-weight: 400;
+color: #210E4A;}
+
+h2{font-family:'San Francisco',Helvetica,Arial,serif;
+font-size: 20px;
+font-weight: 400;
+color: #210E4A;}
+
+h3{font-family:'San Francisco',Helvetica,Arial,serif;
+font-size: 18px;
+font-weight: 400;}
+
+p{
+font-family:'San Francisco Light',Helvetica,Arial,serif;
+font-size: 16px;}
+
+p.strong{
+font-family:'San Francisco Light',Helvetica,Arial,serif;
+font-size: 14px;
+font-weight: 600;
+color: #210E4A;}
+
+strong, b {
+font-family:'San Francisco Light',Helvetica,Arial,serif;
+font-size: 14px;
+font-weight: 400;
+color: #210E4A;}
+
+li, ul{
+font-family:'San Francisco Light',Helvetica,Arial,serif;
+font-size:14px;}
+
+=09</style>
+
+</head>
+
+<body style=3D"margin:0px;padding:24px;background-color:#ffffff;-webkit-tex=
+t-size-adjust:none;-ms-text-size-adjust:none;" bgcolor=3D"#ffffff">
+  <table class=3D"header" width=3D"100%" style=3D"border-spacing:0;border-c=
+ollapse:separate;table-layout:fixed;">
+    <tbody><tr>
+      <td class=3D"logo" style=3D"font-size:14px;padding:0;font-family:'San=
+ Francisco Light',Helvetica,Arial,serif;text-align:center;"><img src=3D"htt=
+ps://i.imgur.com/gHD9AA6.png" alt=3D"Buda.com" width=3D"160px" height=3D"32=
+px" style=3D"padding:16px 0 20px;text-align:center;border:0;max-width:100%;=
+height:auto;outline:none;display:inline-block;margin:0;text-decoration:none=
+;line-height:100%;"></td>
+    </tr>
+  </tbody></table>
+  <table class=3D"main" width=3D"595" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0" bgcolor=3D"white" align=3D"center" style=3D"font-family:'San Fr=
+ancisco Light',Helvetica,Arial,serif;letter-spacing:0;border-radius:6px;bor=
+der-spacing:0;border-collapse:separate;table-layout:fixed;">
+    <tbody><tr>
+      <td class=3D"main-td" style=3D"padding:20px;background-color:#FAFAFA;=
+border:#D1D1E6;border-radius:6px 6px 6px 6px;font-size:14px;font-family:'Sa=
+n Francisco Light',Helvetica,Arial,serif;">
+        <table class=3D"content" width=3D"100%" style=3D"border-spacing:0;b=
+order-collapse:separate;table-layout:fixed;">
+          <tbody><tr>
+              <td class=3D"content-td" style=3D"font-size:14px;padding:32px=
+ 24px;font-family:'San Francisco Light',Helvetica,Arial,serif;line-height:2=
+4px;color:#1F0C48;">
+                <p style=3D"margin:0 0 16px 0;line-height:1.5;font-family:'=
+San Francisco Light',Helvetica,Arial,serif;font-size:16px;">
+  Hemos detectado que intentaste iniciar sesi=C3=B3n desde la IP 186.105.85=
+.29 (Santiago, Chile).
+</p>
+<p style=3D"margin:0 0 16px 0;line-height:1.5;font-family:'San Francisco Li=
+ght',Helvetica,Arial,serif;font-size:16px;">
+  Para poder ingresar, haz click en el bot=C3=B3n de abajo y vuelve a ingre=
+sar tus credenciales.
+</p>
+<table width=3D"100%" style=3D"border-spacing:0;border-collapse:collapse;ta=
+ble-layout:fixed;margin-bottom:20px;">
+  <tr width=3D"100%">
+    <td width=3D"100%" class=3D"action-button-container" style=3D"font-size=
+:14px;padding:0;font-family:'San Francisco Light',Helvetica,Arial,serif;bor=
+der:0;text-align:center;vertical-align:top;">
+      <a class=3D"action-button" href=3D"https://mandrillapp.com/track/clic=
+k/30522314/www.buda.com?p=3DeyJzIjoienBMM1FGdi1HQ1NGU010ODV0bXJvR0l0bm1jIiw=
+idiI6MSwicCI6IntcInVcIjozMDUyMjMxNCxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXF=
+xcL3d3dy5idWRhLmNvbVxcXC91c2Vyc1xcXC9jb25maXJtLWxvY2F0aW9uLjYxMjc0P2NvbmZpc=
+m1hdGlvbl90b2tlbj0wZTA4OWI1YzdhZjZmODA4MTU0YzMyYWRjYzNlN2ViOVwiLFwiaWRcIjpc=
+ImYyY2JjNmJlZDNmZTRhZjRhOWFhODc3MTM5Y2M2NjBkXCIsXCJ1cmxfaWRzXCI6W1wiNjk5ZGI=
+4Y2U1Zjg5Njc0MTVjNTc3OTY2OWNhODU1YWNlYTUzOTA4NlwiXX0ifQ" style=3D"border:no=
+ne;outline:none ;color:#fff ;display:inline-block;border-radius:5px;text-de=
+coration:none;padding:15px 20px;font-family:'San Francisco Light',Helvetica=
+,Arial,serif;background-color:#4f90ff;font-size:16px;">Verificar inicio de =
+sesi=C3=B3n</a>
+    </td>
+  </tr>
+</table>
+<p style=3D"margin:0 0 16px 0;line-height:1.5;font-family:'San Francisco Li=
+ght',Helvetica,Arial,serif;font-size:16px;">
+  Saludos,
+</p>
+<p style=3D"margin:0 0 16px 0;line-height:1.5;font-family:'San Francisco Li=
+ght',Helvetica,Arial,serif;font-size:16px;">
+  Equipo Buda.com
+</p>
+<div class=3D"lock-account" style=3D"text-align:center;">=C2=BFNo fuiste t=
+=C3=BA?<br><a target=3D"_blank" class=3D"lock-account__button" href=3D"http=
+s://mandrillapp.com/track/click/30522314/www.buda.com?p=3DeyJzIjoiOHJMdkNES=
+WdVU2w3RGJYTkl2a2p5cTVReGV3IiwidiI6MSwicCI6IntcInVcIjozMDUyMjMxNCxcInZcIjox=
+LFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5idWRhLmNvbVxcXC9ibG9xdWVhcl9jdWVudGE=
+_YmxvY2tfYWNjb3VudF90b2tlbj01M2UxZTkzNTVjNmJhZmM2NWJmZGZjOGM0M2QwYzllM1wiLF=
+wiaWRcIjpcImYyY2JjNmJlZDNmZTRhZjRhOWFhODc3MTM5Y2M2NjBkXCIsXCJ1cmxfaWRzXCI6W=
+1wiN2UzOTcyMWRjMTgzNTA1ODM0OWMzODdlOWIxYjk5Y2Y3ZjgwNDgxMFwiXX0ifQ" style=3D=
+"border:none;outline:none ;color:#fff ;display:inline-block;width:160px;bac=
+kground-color:#b9b5c7;text-decoration:none;text-align:center;text-transform=
+:uppercase;font-weight:600;border-radius:3px;padding:6px;letter-spacing:1px=
+;font-size:13px;margin-top:5px;">Bloquea tu cuenta</a></div>
+
+
+              </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </tbody></table>
+  <table class=3D"main" width=3D"595" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0" align=3D"center" style=3D"font-family:'San Francisco Light',Hel=
+vetica,Arial,serif;letter-spacing:0;border-radius:6px;border-spacing:0;bord=
+er-collapse:separate;table-layout:fixed;">
+    <tbody><tr>
+      <td class=3D"footer-container" style=3D"font-size:14px;padding:0;font=
+-family:'San Francisco Light',Helvetica,Arial,serif;">
+        <table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D=
+"0" align=3D"center" style=3D"border-spacing:0;border-collapse:separate;tab=
+le-layout:fixed;">
+          <tbody><tr>
+            <td class=3D"footer-logo" align=3D"left" style=3D"font-size:14p=
+x;padding:0;font-family:'San Francisco Light',Helvetica,Arial,serif;">
+              <img src=3D"https://i.imgur.com/l3r16zm.png" width=3D"38" hei=
+ght"44"=3D"" alt=3D"Buda.com" style=3D"border:0;max-width:100%;height:auto;=
+outline:none;display:inline-block;margin:0;padding:0;text-decoration:none;l=
+ine-height:100%;">
+            </td>
+            <td class=3D"footer-td" width=3D"70%" style=3D"font-size:14px;p=
+adding:24px 0 24px 0;font-family:'San Francisco Light',Helvetica,Arial,seri=
+f;text-align:center;color:#A19FCD;">
+              <div class=3D"footer-td__address" style=3D"margin-bottom:6px;=
+">
+                Buda.com <br>
+                Providencia, Santiago de Chile
+              </div>
+
+            </td>
+            <td class=3D"footer-social" align=3D"right" style=3D"font-size:=
+14px;padding:0;font-family:'San Francisco Light',Helvetica,Arial,serif;">
+              <table class=3D"footer-social__table" cellspacing=3D"0" cellp=
+adding=3D"0" border=3D"0" style=3D"border-spacing:0;border-collapse:separat=
+e;table-layout:fixed;margin:0;">
+                <tbody><tr>
+                  <td class=3D"footer-social__icon" style=3D"font-size:14px=
+;padding:4px;font-family:'San Francisco Light',Helvetica,Arial,serif;">
+<a href=3D"https://mandrillapp.com/track/click/30522314/www.buda.com?p=3Dey=
+JzIjoicEJDN25iMGdwRWduR2tCTXJnRm10VHoyNDBRIiwidiI6MSwicCI6IntcInVcIjozMDUyM=
+jMxNCxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5idWRhLmNvbVxcXC9ibG9n=
+XCIsXCJpZFwiOlwiZjJjYmM2YmVkM2ZlNGFmNGE5YWE4NzcxMzljYzY2MGRcIixcInVybF9pZHN=
+cIjpbXCIwNjhmNWRhMTg4Y2VjOTMxNTY2N2NjY2RkN2Q5M2VkZWI3M2MwNzJlXCJdfSJ9" styl=
+e=3D"border:none;outline:none ;color:#408FEC;"><img src=3D"https://i.imgur.=
+com/3UqHSAN.png" alt=3D"Medium" width=3D"20" height=3D"20" style=3D"display=
+:block;border:0;max-width:100%;height:auto;outline:none;margin:0;padding:0;=
+text-decoration:none;line-height:100%;"></a>
+</td>
+                  <td class=3D"footer-social__icon" style=3D"font-size:14px=
+;padding:4px;font-family:'San Francisco Light',Helvetica,Arial,serif;">
+<a href=3D"https://mandrillapp.com/track/click/30522314/twitter.com?p=3DeyJ=
+zIjoicUNyNDhCWTdtVHR4RTVqT0h2S0RZQkNTLTFvIiwidiI6MSwicCI6IntcInVcIjozMDUyMj=
+MxNCxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3R3aXR0ZXIuY29tXFxcL0J1ZGFQd=
+W50b0NvbVwiLFwiaWRcIjpcImYyY2JjNmJlZDNmZTRhZjRhOWFhODc3MTM5Y2M2NjBkXCIsXCJ1=
+cmxfaWRzXCI6W1wiMTNlYWYzYzRiNjUxYmYxZGFkNjFkYTg5Njg0YTBjNjU0OWU0MjBhZlwiXX0=
+ifQ" style=3D"border:none;outline:none ;color:#408FEC;"><img src=3D"https:/=
+/i.imgur.com/f7FhSGo.png" alt=3D"Twitter" width=3D"20" height=3D"20" style=
+=3D"display:block;border:0;max-width:100%;height:auto;outline:none;margin:0=
+;padding:0;text-decoration:none;line-height:100%;"></a>
+</td>
+                </tr>
+                <tr>
+                  <td class=3D"footer-social__icon" style=3D"font-size:14px=
+;padding:4px;font-family:'San Francisco Light',Helvetica,Arial,serif;">
+<a href=3D"https://mandrillapp.com/track/click/30522314/www.facebook.com?p=
+=3DeyJzIjoiZ1ZZWTZ6ckh6Y203YnByRm4yc2R6U3M4bU8wIiwidiI6MSwicCI6IntcInVcIjoz=
+MDUyMjMxNCxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5mYWNlYm9vay5jb21=
+cXFwvQnVkYVB1bnRvQ29tXFxcL1wiLFwiaWRcIjpcImYyY2JjNmJlZDNmZTRhZjRhOWFhODc3MT=
+M5Y2M2NjBkXCIsXCJ1cmxfaWRzXCI6W1wiODJhODAwZDNhNmIzYzU5ODQ3MDUyMWM4Y2JiNzA3M=
+DNhMDFiM2VmY1wiXX0ifQ" style=3D"border:none;outline:none ;color:#408FEC;"><=
+img src=3D"https://i.imgur.com/Xq2wgUZ.png" alt=3D"Facebook" width=3D"20" h=
+eight=3D"20" style=3D"display:block;border:0;max-width:100%;height:auto;out=
+line:none;margin:0;padding:0;text-decoration:none;line-height:100%;"></a>
+</td>
+                  <td class=3D"footer-social__icon" style=3D"font-size:14px=
+;padding:4px;font-family:'San Francisco Light',Helvetica,Arial,serif;">
+<a href=3D"https://mandrillapp.com/track/click/30522314/www.linkedin.com?p=
+=3DeyJzIjoiN21vTXpIZnFUeVQ3b0tJaG5MR3RvMzJ1OVlzIiwidiI6MSwicCI6IntcInVcIjoz=
+MDUyMjMxNCxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5saW5rZWRpbi5jb21=
+cXFwvY29tcGFueVxcXC85Mjk0NzE4XFxcL1wiLFwiaWRcIjpcImYyY2JjNmJlZDNmZTRhZjRhOW=
+FhODc3MTM5Y2M2NjBkXCIsXCJ1cmxfaWRzXCI6W1wiMjljMzYwZTAyNGYwNWYwZDQ5ZDQ2MDVhZ=
+GExMDNjYzg4NmM1Y2JhZVwiXX0ifQ" style=3D"border:none;outline:none ;color:#40=
+8FEC;"><img src=3D"https://i.imgur.com/l6pLecb.png" alt=3D"Linkedin" width=
+=3D"20" height=3D"20" style=3D"display:block;border:0;max-width:100%;height=
+:auto;outline:none;margin:0;padding:0;text-decoration:none;line-height:100%=
+;"></a>
+</td>
+                </tr>
+              </tbody></table>
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </tbody></table>
+
+
+
+<img src=3D"https://mandrillapp.com/track/open.php?u=3D30522314&id=3Df2cbc6=
+bed3fe4af4a9aa877139cc660d" height=3D"1" width=3D"1"></body></html>
+
+--_av-jf1x_QoJ1DpZFFubXOqeCg--
+

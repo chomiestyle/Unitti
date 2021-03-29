@@ -1,0 +1,428 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 2002:a25:7307:0:0:0:0:0 with SMTP id o7csp2013079ybc;
+        Sat, 21 Nov 2020 07:30:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyqxBGDHEGjv2UNe2GTFO7pOUBjkSQV4/CFfP8FMF5O5lbEb1vGCrohDnOzyij5BwJKekYz
+X-Received: by 2002:a25:d8c6:: with SMTP id p189mr30309647ybg.407.1605972658044;
+        Sat, 21 Nov 2020 07:30:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605972658; cv=none;
+        d=google.com; s=arc-20160816;
+        b=qDB1vn5nZJY15WxxBXUyRSAzt8g5Xt9A/eLq2D8A7cJB92IfZ7g+i5/Mv0tSevLAnC
+         7XWVjecACnq5Y5wcTzltA8cfbhBlHXA4B509G02AVsqvDsOD/zPn0Em8DUCrF8p9cpiy
+         MmF+Cjmc/UUcRLGUCAKuQ+I+dLZhICGy3KhDIiRo46TfPt4Iezlg+8YvH2vbNl2muLAp
+         haUVUgFqGDBLLhOGFpLY0U89XXs9xzVglqcz8MCKCqyARVm5tM6uMC2E6nbyZmnMLkei
+         6bsdsni2BCNff8KbiYG4KoqfVqCvChw1Oim9XhwcOT85RJI4/+pSC9z19b296DhDLUpS
+         mX9w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:date:to:message-id:subject:from:dkim-signature
+         :dkim-signature;
+        bh=dXluOHfmI+PRcjnQkTOmoqMRFASjCZyo+uNbSkKDy1w=;
+        b=Ghus9DFHC2PISSHfFwtdjB2C4igYitIEB85AKr3QyuUDAgBzOJ2Msh0KHdAj0JmeG3
+         a9CNXwpjOFJSGz+/rOuTKmr7++PDWYNYEtaAechHAFFEvyLzIJcKAeNXOYWyZa6soALZ
+         uU01CcWHEcj/uDGO6OKXx8GVnnFJbOUa0ybTRmf3u5EgVbeV07kkIYeL2Dr3NJlLDMbm
+         wUD+zqOBedb++G+WzOefF2DrrRZtta0xsupwprhKrAg7RWTkrsEansxzUNRncTve0i64
+         ZVpz0OCeU8LhCd3iCnp84qihuzUjxIe98FB1DlJC1k4y0fAgR7Y3JBiWIqmbP2lnBfi0
+         HWkg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@buda.com header.s=mandrill header.b=eK3b2+HC;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=T83Ly7VM;
+       spf=pass (google.com: domain of bounce-md_30522314.5fb932b1.v1-02355722453447799b2b63d6db888468@mandrillapp.com designates 198.2.145.8 as permitted sender) smtp.mailfrom=bounce-md_30522314.5fb932b1.v1-02355722453447799b2b63d6db888468@mandrillapp.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+Return-Path: <bounce-md_30522314.5fb932b1.v1-02355722453447799b2b63d6db888468@mandrillapp.com>
+Received: from mail145-8.atl61.mandrillapp.com (mail145-8.atl61.mandrillapp.com. [198.2.145.8])
+        by mx.google.com with ESMTPS id s9si6426692ybi.469.2020.11.21.07.30.57
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 21 Nov 2020 07:30:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-md_30522314.5fb932b1.v1-02355722453447799b2b63d6db888468@mandrillapp.com designates 198.2.145.8 as permitted sender) client-ip=198.2.145.8;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@buda.com header.s=mandrill header.b=eK3b2+HC;
+       dkim=pass header.i=@mandrillapp.com header.s=mandrill header.b=T83Ly7VM;
+       spf=pass (google.com: domain of bounce-md_30522314.5fb932b1.v1-02355722453447799b2b63d6db888468@mandrillapp.com designates 198.2.145.8 as permitted sender) smtp.mailfrom=bounce-md_30522314.5fb932b1.v1-02355722453447799b2b63d6db888468@mandrillapp.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=buda.com;
+	s=mandrill; t=1605972657; i=soporte@buda.com;
+	bh=dXluOHfmI+PRcjnQkTOmoqMRFASjCZyo+uNbSkKDy1w=;
+	h=From:Subject:Message-Id:To:Date:MIME-Version:Content-Type;
+	b=eK3b2+HC9qGw+jdrPYvLNe52bUxYUdIgzC8d+jlLt+vgUr0o9awtRlR8zldShWs7U
+	 nZDlZuiQbG8/vOxCg8XaUDKfDxyuDRKmgJeRf4QAIsQRkdzS2JAKB7kNqnCbQlP0sR
+	 xxXNrBEZVb1LqGCvx/cdetv99ZBuMUckrDLVMGwI=
+Received: from pmta06.mandrill.prod.atl01.rsglab.com (localhost [127.0.0.1])
+	by mail145-8.atl61.mandrillapp.com (Mailchimp) with ESMTP id 4CdcnY5xtLz2K1shX
+	for <eduardo.sinning@gmail.com>; Sat, 21 Nov 2020 15:30:57 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1605972657; h=From : 
+ Subject : Message-Id : To : Date : MIME-Version : Content-Type : From : 
+ Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=dXluOHfmI+PRcjnQkTOmoqMRFASjCZyo+uNbSkKDy1w=; 
+ b=T83Ly7VMqx1BFqZZv0stxDcVUt3NWMIlxvpXGItiPDiwAPA37+KCYHwLvFKrqJ7d13VpXA
+ bJYc+BlnpUQgTiRxTEI4aMw/o+dSGEjSFz09rBvnLaol3eMCaoQ42PqutQ9vG9sHvpH1HXt3
+ aeb+tsxaRUkThhSjXGZfOKTaxYVaQ=
+From: "Buda.com" <soporte@buda.com>
+Subject: =?utf-8?Q?Verifica=20tu=20inicio=20de=20sesi=C3=B3n=20(IP:=20181.42.26.13)?=
+Received: from [35.231.233.25] by mandrillapp.com id 02355722453447799b2b63d6db888468; Sat, 21 Nov 2020 15:30:57 +0000
+Message-Id: <5fb932b15eb70_12ad89a2eef1c1618759@worker-mailers-94fd895dc-rrl9h.mail>
+To: eduardo.sinning@gmail.com
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=30522314.02355722453447799b2b63d6db888468
+X-Mandrill-User: md_30522314
+Date: Sat, 21 Nov 2020 15:30:57 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="_av-0ZeH_UOVVAvbaOM0dT2piA"
+
+--_av-0ZeH_UOVVAvbaOM0dT2piA
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+                      Hola eduardo nicolas, 
+
+  Hemos detectado que intentaste iniciar sesi=C3=B3n desde la IP 181.42.26.=
+13
+(Santiago, Chile). 
+
+  Para poder ingresar, haz click en el bot=C3=B3n de abajo y vuelve a ingre=
+sar
+tus credenciales. 
+
+    Verificar inicio de sesi=C3=B3n
+<https://buda.com/users/confirm-location?confirmation_token=3D6464ac4760c9e=
+e52ad5312bc96e107ec>
+    Saludos, 
+
+  Equipo Buda.com 
+
+ =C2=BFNo fuiste t=C3=BA?
+Bloquea tu cuenta
+<https://buda.com/bloquear_cuenta?block_account_token=3D53e1e9355c6bafc65bf=
+dfc8c43d0c9e3>
+Accediste desde Santiago, Chile (IP 181.42.26.13), utilizando Firefox en
+Windows 10
+
+               Buda.com 
+ Providencia, Santiago de Chile 
+   Somos Carbono Neutral <https://www.buda.com/sustentabilidad>
+
+--_av-0ZeH_UOVVAvbaOM0dT2piA
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/htm=
+l4/strict.dtd">
+<html><head>
+<meta content=3D"text/html; charset=3DUTF-8" http-equiv=3D"Content-Type">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+
+<style type=3D"text/css">
+.main{font-family:-apple-system, system-ui, BlinkMacSystemFont, Roboto, san=
+s-serif;font-weight:300;letter-spacing:0;border-radius:6px}.main .main-td{p=
+adding:20px;background-color:#fafafa;border:#d1d1e6;border-radius:6px}table=
+{border-spacing:0;border-collapse:separate;table-layout:fixed}td{font-size:=
+14px;padding:0;font-family:-apple-system, system-ui, BlinkMacSystemFont, Ro=
+boto, sans-serif;font-weight:300}a{border:none;outline:none !important;colo=
+r:#408fec}.header td img{padding:16px 0 20px;text-align:center}.header .log=
+o{text-align:center}.content-td{font-size:14px;line-height:24px;color:#1f0c=
+48;padding:24px}.content-td>:first-child{margin-top:0}.content-td h1{font-s=
+ize:26px;line-height:32px;color:#210e4a;margin-bottom:8px;margin-top:32px;f=
+ont-weight:normal}.content-td h2{font-size:18px;color:#210e4a;margin-top:32=
+px;margin-bottom:8px}.content-td h1+h2{margin-top:0px !important}.content-t=
+d h2+h1{margin-top:0px !important}.content-td h3,.content-td h4,.content-td=
+ h5{font-size:14px;font-weight:bold;margin-bottom:8px}.content-td p{margin:=
+0 0 16px 0;line-height:1.5}.content-td p img,.content-td h1 img,.content-td=
+ h2 img,.content-td li img,.content-td .intercom-h2b-button img{margin:0;pa=
+dding:0}.content-td p.intro{font-size:20px;line-height:30px}.content-td blo=
+ckquote{margin:40px 0;font-style:italic;color:#a19fcd;font-size:18px;text-a=
+lign:center;padding:0 30px;font-family:-apple-system, system-ui, BlinkMacSy=
+stemFont, Roboto, sans-serif;quotes:none}.content-td blockquote a{color:#a1=
+9fcd}.content-td ul{list-style:disc;margin:0 0 20px 40px;padding:0}.content=
+-td ol{list-style:decimal;margin:0 0 20px 40px;padding:0}.content-td img{ma=
+x-width:100%;margin:17px 0}.content-td .intercom-container{margin-bottom:16=
+px}.content-td hr{border:none;border-top:1px solid #a19fcd;margin:50px 30% =
+50px 30%}.content-td table{border-collapse:collapse;border-spacing:0;margin=
+-bottom:20px}.content-td td,.content-td th{padding:5px 7px;border:1px solid=
+ #a19fcd;text-align:left;vertical-align:top}.content-td th{font-weight:bold=
+;background:#f8f8f8}.content-td a{color:#4f90ff}.content td.content-td tabl=
+e.intercom-container{margin:17px 0}.content td.content-td table.intercom-co=
+ntainer.intercom-align-center{margin-left:auto;margin-right:auto}.content t=
+d.content-td table.intercom-container td{background-color:#ffffff;padding:1=
+2px 36px;border-radius:3px;font-family:-apple-system, system-ui, BlinkMacSy=
+stemFont, Roboto, sans-serif;font-weight:300;margin:0;border:none}.content =
+td.content-td table.intercom-container .intercom-h2b-button{display:inline-=
+block;color:white;font-weight:bold;font-size:14px;text-decoration:none;back=
+ground-color:#0aa89a;border:none !important;border-radius:32px}.footer-td{t=
+ext-align:center;padding:24px 0 24px 0;font-size:14px;color:#a19fcd}.footer=
+-td a{text-decoration:none}.footer-td p.address{margin-top:9px;line-height:=
+1.5em}.footer-td p.powered-by{margin-top:14px}.footer-td p.unsub{margin:0}.=
+footer .unsub a{text-decoration:underline;display:block;margin:12px 0 0}p.u=
+nsub a{text-decoration:underline}.footer-td p.powered-by a{font-weight:bold=
+}.footer-td textarea{text-decoration:none;font-size:12px;color:#a19fcd;font=
+-family:-apple-system, system-ui, BlinkMacSystemFont, Roboto, sans-serif;pa=
+dding:9px 0;font-weight:300;line-height:normal}.footer-td__address{margin-b=
+ottom:6px}.footer-social img{display:block}.footer-social__table{margin:0}.=
+footer-social__icon{padding:4px}.footer-carbon__icon{vertical-align:middle}=
+.footer-carbon__text{color:#1f0c48;font-weight:600}a.intercom-h2b-button{ba=
+ckground-color:#4f90ff;font-size:14px;color:#fff;font-weight:bold;border-ra=
+dius:24px;display:inline-block;text-decoration:none;padding:12px 35px}td.ac=
+tion-button-container{text-align:center;border:0;padding:0}.action-button{d=
+isplay:inline-block;border-radius:5px;text-decoration:none;padding:15px 20p=
+x;color:#fff !important;background-color:#4f90ff;font-family:-apple-system,=
+ system-ui, BlinkMacSystemFont, Roboto, sans-serif;font-weight:300;font-siz=
+e:16px}.lock-account{text-align:center}.lock-account__button{display:inline=
+-block;width:160px;background-color:#b9b5c7;color:#fff !important;text-deco=
+ration:none;text-align:center;text-transform:uppercase;font-weight:600;bord=
+er-radius:3px;padding:6px;letter-spacing:1px;font-size:11px;margin-top:5px}=
+.lock-account__connection-data{font-size:13px;font-style:italic;color:#958c=
+a8;margin-top:24px;margin-bottom:-15px}
+
+</style>
+
+<style type=3D"text/css" data-premailer=3D"ignore">
+  #outlook a{
+    padding: 0;
+  }
+  body{
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    margin: 0;
+    padding: 0;
+  }
+  .ReadMsgBody{
+    width: 100%;
+  }
+  .ExternalClass{
+    width: 100%;
+  }
+  img {
+    border: 0;
+    max-width: 100%;
+    height: auto;
+    outline: none;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    line-height: 100%;
+  }
+  #backgroundTable{
+    height: 100% !important;
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+  }
+</style>
+
+<style type=3D"text/css" data-premailer=3D"ignore">
+  @media screen and (max-width: 645px) {
+    body {
+      padding: 10px !important;
+    }
+    .main {
+      width: 100% !important;
+    }
+    .main .main-td {
+      padding: 20px !important;
+=09=09border-radius:6px;
+    }
+    .header td {
+      text-align: center;
+    }
+    .footer-container {
+      padding: 0 10px;
+    }
+    .footer-logo {
+      display: none;
+    }
+    .footer-td {
+      text-align: left;
+      padding: 15px 0;
+    }
+  }
+
+  .content-td blockquote + * {
+    margin-top: 20px !important;
+  }
+
+  .ExternalClass .content-td h1 {
+    padding: 20px 0 !important;
+  }
+
+  .ExternalClass .content-td h2 {
+    padding: 0 0 5px !important;
+  }
+
+  .ExternalClass .content-td p {
+    padding: 10px 0 !important;
+  }
+
+  .ExternalClass .content-td .intercom-container {
+    padding: 5px 0 !important;
+  }
+
+  .ExternalClass .content-td hr + * {
+    padding-top: 30px !important;
+  }
+
+  .ExternalClass .content-td ol ,
+  .ExternalClass .content-td ul {
+    padding: 0 0 20px 40px !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass .content-td ol li,
+  .ExternalClass .content-td ul li {
+    padding: 3px 0 !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass table .footer-td p {
+    padding: 0 0 6px 0 !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass table .footer-td p.powered-by ,
+  .ExternalClass table .footer-td p.unsub {
+    padding-top: 16px;
+  }
+
+</style>
+
+</head>
+
+<body style=3D"margin:0px;padding:24px;background-color:#ffffff;-webkit-tex=
+t-size-adjust:none;-ms-text-size-adjust:none;" bgcolor=3D"#ffffff">
+  <table class=3D"header" width=3D"100%" style=3D"border-spacing:0;border-c=
+ollapse:separate;table-layout:fixed;">
+    <tbody><tr>
+      <td class=3D"logo" style=3D"font-size:14px;padding:0;font-family:-app=
+le-system, system-ui, BlinkMacSystemFont, Roboto, sans-serif;font-weight:30=
+0;text-align:center;"><img src=3D"https://i.imgur.com/gHD9AA6.png" alt=3D"B=
+uda.com" width=3D"160px" height=3D"32px" style=3D"padding:16px 0 20px;text-=
+align:center;border:0;max-width:100%;height:auto;outline:none;display:inlin=
+e-block;margin:0;text-decoration:none;line-height:100%;"></td>
+    </tr>
+  </tbody></table>
+  <table class=3D"main" width=3D"595" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0" bgcolor=3D"white" align=3D"center" style=3D"font-family:-apple-=
+system, system-ui, BlinkMacSystemFont, Roboto, sans-serif;font-weight:300;l=
+etter-spacing:0;border-radius:6px;border-spacing:0;border-collapse:separate=
+;table-layout:fixed;">
+    <tbody><tr>
+      <td class=3D"main-td" style=3D"padding:20px;background-color:#fafafa;=
+border:#d1d1e6;border-radius:6px;font-size:14px;font-family:-apple-system, =
+system-ui, BlinkMacSystemFont, Roboto, sans-serif;font-weight:300;">
+        <table class=3D"content" width=3D"100%" style=3D"border-spacing:0;b=
+order-collapse:separate;table-layout:fixed;">
+          <tbody><tr>
+              <td class=3D"content-td" style=3D"font-size:14px;padding:24px=
+;font-family:-apple-system, system-ui, BlinkMacSystemFont, Roboto, sans-ser=
+if;font-weight:300;line-height:24px;color:#1f0c48;">
+                <p style=3D"margin:0 0 16px 0;line-height:1.5;">
+  Hola eduardo nicolas,
+</p>
+
+  <p style=3D"margin:0 0 16px 0;line-height:1.5;">
+    Hemos detectado que intentaste iniciar sesi=C3=B3n desde la IP 181.42.2=
+6.13 (Santiago, Chile).
+  </p>
+  <p style=3D"margin:0 0 16px 0;line-height:1.5;">
+    Para poder ingresar, haz click en el bot=C3=B3n de abajo y vuelve a ing=
+resar tus credenciales.
+  </p>
+
+<table width=3D"100%" style=3D"border-spacing:0;border-collapse:collapse;ta=
+ble-layout:fixed;margin-bottom:20px;">
+  <tr width=3D"100%">
+    <td width=3D"100%" class=3D"action-button-container" style=3D"font-size=
+:14px;padding:0;font-family:-apple-system, system-ui, BlinkMacSystemFont, R=
+oboto, sans-serif;font-weight:300;border:0;text-align:center;vertical-align=
+:top;">
+      <a class=3D"action-button" href=3D"https://buda.com/users/confirm-loc=
+ation?confirmation_token=3D6464ac4760c9ee52ad5312bc96e107ec" style=3D"borde=
+r:none;outline:none ;color:#fff ;display:inline-block;border-radius:5px;tex=
+t-decoration:none;padding:15px 20px;background-color:#4f90ff;font-family:-a=
+pple-system, system-ui, BlinkMacSystemFont, Roboto, sans-serif;font-weight:=
+300;font-size:16px;">Verificar inicio de sesi=C3=B3n</a>
+    </td>
+  </tr>
+</table>
+<p style=3D"margin:0 0 16px 0;line-height:1.5;">
+  Saludos,
+</p>
+<p style=3D"margin:0 0 16px 0;line-height:1.5;">
+  Equipo Buda.com
+</p>
+
+<div class=3D"lock-account" style=3D"text-align:center;">=C2=BFNo fuiste t=
+=C3=BA?<br><a target=3D"_blank" class=3D"lock-account__button" href=3D"http=
+s://mandrillapp.com/track/click/30522314/buda.com?p=3DeyJzIjoibHVjQ3pYaWpWY=
+0llMDRSaUJfMTJRNUVyZUNZIiwidiI6MSwicCI6IntcInVcIjozMDUyMjMxNCxcInZcIjoxLFwi=
+dXJsXCI6XCJodHRwczpcXFwvXFxcL2J1ZGEuY29tXFxcL2Jsb3F1ZWFyX2N1ZW50YT9ibG9ja19=
+hY2NvdW50X3Rva2VuPTUzZTFlOTM1NWM2YmFmYzY1YmZkZmM4YzQzZDBjOWUzXCIsXCJpZFwiOl=
+wiMDIzNTU3MjI0NTM0NDc3OTliMmI2M2Q2ZGI4ODg0NjhcIixcInVybF9pZHNcIjpbXCJiNDRmY=
+jM1MjhmYWE5MzU1YzAwYTU4YWI4OWE5ZmQ4NDc1YmNhMjFjXCJdfSJ9" style=3D"border:no=
+ne;outline:none ;color:#fff ;display:inline-block;width:160px;background-co=
+lor:#b9b5c7;text-decoration:none;text-align:center;text-transform:uppercase=
+;font-weight:600;border-radius:3px;padding:6px;letter-spacing:1px;font-size=
+:11px;margin-top:5px;">Bloquea tu cuenta</a><br><div class=3D"lock-account_=
+_connection-data" style=3D"font-size:13px;font-style:italic;color:#958ca8;m=
+argin-top:24px;margin-bottom:-15px;">Accediste desde Santiago, Chile (IP 18=
+1.42.26.13), utilizando Firefox en Windows 10</div></div>
+
+
+              </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </tbody></table>
+  <table class=3D"main" width=3D"595" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0" align=3D"center" style=3D"font-family:-apple-system, system-ui,=
+ BlinkMacSystemFont, Roboto, sans-serif;font-weight:300;letter-spacing:0;bo=
+rder-radius:6px;border-spacing:0;border-collapse:separate;table-layout:fixe=
+d;">
+    <tbody><tr>
+      <td class=3D"footer-container" style=3D"font-size:14px;padding:0;font=
+-family:-apple-system, system-ui, BlinkMacSystemFont, Roboto, sans-serif;fo=
+nt-weight:300;">
+        <table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D=
+"0" align=3D"center" style=3D"border-spacing:0;border-collapse:separate;tab=
+le-layout:fixed;">
+          <tbody>
+            <tr>
+              <td class=3D"footer-td" width=3D"70%" style=3D"font-size:14px=
+;padding:24px 0 24px 0;font-family:-apple-system, system-ui, BlinkMacSystem=
+Font, Roboto, sans-serif;font-weight:300;text-align:center;color:#a19fcd;">
+                <div class=3D"footer-td__address" style=3D"margin-bottom:6p=
+x;">
+                  Buda.com <br>
+                  Providencia, Santiago de Chile <br>
+                  <a href=3D"https://mandrillapp.com/track/click/30522314/w=
+ww.buda.com?p=3DeyJzIjoiampEelNLOFI1YTRvSWcwQjBVMFdta0pDNHZvIiwidiI6MSwicCI=
+6IntcInVcIjozMDUyMjMxNCxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5idW=
+RhLmNvbVxcXC9zdXN0ZW50YWJpbGlkYWRcIixcImlkXCI6XCIwMjM1NTcyMjQ1MzQ0Nzc5OWIyY=
+jYzZDZkYjg4ODQ2OFwiLFwidXJsX2lkc1wiOltcIjM3NjYyZWFhYWJlMzNjMjAyMTQwNWZiOTQ5=
+ZmUyN2U2OGMwM2E1MThcIl19In0" style=3D"border:none;outline:none ;color:#408f=
+ec;text-decoration:none;">
+                    <img class=3D"footer-carbon__icon" width=3D"18" src=3D"=
+https://i.imgur.com/NrzJ9Y5.png" style=3D"vertical-align:middle;border:0;ma=
+x-width:100%;height:auto;outline:none;display:inline-block;margin:0;padding=
+:0;text-decoration:none;line-height:100%;">
+                    <span class=3D"footer-carbon__text" style=3D"color:#1f0=
+c48;font-weight:600;">Somos Carbono Neutral</span>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody></table>
+
+
+
+<img src=3D"https://mandrillapp.com/track/open.php?u=3D30522314&id=3D023557=
+22453447799b2b63d6db888468" height=3D"1" width=3D"1"></body></html>
+
+
+--_av-0ZeH_UOVVAvbaOM0dT2piA--
+

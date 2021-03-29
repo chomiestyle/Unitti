@@ -1,0 +1,500 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 2002:ac0:a512:0:0:0:0:0 with SMTP id k18-v6csp579858imk;
+        Fri, 27 Jul 2018 02:02:11 -0700 (PDT)
+X-Google-Smtp-Source: AAOMgpdWHck9cIf7tSfX1vTHUORmKBxD/qXbI0llD2ZRpiSWtUmhMlg8YR58ZnCdaWB5rXX93j/8
+X-Received: by 2002:a62:34c4:: with SMTP id b187-v6mr5702932pfa.15.1532682131762;
+        Fri, 27 Jul 2018 02:02:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1532682131; cv=none;
+        d=google.com; s=arc-20160816;
+        b=NYsfDgnolorzPvS36zrlTiLi4BFlv0r1rYRSVAAmd+3/brJ1FHnGDyJDYBsVeu2yaS
+         ErfPmsfJV5FVa+KhcANspLEpk8qIG3RLxkVdA7RVPYCpxo6/ZXMEXpz9AfVhzkRy8HnS
+         nY/FQagy+36sxnwLGnIAKw9hFCCDHdD123gl08jN0M2ESqauvSKqts+dmsgPgn/0feVQ
+         Qe62AW7NCRieg+vkVA9SluTbIfrz4WVbVS0mQqwM+RsYtdhy0L5a9lPbZwOrSsQaCqkO
+         C2pZ6xqxgaZk4BnSHU+YNqP5AuYvSmVu8t9r7Q3W+0uYx6zC1LovAE+B/OMc5Fo4qZYp
+         CA7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:message-id:from:subject:date:list-unsubscribe:reply-to
+         :mime-version:to:dkim-signature:arc-authentication-results;
+        bh=hBOo1w0oEjT9c9q8HJXd1xA9T2AZoJO9AMcawP0wWH0=;
+        b=Nn0YchTqh0RtVSaXVvvgzYlfUGcwNqMeZ7I43t6FpX5gXBsa0GgiKpQWCj+rQWcwx7
+         pThkoc328mUJu6sfIyEgg/HYY8xhtTiawFSIrjQ/YLTmBdSIwRk+qG0yrOSFIp+pK16H
+         ST9VmRPjzmZ6Ntor+DHd86EyHIhoNm2p/+lFoDlxs2HziOcVc/BClb7zwSFRqHzRNFtM
+         hyRh7zvfAG56SDOeezYZTM4FvHpzVV8NCl0+yzZZyL9rTVl2vTCbVNM7Dy1RWDE2vBXk
+         qy3QBF/1xl1kKkyfHSUE/aVEvhVzh4DW2vc/pEUL00+SoX1VQ4ImiEoyXkZGJfxJFuw6
+         wKYg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@buda.com header.s=intercom header.b=V78tpZyP;
+       spf=pass (google.com: domain of bounces+17703370434@spe.intercom-mail.com designates 52.27.255.198 as permitted sender) smtp.mailfrom=bounces+17703370434@spe.intercom-mail.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+Return-Path: <bounces+17703370434@spe.intercom-mail.com>
+Received: from mta1a3.spe.intercom-mail.com (mta1a3.spe.intercom-mail.com. [52.27.255.198])
+        by mx.google.com with ESMTPS id b16-v6si3458697pgg.342.2018.07.27.02.02.11
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Jul 2018 02:02:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+17703370434@spe.intercom-mail.com designates 52.27.255.198 as permitted sender) client-ip=52.27.255.198;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@buda.com header.s=intercom header.b=V78tpZyP;
+       spf=pass (google.com: domain of bounces+17703370434@spe.intercom-mail.com designates 52.27.255.198 as permitted sender) smtp.mailfrom=bounces+17703370434@spe.intercom-mail.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=buda.com;
+	s=intercom; t=1532682131; i=@buda.com;
+	bh=hBOo1w0oEjT9c9q8HJXd1xA9T2AZoJO9AMcawP0wWH0=;
+	h=To:Reply-To:List-Unsubscribe:Date:Subject:From;
+	b=V78tpZyPSONMG85HM9fZNnFOG0nVwpNtEM9xyfTAKnBW9C+UBPDIulJSlWmC/vipd
+	 mpxxLkkxxsEAIqYpi84WGS2woteibc/XsfduAt1e+EiSr4esN8xk+3NOZM8iwBPiAM
+	 weC4yC+2e728mM05zIPPX5D7ggfAOwOcV4VklxbA=
+X-MSFBL: gqu5MlMvA9eHtV0ofLXs1iZ6I+RachDbORZu4GBmldY=|eyJyIjoiZWR1YXJkby5
+	zaW5uaW5nQGdtYWlsLmNvbSIsInN1YmFjY291bnRfaWQiOiI3NTUxIiwidGVuYW5
+	0X2lkIjoiaW50ZXJjb20iLCJtZXNzYWdlX2lkIjoiMDAwNzkzZGY1YTViNjY5YmV
+	kOTMiLCJjdXN0b21lcl9pZCI6IjEifQ==
+To: eduardo.sinning@gmail.com
+Content-Type: multipart/alternative; boundary="_----WYHTKnmbu9c2Sg4sDvyQGQ===_4E/39-39782-39FDA5B5"
+MIME-Version: 1.0
+Reply-To: "Equipo Buda.com" <soporte@buda.com>
+List-Unsubscribe: <mailto:unsubscribe+17703370434_5a5817fd2f1161381d418cdf@unsubscribes.intercom-mail.com>, <https://lmgaeqxd.intercom-mail.com/unsubscribe?app_id=lmgaeqxd&conversation_id=17703370434&sample=false&user_id=5a5817fd2f1161381d418cdf>
+Date: Fri, 27 Jul 2018 09:02:11 +0000
+Subject: =?utf-8?B?W0ltcG9ydGFudGVdIFNvbGljaXR1ZCBkZSBpbmZvcm1hY2nDs24g?=
+	=?utf-8?B?ZGVsIFNJSQ==?=
+X-Mailgun-Tag: user-custom
+X-Intercom-App-Id: lmgaeqxd
+X-Intercom-Bin: 200
+From: "Equipo Buda.com" <soporte@buda.com>
+Message-ID: <8085aebc-22e4d37f-1532682130-17703370434@intercom-mail.com>
+X-Mailgun-Track-Clicks: no
+X-Mailgun-Track-Opens: no
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Mailgun-Variables: {"app_id":"lmgaeqxd","conversation_id":"17703370434","intercom_message_id":236676988,"user_id":"5a5817fd2f1161381d418cdf"}
+Feedback-ID: 236676988:lmgaeqxd:intercom
+
+--_----WYHTKnmbu9c2Sg4sDvyQGQ===_4E/39-39782-39FDA5B5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola eduardo, =0A Queremos compartir contigo una noticia importante. =0A Ha=
+ce unos d=C3=ADas, todos los exchanges de criptomonedas en Chile recibimos =
+una notificaci=C3=B3n del Servicio de Impuestos Internos (SII) en donde nos=
+ solicitan enviar informaci=C3=B3n relativa a las transacciones con criptom=
+onedas realizadas por nuestros clientes durante el a=C3=B1o comercial 2017.=
+ Cabe se=C3=B1alar que la notificaci=C3=B3n constituye un requerimiento de =
+informaci=C3=B3n, y no constituye el inicio de un proceso de fiscalizaci=C3=
+=B3n. =0A Esta solicitud constituye un reconocimiento m=C3=A1s a la legitim=
+idad de nuestra actividad y de las criptomonedas en general por parte de la=
+ autoridad tributaria, y va en l=C3=ADnea con la adopci=C3=B3n mundial que =
+est=C3=A1n recibiendo, lo que es muy positivo para todo el ecosistema. =0A =
+No tenemos conocimiento del uso que el SII dar=C3=A1 a esta informaci=C3=B3=
+n, pero la solicitud es concordante con el oficio ordinario 963 de mayo de =
+2018 del mismo SII, que indica que las ganancias obtenidas por la venta de =
+criptomonedas pueden estar afectas al pago de impuesto a la renta, no estan=
+do afecto a impuesto alguno su mera tenencia, siendo obligaci=C3=B3n de cad=
+a contribuyente determinar si la eventual ganancia obtenida al vender las m=
+ismas debe o no pagar impuestos (ac=C3=A1 una buena explicaci=C3=B3n del of=
+icio). =0A Finalmente, hay que considerar que actualmente la Ley de La Rent=
+a exime del pago de impuestos a todas aquellas personas naturales con ingre=
+sos anuales totales menores a 13,5 UTA (7,5 millones de pesos, aproximadame=
+nte). En caso de tener dudas, te recomendamos consultar con tus asesores tr=
+ibutarios, o al mismo SII. =0A Por nuestra parte, estaremos inform=C3=A1ndo=
+les de cualquier novedad relativa a esta solicitud, y seguiremos trabajando=
+ en mejorar nuestros sistemas para entregarles toda la informaci=C3=B3n nec=
+esaria sobre sus operaciones, y as=C3=AD hacer m=C3=A1s sencillo el cumplim=
+iento de sus eventuales obligaciones tributarias. =0A Saludos, =0A El Equip=
+o de Buda.com=0A=0A
+--_----WYHTKnmbu9c2Sg4sDvyQGQ===_4E/39-39782-39FDA5B5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/htm=
+l4/strict.dtd">=0A<html>=0A<head>=0A<meta content=3D"text/html; charset=3Du=
+tf-8" http-equiv=3D"Content-Type">=0A<meta name=3D"viewport" content=3D"wid=
+th=3Ddevice-width">=0A<meta name=3D"format-detection" content=3D"telephone=
+=3Dno">=0A=0A=0A<style type=3D"text/css" data-premailer=3D"ignore">=0A=0A  =
+#outlook a{=0A    padding: 0;=0A  }=0A  body{=0A    -webkit-text-size-adjus=
+t: none;=0A    -ms-text-size-adjust: none;=0A    margin: 0;=0A    padding: =
+0;=0A  }=0A  .ReadMsgBody{=0A    width: 100%;=0A  }=0A  .ExternalClass{=0A =
+   width: 100%;=0A  }=0A  img {=0A    border: 0;=0A    max-width: 100%;=0A =
+   height: auto;=0A    outline: none;=0A    display: inline-block;=0A    ma=
+rgin: 0;=0A    padding: 0;=0A    text-decoration: none;=0A    line-height: =
+100%;=0A  }=0A  #backgroundTable{=0A    height: 100% !important;=0A    marg=
+in: 0;=0A    padding: 0;=0A    width: 100% !important;=0A  }=0A</style>=0A=
+=0A=0A=0A=0A<style type=3D"text/css">=0A  /**=0A   * Generic=0A   */=0A=0A =
+ .main {=0A    font-family: 'SF Text Regular',Helvetica,Arial,serif;=0A    =
+letter-spacing: 0;=0A=09border-radius: 6px;=0A  }=0A=0A  .main .main-td {=
+=0A    padding: 20px;=0A=0A  }=0A=0A  table {=0A    border-spacing: 0;=0A  =
+  border-collapse: separate;=0A    table-layout: fixed;=0A  }=0A=0A  td {=
+=0A    font-size: 16px;=0A    padding: 0;=0A    font-family: 'SF Text Light=
+',Helvetica,Arial,serif;=0A  }=0A=0A  a {=0A    border: none;=0A    outline=
+: none !important;=0A    color: #408FEC;=0A  }=0A=0A=0A  /**=0A   * Header=
+=0A   */=0A=0A  .header td img {=0A    padding: 0 0 20px 0;=0A    text-alig=
+n: center;=0A  }=0A=0A  .header .logo {=0A    text-align: center;=0A  }=0A=
+=0A  /**=0A   * Content=0A   */=0A=0A  .content-td {=0A    font-size: 16px;=
+=0A    line-height: 24px;=0A    padding: 0;=0A    color: #210E4A;=0A    pad=
+ding: 32px 24px;=0A  }=0A=0A  .content-td > :first-child {=0A    margin-top=
+: 0;=0A  }=0A=0A  .content-td h1 {=0A    line-height: 32px;=0A    color: #2=
+10E4A;=0A    margin-bottom: 8px;=0A    margin-top: 32px;=0A    font-family:=
+'SF Text Light',Helvetica,Arial,serif;=0A    font-size: 24px;=0A    font-we=
+ight: 200;=0A  }=0A=0A  .content-td h2 {=0A    font-size: 18px;=0A    color=
+: #210E4A;=0A    margin-top: 32px;=0A    margin-bottom: 8px;=0A  }=0A=0A  .=
+content-td h1 + h2 {=0A    margin-top: 0px !important;=0A  }=0A=0A  .conten=
+t-td h2 + h1 {=0A    margin-top: 0px !important;=0A  }=0A=0A  .content-td h=
+3 ,=0A  .content-td h4 ,=0A  .content-td h5 {=0A    font-size: 16px;=0A    =
+font-weight: normal;=0A    margin-bottom: 8px;=0A  }=0A=0A  .content-td p {=
+=0A    margin: 0 0 16px 0;=0A    line-height: 1.5;=0A  }=0A=0A  .content-td=
+ p img,=0A  .content-td h1 img,=0A  .content-td h2 img,=0A  .content-td li =
+img,=0A  .content-td .intercom-h2b-button img {=0A    margin: 0;=0A    padd=
+ing: 0;=0A  }=0A=0A  .content-td p.intro {=0A    font-size: 20px;=0A    lin=
+e-height: 30px;=0A  }=0A=0A  .content-td blockquote {=0A    margin: 40px 0;=
+=0A    font-style: italic;=0A    color: #8C8C8C;=0A    font-size: 18px;=0A =
+   text-align: center;=0A    padding: 0 30px;=0A    font-family: 'SF Text L=
+ight',Helvetica,Arial,serif;=0A    quotes: none;=0A  }=0A=0A  .content-td b=
+lockquote a {=0A    color: #8C8C8C;=0A  }=0A=0A  .content-td ul {=0A    lis=
+t-style: disc;=0A    margin: 0 0 20px 40px;=0A    padding: 0;=0A  }=0A=0A  =
+.content-td ol {=0A    list-style: decimal;=0A    margin: 0 0 20px 40px;=
+=0A    padding: 0;=0A  }=0A=0A  .content-td img {=0A    max-width: 100%;=0A=
+    margin: 17px 0;=0A  }=0A=0A  .content-td .intercom-container {=0A    ma=
+rgin-bottom: 16px;=0A  }=0A=0A  .content-td hr {=0A    border: none;=0A    =
+border-top: 1px solid #DDD;=0A    margin: 50px 30% 50px 30%;=0A  }=0A=0A  .=
+content-td table {=0A    border-collapse: collapse;=0A    border-spacing: 0=
+;=0A    margin-bottom: 20px;=0A  }=0A=0A  .content-td td,=0A  .content-td t=
+h {=0A    padding: 5px 7px;=0A    border: 1px solid #DADADA;=0A    text-ali=
+gn: left;=0A    vertical-align: top;=0A  }=0A=0A  .content-td th {=0A    fo=
+nt-weight: normal;=0A    background: #F6F6F6;=0A  }=0A=0A  .content-td a {=
+=0A    color: #4F90FF;=0A  }=0A=0A  .content td.content-td table.intercom-c=
+ontainer {=0A    margin: 17px 0;=0A  }=0A  .content td.content-td table.int=
+ercom-container.intercom-align-center {=0A    margin-left: auto;=0A    marg=
+in-right: auto;=0A  }=0A=0A  .content td.content-td table.intercom-containe=
+r td {=0A    background-color: #210E4A;=0A    padding: 12px 36px;=0A    bor=
+der-radius: 3px;=0A    font-family: 'SF Text Light',Helvetica,Arial,serif;=
+=0A    margin: 0;=0A    border: none;=0A  }=0A=0A  .content td.content-td t=
+able.intercom-container .intercom-h2b-button {=0A    display: inline-block;=
+=0A    color: white;=0A    font-weight: 400;=0A    font-size: 16px;=0A    t=
+ext-decoration: none;=0A    background-color: #4F90FF;=0A    border: none !=
+important;=0A    border-radius: 32px;=0A  }=0A=0A  .footer-td {=0A    text-=
+align: center;=0A    padding: 24px 0 24px 0;=0A    font-size: 14px;=0A    c=
+olor: #A19FCD;=0A  }=0A=0A  .footer-td a {=0A    text-decoration: none;=0A =
+ }=0A=0A  .footer-td p.address {=0A    margin-top: 9px;=0A    line-height: =
+1.5em;=0A  }=0A=0A  .footer-td p.powered-by {=0A    margin-top: 14px;=0A  }=
+=0A=0A  .footer-td p.unsub {=0A    margin: 0;=0A  }=0A=0A  .footer .unsub a=
+ {=0A    text-decoration: underline;=0A    display: block;=0A    margin: 12=
+px 0 0;=0A  }=0A=0A  p.unsub a {=0A    text-decoration: underline;=0A  }=0A=
+=0A  .footer-td p.powered-by a {=0A    font-weight: bold;=0A  }=0A=0A  .foo=
+ter-td textarea {=0A    text-decoration: none;=0A    font-size: 12px;=0A   =
+ color: #A19FCD;=0A    font-family: 'SF Text Regular',Helvetica,Arial,serif=
+;=0A    padding: 9px 0;=0A    font-weight: 300;=0A    line-height: normal;=
+=0A  }=0A=0A  .footer-td__address {=0A    margin-bottom: 6px;=0A  }=0A=0A  =
+.footer-social img {=0A    display: block;=0A  }=0A=0A  .footer-social__ta=
+ble {=0A    margin: 0;=0A  }=0A=0A  .footer-social__icon {=0A    padding: 4=
+px;=0A  }=0A=0A  a.intercom-h2b-button {=0A    background-color: #4F90FF;=
+=0A    font-size: 14px;=0A    color: #FFF;=0A    font-weight: normal;=0A   =
+ border-radius: 24px;=0A    display: inline-block;=0A    text-decoration: n=
+one;=0A    padding: 12px 35px;=0A    =0A  }=0A</style>=0A=0A=0A<style type=
+=3D"text/css" data-premailer=3D"ignore">=0A  @media screen and (max-width: =
+645px) {=0A    body {=0A      padding: 10px !important;=0A    }=0A    .main=
+ {=0A      width: 100% !important;=0A    }=0A    .main .main-td {=0A      p=
+adding: 20px !important;=0A=09=09border-radius:6px;=0A    }=0A    .header t=
+d {=0A      text-align: center;=0A    }=0A    .footer-container {=0A      p=
+adding: 0 10px;=0A    }=0A    .footer-logo {=0A      display: none;=0A    }=
+=0A    .footer-td {=0A      text-align: left;=0A      padding: 15px 0;=0A  =
+  }=0A  }=0A=0A  .content-td blockquote + * {=0A    margin-top: 20px !impor=
+tant;=0A  }=0A=0A  .ExternalClass .content-td h1 {=0A    padding: 20px 0 !i=
+mportant;=0A  }=0A=0A  .ExternalClass .content-td h2 {=0A    padding: 0 0 5=
+px !important;=0A  }=0A=0A  .ExternalClass .content-td p {=0A    padding: 1=
+0px 0 !important;=0A  }=0A=0A  .ExternalClass .content-td .intercom-contain=
+er {=0A    padding: 5px 0 !important;=0A  }=0A=0A  .ExternalClass .content-=
+td hr + * {=0A    padding-top: 30px !important;=0A  }=0A=0A  .ExternalClass=
+ .content-td ol ,=0A  .ExternalClass .content-td ul {=0A    padding: 0 0 20=
+px 40px !important;=0A    margin: 0 !important;=0A  }=0A=0A  .ExternalClass=
+ .content-td ol li,=0A  .ExternalClass .content-td ul li {=0A    padding: 3=
+px 0 !important;=0A    margin: 0 !important;=0A  }=0A=0A  .ExternalClass ta=
+ble .footer-td p {=0A    padding: 0 0 6px 0 !important;=0A    margin: 0 !im=
+portant;=0A  }=0A=0A  .ExternalClass table .footer-td p.powered-by ,=0A  .E=
+xternalClass table .footer-td p.unsub {=0A    padding-top: 16px;=0A  }=0A=
+=0A</style>=0A=0A=0A<style type=3D"text/css">=0A  .intercom-align-right {=
+=0A  text-align: right !important;=0A}=0A.intercom-align-center {=0A  text-=
+align: center !important;=0A}=0A.intercom-align-left {=0A  text-align: left=
+ !important;=0A}=0A/* Over-ride for RTL */=0A.right-to-left .intercom-align=
+-right{=0A  text-align: left !important;=0A}=0A.right-to-left .intercom-ali=
+gn-left{=0A  text-align: right !important;=0A}=0A.right-to-left .intercom-a=
+lign-left {=0A  text-align:right !important;=0A}=0A.right-to-left li {=0A  =
+text-align:right !important;=0A  direction: rtl;=0A}=0A.right-to-left .inte=
+rcom-align-left img,=0A.right-to-left .intercom-align-left .intercom-h2b-bu=
+tton {=0A  margin-left: 0 !important;=0A}=0A.intercom-attachment,=0A.interc=
+om-attachments,=0A.intercom-attachments td,=0A.intercom-attachments th,=0A.=
+intercom-attachments tr,=0A.intercom-attachments tbody,=0A.intercom-attachm=
+ents .icon,=0A.intercom-attachments .icon img {=0A  border: none !important=
+;=0A  box-shadow: none !important;=0A  padding: 0 !important;=0A  margin: 0=
+ !important;=0A}=0A.intercom-attachments {=0A  margin: 10px 0 !important;=
+=0A}=0A.intercom-attachments .icon,=0A.intercom-attachments .icon img {=0A =
+ width: 16px !important;=0A  height: 16px !important;=0A}=0A.intercom-attac=
+hments .icon {=0A  padding-right: 5px !important;=0A}=0A.intercom-attachmen=
+t {=0A  display: inline-block !important;=0A  margin-bottom: 5px !important=
+;=0A}=0A=0A.intercom-interblocks-content-card {=0A  width: 334px !important=
+;=0A  max-height: 136px !important;=0A  max-width: 100% !important;=0A  ove=
+rflow: hidden !important;=0A  border-radius: 20px !important;=0A  font-size=
+: 16px !important;=0A  border: 1px solid #e0e0e0 !important;=0A}=0A=0A.inte=
+rcom-interblocks-link,=0A.intercom-interblocks-article-card {=0A  text-deco=
+ration: none !important;=0A}=0A=0A.intercom-interblocks-article-icon {=0A  =
+width: 22.5% !important;=0A  height: 136px !important;=0A  float: left !imp=
+ortant;=0A  background-color: #fafafa !important;=0A  background-image: url=
+('https://static.intercom-mail-200.com/assets/article_book-1a595be287f73c0d=
+02f548f513bfc831.png') !important;=0A  background-repeat: no-repeat !import=
+ant;=0A  background-size: 32px !important;=0A  background-position: center =
+!important;=0A}=0A=0A.intercom-interblocks-article-text {=0A  width: 77.5% =
+!important;=0A  float: right !important;=0A  background-color: #fff !import=
+ant;=0A}=0A=0A.intercom-interblocks-link-title,=0A.intercom-interblocks-art=
+icle-title {=0A  color: #519dd4 !important;=0A  font-size: 15px !important;=
+=0A  margin: 16px 18px 12px !important;=0A  line-height: 1.3em !important;=
+=0A  overflow: hidden !important;=0A}=0A=0A.intercom-interblocks-link-descr=
+iption,=0A.intercom-interblocks-article-body {=0A  margin: 0 18px 12px !imp=
+ortant;=0A  font-size: 14px !important;=0A  color: #65757c !important;=0A  =
+line-height: 1.3em !important;=0A}=0A=0A.intercom-interblocks-link-author,=
+=0A.intercom-interblocks-article-author {=0A  margin: 10px 15px !important;=
+=0A  height: 24px !important;=0A  line-height: normal !important;=0A}=0A=0A=
+.intercom-interblocks-link-author-avatar,=0A.intercom-interblocks-article-=
+author-avatar {=0A  width: 16px !important;=0A  height: 16px !important;=0A=
+  display: inline-block !important;=0A  vertical-align: middle !important;=
+=0A  float: left;=0A  margin-right: 5px;=0A}=0A=0A.intercom-interblocks-lin=
+k-author-avatar-image,=0A.intercom-interblocks-article-author-avatar-image =
+{=0A  width: 16px !important;=0A  height: 16px !important;=0A  border-radiu=
+s: 50% !important;=0A  margin: 0 !important;=0A  vertical-align: top !impor=
+tant;=0A  font-size: 12px !important;=0A}=0A=0A.intercom-interblocks-link-a=
+uthor-name,=0A.intercom-interblocks-article-author-name {=0A  color: #74848=
+b !important;=0A  margin: 0 0 0 5px !important;=0A  font-size: 12px !import=
+ant;=0A  font-weight: 500 !important;=0A  overflow: hidden !important;=0A}=
+=0A=0A.intercom-interblocks-article-written-by {=0A  color: #8897a4 !import=
+ant;=0A  margin: 1px 0 0 5px !important;=0A  font-size: 12px !important;=0A=
+  overflow: hidden !important;=0A  vertical-align: middle !important;=0A  f=
+loat: left !important;=0A}=0A=0A</style>=0A=0A<style>=0A=09=09  =0A=0A/** B=
+old */=0A@font-face {=0A  font-family: "SF Text Bold";=0A  font-weight: 700=
+;=0A  =0A}=0A=0A/** Light */=0A@font-face {=0A  font-family: "SF Text Light=
+";=0A  font-weight: 200;=0A  =0A}=0A=0A/** Regular */=0A@font-face {=0A  fo=
+nt-family: "SF Text Regular";=0A  font-weight: 400;=0A  =0A}=0A=0A=0A=09  =
+=0Ah1{font-family:'SF Text Light',Helvetica,Arial,serif;=0Afont-size: 24px;=
+=0Afont-weight: 200;=0Acolor: #210E4A;}=0A=09  =0Ah2{font-family:'SF Text L=
+ight',Helvetica,Arial,serif;=0Afont-size: 20px;=0Afont-weight: 200;=0Acolor=
+: #210E4A;}=0A=09=0Ah3{font-family:'SF Text Regular',Helvetica,Arial,serif;=
+=0Afont-size: 18px;=0Afont-weight: 400;}=0A=09  =0Ap{=0Afont-family:'SF Tex=
+t Light',Helvetica,Arial,serif;=0Afont-size: 16px;=0Afont-weight: 200;=0Aco=
+lor: #210E4A;}=0A=0Ap.strong{=0Afont-family:'SF Text Regular',Helvetica,Ari=
+al,serif;=0Afont-size: 16px;=0Afont-weight: 400;=0Acolor: #210E4A;}=0A=0Ast=
+rong, b {=0Afont-family:'SF Text Bold',Helvetica,Arial,serif;=0Afont-size: =
+16px;=0Afont-weight: 700;=0Acolor: #210E4A;}=0A=09  =0Ali, ul{=0Afont-famil=
+y:'SF Text Regular',Helvetica,Arial,serif;=0Afont-size:16px;}=0A</style>=0A=
+=0A<style>.intercom-align-right {=0A  text-align: right !important;=0A}=0A.=
+intercom-align-center {=0A  text-align: center !important;=0A}=0A.intercom-=
+align-left {=0A  text-align: left !important;=0A}=0A/* Over-ride for RTL */=
+=0A.right-to-left .intercom-align-right{=0A  text-align: left !important;=
+=0A}=0A.right-to-left .intercom-align-left{=0A  text-align: right !importan=
+t;=0A}=0A.right-to-left .intercom-align-left {=0A  text-align:right !import=
+ant;=0A}=0A.right-to-left li {=0A  text-align:right !important;=0A  directi=
+on: rtl;=0A}=0A.right-to-left .intercom-align-left img,=0A.right-to-left .i=
+ntercom-align-left .intercom-h2b-button {=0A  margin-left: 0 !important;=0A=
+}=0A.intercom-attachment,=0A.intercom-attachments,=0A.intercom-attachments =
+td,=0A.intercom-attachments th,=0A.intercom-attachments tr,=0A.intercom-att=
+achments tbody,=0A.intercom-attachments .icon,=0A.intercom-attachments .ico=
+n img {=0A  border: none !important;=0A  box-shadow: none !important;=0A  p=
+adding: 0 !important;=0A  margin: 0 !important;=0A}=0A.intercom-attachments=
+ {=0A  margin: 10px 0 !important;=0A}=0A.intercom-attachments .icon,=0A.int=
+ercom-attachments .icon img {=0A  width: 16px !important;=0A  height: 16px =
+!important;=0A}=0A.intercom-attachments .icon {=0A  padding-right: 5px !imp=
+ortant;=0A}=0A.intercom-attachment {=0A  display: inline-block !important;=
+=0A  margin-bottom: 5px !important;=0A}=0A=0A.intercom-interblocks-content-=
+card {=0A  width: 334px !important;=0A  max-height: 136px !important;=0A  m=
+ax-width: 100% !important;=0A  overflow: hidden !important;=0A  border-radi=
+us: 20px !important;=0A  font-size: 16px !important;=0A  border: 1px solid =
+#e0e0e0 !important;=0A}=0A=0A.intercom-interblocks-link,=0A.intercom-interb=
+locks-article-card {=0A  text-decoration: none !important;=0A}=0A=0A.interc=
+om-interblocks-article-icon {=0A  width: 22.5% !important;=0A  height: 136p=
+x !important;=0A  float: left !important;=0A  background-color: #fafafa !im=
+portant;=0A  background-image: url('https://static.intercom-mail-200.com/as=
+sets/article_book-1a595be287f73c0d02f548f513bfc831.png') !important;=0A  ba=
+ckground-repeat: no-repeat !important;=0A  background-size: 32px !important=
+;=0A  background-position: center !important;=0A}=0A=0A.intercom-interblock=
+s-article-text {=0A  width: 77.5% !important;=0A  float: right !important;=
+=0A  background-color: #fff !important;=0A}=0A=0A.intercom-interblocks-link=
+-title,=0A.intercom-interblocks-article-title {=0A  color: #519dd4 !importa=
+nt;=0A  font-size: 15px !important;=0A  margin: 16px 18px 12px !important;=
+=0A  line-height: 1.3em !important;=0A  overflow: hidden !important;=0A}=0A=
+=0A.intercom-interblocks-link-description,=0A.intercom-interblocks-article-=
+body {=0A  margin: 0 18px 12px !important;=0A  font-size: 14px !important;=
+=0A  color: #65757c !important;=0A  line-height: 1.3em !important;=0A}=0A=
+=0A.intercom-interblocks-link-author,=0A.intercom-interblocks-article-autho=
+r {=0A  margin: 10px 15px !important;=0A  height: 24px !important;=0A  line=
+-height: normal !important;=0A}=0A=0A.intercom-interblocks-link-author-avat=
+ar,=0A.intercom-interblocks-article-author-avatar {=0A  width: 16px !import=
+ant;=0A  height: 16px !important;=0A  display: inline-block !important;=0A =
+ vertical-align: middle !important;=0A  float: left;=0A  margin-right: 5px;=
+=0A}=0A=0A.intercom-interblocks-link-author-avatar-image,=0A.intercom-inter=
+blocks-article-author-avatar-image {=0A  width: 16px !important;=0A  height=
+: 16px !important;=0A  border-radius: 50% !important;=0A  margin: 0 !import=
+ant;=0A  vertical-align: top !important;=0A  font-size: 12px !important;=0A=
+}=0A=0A.intercom-interblocks-link-author-name,=0A.intercom-interblocks-arti=
+cle-author-name {=0A  color: #74848b !important;=0A  margin: 0 0 0 5px !imp=
+ortant;=0A  font-size: 12px !important;=0A  font-weight: 500 !important;=0A=
+  overflow: hidden !important;=0A}=0A=0A.intercom-interblocks-article-writt=
+en-by {=0A  color: #8897a4 !important;=0A  margin: 1px 0 0 5px !important;=
+=0A  font-size: 12px !important;=0A  overflow: hidden !important;=0A  verti=
+cal-align: middle !important;=0A  float: left !important;=0A}=0A</style>=0A=
+</head>=0A=0A<body style=3D"background-color: #FFFFFF; margin: 0px; padding=
+: 24px" bgcolor=3D"#FFFFFF">=0A  <table width=3D"100%" class=3D"header" sty=
+le=3D"border-collapse: separate; border-spacing: 0; table-layout: fixed">=
+=0A    <tbody>=0A<tr>=0A      <td class=3D"logo" style=3D"font-family: 'SF =
+Text Light',Helvetica,Arial,serif; font-size: 16px; padding: 0; text-align:=
+ center" align=3D"center"><a href=3D"https://via.intercom-mail-200.com/e=3F=
+ob=3D%2FIcZrpcz%2B%2Bjjw%2BDs2w0GqacBhPat3x8Yt%2FXboqV5qZ0%3D&h=3D1598595c4=
+db098bdb676a7864f242c302b4453f2-17703370434" style=3D"border: none; color: =
+#408FEC; outline: none !important"><img src=3D"https://i.imgur.com/gHD9AA6.=
+png" height=3D"32" width=3D"162" alt=3D"Buda.com" style=3D"padding: 0 0 20p=
+x; text-align: center"></a></td>=0A    </tr>=0A  </tbody>=0A</table>=0A  <t=
+able cellspacing=3D"0" border=3D"0" cellpadding=3D"0" align=3D"center" widt=
+h=3D"595" bgcolor=3D"#FAFAFA" class=3D"main" style=3D"border-collapse: sepa=
+rate; border-radius: 6px; border-spacing: 0; font-family: 'SF Text Regular'=
+,Helvetica,Arial,serif; letter-spacing: 0; table-layout: fixed">=0A    <tbo=
+dy>=0A<tr>=0A      <td class=3D"main-td" style=3D"font-family: 'SF Text Lig=
+ht',Helvetica,Arial,serif; font-size: 16px; padding: 20px">=0A        <tabl=
+e width=3D"100%" class=3D"content" style=3D"border-collapse: separate; bord=
+er-spacing: 0; table-layout: fixed">=0A          <tbody>=0A<tr>=0A         =
+   <td class=3D"content-td" style=3D"color: #210E4A; font-family: 'SF Text =
+Light',Helvetica,Arial,serif; font-size: 16px; line-height: 24px; padding: =
+32px 24px">=0A<p class=3D"intercom-align-left" style=3D"color: #210E4A; fon=
+t-family: 'SF Text Light',Helvetica,Arial,serif; font-size: 16px; font-weig=
+ht: 200; line-height: 1.5; margin: 0 0 16px; text-align: left !important" a=
+lign=3D"left">Hola eduardo,</p>=0A<p class=3D"intercom-align-left" style=3D=
+"color: #210E4A; font-family: 'SF Text Light',Helvetica,Arial,serif; font-s=
+ize: 16px; font-weight: 200; line-height: 1.5; margin: 0 0 16px; text-align=
+: left !important" align=3D"left">Queremos compartir contigo una noticia im=
+portante.</p>=0A<p class=3D"intercom-align-left" style=3D"color: #210E4A; f=
+ont-family: 'SF Text Light',Helvetica,Arial,serif; font-size: 16px; font-we=
+ight: 200; line-height: 1.5; margin: 0 0 16px; text-align: left !important"=
+ align=3D"left">Hace unos d=C3=ADas, todos los exchanges de criptomonedas e=
+n Chile recibimos una notificaci=C3=B3n del Servicio de Impuestos Internos =
+(SII) en donde nos solicitan enviar informaci=C3=B3n relativa a las transac=
+ciones con criptomonedas realizadas por nuestros clientes durante el a=C3=
+=B1o comercial 2017. Cabe se=C3=B1alar que la notificaci=C3=B3n constituye =
+un requerimiento de informaci=C3=B3n, y <b style=3D"color: #210E4A; font-fa=
+mily: 'SF Text Bold',Helvetica,Arial,serif; font-size: 16px; font-weight: 7=
+00">no constituye el inicio de un proceso de fiscalizaci=C3=B3n</b>.</p>=0A=
+<p class=3D"intercom-align-left" style=3D"color: #210E4A; font-family: 'SF =
+Text Light',Helvetica,Arial,serif; font-size: 16px; font-weight: 200; line-=
+height: 1.5; margin: 0 0 16px; text-align: left !important" align=3D"left">=
+Esta solicitud constituye un reconocimiento m=C3=A1s a la <b style=3D"color=
+: #210E4A; font-family: 'SF Text Bold',Helvetica,Arial,serif; font-size: 16=
+px; font-weight: 700">legitimidad de nuestra actividad y de las criptomoned=
+as </b>en general por parte de la autoridad tributaria, y va en l=C3=ADnea =
+con la adopci=C3=B3n mundial que est=C3=A1n recibiendo, lo que es muy posit=
+ivo para todo el ecosistema.</p>=0A<p class=3D"intercom-align-left" style=
+=3D"color: #210E4A; font-family: 'SF Text Light',Helvetica,Arial,serif; fon=
+t-size: 16px; font-weight: 200; line-height: 1.5; margin: 0 0 16px; text-al=
+ign: left !important" align=3D"left">No tenemos conocimiento del uso que el=
+ SII dar=C3=A1 a esta informaci=C3=B3n, pero la solicitud es concordante co=
+n el <a href=3D"https://via.intercom-mail-200.com/e=3Fob=3Dy0cRf%2FUezYGmcs=
+hXqcS2VoCYyX0N5sQyIvZ9SW1F5rZVZovnbyF4SvTJOanGTRylMzOgPjBuIqctVYaVjy0BpOU%2=
+FlOFmjQEVuGgRv%2BVp86vqc9ukoC48mg3Mz3k7OraVBrL97QI4rhwrdchw8W957Q%3D%3D&h=
+=3D6b2bb41d9a4f374e64466d2e3c9b89938f3f5ac7-17703370434" target=3D"_blank" =
+style=3D"border: none; color: #4F90FF; outline: none !important">oficio ord=
+inario 963 de mayo de 2018 del mismo SII</a>, que indica que <b style=3D"co=
+lor: #210E4A; font-family: 'SF Text Bold',Helvetica,Arial,serif; font-size:=
+ 16px; font-weight: 700">las ganancias</b> obtenidas por la <b style=3D"col=
+or: #210E4A; font-family: 'SF Text Bold',Helvetica,Arial,serif; font-size: =
+16px; font-weight: 700">venta</b> de criptomonedas pueden estar afectas al =
+pago de impuesto a la renta, no estando afecto a impuesto alguno su <b styl=
+e=3D"color: #210E4A; font-family: 'SF Text Bold',Helvetica,Arial,serif; fon=
+t-size: 16px; font-weight: 700">mera tenencia, </b>siendo obligaci=C3=B3n d=
+e cada contribuyente determinar si la eventual ganancia obtenida al vender =
+las mismas debe o no pagar impuestos (<a href=3D"https://via.intercom-mail-=
+200.com/e=3Fob=3DnTcswLGPHETN7buukAV3SMXMeuZzS9va%2FiFpozFbSdo6d1rX7ttYdkly=
+vhCorDUrPkzHCzQSJfKouCAROmDRk1wuTb2Ri3BAET9OU3etLTqvBMOattH%2BEDtP6Nm2mjB5&=
+h=3D2f0bbb98698519b73940bbc5e43c6cb37f34aebe-17703370434" target=3D"_blank"=
+ style=3D"border: none; color: #4F90FF; outline: none !important">ac=C3=A1<=
+/a> una buena explicaci=C3=B3n del oficio).</p>=0A<p class=3D"intercom-alig=
+n-left" style=3D"color: #210E4A; font-family: 'SF Text Light',Helvetica,Ari=
+al,serif; font-size: 16px; font-weight: 200; line-height: 1.5; margin: 0 0 =
+16px; text-align: left !important" align=3D"left">Finalmente, hay que consi=
+derar que actualmente la Ley de La Renta exime del pago de impuestos a toda=
+s aquellas personas naturales con ingresos anuales totales menores a 13,5 U=
+TA (7,5 millones de pesos, aproximadamente). En caso de tener dudas, te rec=
+omendamos consultar con tus asesores tributarios, o al mismo SII.</p>=0A<p =
+class=3D"intercom-align-left" style=3D"color: #210E4A; font-family: 'SF Tex=
+t Light',Helvetica,Arial,serif; font-size: 16px; font-weight: 200; line-hei=
+ght: 1.5; margin: 0 0 16px; text-align: left !important" align=3D"left">Por=
+ nuestra parte, estaremos inform=C3=A1ndoles de cualquier novedad relativa =
+a esta solicitud, y seguiremos trabajando en mejorar nuestros sistemas para=
+ entregarles toda la informaci=C3=B3n necesaria sobre sus operaciones, y as=
+=C3=AD hacer m=C3=A1s sencillo el cumplimiento de sus eventuales obligacion=
+es tributarias.</p>=0A<p class=3D"intercom-align-left" style=3D"color: #210=
+E4A; font-family: 'SF Text Light',Helvetica,Arial,serif; font-size: 16px; f=
+ont-weight: 200; line-height: 1.5; margin: 0 0 16px; text-align: left !impo=
+rtant" align=3D"left">Saludos,</p>=0A<p class=3D"intercom-align-left" style=
+=3D"color: #210E4A; font-family: 'SF Text Light',Helvetica,Arial,serif; fon=
+t-size: 16px; font-weight: 200; line-height: 1.5; margin: 0 0 16px; text-al=
+ign: left !important" align=3D"left"><b style=3D"color: #210E4A; font-famil=
+y: 'SF Text Bold',Helvetica,Arial,serif; font-size: 16px; font-weight: 700"=
+>El Equipo de Buda.com</b></p>=0A</td>=0A          </tr>=0A        </tbody>=
+=0A</table>=0A      </td>=0A    </tr>=0A  </tbody>=0A</table>=0A  <table ce=
+llspacing=3D"0" border=3D"0" cellpadding=3D"0" align=3D"center" width=3D"59=
+5" class=3D"main" style=3D"border-collapse: separate; border-radius: 6px; b=
+order-spacing: 0; font-family: 'SF Text Regular',Helvetica,Arial,serif; let=
+ter-spacing: 0; table-layout: fixed">=0A    <tbody>=0A<tr>=0A      <td clas=
+s=3D"footer-container" style=3D"font-family: 'SF Text Light',Helvetica,Aria=
+l,serif; font-size: 16px; padding: 0">=0A        <table cellspacing=3D"0" b=
+order=3D"0" cellpadding=3D"0" align=3D"center" width=3D"100%" style=3D"bord=
+er-collapse: separate; border-spacing: 0; table-layout: fixed">=0A         =
+ <tbody>=0A<tr>=0A            <td class=3D"footer-logo" align=3D"left" styl=
+e=3D"font-family: 'SF Text Light',Helvetica,Arial,serif; font-size: 16px; p=
+adding: 0">=0A<a href=3D"https://via.intercom-mail-200.com/e=3Fob=3D68NUxxN=
+D%2BzJCF3om8vmJJo%2Fpp8Lo3QKfNA0nJhZW1qk%3D&h=3D3d2a4bae0bb2b2456fc55c63eb5=
+aebc0ef6228f6-17703370434" style=3D"border: none; color: #408FEC; outline: =
+none !important">=0A<img src=3D"https://i.imgur.com/l3r16zm.png" alt=3D"Bud=
+a.com"></a>=0A            </td>=0A            <td class=3D"footer-td" width=
+=3D"70%" style=3D"color: #A19FCD; font-family: 'SF Text Light',Helvetica,Ar=
+ial,serif; font-size: 14px; padding: 24px 0; text-align: center" align=3D"c=
+enter">=0A              <div class=3D"footer-td__address" style=3D"margin-b=
+ottom: 6px">=0A                Buda.com <br>Providencia, Santiago de Chile=
+=0A              </div>=0A              =C2=BFTe molestan nuestros mails=3F=
+ <a href=3D"https://lmgaeqxd.intercom-mail.com/unsubscribe=3Fapp_id=3Dlmgae=
+qxd&conversation_id=3D17703370434&sample=3Dfalse&user_id=3D5a5817fd2f116138=
+1d418cdf" style=3D"border: none; color: #A19FCD; font-size: 13px; outline: =
+none !important; text-align: center; text-decoration: underline">Av=C3=ADsa=
+nos</a>=0A            </td>=0A            <td class=3D"footer-social" align=
+=3D"right" style=3D"font-family: 'SF Text Light',Helvetica,Arial,serif; fon=
+t-size: 16px; padding: 0">=0A              <table class=3D"footer-social__t=
+able" cellspacing=3D"0" border=3D"0" cellpadding=3D"0" style=3D"border-coll=
+apse: separate; border-spacing: 0; margin: 0; table-layout: fixed">=0A     =
+           <tbody>=0A<tr>=0A                  <td class=3D"footer-social__i=
+con" style=3D"font-family: 'SF Text Light',Helvetica,Arial,serif; font-size=
+: 16px; padding: 4px">=0A<a href=3D"https://via.intercom-mail-200.com/e=3Fo=
+b=3DuM9W2KdWa31j5oe%2FMkhtxxLVG1i%2FmcPDZ8kx6peRWmw%3D&h=3D80dfc4159fc9b15c=
+8f049bfbe9dd3a358b662ffb-17703370434" style=3D"border: none; color: #408FEC=
+; outline: none !important"><img src=3D"https://i.imgur.com/3UqHSAN.png" wi=
+dth=3D"20" height=3D"20" alt=3D"Medium" style=3D"display: block"></a>=0A</t=
+d>=0A                  <td class=3D"footer-social__icon" style=3D"font-fami=
+ly: 'SF Text Light',Helvetica,Arial,serif; font-size: 16px; padding: 4px">=
+=0A<a href=3D"https://via.intercom-mail-200.com/e=3Fob=3Dfvc%2BLDT%2F%2Fy3U=
+mpSr5rfd7qhX2VeVnhwPHRHf1%2BmsM6Y%3D&h=3D5ebb579470acec5b7c9a04288cc3fb45b0=
+92e579-17703370434" style=3D"border: none; color: #408FEC; outline: none !i=
+mportant"><img src=3D"https://i.imgur.com/f7FhSGo.png" width=3D"20" height=
+=3D"20" alt=3D"Twitter" style=3D"display: block"></a>=0A</td>=0A           =
+     </tr>=0A                <tr>=0A                  <td class=3D"footer-s=
+ocial__icon" style=3D"font-family: 'SF Text Light',Helvetica,Arial,serif; f=
+ont-size: 16px; padding: 4px">=0A<a href=3D"https://via.intercom-mail-200.c=
+om/e=3Fob=3DfCWUk056XlMVcoCCzFhM1uYKtbB2fwqBIBAXsAUGLic%3D&h=3De5c6f4527a69=
+297f293c7c8eef6067344d9ec632-17703370434" style=3D"border: none; color: #40=
+8FEC; outline: none !important"><img src=3D"https://i.imgur.com/Xq2wgUZ.png=
+" width=3D"20" height=3D"20" alt=3D"Facebook" style=3D"display: block"></a>=
+=0A</td>=0A                  <td class=3D"footer-social__icon" style=3D"fon=
+t-family: 'SF Text Light',Helvetica,Arial,serif; font-size: 16px; padding: =
+4px">=0A<a href=3D"https://via.intercom-mail-200.com/e=3Fob=3DsEtBdsGi%2FcB=
+8fWcWo3JVmzp06%2BVdw9OH3wuF7ssls29nhWAGuvD5qkSKtB%2Bb1TTx&h=3D61d5b19e8a2c4=
+69027d6d4cad273b0d9e0f4d6ad-17703370434" style=3D"border: none; color: #408=
+FEC; outline: none !important"><img src=3D"https://i.imgur.com/l6pLecb.png"=
+ width=3D"20" height=3D"20" alt=3D"Linkedin" style=3D"display: block"></a>=
+=0A</td>=0A                </tr>=0A              </tbody>=0A</table>=0A    =
+        </td>=0A          </tr>=0A        </tbody>=0A</table>=0A      </td>=
+=0A    </tr>=0A  </tbody>=0A</table>=0A=0A=0A=0A=0A<img src=3D"https://via.=
+intercom-mail-200.com/o=3Fh=3D0e96f1bf3e3cd5380f1d32930ec29df80d6f0eb0-1770=
+3370434" width=3D"1" height=3D"1" style=3D"display: block;" alt=3D"intercom=
+">=0A=0D=0A<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https=
+://spe.via.intercom-mail.com/q/iIVhvDVAgrO5O_ZcT1Ti6Q~~/AAAAAQA~/RgRdPWSTPl=
+cIaW50ZXJjb21CCgAHk99aW2ab7ZNSGWVkdWFyZG8uc2lubmluZ0BnbWFpbC5jb21YBAAAHX8~"=
+>=0D=0A</body>=0A</html>=0A
+--_----WYHTKnmbu9c2Sg4sDvyQGQ===_4E/39-39782-39FDA5B5--
+

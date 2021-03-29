@@ -1,0 +1,477 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 2002:ac0:a606:0:0:0:0:0 with SMTP id o6csp4614675imo;
+        Tue, 22 Sep 2020 11:04:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzN8TGrwjBeKbWNp0+9BFyqpHCqyfdmcvRLo+TXlEdKBYjNTgjLX1LZOT5mjNlzl800sBnq
+X-Received: by 2002:a17:90b:198:: with SMTP id t24mr4838333pjs.107.1600797866055;
+        Tue, 22 Sep 2020 11:04:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600797866; cv=none;
+        d=google.com; s=arc-20160816;
+        b=So+ZwdXNsRv1bHeLMTOTC5ChH1UXycA+6rBV9TJeaPsgwwjpTlMP3m/fALYOCrJeI4
+         nPDOY2ZvAvrrp8EqU1q1K3fa6mhU3bPzcmh+en69JUpkIm3ulEujPgDg2LVRbrqP6pJJ
+         yHNAHGyXFX0e/TKlFv7D46zFeLV+VaGEMO45Drb46UWq1BIswNwyRnx3TtXkzxyLm1yM
+         416dNWNrZhg8mI+15PzaTmw/S0RkERdMZ7lCAGSCWH6mw7Z/9RY30d3tEA8uLfjAAlkv
+         6xt7mp/hAcT+JY0dfxDwKT5mR6XQWzoOzrbj9LjM+tmu0uArIUikiv2EB1AX+AsbTiFh
+         yz1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:from:message-id:subject:reply-to:date:list-unsubscribe
+         :mime-version:to:dkim-signature;
+        bh=tVFp2+Uo4vyEDRdrOgmDDb4MNNXrluErQgQzIU/9row=;
+        b=Mu5qsNKUV0VD1fKSF2Wf+avj6eIVS1KCnyxfo4n2xv482ecnFbFHJijIZH+JPD50A7
+         Wb39r3lZ61GU1d5rVHZf6HJHigImXeiBGbwXJ/GB25B3WhIZs+tDrfPDVxu3Iq/JwIJH
+         wsyrEYK8xJsjOIwdqNfEC/UlBxXuwCMoBzVW7zOjqf5U25UCZd5oyccX3XO2aWN/bjzn
+         jSD+lj/2xYRe//mxFbQkOZyQVxFeaSadQttrk/+wqHS4aK0oKRZLApiI6RprMpUSAqcp
+         dRmzur3O672keoAXKdBG1azdhw2/xsLYHIUvyLLLRoRkChP88nXMp4OUIq/z2LrtCcCw
+         kWFQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@buda.com header.s=intercom header.b=pmdYcLuC;
+       spf=pass (google.com: domain of bounces+62058602403273@rp.budacom.intercom-mail.com designates 192.174.84.121 as permitted sender) smtp.mailfrom=bounces+62058602403273@rp.budacom.intercom-mail.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+Return-Path: <bounces+62058602403273@rp.budacom.intercom-mail.com>
+Received: from mta-174-84-121.intercom.com.sparkpostmail.com (mta-174-84-121.intercom.com.sparkpostmail.com. [192.174.84.121])
+        by mx.google.com with ESMTPS id s135si13179679pfc.256.2020.09.22.11.04.25
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 Sep 2020 11:04:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+62058602403273@rp.budacom.intercom-mail.com designates 192.174.84.121 as permitted sender) client-ip=192.174.84.121;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@buda.com header.s=intercom header.b=pmdYcLuC;
+       spf=pass (google.com: domain of bounces+62058602403273@rp.budacom.intercom-mail.com designates 192.174.84.121 as permitted sender) smtp.mailfrom=bounces+62058602403273@rp.budacom.intercom-mail.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+X-MSFBL: mJzVI3OtID8UYNP51Jo4x4ID7RqzmhbKF9bgzvWzSLM=|eyJzdWJhY2NvdW50X2l
+	kIjoiNzU1MSIsInRlbmFudF9pZCI6ImludGVyY29tIiwibWVzc2FnZV9pZCI6IjA
+	wMWRhOTNjNmE1ZmZhN2NmNjE1IiwiciI6ImVkdWFyZG8uc2lubmluZ0BnbWFpbC5
+	jb20iLCJjdXN0b21lcl9pZCI6IjEifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=buda.com;
+	s=intercom; t=1600797865; i=@buda.com;
+	bh=tVFp2+Uo4vyEDRdrOgmDDb4MNNXrluErQgQzIU/9row=;
+	h=To:Content-Type:Date:Subject:Message-ID:From;
+	b=pmdYcLuCjigmHncYQRsfFC7WvSxlOirq8rcl3W693yrf1cFM7rBPD56t+fIuy1QD7
+	 xzhmncPTWvVt/sjmLhPcbbZvPTIaruk0p72b+bBJDalJXmyKKPsfDIXKqOukbIz4DL
+	 xWGciuw2qzJ4fgQb2vbbtx8R12M4iAZDEx0X/sYg=
+To: eduardo.sinning@gmail.com
+Content-Type: multipart/alternative; boundary="_----1c5qAqcxA5mTTCM/4oAwhQ===_DD/51-31994-9AC3A6F5"
+MIME-Version: 1.0
+List-Unsubscribe: <mailto:unsubscribe_62058602403273_5a5817fd2f1161381d418cdf@budacom.intercom-mail.com>, <https://budacom.intercom-mail.com/subscriptions/unsubscribe?app_id=lmgaeqxd&conversation_id=62058602403273&user_id=5a5817fd2f1161381d418cdf>
+Date: Tue, 22 Sep 2020 18:04:25 +0000
+Reply-To: "Equipo Buda.com" <soporte@buda.com>
+X-Mailgun-Tag: user-personal
+X-Intercom-App-Id: lmgaeqxd
+X-Intercom-Bin: 160
+Subject: =?utf-8?B?R2FuYSBlbCAyMCUgZGUgbGEgY29taXNpw7NuIHF1ZSBnZW5lcmVu?=
+	=?utf-8?B?IHR1cyBpbnZpdGFkb3Mg8J+SuA==?=
+Message-ID: <fead28a6-08cfcd87-1600797865-62058602403273@budacom.intercom-mail.com>
+X-Report-Abuse: Please report spam or abuse to abuse@intercom.io
+From: "Equipo Buda.com" <soporte@buda.com>
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Mailgun-Variables: {"app_id":"lmgaeqxd","conversation_id":"62058602403273","intercom_message_id":642138923,"user_id":"5a5817fd2f1161381d418cdf"}
+Feedback-ID: 642138923:lmgaeqxd:intercom
+
+--_----1c5qAqcxA5mTTCM/4oAwhQ===_DD/51-31994-9AC3A6F5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola eduardo, Tenemos un programa de referidos que te paga el 20% de las co=
+misiones que generen tus invitados en el mes, para algunos usuarios eso ha =
+sido cerca $200 USD extra en septiembre. As=C3=AD es como funciona: =0D=0A =
+1. Entras a Buda.com/referidos =0D=0A2. Compartes tu link o ingresas el mai=
+l de tus invitados.=C2=A0 =0D=0A3. A fin de mes cobras el total de ganancia=
+s que generes por referidos. =0D=0A Muy facilito, =0D=0AA Invitar
+--_----1c5qAqcxA5mTTCM/4oAwhQ===_DD/51-31994-9AC3A6F5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w=
+3.org/TR/REC-html40/loose.dtd">=0D=0A<html>=0D=0A<head>=0D=0A<meta http-equ=
+iv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">=0D=0A<style typ=
+e=3D"text/css">=0D=0A  #PreviewIntercomModal .ic_message_content h1,=0D=0A =
+ #PreviewIntercomModal .ic_message_content h2 {=0D=0A    color: #0072b0 !im=
+portant;=0D=0A  }=0D=0A  #PreviewIntercomModal .ic_message_without_image > =
+.ic_message_internals > .ic_message_content {=0D=0A    border-color: #0072=
+b0 !important;=0D=0A  }=0D=0A  #PreviewIntercomModal .ic_user_comment_body =
+{=0D=0A    background-color: #0072b0 !important;=0D=0A    border-color: #00=
+72b0 !important;=0D=0A  }=0D=0A  #PreviewIntercomModal .ic_message_content =
+a {=0D=0A    color: #0072b0 !important;=0D=0A  }=0D=0A  #PreviewIntercomMod=
+al .ic_message_content a:hover {=0D=0A    color: #0072b0 !important;=0D=0A =
+ }=0D=0A  #PreviewIntercomModal .ic_user_comment_body {=0D=0A    background=
+-color: #0072b0 !important;=0D=0A    border-color: #0072b0 !important;=0D=
+=0A  }=0D=0A  .intercom-h2b-button br {=0D=0A    display: none;=0D=0A  }=0D=
+=0A</style>=0D=0A<style type=3D"text/css" data-premailer=3D"ignore">=0D=0A =
+ /* styles in here will not be inlined. Use for media queries etc */=0D=0A =
+ /* force Outlook to provide a "view in browser" menu link. */=0D=0A  #outl=
+ook a {padding:0;}=0D=0A  /* prevent Webkit and Windows Mobile platforms fr=
+om changing default font sizes.*/=0D=0A  body{width:100% !important; -webki=
+t-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}=
+=0D=0A  /* force Hotmail to display emails at full width */=0D=0A  .Externa=
+lClass {width:100%;}=0D=0A  /* force Hotmail to display normal line spacing=
+. http://www.emailonacid.com/forum/viewthread/43/ */=0D=0A  .ExternalClass=
+, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClas=
+s td, .ExternalClass div {line-height: 100%;}=0D=0A  /* fix a padding issue=
+ on Outlook 07, 10 */=0D=0A  table td {border-collapse: collapse;}=0D=0A  t=
+able {=0D=0A    table-layout: fixed;=0D=0A  }=0D=0A=0D=0A  @media only scre=
+en and (max-width: 480px)=0D=0A  {=0D=0A    br.hidden { display: block !imp=
+ortant; }=0D=0A    td.padding_cell { display: none !important; }=0D=0A    t=
+able.message_footer_table td {=0D=0A      font-size: 11px !important;=0D=0A=
+    }=0D=0A  }=0D=0A  @media only screen and (max-device-width: 480px)=0D=
+=0A  {=0D=0A    br.hidden { display: block !important; }=0D=0A    td.paddin=
+g_cell { display: none !important; }=0D=0A    table.message_footer_table td=
+ {=0D=0A      font-size: 11px !important;=0D=0A    }=0D=0A  }=0D=0A</style>=
+=0D=0A=0D=0A<style type=3D"text/css" data-premailer=3D"ignore">=0D=0A  /* s=
+tyles in here will not be inlined. Use for media queries etc */=0D=0A  /* f=
+orce Outlook to provide a "view in browser" menu link. */=0D=0A  #outlook a=
+ {padding:0;}=0D=0A  /* prevent Webkit and Windows Mobile platforms from ch=
+anging default font sizes.*/=0D=0A  body{width:100% !important; -webkit-tex=
+t-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}=0D=0A =
+ /* force Hotmail to display emails at full width */=0D=0A  .ExternalClass =
+{width:100%;}=0D=0A  /* force Hotmail to display normal line spacing. http:=
+//www.emailonacid.com/forum/viewthread/43/ */=0D=0A  .ExternalClass, .Exter=
+nalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .E=
+xternalClass div {line-height: 100%;}=0D=0A  /* fix a padding issue on Outl=
+ook 07, 10 */=0D=0A  table td {border-collapse: collapse;}=0D=0A=0D=0A  @me=
+dia only screen and (max-width: 480px)=0D=0A  {=0D=0A    br.hidden { displa=
+y: block !important; }=0D=0A    td.padding_cell { display: none !important;=
+ }=0D=0A    table.message_footer_table td {=0D=0A      font-size: 11px !imp=
+ortant;=0D=0A    }=0D=0A  }=0D=0A  @media only screen and (max-device-width=
+: 480px)=0D=0A  {=0D=0A    br.hidden { display: block !important; }=0D=0A  =
+  td.padding_cell { display: none !important; }=0D=0A    table.message_foot=
+er_table td {=0D=0A      font-size: 11px !important;=0D=0A    }=0D=0A  }=0D=
+=0A</style>=0D=0A=0D=0A<style type=3D"text/css">=0D=0A=0D=0A  .admin_name b=
+ {=0D=0A    color: #6f6f6f;=0D=0A  }=0D=0A=0D=0A  .date_cell a {=0D=0A    c=
+olor: #999999;=0D=0A  }=0D=0A=0D=0A  .comment_header_td {=0D=0A    width: 1=
+00%;=0D=0A    background: #210e4a;=0D=0A    border: none;=0D=0A    font-fam=
+ily: 'Helvetica Neue',Arial,sans-serif=0D=0A  }=0D=0A=0D=0A  .content-td {=
+=0D=0A    color: #525252;=0D=0A    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.=
+05);=0D=0A    font-family: Helvetica, Arial, sans-serif;=0D=0A  }=0D=0A=0D=
+=0A  .content-td h1 {=0D=0A    font-size: 26px;=0D=0A    line-height: 33px;=
+=0D=0A    color: #282F33;=0D=0A    margin-bottom: 7px;=0D=0A    margin-top:=
+ 30px;=0D=0A    font-weight: normal;=0D=0A  }=0D=0A=0D=0A  .content-td h1 a=
+ {=0D=0A    color: #282F33;=0D=0A  }=0D=0A=0D=0A  .content-td h2 {=0D=0A   =
+ font-size: 18px;=0D=0A    font-weight: bold;=0D=0A    color: #282F33;=0D=
+=0A    margin: 30px 0 7px;=0D=0A  }=0D=0A=0D=0A  .content-td h2 a {=0D=0A  =
+  color: #282F33;=0D=0A  }=0D=0A=0D=0A  .content-td h1 + h2 {=0D=0A    marg=
+in-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .content-td h2 + h1 {=0D=0A    =
+margin-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .content-td h3 ,=0D=0A  .co=
+ntent-td h4 ,=0D=0A  .content-td h5 {=0D=0A    font-size: 16px;=0D=0A    fo=
+nt-weight: bold;=0D=0A    margin-bottom: 5px;=0D=0A  }=0D=0A=0D=0A  .conten=
+t-td p {=0D=0A    margin: 0 0 17px 0;=0D=0A    line-height: 1.5;=0D=0A  }=
+=0D=0A=0D=0A  .content-td p img,=0D=0A  .content-td h1 img,=0D=0A  .content=
+-td h2 img,=0D=0A  .content-td li img,=0D=0A  .content-td .intercom-h2b-but=
+ton img {=0D=0A    margin: 0;=0D=0A    padding: 0;=0D=0A  }=0D=0A=0D=0A  .c=
+ontent-td a {=0D=0A    color: #1251ba;=0D=0A  }=0D=0A=0D=0A  .content-td p.=
+intro {=0D=0A    font-size: 20px;=0D=0A    line-height: 30px;=0D=0A  }=0D=
+=0A=0D=0A  .content-td blockquote {=0D=0A    margin: 40px 0;=0D=0A    font-=
+style: italic;=0D=0A    color: #8C8C8C;=0D=0A    font-size: 18px;=0D=0A    =
+text-align: center;=0D=0A    padding: 0 30px;=0D=0A    font-family: Georgia=
+, sans-serif;=0D=0A    quotes: none;=0D=0A  }=0D=0A=0D=0A  .content-td bloc=
+kquote a {=0D=0A    color: #8C8C8C;=0D=0A  }=0D=0A=0D=0A  .content-td ul {=
+=0D=0A    list-style: disc;=0D=0A    margin: 0 0 20px 40px;=0D=0A    paddin=
+g: 0;=0D=0A  }=0D=0A=0D=0A  .content-td ol {=0D=0A    list-style: decimal;=
+=0D=0A    margin: 0 0 20px 40px;=0D=0A    padding: 0;=0D=0A  }=0D=0A=0D=0A =
+ .content-td img {=0D=0A    margin: 0;=0D=0A    max-width: 100%;=0D=0A  }=
+=0D=0A=0D=0A  .content-td .intercom-container {=0D=0A    margin-bottom: 16p=
+x;=0D=0A  }=0D=0A=0D=0A  .content-td div.intercom-container {=0D=0A    marg=
+in-bottom: 17px;=0D=0A    margin-top: 17px;=0D=0A    line-height: 0;=0D=0A =
+ }=0D=0A=0D=0A  .content-td hr {=0D=0A    border: none;=0D=0A    border-top=
+: 1px solid #DDD;=0D=0A    border-bottom: 0;=0D=0A    margin: 50px 30% 50px=
+ 30%;=0D=0A  }=0D=0A=0D=0A  /**/=0D=0A  .content-td pre {=0D=0A    margin: =
+0 0 10px;=0D=0A    padding: 10px;=0D=0A    background-color: #f5f5f5;=0D=0A=
+    overflow: auto;=0D=0A  }=0D=0A=0D=0A  .content-td pre code {=0D=0A    f=
+ont-family: Courier, monospace;=0D=0A    font-size: 14px;=0D=0A    line-hei=
+ght: 1.4;=0D=0A    white-space: nowrap;=0D=0A  }=0D=0A=0D=0A  table.interco=
+m-container {=0D=0A    margin: 17px 0;=0D=0A  }=0D=0A  table.intercom-conta=
+iner.intercom-align-center {=0D=0A    margin-left: auto;=0D=0A    margin-ri=
+ght: auto;=0D=0A  }=0D=0A=0D=0A  table.intercom-container td {=0D=0A    bac=
+kground-color: #210e4a;=0D=0A    padding: 12px 35px;=0D=0A    border-radius=
+: 3px;=0D=0A    font-family: Helvetica, Arial, sans-serif;=0D=0A    margin:=
+ 0;=0D=0A  }=0D=0A=0D=0A  .content-td .intercom-h2b-button {=0D=0A    font-=
+size: 14px;=0D=0A    color: #FFF;=0D=0A    font-weight: bold;=0D=0A    disp=
+lay: inline-block;=0D=0A    text-decoration: none;=0D=0A    background-colo=
+r: #210e4a;=0D=0A    border: none !important;=0D=0A    =0D=0A  }=0D=0A=0D=
+=0A  a.intercom-h2b-button {=0D=0A    background-color: #0E4595;=0D=0A    b=
+order-radius: 5px;=0D=0A    border: 1px solid rgba(0,0,0,0.2);=0D=0A    col=
+or:#fff;=0D=0A    display: inline-block;=0D=0A    font-size: 15px;=0D=0A   =
+ font-weight: bold;=0D=0A    min-height: 20px;=0D=0A    text-decoration: no=
+ne;=0D=0A  }=0D=0A=0D=0A  .content-td .intercom-h2b-button:hover {=0D=0A   =
+ background-color:#261057;=0D=0A  }=0D=0A=0D=0A  .message_footer_table .ava=
+tar {=0D=0A    -ms-interpolation-mode: bicubic;=0D=0A    -webkit-background=
+-clip: padding-box;=0D=0A    -webkit-border-radius: 20px;=0D=0A    backgrou=
+nd-clip: padding-box;=0D=0A    border-radius: 20px;=0D=0A    display: inlin=
+e-block;=0D=0A    height: 40px;=0D=0A    max-width: 100%;=0D=0A    outline:=
+ none;=0D=0A    text-decoration: none;=0D=0A    width: 40px;=0D=0A  }=0D=0A=
+=0D=0A  .powered-by-table .powered-by-text a {=0D=0A    font-weight: bold;=
+=0D=0A    text-decoration: none;=0D=0A    color: #999;=0D=0A  }=0D=0A=0D=0A=
+  .main_wrapper {=0D=0A    padding: 0 20px;=0D=0A  }=0D=0A=0D=0A  .margin-a=
+rrow {=0D=0A    display: none;=0D=0A    =0D=0A    visibility:hidden;=0D=0A =
+   width:0;=0D=0A    height:0;=0D=0A    max-width: 0;=0D=0A    max-height: =
+0;=0D=0A    overflow: hidden;=0D=0A    opacity: 0;=0D=0A  }=0D=0A=0D=0A  .c=
+ontent-td > :first-child {=0D=0A    margin-top: 0;=0D=0A    padding-top: 0;=
+=0D=0A  }=0D=0A=0D=0A  table.intercom-container td > a.intercom-h2b-button =
+{=0D=0A     padding: 0px;=0D=0A   }=0D=0A</style>=0D=0A=0D=0A<!-- Responsiv=
+e-->=0D=0A<style type=3D"text/css" data-premailer=3D"ignore">=0D=0A=0D=0A  =
+@media screen and (max-width: 635px) {=0D=0A    .main-wrap {=0D=0A      wid=
+th: 100% !important;=0D=0A    }=0D=0A  }=0D=0A=0D=0A  @media screen and (ma=
+x-width: 480px) {=0D=0A    .content-td {=0D=0A      padding: 30px 15px !imp=
+ortant;=0D=0A    }=0D=0A    .content-td h1 {=0D=0A      margin-bottom: 5px;=
+=0D=0A    }=0D=0A    .message_footer_table .space {=0D=0A      width: 20px =
+!important;=0D=0A    }=0D=0A=0D=0A    .message_footer_table .arrow-wrap {=
+=0D=0A      padding-left: 20px !important;=0D=0A    }=0D=0A=0D=0A    .messa=
+ge_footer_table .admin_name b{=0D=0A      display: block !important;=0D=0A =
+   }=0D=0A=0D=0A    .main_wrapper {=0D=0A      padding: 0;=0D=0A    }=0D=0A=
+=0D=0A    .image-arrow {=0D=0A      display: none !important;=0D=0A    }=0D=
+=0A=0D=0A    .margin-arrow {=0D=0A      display: table !important;=0D=0A   =
+   visibility:visible !important;=0D=0A      width: 100% !important;=0D=0A =
+     height: auto !important;=0D=0A      max-width: none !important;=0D=0A =
+     max-height: none !important;=0D=0A      opacity: 1 !important;=0D=0A  =
+    overflow: visible !important;=0D=0A    }=0D=0A=0D=0A    .comment_body {=
+=0D=0A      border-bottom: 1px solid #DDD !important;=0D=0A    }=0D=0A=0D=
+=0A    .footer-td-wrapper {=0D=0A      display: block !important;=0D=0A    =
+  width: 100% !important;=0D=0A      text-align: left !important;=0D=0A    =
+}=0D=0A    .footer-td-wrapper .date_cell {=0D=0A      text-align: left !imp=
+ortant;=0D=0A      padding: 15px 0 0 20px !important;=0D=0A    }=0D=0A  }=
+=0D=0A=0D=0A</style>=0D=0A=0D=0A=0D=0A<style type=3D"text/css" data-premail=
+er=3D"ignore">=0D=0A  .content-td blockquote + * {=0D=0A    margin-top: 20p=
+x !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content-td h1 {=0D=0A  =
+  padding: 20px 0 !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content=
+-td h2 {=0D=0A    padding: 0 0 5px !important;=0D=0A  }=0D=0A=0D=0A  .Exter=
+nalClass .content-td p {=0D=0A    padding: 10px 0 !important;=0D=0A  }=0D=
+=0A=0D=0A.ExternalClass .content-td .intercom-container {=0D=0A    padding:=
+ 5px 0 !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content-td hr + * =
+{=0D=0A    padding-top: 30px !important;=0D=0A  }=0D=0A=0D=0A  .ExternalCla=
+ss .content-td ol ,=0D=0A  .ExternalClass .content-td ul {=0D=0A    padding=
+: 0 0 20px 40px !important;=0D=0A    margin: 0 !important;=0D=0A  }=0D=0A=
+=0D=0A  .ExternalClass .content-td ol li,=0D=0A  .ExternalClass .content-td=
+ ul li {=0D=0A    padding: 3px 0 !important;=0D=0A    margin: 0 !important;=
+=0D=0A  }=0D=0A  .content-td > :first-child {=0D=0A    margin-top: 0 !impor=
+tant;=0D=0A    padding-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .ExternalCl=
+ass .content-td > :first-child {=0D=0A    margin-top: 0 !important;=0D=0A  =
+  padding-top: 0 !important;=0D=0A  }=0D=0A</style>=0D=0A=0D=0A=0D=0A=0D=0A=
+<style type=3D"text/css">=0D=0A  .intercom-align-right {=0D=0A  text-align:=
+ right !important;=0D=0A}=0D=0A.intercom-align-center {=0D=0A  text-align: =
+center !important;=0D=0A}=0D=0A.intercom-align-left {=0D=0A  text-align: le=
+ft !important;=0D=0A}=0D=0A/* Over-ride for RTL */=0D=0A.right-to-left .int=
+ercom-align-right{=0D=0A  text-align: left !important;=0D=0A}=0D=0A.right-t=
+o-left .intercom-align-left{=0D=0A  text-align: right !important;=0D=0A}=0D=
+=0A.right-to-left .intercom-align-left {=0D=0A  text-align:right !important=
+;=0D=0A}=0D=0A.right-to-left li {=0D=0A  text-align:right !important;=0D=0A=
+  direction: rtl;=0D=0A}=0D=0A.right-to-left .intercom-align-left img,=0D=
+=0A.right-to-left .intercom-align-left .intercom-h2b-button {=0D=0A  margin=
+-left: 0 !important;=0D=0A}=0D=0A.intercom-attachment,=0D=0A.intercom-attac=
+hments,=0D=0A.intercom-attachments td,=0D=0A.intercom-attachments th,=0D=0A=
+.intercom-attachments tr,=0D=0A.intercom-attachments tbody,=0D=0A.intercom=
+-attachments .icon,=0D=0A.intercom-attachments .icon img {=0D=0A  border: n=
+one !important;=0D=0A  box-shadow: none !important;=0D=0A  padding: 0 !impo=
+rtant;=0D=0A  margin: 0 !important;=0D=0A}=0D=0A.intercom-attachments {=0D=
+=0A  margin: 10px 0 !important;=0D=0A}=0D=0A.intercom-attachments .icon,=0D=
+=0A.intercom-attachments .icon img {=0D=0A  width: 16px !important;=0D=0A  =
+height: 16px !important;=0D=0A}=0D=0A.intercom-attachments .icon {=0D=0A  p=
+adding-right: 5px !important;=0D=0A}=0D=0A.intercom-attachment {=0D=0A  dis=
+play: inline-block !important;=0D=0A  margin-bottom: 5px !important;=0D=0A}=
+=0D=0A=0D=0A.intercom-interblocks-content-card {=0D=0A  width: 334px !impor=
+tant;=0D=0A  max-height: 136px !important;=0D=0A  max-width: 100% !importan=
+t;=0D=0A  overflow: hidden !important;=0D=0A  border-radius: 20px !importan=
+t;=0D=0A  font-size: 16px !important;=0D=0A  border: 1px solid #e0e0e0 !imp=
+ortant;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link,=0D=0A.intercom-interb=
+locks-article-card {=0D=0A  text-decoration: none !important;=0D=0A}=0D=0A=
+=0D=0A.intercom-interblocks-article-icon {=0D=0A  width: 22.5% !important;=
+=0D=0A  height: 136px !important;=0D=0A  float: left !important;=0D=0A  bac=
+kground-color: #fafafa !important;=0D=0A  background-image: url('https://bu=
+dacom.intercom-mail.com/assets/article_book-1a595be287f73c0d02f548f513bfc83=
+1.png') !important;=0D=0A  background-repeat: no-repeat !important;=0D=0A  =
+background-size: 32px !important;=0D=0A  background-position: center !impor=
+tant;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-article-text {=0D=0A  width: =
+77.5% !important;=0D=0A  float: right !important;=0D=0A  background-color: =
+#fff !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-title,=0D=0A.=
+intercom-interblocks-article-title {=0D=0A  color: #519dd4 !important;=0D=
+=0A  font-size: 15px !important;=0D=0A  margin: 16px 18px 12px !important;=
+=0D=0A  line-height: 1.3em !important;=0D=0A  overflow: hidden !important;=
+=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-description,=0D=0A.intercom-i=
+nterblocks-article-body {=0D=0A  margin: 0 18px 12px !important;=0D=0A  fon=
+t-size: 14px !important;=0D=0A  color: #65757c !important;=0D=0A  line-heig=
+ht: 1.3em !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-author,=
+=0D=0A.intercom-interblocks-article-author {=0D=0A  margin: 10px 15px !impo=
+rtant;=0D=0A  height: 24px !important;=0D=0A  line-height: normal !importan=
+t;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-author-avatar,=0D=0A.interc=
+om-interblocks-article-author-avatar {=0D=0A  width: 16px !important;=0D=0A=
+  height: 16px !important;=0D=0A  display: inline-block !important;=0D=0A  =
+vertical-align: middle !important;=0D=0A  float: left;=0D=0A  margin-right:=
+ 5px;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-author-avatar-image,=0D=
+=0A.intercom-interblocks-article-author-avatar-image {=0D=0A  width: 16px !=
+important;=0D=0A  height: 16px !important;=0D=0A  border-radius: 50% !impor=
+tant;=0D=0A  margin: 0 !important;=0D=0A  vertical-align: top !important;=
+=0D=0A  font-size: 12px !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks=
+-link-author-name,=0D=0A.intercom-interblocks-article-author-name {=0D=0A  =
+color: #74848b !important;=0D=0A  margin: 0 0 0 5px !important;=0D=0A  font=
+-size: 12px !important;=0D=0A  font-weight: 500 !important;=0D=0A  overflow=
+: hidden !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-article-writte=
+n-by {=0D=0A  color: #8897a4 !important;=0D=0A  margin: 1px 0 0 5px !import=
+ant;=0D=0A  font-size: 12px !important;=0D=0A  overflow: hidden !important;=
+=0D=0A  vertical-align: middle !important;=0D=0A  float: left !important;=
+=0D=0A}=0D=0A=0D=0A</style>=0D=0A=0D=0A=0D=0A=0D=0A=0D=0A</head>=0D=0A<body=
+>=0D=0A<div style=3D"color:transparent;visibility:hidden;opacity:0;font-siz=
+e:0px;border:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width=
+:0px!important;display:none!important;line-height:0px!important;"><img bord=
+er=3D"0" width=3D"1" height=3D"1" src=3D"https://budacom.intercom-mail.com/=
+q/CeRxmDJTlwZRQFYyNJ79JQ~~/AAAAAQA~/RgRhTMGpPVcIaW50ZXJjb21CCgAdqTxqX_p89hV=
+SGWVkdWFyZG8uc2lubmluZ0BnbWFpbC5jb21YBAAAHX8~"/></div>=0D=0A=0D=0A=0D=0A=0D=
+=0A<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"bgtc pe=
+rsonal" align=3D"center" style=3D"background-color: #f9f9f9; border-collaps=
+e: collapse; line-height: 100% !important; margin: 0; padding: 0; width: 10=
+0% !important" bgcolor=3D"#f9f9f9">=0D=0A  <tbody>=0D=0A<tr>=0D=0A    <td>=
+=0D=0A    <!--[if (gte mso 10)]>=0D=0A      <tr>=0D=0A      <td>=0D=0A     =
+ <table style=3D"width: 600px">=0D=0A    <![endif]-->=0D=0A      <table sty=
+le=3D"border-collapse: collapse; margin: auto; max-width: 635px; min-width:=
+ 320px; width: 100%" class=3D"main-wrap">=0D=0A        <tbody>=0D=0A<tr>=0D=
+=0A          <td valign=3D"top">=0D=0A            <table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" class=3D"reply_header_table" style=3D"border=
+-collapse: collapse; color: #c0c0c0; font-family: 'Helvetica Neue',Arial,sa=
+ns-serif; font-size: 13px; line-height: 26px; margin: 0 auto 26px; width: 1=
+00%">=0D=0A            </table>=0D=0A          </td>=0D=0A        </tr>=0D=
+=0A        <tr>=0D=0A          <td valign=3D"top" class=3D"main_wrapper" st=
+yle=3D"padding: 0 20px">=0D=0A=0D=0A            <table cellpadding=3D"0" ce=
+llspacing=3D"0" border=3D"0" class=3D"comment_wrapper_table admin_comment" =
+align=3D"center" style=3D"-webkit-background-clip: padding-box; -webkit-bor=
+der-radius: 3px; background-clip: padding-box; border-collapse: collapse; b=
+order-radius: 3px; color: #545454; font-family: 'Helvetica Neue',Arial,sans=
+-serif; font-size: 13px; line-height: 20px; margin: 0 auto; width: 100%">=
+=0D=0A              <tbody>=0D=0A<tr>=0D=0A                <td valign=3D"to=
+p" class=3D"comment_wrapper_td">=0D=0A                  <table cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0" class=3D"comment_header" style=3D"bor=
+der: none; border-collapse: separate; font-size: 1px; height: 2px; line-hei=
+ght: 3px; width: 100%">=0D=0A                    <tbody>=0D=0A<tr>=0D=0A   =
+                   <td valign=3D"top" class=3D"comment_header_td" style=3D"=
+background-color: #210e4a; border: none; font-family: 'Helvetica Neue',Aria=
+l,sans-serif; width: 100%" bgcolor=3D"#210e4a">=C2=A0</td>=0D=0A           =
+         </tr>=0D=0A                  </tbody>=0D=0A</table>=0D=0A         =
+         <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"c=
+omment_body" style=3D"-webkit-background-clip: padding-box; -webkit-border-=
+radius: 0 0 3px 3px; background-clip: padding-box; border-collapse: collaps=
+e; border-color: #dddddd; border-radius: 0 0 3px 3px; border-style: solid s=
+olid none; border-width: 0 1px 1px; width: 100%">=0D=0A                    =
+<tbody>=0D=0A<tr>=0D=0A                      <td class=3D"comment_body_td c=
+ontent-td" style=3D"-webkit-background-clip: padding-box; -webkit-border-ra=
+dius: 0 0 3px 3px; background-clip: padding-box; background-color: white; b=
+order-radius: 0 0 3px 3px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05); col=
+or: #525252; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: 15p=
+x; line-height: 22px; overflow: hidden; padding: 40px 40px 30px" bgcolor=3D=
+"white">=0D=0A                        =0D=0A=0D=0A                        =
+=0D=0A                          <p class=3D"intercom-align-left" style=3D"l=
+ine-height: 1.5; margin: 0 0 17px; padding-top: 0; text-align: left !import=
+ant" align=3D"left">Hola eduardo,<br><br>Tenemos un programa de referidos q=
+ue te paga el 20% de las comisiones que generen tus invitados en el mes, pa=
+ra algunos usuarios eso ha sido <b>cerca $200 USD extra en septiembre.<br><=
+/b><br>As=C3=AD es como funciona:</p>=0D=0A<ol style=3D"list-style-type: de=
+cimal; margin: 0 0 20px 40px; padding: 0">=0D=0A<li>Entras a <a href=3D"htt=
+ps://budacom.intercom-clicks.com/via/e=3Fob=3DICA5MkBQ80aENQxlGb%2FefDJGA82=
+fUbeQjse%2FJV%2FeFGc%3D&h=3Dda2a240d2d9d32c675f0f6dc6a83414aba5cab36-lmgaeq=
+xd_62058602403273&l=3D78fbcf6cd36004ee091c5900390e3bc3d015f9c2-4582013" tar=
+get=3D"_blank" style=3D"color: #1251ba">Buda.com/referidos</a>=0D=0A</li>=
+=0D=0A<li>Compartes tu link o ingresas el mail de tus invitados.=C2=A0</li>=
+=0D=0A<li>A fin de mes cobras el total de ganancias que generes por referid=
+os.</li>=0D=0A</ol>=0D=0A<p class=3D"intercom-align-left" style=3D"line-hei=
+ght: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left">Muy=
+ facilito,</p>=0D=0A<table class=3D"intercom-container intercom-align-cente=
+r" align=3D"center" style=3D"margin: 17px auto 16px; text-align: center !im=
+portant"><tbody><tr><td style=3D"background-color: #210e4a; border-radius: =
+3px; font-family: Helvetica, Arial, sans-serif; margin: 0; padding: 12px 35=
+px" bgcolor=3D"#210e4a"><a class=3D"intercom-h2b-button" target=3D"_blank" =
+href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3DICA5MkBQ80aENQxlGb=
+%2FefDJGA82fUbeQjse%2FJV%2FeFGc%3D&h=3Dda2a240d2d9d32c675f0f6dc6a83414aba5c=
+ab36-lmgaeqxd_62058602403273&l=3D077f513b043954f9cf206cc75b367afbade48e0f-4=
+581759" style=3D"background-color: #210e4a; border: 1px none rgba(0,0,0,0.2=
+); border-radius: 5px; color: #FFF; display: inline-block; font-size: 14px;=
+ font-weight: bold; min-height: 20px; padding: 0px; text-decoration: none">=
+A Invitar</a></td></tr></tbody></table>=0D=0A                        =0D=0A=
+=0D=0A                        =0D=0A                      </td>=0D=0A      =
+              </tr>=0D=0A                   </tbody>=0D=0A</table>=0D=0A   =
+               </td>=0D=0A                 </tr>=0D=0A                </tbo=
+dy>=0D=0A</table>=0D=0A=0D=0A                <div class=3D"margin-arrow" st=
+yle=3D"display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; o=
+verflow: hidden; visibility: hidden; width: 0">=0D=0A                  <tab=
+le cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"message_footer=
+_table margin-arrow" align=3D"center" style=3D"border-collapse: collapse; c=
+olor: #545454; display: none; font-family: 'Helvetica Neue',Arial,sans-seri=
+f; font-size: 13px; height: 0; line-height: 20px; margin: 0 auto; max-heigh=
+t: 0; max-width: 100%; opacity: 0; overflow: hidden; visibility: hidden; wi=
+dth: 100%">=0D=0A                    <tbody>=0D=0A<tr>=0D=0A               =
+       <td valign=3D"top" width=3D"80" class=3D"arrow-wrap" style=3D"color:=
+ #272727; height: 18px; padding-left: 40px; text-align: left" align=3D"left=
+">=0D=0A                        <img alt=3D"Triangle" class=3D"image_fix" h=
+eight=3D"18" src=3D"https://budacom.intercom-mail.com/assets/email/personal=
+/triangle-8747882e9ef8882f9bc057241fd3c049.png" style=3D"-ms-interpolation-=
+mode: bicubic; display: inline-block; margin-top: -1px; max-width: 100%; ou=
+tline: none; text-decoration: none" width=3D"40">=0D=0A                    =
+  </td>=0D=0A                    </tr>=0D=0A                  </tbody>=0D=
+=0A</table>=0D=0A                </div>=0D=0A                <div class=3D"=
+image-arrow">=0D=0A                  <table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" class=3D"message_footer_table image-arrow" align=3D"cen=
+ter" style=3D"border-collapse: collapse; margin: 0 auto; max-width: 100%; w=
+idth: 100%">=0D=0A                    <tbody>=0D=0A<tr>=0D=0A              =
+        <td valign=3D"top" width=3D"100%">=0D=0A                        <im=
+g alt=3D"" src=3D"https://budacom.intercom-mail.com/assets/email/personal/a=
+rrow-37f6774809df6fd083bfc98e9d562e23ca6ede618e2b5e10c042de88d2f858dd.png" =
+style=3D"max-width: 100%; width: 100%">=0D=0A                      </td>=0D=
+=0A                    </tr>=0D=0A                  </tbody>=0D=0A</table>=
+=0D=0A                </div>=0D=0A                <table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" class=3D"message_footer_table" align=3D"cent=
+er" style=3D"border-collapse: collapse; color: #545454; font-family: 'Helve=
+tica Neue',Arial,sans-serif; font-size: 13px; line-height: 20px; margin: 0 =
+auto; max-width: 100%; width: 100%">=0D=0A                  <tbody><tr>=0D=
+=0A                  </tr></tbody>=0D=0A</table>=0D=0A<table width=3D"100%"=
+ cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=0D=0A                   =
+   <tbody>=0D=0A<tr>=0D=0A                        <td width=3D"75%" class=
+=3D"footer-td-wrapper">=0D=0A                          <table width=3D"100%=
+" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse=
+: collapse; color: #545454; font-family: 'Helvetica Neue',Arial,sans-serif;=
+ font-size: 13px; line-height: 20px; margin: 0 auto; max-width: 100%; width=
+: 100%" class=3D"message_footer_table">=0D=0A                            <t=
+body>=0D=0A<tr>=0D=0A                              <td width=3D"40" class=
+=3D"space">=C2=A0</td>=0D=0A                              =0D=0A           =
+                   <td class=3D"admin_name" style=3D"color: #999999">=0D=0A=
+                                <b style=3D"color: #6f6f6f">Equipo Buda.com=
+</b> =0D=0A=0D=0A                              </td>=0D=0A                 =
+           </tr>=0D=0A                          </tbody>=0D=0A</table>=0D=
+=0A                        </td>=0D=0A                        <td width=3D"=
+25%" class=3D"footer-td-wrapper">=0D=0A                          <table wid=
+th=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"borde=
+r-collapse: collapse; color: #545454; font-family: 'Helvetica Neue',Arial,s=
+ans-serif; font-size: 13px; line-height: 20px; margin: 0 auto; max-width: 1=
+00%; width: 100%" class=3D"message_footer_table">=0D=0A                    =
+        <tbody>=0D=0A<tr>=0D=0A                              <td valign=3D"=
+middle" align=3D"right" class=3D"date_cell" style=3D"color: #999999; font-s=
+ize: 11px; text-align: right">=0D=0A=0D=0A                                =
+=0D=0A                                  =0D=0A                             =
+       <a href=3D"https://budacom.intercom-mail.com/subscriptions/unsubscri=
+be=3Fapp_id=3Dlmgaeqxd&conversation_id=3D62058602403273&user_id=3D5a5817fd2=
+f1161381d418cdf" style=3D"color: #999999">Cancelar suscripci=C3=B3n a nuest=
+ros correos electr=C3=B3nicos</a>=0D=0A                                  =
+=0D=0A                                =0D=0A                              <=
+/td>=0D=0A                            </tr>=0D=0A<tr>=0D=0A                =
+          </tr>=0D=0A</tbody>=0D=0A</table>=0D=0A                        </=
+td>=0D=0A                      </tr>=0D=0A                    </tbody>=0D=
+=0A</table>=0D=0A                  </td>=0D=0A</tr>=0D=0A                </=
+tbody>=0D=0A</table>=0D=0A              </td>=0D=0A            </tr>=0D=0A =
+           <tr>=0D=0A              <td valign=3D"top" height=3D"20"></td>=
+=0D=0A            </tr>=0D=0A          </tbody>=0D=0A</table>=0D=0A        =
+  <!--[if (gte mso 10)]>=0D=0A            </td>=0D=0A            </tr>=0D=
+=0A            </table>=0D=0A          <![endif]-->=0D=0A        =0D=0A    =
+  =0D=0A    =0D=0A    =0D=0A        <table style=3D"background-color: #f9f9=
+f9; border-collapse: collapse; color: #545454; font-family: 'Helvetica Neue=
+',Arial,sans-serif; font-size: 13px; letter-spacing: 0.02em; line-height: 2=
+0px; margin: 0 auto; max-width: 100%; width: 100%" class=3D"powered-by-tabl=
+e" bgcolor=3D"#f9f9f9">=0D=0A          <tbody>=0D=0A<tr>=0D=0A            <=
+td class=3D"powered-by-text" style=3D"color: #999999; font-size: 11px; padd=
+ing: 15px 0; text-align: center; width: 100%" align=3D"center">=0D=0A      =
+        Con la tecnolog=C3=ADa de <a href=3D"https://budacom.intercom-mail.=
+com/via/e=3Fob=3DlVqRNhYKZjBZn8BgY6RjvYC2lBD%2FpWL2%2FYHpdJt3eiqVeqxC3BbiAE=
+SuE9yVjaCG9FZaFr7PRL5LGL6s2onK%2FUDw0C0Zr7bmwAaDghiaMEI%3D&h=3D383ad339fab5=
+6167b6f7d749377db073b5a93d41-lmgaeqxd_62058602403273" style=3D"color: #999;=
+ font-weight: bold; text-decoration: none">Intercom</a><br>=0D=0A          =
+  </td>=0D=0A          </tr>=0D=0A        </tbody>=0D=0A</table>=0D=0A    =
+=0D=0A=0D=0A=0D=0A<img src=3D"https://budacom.intercom-mail.com/via/o=3Fh=
+=3D6e5ef4f1c01aab7419d4401b3f0563b7840fdcc1-lmgaeqxd_62058602403273" width=
+=3D"1" height=3D"1" style=3D"display: block;" alt=3D"intercom">=0D=0A=0D=0A=
+<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://budacom.=
+intercom-mail.com/q/QWvpXvACRWsJte_1IzFm4g~~/AAAAAQA~/RgRhTMGpPlcIaW50ZXJjb=
+21CCgAdqTxqX_p89hVSGWVkdWFyZG8uc2lubmluZ0BnbWFpbC5jb21YBAAAHX8~">=0D=0A</bo=
+dy>=0D=0A</html>
+--_----1c5qAqcxA5mTTCM/4oAwhQ===_DD/51-31994-9AC3A6F5--
+

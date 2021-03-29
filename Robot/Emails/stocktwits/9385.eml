@@ -1,0 +1,2678 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 2002:ac0:a281:0:0:0:0:0 with SMTP id 1csp3375864imt;
+        Mon, 24 Jun 2019 16:23:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzQIqb6bhind+7khtpvsYL6/16i35EgmHF8FILn5gB3X4Ym3Zb8MkDKWuNFYpuPpbn/DT1L
+X-Received: by 2002:a25:bb42:: with SMTP id b2mr57467871ybk.199.1561418593150;
+        Mon, 24 Jun 2019 16:23:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561418593; cv=none;
+        d=google.com; s=arc-20160816;
+        b=E1DA5euxe7wM3H51yQJGQywD5AGOZYlV6kxX96fWNemecdsBdK3QpGRdqy1psaUc/G
+         ZaMZtS+kJAbp0NfKlp2tza7QABEycuSHNzTZVNUtIkVUpM6rYFbksxrIsHPEnXFlK33H
+         isMhQcxlZJRin3XWBQTcp/UQ5c8LyvXkI+fJeOB2H1VfJqX4QWoTKE+N9EOSaTazJV2W
+         ga9jEo2zhGMkAjn6mW4U+c0wYA91C5tD1pifImc0m94I9j4764k8H4vzBr+pSBveJq7s
+         6Wjb4ZSxpZ9noz2/C2u5s0wOBzCon0V8RS8BzWLJlKSklQ+KQub4y+w6pZ8A902ZfQWG
+         9A8A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:list-unsubscribe-post:list-unsubscribe:list-id
+         :feedback-id:message-id:date:to:reply-to:from:subject:dkim-signature
+         :dkim-signature;
+        bh=9zvSOUVGfNm5lHJqvrVSDL88CX2C6hKn9hZr8Yp7wAk=;
+        b=fymW/CWW9fYudl4E4JAgEVBT3PiCkX8oO1H6IFd1yDun7KJGa2dzxOjyf3JCTdo/Pf
+         Zv7H8Q74XfnVkQ7RK6PdJ7zS97qXgCMOnlOdG96n/U+aEpkoCAaNlEw8W+a7QJ4sb6km
+         UifoJ+gFxxAlgtb0/Js8g2eLWt0WauR/CpKZiyoNoG/VTTMs2noJDS4X2sByT5WcWq1S
+         kDH1tXXqEfnn8a1ioSksHU2GLHzY+zV8w077dW0Tvm9kL3CZAuOBL0S0si4/VnukHLBl
+         Ox6hcD8VUPJUGak8hTaEvwdCfZcO6Xb3wDBgdmX1oxbWw3rS2pSmeg9RgVVIZWMo8D2Y
+         GrXw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@stocktwits.com header.s=k1 header.b=rP6FxV+f;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=F4FZyvbm;
+       spf=pass (google.com: domain of bounce-mc.us8_28320243.548525-eduardo.sinning=gmail.com@mail163.atl61.mcsv.net designates 205.201.135.163 as permitted sender) smtp.mailfrom="bounce-mc.us8_28320243.548525-eduardo.sinning=gmail.com@mail163.atl61.mcsv.net"
+Return-Path: <bounce-mc.us8_28320243.548525-eduardo.sinning=gmail.com@mail163.atl61.mcsv.net>
+Received: from mail163.atl61.mcsv.net (mail163.atl61.mcsv.net. [205.201.135.163])
+        by mx.google.com with ESMTPS id 204si2802108ybb.131.2019.06.24.16.23.12
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 24 Jun 2019 16:23:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-mc.us8_28320243.548525-eduardo.sinning=gmail.com@mail163.atl61.mcsv.net designates 205.201.135.163 as permitted sender) client-ip=205.201.135.163;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@stocktwits.com header.s=k1 header.b=rP6FxV+f;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k1 header.b=F4FZyvbm;
+       spf=pass (google.com: domain of bounce-mc.us8_28320243.548525-eduardo.sinning=gmail.com@mail163.atl61.mcsv.net designates 205.201.135.163 as permitted sender) smtp.mailfrom="bounce-mc.us8_28320243.548525-eduardo.sinning=gmail.com@mail163.atl61.mcsv.net"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=stocktwits.com;
+ h=Subject:From:Reply-To:To:Date:Message-ID:List-ID:List-Unsubscribe:
+ Content-Type:MIME-Version; i=newsletter@stocktwits.com;
+ bh=9zvSOUVGfNm5lHJqvrVSDL88CX2C6hKn9hZr8Yp7wAk=;
+ b=rP6FxV+f8pO1ERsmQRllXCyXKIXLsyQIXoMjs41GrqOCUBZ5x84IWUrfnf47/vD24Bov4N26upGc
+   nthrS8Gqf59JiEv73uJ2n05VhkIGLgRIbQcYrCKiRrv+Yf1u92AlEMQKijeYhZRX2buS9mR8cg8l
+   MnHatDlFt3aKWGmTuSs=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=k1; d=gmail.mcsv.net;
+ h=Subject:From:Reply-To:To:Date:Message-ID:Feedback-ID:List-ID:
+ List-Unsubscribe:Content-Type:MIME-Version;
+ bh=9zvSOUVGfNm5lHJqvrVSDL88CX2C6hKn9hZr8Yp7wAk=;
+ b=F4FZyvbmJehHLy/26QJGz+I3RRAG9WT4/5oAkRpBSJ65vHSBBDdiWJnBECxzOZPe1QTn5a56+1q/
+   n5VLexxopcMQDR4BL5ZA/7pEQKaGpek+qpEnPirobVpFc4PqUG8utnbxwD7aCfXKIUykvYfgyfjV
+   zpEID+zajsQ3hJx/yXA=
+Received: from (127.0.0.1) by mail163.atl61.mcsv.net id h25dm22ddl4s for <eduardo.sinning@gmail.com>; Mon, 24 Jun 2019 23:15:55 +0000 (envelope-from <bounce-mc.us8_28320243.548525-eduardo.sinning=gmail.com@mail163.atl61.mcsv.net>)
+Subject: =?utf-8?Q?Bezos=20Strikes=20Again.=C2=A0=F0=9F=98=BC?=
+From: =?utf-8?Q?StockTwits=20Daily=20Rip?= <newsletter@stocktwits.com>
+Reply-To: =?utf-8?Q?StockTwits=20Daily=20Rip?= <newsletter@stocktwits.com>
+To: =?utf-8?Q?Eduardo?= <eduardo.sinning@gmail.com>
+Date: Mon, 24 Jun 2019 23:15:55 +0000
+Message-ID: <9c3804a16b0968abce7a3b26a.a4f81b37f5.20190624231526.1f575043cb.06bf2619@mail163.atl61.mcsv.net>
+X-Mailer: MailChimp Mailer - **CID1f575043cba4f81b37f5**
+X-Campaign: mailchimp9c3804a16b0968abce7a3b26a.1f575043cb
+X-campaignid: mailchimp9c3804a16b0968abce7a3b26a.1f575043cb
+X-Report-Abuse: Please report abuse for this campaign here: https://mailchimp.com/contact/abuse/?u=9c3804a16b0968abce7a3b26a&id=1f575043cb&e=a4f81b37f5
+X-MC-User: 9c3804a16b0968abce7a3b26a
+Feedback-ID: 28320243:28320243.548525:us8:mc
+List-ID: 9c3804a16b0968abce7a3b26amc list <9c3804a16b0968abce7a3b26a.411597.list-id.mcsv.net>
+X-Accounttype: pd
+List-Unsubscribe: <https://stocktwits.us8.list-manage.com/unsubscribe?u=9c3804a16b0968abce7a3b26a&id=b2ed6ea5c1&e=a4f81b37f5&c=1f575043cb>, <mailto:unsubscribe-mc.us8_9c3804a16b0968abce7a3b26a.1f575043cb-a4f81b37f5@mailin.mcsv.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_1069470302"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_1069470302
+Content-Type: text/plain; charset="utf-8"; format="fixed"
+Content-Transfer-Encoding: quoted-printable
+
+Now he's coming for beauty products...
+
+http://www.facebook.com/sharer/sharer.php?u=3Dhttps%3A%2F%2Fmailchi.mp%2Fs=
+tocktwits%2Fbezosisback&utm_source=3DDaily+Rip+Master+List&utm_campaign=3D=
+1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_=
+term=3D0_b2ed6ea5c1-1f575043cb-190678285 Share (http://www.facebook.=
+com/sharer/sharer.php?u=3Dhttps%3A%2F%2Fmailchi.mp%2Fstocktwits%2Fbezosisb=
+ack&utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAM=
+PAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-=
+1f575043cb-190678285)
+http://twitter.com/intent/tweet?text=3DBezos+Strikes+Again.%C2%A0%F0%9F%98=
+%BC:&utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CA=
+MPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1=
+-1f575043cb-190678285 https%3A%2F%2Fmailchi.mp%2Fstocktwits%2Fbezosi=
+sback Tweet (http://twitter.com/intent/tweet?text=3DBezos+Strikes+Again.%C=
+2%A0%F0%9F%98%BC:&utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f5750=
+43cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=
+=3D0_b2ed6ea5c1-1f575043cb-190678285 https%3A%2F%2Fmailchi.mp%2Fstoc=
+ktwits%2Fbezosisback)
+http://us8.forward-to-friend.com/forward?u=3D9c3804a16b0968abce7a3b26a&id=
+=3D1f575043cb&e=3Da4f81b37f5 Forward (http://us8.forward-to-friend.com/forwa=
+rd?u=3D9c3804a16b0968abce7a3b26a&id=3D1f575043cb&e=3Da4f81b37f5)
+http://www.linkedin.com/shareArticle?url=3Dhttps%3A%2F%2Fmailchi.mp%2Fstoc=
+ktwits%2Fbezosisback&mini=3Dtrue&title=3DBezos+Strikes+Again.%C2%A0%F0%9F%=
+98%BC&utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_C=
+AMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c=
+1-1f575043cb-190678285 Share (http://www.linkedin.com/shareArticle?u=
+rl=3Dhttps%3A%2F%2Fmailchi.mp%2Fstocktwits%2Fbezosisback&mini=3Dtrue&title=
+=3DBezos+Strikes+Again.%C2%A0%F0%9F%98%BC&utm_source=3DDaily+Rip+Master+Li=
+st&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_m=
+edium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+Sponsored by TrendSpider
+The Bezos Strikes Again
+$AMZN announced (https://stocktwits.com/OpenOutcrier/message/168482804?utm=
+_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2=
+019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f57504=
+3cb-190678285)  they will be opening =E2=80=9CAmazon Professional Be=
+auty Store.=E2=80=9D Yes=2C you guessed right. Bezos is not only now a bea=
+uty expert=2C but every beauty stock on the market took a hit. $ULTA dropp=
+ed 3% and $SBH went whoosh =E2=80=93 down 16%.
+Microsoft Tells Employees Not to $WORK
+Employees at Microsoft are banned from Slack. They claim it's for security=
+ reasons. But this is really them calling Slack an enemy. If you missed th=
+e Slack IPO=2C 7=2C600 people have already added it to their Watchlist. (h=
+ttps://stocktwits.com/symbol/WORK?utm_source=3DDaily+Rip+Master+List&utm_c=
+ampaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3D=
+email&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+
+Earnings SZN=2C Catch Up
+We know some of you are extremely deep thinkers. You want real analysis. W=
+e got you covered because here's an in-depth earnings breakdown. (https://=
+stocktwits.com/Ro_Patel/message/168505145?utm_source=3DDaily+Rip+Master+Li=
+st&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_m=
+edium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+
+The Beef Kings
+Everyone thought McDonald's was dead. Vegans would take it down! Beyond Me=
+at would win! Well=2C after making the switch to fresh beef=2C $MCD gained=
+ market share and sold 40 million burgers during the launch. (https://stoc=
+ktwits.com/Ro_Patel/message/168539488?utm_source=3DDaily+Rip+Master+List&u=
+tm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_mediu=
+m=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+
+Big Money People Only
+Throughout his trading career=2C the man behind the $250/month REMINISCENC=
+ES Room has worked advising high net worth individuals=2C as a portfolio m=
+anager=2C a hedge fund founder=2C and now a private mentor for his institu=
+tional clients. If you want a seat at the big table=2C join now on a FREE=
+ trial. (https://stocktwits.com/r/REMINISCENCES/?ims=3Dlgupg&utm_campaign=
+=3Dactiveoutreach&utm_source=3DREMINISCENCES&utm_medium=3Demail&utm_source=
+=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_=
+24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285)
+
+Bezos Moves Markets
+$AMZN announced (https://stocktwits.com/OpenOutcrier/message/168482804?utm=
+_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2=
+019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f57504=
+3cb-190678285)  they will be opening =E2=80=9CAmazon Professional Be=
+auty Store.=E2=80=9D Yes=2C you guessed right. Bezos is not only now a bea=
+uty expert=2C but every beauty stock on the market took a hit. $ULTA dropp=
+ed 3% and $SBH went whoosh =E2=80=93 down 16%. (https://stocktwits.com/sym=
+bol/SBH?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL=
+_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea=
+5c1-1f575043cb-190678285)
+
+Microsoft Tells Employees Not to $WORK
+Employees at Microsoft are banned from Slack. They claim it's for security=
+ reasons. But this is really them calling Slack an enemy. If you missed th=
+e Slack IPO=2C 7=2C600 people have already added it to their Watchlist. (h=
+ttps://stocktwits.com/symbol/WORK?utm_source=3DDaily+Rip+Master+List&utm_c=
+ampaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3D=
+email&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+
+Earnings SZN=2C Catch Up
+We know some of you are extremely deep thinkers. You want real analysis. W=
+e got you covered because here's an in-depth earnings breakdown. (https://=
+stocktwits.com/Ro_Patel/message/168505145?utm_source=3DDaily+Rip+Master+Li=
+st&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_m=
+edium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+
+The Beef Kings
+Everyone thought McDonald's was dead. Vegans would take it down! Beyond Me=
+at would win! Well=2C after making the switch to fresh beef=2C $MCD gained=
+ market share and sold 40 million burgers during the launch. (https://stoc=
+ktwits.com/Ro_Patel/message/168539488?utm_source=3DDaily+Rip+Master+List&u=
+tm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_mediu=
+m=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+
+Big Money People Only
+Throughout his trading career=2C the man behind the $250/month REMINISCENC=
+ES Room has worked advising high net worth individuals=2C as a portfolio m=
+anager=2C a hedge fund founder=2C and now a private mentor for his institu=
+tional clients. If you want a seat at the big table=2C join now on a FREE=
+ trial. (https://stocktwits.com/r/REMINISCENCES/?ims=3Dlgupg&utm_campaign=
+=3Dactiveoutreach&utm_source=3DREMINISCENCES&utm_medium=3Demail&utm_source=
+=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_=
+24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285)
+
+Introducing the all new TrendSpider Strategy Tester
+
+A message from our sponsor: Test any indicator=2C price=2C candle or volum=
+e-based strategy on any chart in seconds!
+https://www.trendspider.com/?utm_source=3Dstocktwits&utm_medium=3Ddaily_ri=
+p_june_2019&utm_campaign=3Dstrategy_tester&utm_source=3DDaily+Rip+Master+L=
+ist&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_=
+medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285
+Trying to work out the best trading strategy for you? Test your ideas agai=
+nst real market data in real-time to find the best strategy for each indiv=
+idual chart.
+
+TrendSpider's industry-leading backtesting engine allows you to see how yo=
+ur trading strategy would have performed on any chart using historical dat=
+a. When you find a strategy that works=2C quickly turn it into a multi-fac=
+tor alert and let your best trades come to you.
+Try It Now (https://www.trendspider.com/?utm_source=3Dstocktwits&utm_mediu=
+m=3Ddaily_rip_june_2019&utm_campaign=3Dstrategy_tester&utm_source=3DDaily+=
+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_=
+COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285)
+The Kids Love Dating Apps
+In Asia=2C more and more people are swiping right=E2=80=A6or left we don=
+=E2=80=99t judge. Online dating is no longer taboo in Asia and $MTCH=2C wh=
+o owns popular dating apps Tinder and Hinge=2C is thriving. For the trader=
+s out there=2C someone is buying a ton of call options. (https://stocktwit=
+s.com/smartmoneyact/message/168512537?utm_source=3DDaily+Rip+Master+List&u=
+tm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_mediu=
+m=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+
+The Next Gamer Cycle
+Both Microsoft and Sony are getting ready to release new consoles. (https:=
+//stocktwits.com/Ro_Patel/message/168538913?utm_source=3DDaily+Rip+Master+=
+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm=
+_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285) The da=
+te? Fall 2020.
+
+What The?
+So people on StockTwits are changing their name (https://stocktwits.com/co=
+mmonking/message/168378854?utm_source=3DDaily+Rip+Master+List&utm_campaign=
+=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&u=
+tm_term=3D0_b2ed6ea5c1-1f575043cb-190678285) to give the cult icon _=
+_Pony__ a hard time. If you don't get it=2C read the thread.
+
+Watch King Dollar
+The Dollar is getting interesting. And there's one level you have to be wa=
+tching. The 200-day moving average. (https://stocktwits.com/Lach14/message=
+/168504860?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EM=
+AIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed=
+6ea5c1-1f575043cb-190678285)
+
+Upcoming Earnings
+Nike=2C FedEx=2C Micron=2C and Blackberry all report this week. Who will y=
+ou be watching? It's time to bring back the EarningsTrading Room. (https:/=
+/stocktwits.com/r/EarningsTrading/?utm_source=3DDaily+Rip+Master+List&utm_=
+campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=
+=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+
+Caesars Rein is Over
+Eldorado Resorts will become the world's largest gambling company! Ah=2C j=
+ust what America needs! $ERI wants to buy $CZR in a cash-and-stock deal fo=
+r $17.3 billion. $CZR jumped 14% today. (https://stocktwits.com/Shatterhan=
+d/message/168463182?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f57=
+5043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=
+=3D0_b2ed6ea5c1-1f575043cb-190678285)
+
+Honorable Mention
+Known by some as the =E2=80=9Cbest charter on StockTwits=2C=E2=80=9D user=
+ @idrawlines (https://stocktwits.com/idrawlines/?utm_source=3DDaily+Rip+Ma=
+ster+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_0=
+1&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285) i=
+s crushing the charting game all day=2C every day. If you aren=E2=80=99t f=
+ollowing him=2C you should stop being such a square (https://stocktwits.co=
+m/idrawlines/?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb=
+-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b=
+2ed6ea5c1-1f575043cb-190678285) and do it. =F0=9F=91=8A
+One Stop Shop
+Meet our partner Flipside Crypto:  Have you ever imagined being able to ma=
+ke payments to friends=2C buy assets=2C and custody them all from one plac=
+e? Well=2C the team at OmiseGO ($OMG) has=2C and they're doing it. Their s=
+olution on top of Ethereum is evolving quickly=2C and the $OMG is 12.51% o=
+ver the last 30-days. Get up to speed on other big Movers. (http://fscrypt=
+o.co/Daily-Mover?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f57504=
+3cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D=
+0_b2ed6ea5c1-1f575043cb-190678285)
+StonkTwits
+Who else loves the stonk market? (https://www.instagram.com/p/BzGbVgtnGWI/=
+?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAI=
+GN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f5=
+75043cb-190678285)
+SHARE TODAY'S NEWSLETTER (https://mailchi.mp/stocktwits/bezosisback?e=3D=
+a4f81b37f5)
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+Our mailing address is:
+StockTwits=2C Inc.
+1001 Avenue of the Americas
+New York=2C NY 10018
+USA
+
+Download The StockTwits App
+
+** (https://itunes.apple.com/us/app/stocktwits/id389157776?mt=3D8&utm_sour=
+ce=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_0=
+6_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285)
+
+Copyright =C2=A9 2019 StockTwits=2C Inc.=2C All rights reserved.
+We send our daily emails about the stock market to everyone who's signed u=
+p for StockTwits. Get updates about stocks=2C trade ideas=2C and the best=
+ investors.
+
+Want to change how you receive these emails?
+You can
+** update your preferences (https://stocktwits.us8.list-manage.com/profile=
+?u=3D9c3804a16b0968abce7a3b26a&id=3Db2ed6ea5c1&e=3Da4f81b37f5)
+or ** unsubscribe from this list (https://stocktwits.us8.list-manage.com/u=
+nsubscribe?u=3D9c3804a16b0968abce7a3b26a&id=3Db2ed6ea5c1&e=3Da4f81b37f5&c=3D=
+1f575043cb)
+=2E
+
+Follow StockTwits on: ** StockTwits (http://www.stocktwits.com/stocktwits?=
+utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIG=
+N_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f57=
+5043cb-190678285)
+=2C ** Twitter (http://www.twitter.com/stocktwits?utm_source=3DDaily+Rip+M=
+aster+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_=
+01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+& ** Instagram (http://www.instagram.com/stocktwits?utm_source=3DDaily+Rip=
++Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COP=
+Y_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285=
+)
+Free trading of stocks and options refers to $0 commissions for ST Invest=
+ self-directed individual cash or margin brokerage accounts that trade U.S=
+=2E listed securities via mobile devices or Web. regulatory transaction fees=
+ may apply=2C as well as tax implications for realized gains.. Please see=
+ the Commissions and Fee Schedule.
+
+Content=2C news=2C research=2C tools=2C and securities symbols are for edu=
+cational and illustrative purposes only and do not imply a recommendation=
+ or solicitation to buy or sell a particular security or to engage in any=
+ particular investment strategy. Companies that are not affiliated with us=
+ may supply some of the content. The source of all third-party Content is=
+ clearly and prominently identified. We have not been involved in the prep=
+aration=2C adoption or editing of third party content and we do not endors=
+e or approve such content. The information provided is not warranted as to=
+ completeness or accuracy and is subject to change without notice. The pro=
+jections or other information regarding the likelihood of various investme=
+nt outcomes are hypothetical in nature=2C are not guaranteed for accuracy=
+ or completeness=2C do not reflect actual investment results and are not g=
+uarantees of future results. All investments involve risk=2C losses may ex=
+ceed the principal invested=2C and the past performance of a
+security=2C industry=2C sector=2C market=2C or financial product does not=
+ guarantee future results or returns. Before investing in a fund=2C consid=
+er the fund=E2=80=99s investment objectives=2C risks=2C charges=2C and exp=
+enses. Contact ** ST Invest LLC (https://tradeapp.stocktwits.com/?utm_sour=
+ce=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_0=
+6_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285)
+for a prospectus containing this information.
+
+Securities products and services offered to self-directed investors throug=
+h ST Invest LLC d/b/a Trade App Member ** FINRA (http://www.finra.org/?utm=
+_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2=
+019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f57504=
+3cb-190678285)
+/ ** SIPC (https://www.sipc.org/?utm_source=3DDaily+Rip+Master+List&utm_ca=
+mpaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3De=
+mail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285)
+=2E StockTwits=2C Inc.. and ST Invest LLC  are separate but affiliated compa=
+nies.
+
+** Please read (http://content.stocktwits.com/disclosures?utm_source=3DDai=
+ly+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_=
+22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285)
+** important legal disclosures. (http://content.stocktwits.com/disclosures=
+?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAI=
+GN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f5=
+75043cb-190678285)
+--_----------=_MCPart_1069470302
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-micros=
+oft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+    <head>
+        <!-- NAME: 1:2:1 COLUMN -->
+        <!--[if gte mso 15]>
+        <xml>
+            <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+        <meta charset=3D"UTF-8">
+        <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+        <meta name=3D"viewport" content=3D"width=3Ddevice-width=2C initial=
+-scale=3D1">
+        <title>Bezos Strikes Again.=C2=A0=F0=9F=98=BC</title>
+
+    <style type=3D"text/css">
+=09=09p{
+=09=09=09margin:10px 0;
+=09=09=09padding:0;
+=09=09}
+=09=09table{
+=09=09=09border-collapse:collapse;
+=09=09}
+=09=09h1=2Ch2=2Ch3=2Ch4=2Ch5=2Ch6{
+=09=09=09display:block;
+=09=09=09margin:0;
+=09=09=09padding:0;
+=09=09}
+=09=09img=2Ca img{
+=09=09=09border:0;
+=09=09=09height:auto;
+=09=09=09outline:none;
+=09=09=09text-decoration:none;
+=09=09}
+=09=09body=2C#bodyTable=2C#bodyCell{
+=09=09=09height:100%;
+=09=09=09margin:0;
+=09=09=09padding:0;
+=09=09=09width:100%;
+=09=09}
+=09=09.mcnPreviewText{
+=09=09=09display:none !important;
+=09=09}
+=09=09#outlook a{
+=09=09=09padding:0;
+=09=09}
+=09=09img{
+=09=09=09-ms-interpolation-mode:bicubic;
+=09=09}
+=09=09table{
+=09=09=09mso-table-lspace:0pt;
+=09=09=09mso-table-rspace:0pt;
+=09=09}
+=09=09.ReadMsgBody{
+=09=09=09width:100%;
+=09=09}
+=09=09.ExternalClass{
+=09=09=09width:100%;
+=09=09}
+=09=09p=2Ca=2Cli=2Ctd=2Cblockquote{
+=09=09=09mso-line-height-rule:exactly;
+=09=09}
+=09=09a[href^=3Dtel]=2Ca[href^=3Dsms]{
+=09=09=09color:inherit;
+=09=09=09cursor:default;
+=09=09=09text-decoration:none;
+=09=09}
+=09=09p=2Ca=2Cli=2Ctd=2Cbody=2Ctable=2Cblockquote{
+=09=09=09-ms-text-size-adjust:100%;
+=09=09=09-webkit-text-size-adjust:100%;
+=09=09}
+=09=09.ExternalClass=2C.ExternalClass p=2C.ExternalClass td=2C.ExternalCla=
+ss div=2C.ExternalClass span=2C.ExternalClass font{
+=09=09=09line-height:100%;
+=09=09}
+=09=09a[x-apple-data-detectors]{
+=09=09=09color:inherit !important;
+=09=09=09text-decoration:none !important;
+=09=09=09font-size:inherit !important;
+=09=09=09font-family:inherit !important;
+=09=09=09font-weight:inherit !important;
+=09=09=09line-height:inherit !important;
+=09=09}
+=09=09#bodyCell{
+=09=09=09padding:10px;
+=09=09}
+=09=09.templateContainer{
+=09=09=09max-width:600px !important;
+=09=09=09border:0;
+=09=09}
+=09=09a.mcnButton{
+=09=09=09display:block;
+=09=09}
+=09=09.mcnImage=2C.mcnRetinaImage{
+=09=09=09vertical-align:bottom;
+=09=09}
+=09=09.mcnTextContent{
+=09=09=09word-break:break-word;
+=09=09}
+=09=09.mcnTextContent img{
+=09=09=09height:auto !important;
+=09=09}
+=09=09.mcnDividerBlock{
+=09=09=09table-layout:fixed !important;
+=09=09}
+=09=09body=2C#bodyTable{
+=09=09=09background-color:#FAFAFA;
+=09=09}
+=09=09#bodyCell{
+=09=09=09border-top:0;
+=09=09}
+=09=09.templateContainer{
+=09=09=09border:0;
+=09=09}
+=09=09h1{
+=09=09=09color:#202020;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:26px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:125%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:left;
+=09=09}
+=09=09h2{
+=09=09=09color:#202020;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:22px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:125%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:left;
+=09=09}
+=09=09h3{
+=09=09=09color:#202020;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:20px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:125%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:left;
+=09=09}
+=09=09h4{
+=09=09=09color:#202020;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:18px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:125%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templatePreheader{
+=09=09=09background-color:#fafafa;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:0;
+=09=09=09padding-top:0px;
+=09=09=09padding-bottom:0px;
+=09=09}
+=09=09#templatePreheader .mcnTextContent=2C#templatePreheader .mcnTextCont=
+ent p{
+=09=09=09color:#656565;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:12px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templatePreheader .mcnTextContent a=2C#templatePreheader .mcnTextCo=
+ntent p a{
+=09=09=09color:#656565;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09=09#templateHeader{
+=09=09=09background-color:#ffffff;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:0;
+=09=09=09padding-top:0px;
+=09=09=09padding-bottom:0;
+=09=09}
+=09=09#templateHeader .mcnTextContent=2C#templateHeader .mcnTextContent p{
+=09=09=09color:#202020;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:16px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templateHeader .mcnTextContent a=2C#templateHeader .mcnTextContent=
+ p a{
+=09=09=09color:#007C89;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09=09#templateUpperBody{
+=09=09=09background-color:#ffffff;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:0;
+=09=09=09padding-top:0;
+=09=09=09padding-bottom:0;
+=09=09}
+=09=09#templateUpperBody .mcnTextContent=2C#templateUpperBody .mcnTextCont=
+ent p{
+=09=09=09color:#202020;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:16px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templateUpperBody .mcnTextContent a=2C#templateUpperBody .mcnTextCo=
+ntent p a{
+=09=09=09color:#218dff;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09=09#templateColumns{
+=09=09=09background-color:#ffffff;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:0;
+=09=09=09padding-top:0px;
+=09=09=09padding-bottom:0;
+=09=09}
+=09=09#templateColumns .columnContainer .mcnTextContent=2C#templateColumns=
+ .columnContainer .mcnTextContent p{
+=09=09=09color:#202020;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:16px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templateColumns .columnContainer .mcnTextContent a=2C#templateColum=
+ns .columnContainer .mcnTextContent p a{
+=09=09=09color:#2e319e;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09=09#templateLowerBody{
+=09=09=09background-color:#ffffff;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:0;
+=09=09=09padding-top:0;
+=09=09=09padding-bottom:9px;
+=09=09}
+=09=09#templateLowerBody .mcnTextContent=2C#templateLowerBody .mcnTextCont=
+ent p{
+=09=09=09color:#202020;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:16px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templateLowerBody .mcnTextContent a=2C#templateLowerBody .mcnTextCo=
+ntent p a{
+=09=09=09color:#2e319e;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09=09#templateFooter{
+=09=09=09background-color:#050510;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:0;
+=09=09=09padding-top:2px;
+=09=09=09padding-bottom:2px;
+=09=09}
+=09=09#templateFooter .mcnTextContent=2C#templateFooter .mcnTextContent p{
+=09=09=09color:#ffffff;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:12px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09#templateFooter .mcnTextContent a=2C#templateFooter .mcnTextContent=
+ p a{
+=09=09=09color:#e8f3ff;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09@media only screen and (min-width:768px){
+=09=09.templateContainer{
+=09=09=09width:600px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09body=2Ctable=2Ctd=2Cp=2Ca=2Cli=2Cblockquote{
+=09=09=09-webkit-text-size-adjust:none !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09body{
+=09=09=09width:100% !important;
+=09=09=09min-width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#bodyCell{
+=09=09=09padding-top:10px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.columnWrapper{
+=09=09=09max-width:100% !important;
+=09=09=09width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnRetinaImage{
+=09=09=09max-width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImage{
+=09=09=09width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnCartContainer=2C.mcnCaptionTopContent=2C.mcnRecContentContainer=
+=2C.mcnCaptionBottomContent=2C.mcnTextContentContainer=2C.mcnBoxedTextCont=
+entContainer=2C.mcnImageGroupContentContainer=2C.mcnCaptionLeftTextContent=
+Container=2C.mcnCaptionRightTextContentContainer=2C.mcnCaptionLeftImageCon=
+tentContainer=2C.mcnCaptionRightImageContentContainer=2C.mcnImageCardLeftT=
+extContentContainer=2C.mcnImageCardRightTextContentContainer=2C.mcnImageCa=
+rdLeftImageContentContainer=2C.mcnImageCardRightImageContentContainer{
+=09=09=09max-width:100% !important;
+=09=09=09width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnBoxedTextContentContainer{
+=09=09=09min-width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageGroupContent{
+=09=09=09padding:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnCaptionLeftContentOuter .mcnTextContent=2C.mcnCaptionRightConten=
+tOuter .mcnTextContent{
+=09=09=09padding-top:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageCardTopImageContent=2C.mcnCaptionBottomContent:last-child .=
+mcnCaptionBottomImageContent=2C.mcnCaptionBlockInner .mcnCaptionTopContent=
+:last-child .mcnTextContent{
+=09=09=09padding-top:18px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageCardBottomImageContent{
+=09=09=09padding-bottom:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageGroupBlockInner{
+=09=09=09padding-top:0 !important;
+=09=09=09padding-bottom:0 !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageGroupBlockOuter{
+=09=09=09padding-top:9px !important;
+=09=09=09padding-bottom:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnTextContent=2C.mcnBoxedTextContentColumn{
+=09=09=09padding-right:18px !important;
+=09=09=09padding-left:18px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageCardLeftImageContent=2C.mcnImageCardRightImageContent{
+=09=09=09padding-right:18px !important;
+=09=09=09padding-bottom:0 !important;
+=09=09=09padding-left:18px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcpreview-image-uploader{
+=09=09=09display:none !important;
+=09=09=09width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h1{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h2{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h3{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h4{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnBoxedTextContentContainer .mcnTextContent=2C.mcnBoxedTextContent=
+Container .mcnTextContent p{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templatePreheader{
+=09=09=09display:none !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templatePreheader .mcnTextContent=2C#templatePreheader .mcnTextCont=
+ent p{
+=09=09=09font-size:14px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templateHeader .mcnTextContent=2C#templateHeader .mcnTextContent p{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templateUpperBody .mcnTextContent=2C#templateUpperBody .mcnTextCont=
+ent p{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templateColumns .columnContainer .mcnTextContent=2C#templateColumns=
+ .columnContainer .mcnTextContent p{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templateLowerBody .mcnTextContent=2C#templateLowerBody .mcnTextCont=
+ent p{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09#templateFooter .mcnTextContent=2C#templateFooter .mcnTextContent p{
+=09=09=09font-size:14px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}</style><!--[if !mso]><!--><link href=3D"https://fonts.googleapis.com/cs=
+s?family=3DOpen+Sans:400=2C400i=2C700=2C700i" rel=3D"stylesheet"><!--<![e=
+ndif]--></head>
+    <body style=3D"height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-=
+size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA=
+;">
+        <!--
+-->
+        <!--[if !gte mso 9]><!----><span class=3D"mcnPreviewText" style=
+=3D"display:none; font-size:0px; line-height:0px; max-height:0px; max-widt=
+h:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Now h=
+e's coming for beauty products...</span><!--<![endif]-->
+        <!--
+-->
+        <center>
+            <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" height=3D"100%" width=3D"100%" id=3D"bodyTable" style=3D"border=
+-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-s=
+ize-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;pad=
+ding: 0;width: 100%;background-color: #FAFAFA;">
+                <tr>
+                    <td align=3D"center" valign=3D"top" id=3D"bodyCell" st=
+yle=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-te=
+xt-size-adjust: 100%;height: 100%;margin: 0;padding: 10px;width: 100%;bord=
+er-top: 0;">
+                        <!-- BEGIN TEMPLATE // -->
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align=3D"center" border=3D"0" cellspacing=
+=3D"0" cellpadding=3D"0" width=3D"600" style=3D"width:600px;">
+                        <tr>
+                        <td align=3D"center" valign=3D"top" width=3D"600"=
+ style=3D"width:600px;">
+                        <![endif]-->
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%" class=3D"templateContainer" style=3D"border-collapse=
+: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjus=
+t: 100%;-webkit-text-size-adjust: 100%;border: 0;max-width: 600px !importa=
+nt;">
+                            <tr>
+                                <td valign=3D"top" id=3D"templatePreheader=
+" style=3D"background:#fafafa none no-repeat center/cover;mso-line-height-=
+rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;ba=
+ckground-color: #fafafa;background-image: none;background-repeat: no-repea=
+t;background-position: center;background-size: cover;border-top: 0;border-=
+bottom: 0;padding-top: 0px;padding-bottom: 0px;"><table border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mcnShareBlock" styl=
+e=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-t=
+able-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;">
+    <tbody class=3D"mcnShareBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnShareBlockInner">
+                    <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0=
+" width=3D"100%" class=3D"mcnShareContentContainer" style=3D"min-width: 10=
+0%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-=
+ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody><tr>
+        <td align=3D"center" style=3D"padding-top: 0;padding-left: 9px;pad=
+ding-bottom: 0;padding-right: 9px;mso-line-height-rule: exactly;-ms-text-s=
+ize-adjust: 100%;-webkit-text-size-adjust: 100%;">
+            <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-collapse: collap=
+se;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;=
+-webkit-text-size-adjust: 100%;" class=3D"mcnShareContent">
+                <tbody><tr>
+                    <td align=3D"center" valign=3D"top" class=3D"mcnShareC=
+ontentItemContainer" style=3D"padding-top: 9px;padding-right: 9px;padding-=
+left: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit=
+-text-size-adjust: 100%;">
+                        <table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse;mso-table-lspa=
+ce: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size=
+-adjust: 100%;">
+                            <tbody><tr>
+                                <td align=3D"left" valign=3D"top" style=3D=
+"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-siz=
+e-adjust: 100%;">
+                                    <!--[if mso]>
+                                    <table align=3D"center" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+                                    <tr>
+                                    <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+                                        <table align=3D"left" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse;ms=
+o-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                                            <tbody><tr>
+                                                <td valign=3D"top" style=
+=3D"padding-right: 9px;padding-bottom: 9px;mso-line-height-rule: exactly;-=
+ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class=3D"mcnSha=
+reContentItemContainer">
+                                                    <table border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"" class=3D"mcnShareContentItem"=
+ style=3D"border-collapse: separate;border-radius: 0%;mso-table-lspace: 0p=
+t;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%;">
+                                                        <tbody><tr>
+                                                            <td align=3D"l=
+eft" valign=3D"middle" style=3D"padding-top: 5px;padding-right: 9px;paddin=
+g-bottom: 5px;padding-left: 9px;mso-line-height-rule: exactly;-ms-text-siz=
+e-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                <table ali=
+gn=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"" st=
+yle=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0=
+pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                    <tbody=
+><tr>
+                                                                        <t=
+d align=3D"center" valign=3D"middle" width=3D"24" class=3D"mcnShareIconCon=
+tent" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-w=
+ebkit-text-size-adjust: 100%;">
+                                                                         =
+   <a href=3D"http://www.facebook.com/sharer/sharer.php?u=3Dhttps%3A%2F%2F=
+mailchi.mp%2Fstocktwits%2Fbezosisback&utm_source=3DDaily+Rip+Master+List&u=
+tm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_mediu=
+m=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_b=
+lank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-w=
+ebkit-text-size-adjust: 100%;"><img src=3D"https://cdn-images.mailchimp.co=
+m/icons/social-block-v2/light-facebook-48.png" style=3D"display: block;bor=
+der: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-=
+mode: bicubic;" height=3D"24" width=3D"24" class=3D""></a>
+                                                                        </=
+td>
+                                                                        <t=
+d align=3D"left" valign=3D"middle" class=3D"mcnShareTextContent" style=3D"=
+padding-left: 5px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%=
+;-webkit-text-size-adjust: 100%;">
+                                                                         =
+   <a href=3D"http://www.facebook.com/sharer/sharer.php?u=3Dhttps%3A%2F%2F=
+mailchi.mp%2Fstocktwits%2Fbezosisback&utm_source=3DDaily+Rip+Master+List&u=
+tm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_mediu=
+m=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D""=
+ style=3D"color: #202020;font-family: Arial;font-size: 14px;font-weight: n=
+ormal;line-height: normal;text-align: center;text-decoration: none;mso-lin=
+e-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust=
+: 100%;">Share</a>
+                                                                        </=
+td>
+                                                                    </tr>
+                                                                </tbody></=
+table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+                                        <table align=3D"left" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse;ms=
+o-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                                            <tbody><tr>
+                                                <td valign=3D"top" style=
+=3D"padding-right: 9px;padding-bottom: 9px;mso-line-height-rule: exactly;-=
+ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class=3D"mcnSha=
+reContentItemContainer">
+                                                    <table border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"" class=3D"mcnShareContentItem"=
+ style=3D"border-collapse: separate;border-radius: 0%;mso-table-lspace: 0p=
+t;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%;">
+                                                        <tbody><tr>
+                                                            <td align=3D"l=
+eft" valign=3D"middle" style=3D"padding-top: 5px;padding-right: 9px;paddin=
+g-bottom: 5px;padding-left: 9px;mso-line-height-rule: exactly;-ms-text-siz=
+e-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                <table ali=
+gn=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"" st=
+yle=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0=
+pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                    <tbody=
+><tr>
+                                                                        <t=
+d align=3D"center" valign=3D"middle" width=3D"24" class=3D"mcnShareIconCon=
+tent" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-w=
+ebkit-text-size-adjust: 100%;">
+                                                                         =
+   <a href=3D"http://twitter.com/intent/tweet?text=3DBezos+Strikes+Again.%=
+C2%A0%F0%9F%98%BC: https%3A%2F%2Fmailchi.mp%2Fstocktwits%2Fbezosisback" ta=
+rget=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjus=
+t: 100%;-webkit-text-size-adjust: 100%;"><img src=3D"https://cdn-images.ma=
+ilchimp.com/icons/social-block-v2/light-twitter-48.png" style=3D"display:=
+ block;border: 0;height: auto;outline: none;text-decoration: none;-ms-inte=
+rpolation-mode: bicubic;" height=3D"24" width=3D"24" class=3D""></a>
+                                                                        </=
+td>
+                                                                        <t=
+d align=3D"left" valign=3D"middle" class=3D"mcnShareTextContent" style=3D"=
+padding-left: 5px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%=
+;-webkit-text-size-adjust: 100%;">
+                                                                         =
+   <a href=3D"http://twitter.com/intent/tweet?text=3DBezos+Strikes+Again.%=
+C2%A0%F0%9F%98%BC: https%3A%2F%2Fmailchi.mp%2Fstocktwits%2Fbezosisback" ta=
+rget=3D"" style=3D"color: #202020;font-family: Arial;font-size: 14px;font-=
+weight: normal;line-height: normal;text-align: center;text-decoration: non=
+e;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-si=
+ze-adjust: 100%;">Tweet</a>
+                                                                        </=
+td>
+                                                                    </tr>
+                                                                </tbody></=
+table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+                                        <table align=3D"left" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse;ms=
+o-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                                            <tbody><tr>
+                                                <td valign=3D"top" style=
+=3D"padding-right: 9px;padding-bottom: 9px;mso-line-height-rule: exactly;-=
+ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class=3D"mcnSha=
+reContentItemContainer">
+                                                    <table border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"" class=3D"mcnShareContentItem"=
+ style=3D"border-collapse: separate;border-radius: 0%;mso-table-lspace: 0p=
+t;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%;">
+                                                        <tbody><tr>
+                                                            <td align=3D"l=
+eft" valign=3D"middle" style=3D"padding-top: 5px;padding-right: 9px;paddin=
+g-bottom: 5px;padding-left: 9px;mso-line-height-rule: exactly;-ms-text-siz=
+e-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                <table ali=
+gn=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"" st=
+yle=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0=
+pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                    <tbody=
+><tr>
+                                                                        <t=
+d align=3D"center" valign=3D"middle" width=3D"24" class=3D"mcnShareIconCon=
+tent" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-w=
+ebkit-text-size-adjust: 100%;">
+                                                                         =
+   <a href=3D"http://us8.forward-to-friend.com/forward?u=3D9c3804a16b0968a=
+bce7a3b26a&id=3D1f575043cb&e=3Da4f81b37f5" target=3D"_blank" style=3D"mso-li=
+ne-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%;"><img src=3D"https://cdn-images.mailchimp.com/icons/social-block-=
+v2/light-forwardtofriend-48.png" style=3D"display: block;border: 0;height:=
+ auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;=
+" height=3D"24" width=3D"24" class=3D""></a>
+                                                                        </=
+td>
+                                                                        <t=
+d align=3D"left" valign=3D"middle" class=3D"mcnShareTextContent" style=3D"=
+padding-left: 5px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%=
+;-webkit-text-size-adjust: 100%;">
+                                                                         =
+   <a href=3D"http://us8.forward-to-friend.com/forward?u=3D9c3804a16b0968a=
+bce7a3b26a&id=3D1f575043cb&e=3Da4f81b37f5" target=3D"" style=3D"color: #2020=
+20;font-family: Arial;font-size: 14px;font-weight: normal;line-height: nor=
+mal;text-align: center;text-decoration: none;mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">Forward</a>
+                                                                        </=
+td>
+                                                                    </tr>
+                                                                </tbody></=
+table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+                                        <table align=3D"left" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse;ms=
+o-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                                            <tbody><tr>
+                                                <td valign=3D"top" style=
+=3D"padding-right: 0;padding-bottom: 9px;mso-line-height-rule: exactly;-ms=
+-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class=3D"mcnShare=
+ContentItemContainer">
+                                                    <table border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" width=3D"" class=3D"mcnShareContentItem"=
+ style=3D"border-collapse: separate;border-radius: 0%;mso-table-lspace: 0p=
+t;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%;">
+                                                        <tbody><tr>
+                                                            <td align=3D"l=
+eft" valign=3D"middle" style=3D"padding-top: 5px;padding-right: 9px;paddin=
+g-bottom: 5px;padding-left: 9px;mso-line-height-rule: exactly;-ms-text-siz=
+e-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                <table ali=
+gn=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"" st=
+yle=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0=
+pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                                                    <tbody=
+><tr>
+                                                                        <t=
+d align=3D"center" valign=3D"middle" width=3D"24" class=3D"mcnShareIconCon=
+tent" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-w=
+ebkit-text-size-adjust: 100%;">
+                                                                         =
+   <a href=3D"http://www.linkedin.com/shareArticle?url=3Dhttps%3A%2F%2Fmai=
+lchi.mp%2Fstocktwits%2Fbezosisback&mini=3Dtrue&title=3DBezos+Strikes+Again=
+=2E%C2%A0%F0%9F%98%BC&utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f57=
+5043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=
+=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank" style=3D"mso=
+-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-ad=
+just: 100%;"><img src=3D"https://cdn-images.mailchimp.com/icons/social-blo=
+ck-v2/light-linkedin-48.png" style=3D"display: block;border: 0;height: aut=
+o;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" he=
+ight=3D"24" width=3D"24" class=3D""></a>
+                                                                        </=
+td>
+                                                                        <t=
+d align=3D"left" valign=3D"middle" class=3D"mcnShareTextContent" style=3D"=
+padding-left: 5px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%=
+;-webkit-text-size-adjust: 100%;">
+                                                                         =
+   <a href=3D"http://www.linkedin.com/shareArticle?url=3Dhttps%3A%2F%2Fmai=
+lchi.mp%2Fstocktwits%2Fbezosisback&mini=3Dtrue&title=3DBezos+Strikes+Again=
+=2E%C2%A0%F0%9F%98%BC&utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f57=
+5043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=
+=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"" style=3D"color: #2=
+02020;font-family: Arial;font-size: 14px;font-weight: normal;line-height:=
+ normal;text-align: center;text-decoration: none;mso-line-height-rule: exa=
+ctly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">Share</a>
+                                                                        </=
+td>
+                                                                    </tr>
+                                                                </tbody></=
+table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                    <!--[if mso]>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+                </td>
+            </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateHeader" s=
+tyle=3D"background:#ffffff none no-repeat center/cover;mso-line-height-rul=
+e: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;backg=
+round-color: #ffffff;background-image: none;background-repeat: no-repeat;b=
+ackground-position: center;background-size: cover;border-top: 0;border-bot=
+tom: 0;padding-top: 0px;padding-bottom: 0;"><table border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mcnImageBlock" style=3D"=
+min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-=
+rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 0px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" s=
+tyle=3D"padding-right: 0px;padding-left: 0px;padding-top: 0;padding-bottom=
+: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+
+
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://gallery.mailchimp.com/9c3804a16b0968abce7a3b26a/images/85e81cc=
+a-cbf0-411f-912c-b5d474484208.png" width=3D"600" style=3D"max-width: 800px=
+;padding-bottom: 0px;vertical-align: bottom;display: inline !important;bor=
+der: 1px none;border-top-left-radius: 0%;border-top-right-radius: 0%;borde=
+r-bottom-right-radius: 0%;border-bottom-left-radius: 0%;height: auto;outli=
+ne: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class=3D"=
+mcnImage">
+
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateUpperBody=
+" style=3D"background:#ffffff none no-repeat center/cover;mso-line-height-=
+rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;ba=
+ckground-color: #ffffff;background-image: none;background-repeat: no-repea=
+t;background-position: center;background-size: cover;border-top: 0;border-=
+bottom: 0;padding-top: 0;padding-bottom: 0;"><table border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mcnImageCardBlock" styl=
+e=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageCardBlockOuter">
+        <tr>
+            <td class=3D"mcnImageCardBlockInner" valign=3D"top" style=3D"p=
+adding-top: 9px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px=
+;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-siz=
+e-adjust: 100%;">
+
+
+
+<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cla=
+ss=3D"mcnImageCardTopContent" width=3D"100%" style=3D"background-color: #F=
+AFAFA;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0p=
+t;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody><tr>
+        <td class=3D"mcnTextContent" valign=3D"top" style=3D"padding: 18px=
+ 18px 0px;color: #000000;font-family: Helvetica;font-size: 14px;font-style=
+: normal;font-weight: normal;text-align: center;mso-line-height-rule: exac=
+tly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break:=
+ break-word;line-height: 150%;" width=3D"546">
+            <span style=3D"font-size:16px"><span style=3D"background-color=
+:#e8f3ff">Sponsored by TrendSpider</span></span>
+        </td>
+    </tr>
+    <tr>
+        <td class=3D"mcnImageCardTopImageContent" align=3D"center" valign=
+=3D"top" style=3D"padding-top: 9px;padding-right: 0px;padding-bottom: 0px;=
+padding-left: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%=
+;-webkit-text-size-adjust: 100%;">
+
+
+
+            <img alt=3D"" src=3D"https://gallery.mailchimp.com/9c3804a16b0=
+968abce7a3b26a/images/8ce41d56-31d1-471e-a721-5c3168662dc7.png" width=3D"5=
+64" style=3D"max-width: 600px;border: 0;height: auto;outline: none;text-de=
+coration: none;-ms-interpolation-mode: bicubic;vertical-align: bottom;" cl=
+ass=3D"mcnImage">
+
+
+
+        </td>
+    </tr>
+</tbody></table>
+
+
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 10px 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;=
+-webkit-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op: 2px none #EAEAEA;border-collapse: collapse;mso-table-lspace: 0pt;mso-t=
+able-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #222222;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;font=
+-style: normal;font-weight: normal;mso-line-height-rule: exactly;-ms-text-=
+size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;li=
+ne-height: 150%;text-align: left;">
+
+                            <strong>The Bezos Strikes Again</strong><br>
+<a href=3D"https://stocktwits.com/OpenOutcrier/message/168482804?utm_sourc=
+e=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06=
+_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285" target=3D"_blank" style=3D"mso-line-height-rule: exactly;-m=
+s-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #218dff;fon=
+t-weight: normal;text-decoration: underline;">$AMZN announced</a>&nbsp;the=
+y will be opening =E2=80=9CAmazon Professional Beauty Store.=E2=80=9D Yes=
+=2C you guessed right. Bezos is not only now a beauty expert=2C but&nbsp;e=
+very beauty stock on the market took a hit. $ULTA dropped 3% and $SBH went=
+ whoosh =E2=80=93 down 16%.
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageBlock" style=3D"min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" s=
+tyle=3D"padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom=
+: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+
+
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://gallery.mailchimp.com/9c3804a16b0968abce7a3b26a/images/21acdaa=
+2-c177-4013-928b-f968b377901f.gif" width=3D"240" style=3D"max-width: 480px=
+;padding-bottom: 0;display: inline !important;vertical-align: bottom;borde=
+r: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mo=
+de: bicubic;" class=3D"mcnRetinaImage">
+
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #222222;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;font=
+-style: normal;font-weight: normal;mso-line-height-rule: exactly;-ms-text-=
+size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;li=
+ne-height: 150%;text-align: left;">
+
+                            <strong>Microsoft Tells Employees Not to $WORK=
+</strong><br>
+Employees at Microsoft are banned from Slack. They claim it's for security=
+ reasons. But this is really them calling Slack an enemy. If you missed th=
+e Slack IPO=2C 7=2C600 people have already <a href=3D"https://stocktwits.c=
+om/symbol/WORK?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043c=
+b-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_=
+b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank" style=3D"mso-line=
+-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:=
+ 100%;color: #218dff;font-weight: normal;text-decoration: underline;">adde=
+d it to their Watchlist.</a><br>
+<br>
+<strong>Earnings SZN=2C Catch Up</strong><br>
+We know some of you are extremely deep thinkers. You want real analysis. W=
+e got you covered because here's an <a href=3D"https://stocktwits.com/Ro_P=
+atel/message/168505145?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1=
+f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_t=
+erm=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank" style=3D"=
+mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size=
+-adjust: 100%;color: #218dff;font-weight: normal;text-decoration: underlin=
+e;">in-depth earnings breakdown.</a><br>
+<br>
+<strong>The Beef Kings</strong><br>
+Everyone thought McDonald's was dead. Vegans would take it down! Beyond Me=
+at would win! Well=2C after making the switch to fresh beef=2C $MCD gained=
+ market share and sold <a href=3D"https://stocktwits.com/Ro_Patel/message/=
+168539488?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMA=
+IL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6=
+ea5c1-1f575043cb-190678285" target=3D"_blank" style=3D"mso-line-heig=
+ht-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;color: #218dff;font-weight: normal;text-decoration: underline;">40 millio=
+n burgers during the launch.</a>&nbsp;<br>
+<br>
+<strong>Big Money People Only</strong><br>
+Throughout his trading career=2C the man behind the $250/month REMINISCENC=
+ES Room has worked advising high net worth individuals=2C as a portfolio m=
+anager=2C a hedge fund founder=2C and now a private mentor for his institu=
+tional clients. If you want a seat at the big table=2C join now on a <a hr=
+ef=3D"https://stocktwits.com/r/REMINISCENCES/?ims=3Dlgupg&utm_campaign=3Da=
+ctiveoutreach&utm_source=3DREMINISCENCES&utm_medium=3Demail&utm_source=3DD=
+aily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_0=
+2_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285" target=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #218dff;font-wei=
+ght: normal;text-decoration: underline;">FREE trial.</a><br>
+&nbsp;
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #222222;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;font=
+-style: normal;font-weight: normal;mso-line-height-rule: exactly;-ms-text-=
+size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;li=
+ne-height: 150%;text-align: left;">
+
+                            <strong>Bezos Moves Markets</strong><br>
+<a href=3D"https://stocktwits.com/OpenOutcrier/message/168482804?utm_sourc=
+e=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06=
+_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285" target=3D"_blank" style=3D"mso-line-height-rule: exactly;-m=
+s-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #218dff;fon=
+t-weight: normal;text-decoration: underline;">$AMZN announced</a>&nbsp;the=
+y will be opening =E2=80=9CAmazon Professional Beauty Store.=E2=80=9D Yes=
+=2C you guessed right. Bezos is not only now a beauty expert=2C but&nbsp;e=
+very beauty stock on the market took a hit. $ULTA dropped 3% and $SBH <a h=
+ref=3D"https://stocktwits.com/symbol/SBH?utm_source=3DDaily+Rip+Master+Lis=
+t&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_me=
+dium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D=
+"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%=
+;-webkit-text-size-adjust: 100%;color: #218dff;font-weight: normal;text-de=
+coration: underline;">went whoosh =E2=80=93 down 16%.</a><br>
+<br>
+<strong>Microsoft Tells Employees Not to $WORK</strong><br>
+Employees at Microsoft are banned from Slack. They claim it's for security=
+ reasons. But this is really them calling Slack an enemy. If you missed th=
+e Slack IPO=2C 7=2C600 people have already <a href=3D"https://stocktwits.c=
+om/symbol/WORK?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043c=
+b-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_=
+b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank" style=3D"mso-line=
+-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:=
+ 100%;color: #218dff;font-weight: normal;text-decoration: underline;">adde=
+d it to their Watchlist.</a><br>
+<br>
+<strong>Earnings SZN=2C Catch Up</strong><br>
+We know some of you are extremely deep thinkers. You want real analysis. W=
+e got you covered because here's an <a href=3D"https://stocktwits.com/Ro_P=
+atel/message/168505145?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1=
+f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_t=
+erm=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank" style=3D"=
+mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size=
+-adjust: 100%;color: #218dff;font-weight: normal;text-decoration: underlin=
+e;">in-depth earnings breakdown.</a><br>
+<br>
+<strong>The Beef Kings</strong><br>
+Everyone thought McDonald's was dead. Vegans would take it down! Beyond Me=
+at would win! Well=2C after making the switch to fresh beef=2C $MCD gained=
+ market share and sold <a href=3D"https://stocktwits.com/Ro_Patel/message/=
+168539488?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMA=
+IL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6=
+ea5c1-1f575043cb-190678285" target=3D"_blank" style=3D"mso-line-heig=
+ht-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;color: #218dff;font-weight: normal;text-decoration: underline;">40 millio=
+n burgers during the launch.</a>&nbsp;<br>
+<br>
+<strong>Big Money People Only</strong><br>
+Throughout his trading career=2C the man behind the $250/month REMINISCENC=
+ES Room has worked advising high net worth individuals=2C as a portfolio m=
+anager=2C a hedge fund founder=2C and now a private mentor for his institu=
+tional clients. If you want a seat at the big table=2C join now on a <a hr=
+ef=3D"https://stocktwits.com/r/REMINISCENCES/?ims=3Dlgupg&utm_campaign=3Da=
+ctiveoutreach&utm_source=3DREMINISCENCES&utm_medium=3Demail&utm_source=3DD=
+aily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_0=
+2_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285" target=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #218dff;font-wei=
+ght: normal;text-decoration: underline;">FREE trial.</a><br>
+&nbsp;
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnBoxedTextBlock" style=3D"min-width: 100%;border-collapse:=
+ collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust=
+: 100%;-webkit-text-size-adjust: 100%;">
+    <!--[if gte mso 9]>
+=09<table align=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%">
+=09<![endif]-->
+=09<tbody class=3D"mcnBoxedTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnBoxedTextBlockInner" style=3D"m=
+so-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-=
+adjust: 100%;">
+
+=09=09=09=09<!--[if gte mso 9]>
+=09=09=09=09<td align=3D"center" valign=3D"top" ">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;" class=3D"mcnBoxedTextContentContainer">
+                    <tbody><tr>
+
+                        <td style=3D"padding-top: 9px;padding-left: 18px;p=
+adding-bottom: 9px;padding-right: 18px;mso-line-height-rule: exactly;-ms-t=
+ext-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+
+                            <table border=3D"0" cellspacing=3D"0" class=3D=
+"mcnTextContentContainer" width=3D"100%" style=3D"min-width: 100% !importa=
+nt;background-color: #FFFFFF;border-collapse: collapse;mso-table-lspace: 0=
+pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adju=
+st: 100%;">
+                                <tbody><tr>
+                                    <td valign=3D"top" class=3D"mcnTextCon=
+tent" style=3D"padding: 18px;color: #0E344A;font-family: &quot;Open Sans&q=
+uot;=2C &quot;Helvetica Neue&quot;=2C Helvetica=2C Arial=2C sans-serif;fon=
+t-size: 14px;font-weight: normal;line-height: 125%;text-align: left;mso-li=
+ne-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%;word-break: break-word;">
+                                        <div style=3D"text-align: center;"=
+><span style=3D"font-size:20px"><strong>Introducing the all new TrendSpide=
+r Strategy Tester</strong></span><br>
+<br>
+<span style=3D"background-color:#E8F3FF">A message from our sponsor:</span=
+>&nbsp;Test any indicator=2C price=2C candle or volume-based strategy on a=
+ny chart in seconds!</div>
+
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if gte mso 9]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if gte mso 9]>
+                </tr>
+                </table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op: 2px solid #EAEAEA;border-collapse: collapse;mso-table-lspace: 0pt;mso-=
+table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100=
+%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageBlock" style=3D"min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" s=
+tyle=3D"padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom=
+: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+
+                                    <a href=3D"https://www.trendspider.com=
+/?utm_source=3Dstocktwits&utm_medium=3Ddaily_rip_june_2019&utm_campaign=3D=
+strategy_tester&utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043=
+cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0=
+_b2ed6ea5c1-1f575043cb-190678285" title=3D"" class=3D"" target=3D"_b=
+lank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-w=
+ebkit-text-size-adjust: 100%;">
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://gallery.mailchimp.com/9c3804a16b0968abce7a3b26a/images/ffa0ec1=
+1-df46-47a0-9050-c98565d2b730.gif" width=3D"564" style=3D"max-width: 600px=
+;padding-bottom: 0;display: inline !important;vertical-align: bottom;borde=
+r: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mo=
+de: bicubic;" class=3D"mcnImage">
+                                    </a>
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnBoxedTextBlock" style=3D"min-width: 100%;border-collapse:=
+ collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust=
+: 100%;-webkit-text-size-adjust: 100%;">
+    <!--[if gte mso 9]>
+=09<table align=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=3D"0=
+" width=3D"100%">
+=09<![endif]-->
+=09<tbody class=3D"mcnBoxedTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnBoxedTextBlockInner" style=3D"m=
+so-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-=
+adjust: 100%;">
+
+=09=09=09=09<!--[if gte mso 9]>
+=09=09=09=09<td align=3D"center" valign=3D"top" ">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;" class=3D"mcnBoxedTextContentContainer">
+                    <tbody><tr>
+
+                        <td style=3D"padding-top: 9px;padding-left: 18px;p=
+adding-bottom: 9px;padding-right: 18px;mso-line-height-rule: exactly;-ms-t=
+ext-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+
+                            <table border=3D"0" cellspacing=3D"0" class=3D=
+"mcnTextContentContainer" width=3D"100%" style=3D"min-width: 100% !importa=
+nt;background-color: #FFFFFF;border-collapse: collapse;mso-table-lspace: 0=
+pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adju=
+st: 100%;">
+                                <tbody><tr>
+                                    <td valign=3D"top" class=3D"mcnTextCon=
+tent" style=3D"padding: 18px;color: #0E344A;font-family: &quot;Open Sans&q=
+uot;=2C &quot;Helvetica Neue&quot;=2C Helvetica=2C Arial=2C sans-serif;fon=
+t-size: 14px;font-weight: normal;line-height: 125%;text-align: left;mso-li=
+ne-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%;word-break: break-word;">
+                                        <div style=3D"text-align: left;">T=
+rying to work out the best trading strategy for you? Test your ideas again=
+st real market data in real-time to find the best strategy for each indivi=
+dual chart.<br>
+&nbsp;<br>
+TrendSpider's industry-leading backtesting engine allows you to see how yo=
+ur trading strategy would have performed on any chart using historical dat=
+a. When you find a strategy that works=2C quickly turn it into a multi-fac=
+tor alert and let your best trades come to you.</div>
+
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if gte mso 9]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if gte mso 9]>
+                </tr>
+                </table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnButtonBlock" style=3D"min-width: 100%;border-collapse: co=
+llapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnButtonBlockOuter">
+        <tr>
+            <td style=3D"padding-top: 0;padding-right: 18px;padding-bottom=
+: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adju=
+st: 100%;-webkit-text-size-adjust: 100%;" valign=3D"top" align=3D"center"=
+ class=3D"mcnButtonBlockInner">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%" class=3D"mcnButtonContentContainer" style=3D"border-collapse:=
+ separate !important;border: 2px none #211570;border-top-left-radius: 6px;=
+border-top-right-radius: 6px;border-bottom-right-radius: 6px;border-bottom=
+-left-radius: 6px;background-color: #218DFF;mso-table-lspace: 0pt;mso-tabl=
+e-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody>
+                        <tr>
+                            <td align=3D"center" valign=3D"middle" class=
+=3D"mcnButtonContent" style=3D"font-family: &quot;Open Sans&quot;=2C &quot=
+;Helvetica Neue&quot;=2C Helvetica=2C Arial=2C sans-serif;font-size: 16px;=
+padding: 24px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-we=
+bkit-text-size-adjust: 100%;">
+                                <a class=3D"mcnButton " title=3D"Try It No=
+w" href=3D"https://www.trendspider.com/?utm_source=3Dstocktwits&utm_medium=
+=3Ddaily_rip_june_2019&utm_campaign=3Dstrategy_tester&utm_source=3DDaily+R=
+ip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_C=
+OPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285" target=3D"_blank" style=3D"font-weight: bold;letter-spacing: 2px;line-=
+height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;mso-l=
+ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adju=
+st: 100%;display: block;">Try It Now</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op-width: 2px;border-top-style: solid;border-top-color: #EAEAEA;border-col=
+lapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-=
+adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #202020;font-family: 'Helv=
+etica Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px=
+;line-height: 150%;text-align: left;">
+
+                            <strong>The Kids Love Dating Apps</strong><br>
+In Asia=2C more and more people are swiping right=E2=80=A6or left we don=
+=E2=80=99t judge. Online dating is no longer taboo in Asia and $MTCH=2C wh=
+o owns popular dating apps Tinder and Hinge=2C is thriving. For the trader=
+s out there=2C someone is <a href=3D"https://stocktwits.com/smartmoneyact/=
+message/168512537?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f5750=
+43cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=
+=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank" style=3D"mso=
+-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-ad=
+just: 100%;color: #218dff;font-weight: normal;text-decoration: underline;"=
+>buying a ton of call options.</a><br>
+<br>
+<strong>The Next Gamer Cycle</strong><br>
+Both Microsoft and Sony are getting ready to <a href=3D"https://stocktwits=
+=2Ecom/Ro_Patel/message/168538913?utm_source=3DDaily+Rip+Master+List&utm_cam=
+paign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Dem=
+ail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank"=
+ style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit=
+-text-size-adjust: 100%;color: #218dff;font-weight: normal;text-decoration=
+: underline;">release new consoles. </a>The date? Fall 2020.&nbsp;<br>
+<br>
+<strong>What The?</strong><br>
+So people on StockTwits are <a href=3D"https://stocktwits.com/commonking/m=
+essage/168378854?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f57504=
+3cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D=
+0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank" style=3D"mso-li=
+ne-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%;color: #218dff;font-weight: normal;text-decoration: underline;">ch=
+anging their name</a> to give the cult icon __Pony__ a hard time. If you d=
+on't get it=2C read the thread.<br>
+<br>
+<strong>Watch King Dollar</strong><br>
+The Dollar is getting interesting. And there's one level you have to be wa=
+tching. The <a href=3D"https://stocktwits.com/Lach14/message/168504860?utm=
+_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2=
+019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f57504=
+3cb-190678285" target=3D"_blank" style=3D"mso-line-height-rule: exac=
+tly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #218d=
+ff;font-weight: normal;text-decoration: underline;">200-day moving average=
+=2E</a><br>
+<br>
+<strong>Upcoming Earnings</strong><br>
+Nike=2C FedEx=2C Micron=2C and Blackberry all report this week. Who will y=
+ou be watching? It's time to bring back the <a href=3D"https://stocktwits.=
+com/r/EarningsTrading/?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1=
+f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_t=
+erm=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank" style=3D"=
+mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size=
+-adjust: 100%;color: #218dff;font-weight: normal;text-decoration: underlin=
+e;">EarningsTrading Room.</a><br>
+<br>
+<strong>Caesars Rein is Over</strong><br>
+Eldorado Resorts will become the world's largest gambling company! Ah=2C j=
+ust what America needs! $ERI wants to buy $CZR in a cash-and-stock deal fo=
+r $17.3 billion. <a href=3D"https://stocktwits.com/Shatterhand/message/168=
+463182?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_=
+CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5=
+c1-1f575043cb-190678285" target=3D"_blank" style=3D"mso-line-height-=
+rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;co=
+lor: #218dff;font-weight: normal;text-decoration: underline;">$CZR jumped=
+ 14% today.</a><br>
+<br>
+<strong>Honorable Mention</strong><br>
+Known by some as the =E2=80=9Cbest charter on StockTwits=2C=E2=80=9D user=
+ <a href=3D"https://stocktwits.com/idrawlines/?utm_source=3DDaily+Rip+Mast=
+er+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&=
+utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285" tar=
+get=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust=
+: 100%;-webkit-text-size-adjust: 100%;color: #218dff;font-weight: normal;t=
+ext-decoration: underline;">@idrawlines</a> is crushing the charting game=
+ all day=2C every day. If you aren=E2=80=99t following him=2C <a href=3D"h=
+ttps://stocktwits.com/idrawlines/?utm_source=3DDaily+Rip+Master+List&utm_c=
+ampaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3D=
+email&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank=
+" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;color: #218dff;font-weight: normal;text-decoratio=
+n: underline;">you should stop being such a square</a> and do it. =F0=9F=
+=91=8A&nbsp;
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op-width: 2px;border-top-style: solid;border-top-color: #EAEAEA;border-col=
+lapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-=
+adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #0E344A;font-family: &quot;Open Sans&quot=
+;=2C &quot;Helvetica Neue&quot;=2C Helvetica=2C Arial=2C sans-serif;font-s=
+ize: 16px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit=
+-text-size-adjust: 100%;word-break: break-word;line-height: 150%;text-alig=
+n: left;">
+
+                            <strong>One Stop Shop</strong><br>
+<span style=3D"background-color:#E8F3FF">Meet our partner Flipside Crypto:=
+</span>&nbsp;&nbsp;Have you ever imagined being able to make payments to f=
+riends=2C buy assets=2C and custody them all from one place? Well=2C the t=
+eam at OmiseGO ($OMG) has=2C and they're doing it. Their solution on top o=
+f Ethereum is evolving quickly=2C and the $OMG is 12.51% over the last 30-=
+days. <a href=3D"http://fscrypto.co/Daily-Mover?utm_source=3DDaily+Rip+Mas=
+ter+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01=
+&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285" ta=
+rget=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjus=
+t: 100%;-webkit-text-size-adjust: 100%;color: #218dff;font-weight: normal;=
+text-decoration: underline;">Get up to speed on other big Movers.</a>
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op-width: 2px;border-top-style: solid;border-top-color: #EAEAEA;border-col=
+lapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-=
+adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #0E344A;font-family: &quot;Open Sans&quot=
+;=2C &quot;Helvetica Neue&quot;=2C Helvetica=2C Arial=2C sans-serif;font-s=
+ize: 16px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit=
+-text-size-adjust: 100%;word-break: break-word;line-height: 150%;text-alig=
+n: left;">
+
+                            <div style=3D"text-align: left;"><strong>Stonk=
+Twits</strong><br>
+<a href=3D"https://www.instagram.com/p/BzGbVgtnGWI/?utm_source=3DDaily+Rip=
++Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COP=
+Y_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285=
+" target=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-a=
+djust: 100%;-webkit-text-size-adjust: 100%;color: #218dff;font-weight: nor=
+mal;text-decoration: underline;">Who else loves the stonk market?</a></div=
+>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateColumns"=
+ style=3D"background:#ffffff none no-repeat center/cover;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;bac=
+kground-color: #ffffff;background-image: none;background-repeat: no-repeat=
+;background-position: center;background-size: cover;border-top: 0;border-b=
+ottom: 0;padding-top: 0px;padding-bottom: 0;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align=3D"center" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0" width=3D"600" style=3D"width:600px;">
+                                    <tr>
+                                    <td align=3D"center" valign=3D"top" wi=
+dth=3D"300" style=3D"width:300px;">
+                                    <![endif]-->
+                                    <table align=3D"left" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" width=3D"300" class=3D"columnWrapper" sty=
+le=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0p=
+t;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                        <tr>
+                                            <td valign=3D"top" class=3D"co=
+lumnContainer" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust=
+: 100%;-webkit-text-size-adjust: 100%;"><table border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" width=3D"100%" class=3D"mcnDividerBlock" style=3D"mi=
+n-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rs=
+pace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-=
+layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op-width: 2px;border-top-style: none;border-top-color: #EAEAEA;border-coll=
+apse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-a=
+djust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                                        </tr>
+                                    </table>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    <td align=3D"center" valign=3D"top" wi=
+dth=3D"300" style=3D"width:300px;">
+                                    <![endif]-->
+                                    <table align=3D"left" border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" width=3D"300" class=3D"columnWrapper" sty=
+le=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0p=
+t;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                        <tr>
+                                            <td valign=3D"top" class=3D"co=
+lumnContainer" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust=
+: 100%;-webkit-text-size-adjust: 100%;"><table border=3D"0" cellpadding=3D=
+"0" cellspacing=3D"0" width=3D"100%" class=3D"mcnDividerBlock" style=3D"mi=
+n-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rs=
+pace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-=
+layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op-width: 2px;border-top-style: none;border-top-color: #EAEAEA;border-coll=
+apse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-a=
+djust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                                        </tr>
+                                    </table>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateLowerBody=
+" style=3D"background:#ffffff none no-repeat center/cover;mso-line-height-=
+rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;ba=
+ckground-color: #ffffff;background-image: none;background-repeat: no-repea=
+t;background-position: center;background-size: cover;border-top: 0;border-=
+bottom: 0;padding-top: 0;padding-bottom: 9px;"><table border=3D"0" cellpad=
+ding=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mcnButtonBlock" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+">
+    <tbody class=3D"mcnButtonBlockOuter">
+        <tr>
+            <td style=3D"padding-top: 0;padding-right: 18px;padding-bottom=
+: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adju=
+st: 100%;-webkit-text-size-adjust: 100%;" valign=3D"top" align=3D"center"=
+ class=3D"mcnButtonBlockInner">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%" class=3D"mcnButtonContentContainer" style=3D"border-collapse:=
+ separate !important;border: 2px solid #D7D9DC;border-top-left-radius: 6px=
+;border-top-right-radius: 6px;border-bottom-right-radius: 6px;border-botto=
+m-left-radius: 6px;background-color: #FFFFFF;mso-table-lspace: 0pt;mso-tab=
+le-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"=
+>
+                    <tbody>
+                        <tr>
+                            <td align=3D"center" valign=3D"middle" class=
+=3D"mcnButtonContent" style=3D"font-family: &quot;Open Sans&quot;=2C &quot=
+;Helvetica Neue&quot;=2C Helvetica=2C Arial=2C sans-serif;font-size: 16px;=
+padding: 24px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-we=
+bkit-text-size-adjust: 100%;">
+                                <a class=3D"mcnButton " title=3D"SHARE TOD=
+AY'S NEWSLETTER" href=3D"https://mailchi.mp/stocktwits/bezosisback?e=3D=
+a4f81b37f5" target=3D"_blank" style=3D"font-weight: bold;letter-spacing: 2px;li=
+ne-height: 100%;text-align: center;text-decoration: none;color: #258EFE;ms=
+o-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-a=
+djust: 100%;display: block;">SHARE TODAY'S NEWSLETTER</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                            <tr>
+                                <td valign=3D"top" id=3D"templateFooter" s=
+tyle=3D"background:#050510 none no-repeat center/cover;mso-line-height-rul=
+e: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;backg=
+round-color: #050510;background-image: none;background-repeat: no-repeat;b=
+ackground-position: center;background-size: cover;border-top: 0;border-bot=
+tom: 0;padding-top: 2px;padding-bottom: 2px;"><table border=3D"0" cellpadd=
+ing=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mcnTextBlock" style=3D=
+"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table=
+-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #ffffff;font-family: 'Helv=
+etica Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 12px=
+;line-height: 150%;text-align: left;">
+
+                            <div style=3D"text-align: left;"><span style=
+=3D"color:#FFFFFF"><strong>Our mailing address is:</strong><br>
+<div class=3D"vcard"><span class=3D"org fn">StockTwits=2C Inc.</span><div=
+ class=3D"adr"><div class=3D"street-address">1001 Avenue of the Americas</=
+div><span class=3D"locality">New York</span>=2C <span class=3D"region">NY<=
+/span>  <span class=3D"postal-code">10018</span></div><br><a href=3D"https=
+://stocktwits.us8.list-manage.com/vcard?u=3D9c3804a16b0968abce7a3b26a&id=
+=3Db2ed6ea5c1" class=3D"hcard-download">Add us to your address book</a></d=
+iv></span><br>
+<br>
+<em><strong>Download The StockTwits App<br>
+<br>
+<a href=3D"https://itunes.apple.com/us/app/stocktwits/id389157776?mt=3D8&u=
+tm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN=
+_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575=
+043cb-190678285" style=3D"mso-line-height-rule: exactly;-ms-text-siz=
+e-adjust: 100%;-webkit-text-size-adjust: 100%;color: #e8f3ff;font-weight:=
+ normal;text-decoration: underline;"><img data-file-id=3D"325825" height=
+=3D"37" src=3D"https://gallery.mailchimp.com/9c3804a16b0968abce7a3b26a/ima=
+ges/7dcb00b8-f299-4eb4-a8a1-110118acc1de.png" style=3D"border: 0px initial=
+;width: 125px;height: 37px;margin: 0px;outline: none;text-decoration: none=
+;-ms-interpolation-mode: bicubic;" width=3D"125"></a></strong><br>
+<br>
+<img data-file-id=3D"325821" height=3D"37" src=3D"https://gallery.mailchim=
+p.com/9c3804a16b0968abce7a3b26a/images/6815aec8-40f9-42c4-bb68-6b43d79caf8=
+d.png" style=3D"border: 0px initial;width: 125px;height: 37px;margin: 0px;=
+outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" widt=
+h=3D"125"><br>
+<br>
+<span style=3D"color:#FFFFFF">Copyright =C2=A9 2019 StockTwits=2C Inc.=2C=
+ All rights reserved.</span></em><br>
+<span style=3D"color:#FFFFFF">We send our daily emails about the stock mar=
+ket to everyone who's signed up for StockTwits. Get updates about stocks=
+=2C trade ideas=2C and the best investors.<br>
+<br>
+Want to change how you receive these emails?<br>
+You can&nbsp;</span><a href=3D"https://stocktwits.us8.list-manage.com/prof=
+ile?u=3D9c3804a16b0968abce7a3b26a&id=3Db2ed6ea5c1&e=3Da4f81b37f5" style=3D"m=
+so-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-=
+adjust: 100%;color: #e8f3ff;font-weight: normal;text-decoration: underline=
+;"><span style=3D"color:#FFFFFF">update your preferences</span></a><span s=
+tyle=3D"color:#FFFFFF">&nbsp;or&nbsp;</span><a href=3D"https://stocktwits.=
+us8.list-manage.com/unsubscribe?u=3D9c3804a16b0968abce7a3b26a&id=3Db2ed6ea=
+5c1&e=3Da4f81b37f5&c=3D1f575043cb" style=3D"mso-line-height-rule: exactly;-m=
+s-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #e8f3ff;fon=
+t-weight: normal;text-decoration: underline;"><span style=3D"color:#FFFFFF=
+">unsubscribe from this list</span></a><span style=3D"color:#FFFFFF">.</sp=
+an><br>
+<br>
+<strong>Follow StockTwits on:&nbsp;<a href=3D"http://www.stocktwits.com/st=
+ocktwits?utm_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAI=
+L_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6e=
+a5c1-1f575043cb-190678285" target=3D"_blank" style=3D"mso-line-heigh=
+t-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+color: #e8f3ff;font-weight: normal;text-decoration: underline;">StockTwits=
+</a>=2C <a href=3D"http://www.twitter.com/stocktwits?utm_source=3DDaily+Ri=
+p+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_CO=
+PY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285" target=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-=
+adjust: 100%;-webkit-text-size-adjust: 100%;color: #e8f3ff;font-weight: no=
+rmal;text-decoration: underline;">Twitter</a>&nbsp;</strong>&amp;<strong>&=
+nbsp;<a href=3D"http://www.instagram.com/stocktwits?utm_source=3DDaily+Rip=
++Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COP=
+Y_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285=
+" target=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-a=
+djust: 100%;-webkit-text-size-adjust: 100%;color: #e8f3ff;font-weight: nor=
+mal;text-decoration: underline;">Instagram</a></strong></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;" width=3D"100%" class=3D"mcnTextContent=
+Container">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #ffffff;font-family: 'Helv=
+etica Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 12px=
+;line-height: 150%;text-align: left;">
+
+                            Free trading of stocks and options refers to $=
+0 commissions for ST Invest self-directed individual cash or margin broker=
+age accounts that trade U.S. listed securities via mobile devices or Web.=
+ regulatory transaction fees may apply=2C as well as tax implications for=
+ realized gains.. Please see the Commissions and Fee Schedule.<br>
+<br>
+Content=2C news=2C research=2C tools=2C and securities symbols are for edu=
+cational and illustrative purposes only and do not imply a recommendation=
+ or solicitation to buy or sell a particular security or to engage in any=
+ particular investment strategy. Companies that are not affiliated with us=
+ may supply some of the content. The source of all third-party Content is=
+ clearly and prominently identified. We have not been involved in the prep=
+aration=2C adoption or editing of third party content and we do not endors=
+e or approve such content. The information provided is not warranted as to=
+ completeness or accuracy and is subject to change without notice. The pro=
+jections or other information regarding the likelihood of various investme=
+nt outcomes are hypothetical in nature=2C are not guaranteed for accuracy=
+ or completeness=2C do not reflect actual investment results and are not g=
+uarantees of future results. All investments involve risk=2C losses may ex=
+ceed the principal invested=2C and the past performance of a security=2C i=
+ndustry=2C sector=2C market=2C or financial product does not guarantee fut=
+ure results or returns. Before investing in a fund=2C consider the fund=E2=
+=80=99s investment objectives=2C risks=2C charges=2C and expenses. Contact=
+ <a href=3D"https://tradeapp.stocktwits.com/?utm_source=3DDaily+Rip+Master=
++List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&ut=
+m_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285" targe=
+t=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;color: #e8f3ff;font-weight: normal;te=
+xt-decoration: underline;">ST Invest LLC</a> for a prospectus containing t=
+his information.<br>
+<br>
+Securities products and services offered to self-directed investors throug=
+h ST Invest LLC d/b/a Trade App Member <a href=3D"http://www.finra.org/?ut=
+m_source=3DDaily+Rip+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_=
+2019_06_24_02_22_COPY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f5750=
+43cb-190678285" target=3D"_blank" style=3D"mso-line-height-rule: exa=
+ctly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #e8f=
+3ff;font-weight: normal;text-decoration: underline;">FINRA</a> / <a href=
+=3D"https://www.sipc.org/?utm_source=3DDaily+Rip+Master+List&utm_campaign=
+=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail&u=
+tm_term=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank" style=
+=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;color: #e8f3ff;font-weight: normal;text-decoration: unde=
+rline;">SIPC</a>. StockTwits=2C Inc.. and ST Invest LLC &nbsp;are separate=
+ but affiliated companies.<br>
+<br>
+<a href=3D"http://content.stocktwits.com/disclosures?utm_source=3DDaily+Ri=
+p+Master+List&utm_campaign=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_CO=
+PY_01&utm_medium=3Demail&utm_term=3D0_b2ed6ea5c1-1f575043cb-=
+190678285" target=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-=
+adjust: 100%;-webkit-text-size-adjust: 100%;color: #e8f3ff;font-weight: no=
+rmal;text-decoration: underline;">Please read </a><a href=3D"http://conten=
+t.stocktwits.com/disclosures?utm_source=3DDaily+Rip+Master+List&utm_campai=
+gn=3D1f575043cb-EMAIL_CAMPAIGN_2019_06_24_02_22_COPY_01&utm_medium=3Demail=
+&utm_term=3D0_b2ed6ea5c1-1f575043cb-190678285" target=3D"_blank" sty=
+le=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-tex=
+t-size-adjust: 100%;color: #e8f3ff;font-weight: normal;text-decoration: un=
+derline;">important legal disclosures.</a>
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                            </tr>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
+                        </td>
+                        </tr>
+                        </table>
+                        <![endif]-->
+                        <!-- // END TEMPLATE -->
+                    </td>
+                </tr>
+            </table>
+        </center>
+    <img src=3D"https://stocktwits.us8.list-manage.com/track/open.php?u=3D=
+9c3804a16b0968abce7a3b26a&id=3D1f575043cb&e=3Da4f81b37f5" height=3D"1" wi=
+dth=3D"1"></body>
+</html>
+--_----------=_MCPart_1069470302--

@@ -1,0 +1,863 @@
+Delivered-To: eduardo.sinning@gmail.com
+Received: by 2002:a25:3003:0:0:0:0:0 with SMTP id w3csp430688ybw;
+        Thu, 7 Jan 2021 09:59:19 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzcosOOJDOEAwYBIb6prdwHzVDCX84Y465Ci4vj90p7OG056w07cvITVdQR4+sPKbOn7tws
+X-Received: by 2002:a17:902:ba89:b029:dd:7fe3:ddf5 with SMTP id k9-20020a170902ba89b02900dd7fe3ddf5mr29856pls.33.1610042359601;
+        Thu, 07 Jan 2021 09:59:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1610042359; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ysdp1ANTjDNu6I9cvWtDPcrrg2XU/DLZ2f9xNCFECKb9ZYgtWCJXMgIPFTUthfUced
+         o/sp6Z2gjsYSjN3fpOT8zHVSwYWJyEHAKN0bMRKV1LjWBGT3IErfT5Ofj7HR5r16ow5y
+         EteBLlr6yqEb30jOJQ4JhNyVTjpMSKFDWqzL/GaIzz0ZtmqQ/Zr7PzVdGwLUq01PgFs5
+         /STU18BpO9porxpnugPEb1cnjOiEcZjeAO2DUV0NrapETRzLLY1jRqFehYC0JFABMebn
+         F1o5fPYVA0lK/2tnFxEyNSg13ata7/h/qePCbj+ceL4wHBEAaPeAuH/+mGOBaJwltL0I
+         hchA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:from:message-id:subject:reply-to:date:list-unsubscribe
+         :mime-version:to:dkim-signature;
+        bh=pWBX+lT6/rN3JAqCmIFRaL/sE/oh4kExEQiHvh3at38=;
+        b=X0a2ca9NQKQz30e37COLE37sVTjKBMlg5zC4fCtGsRz99e/8Aqk/tn71Eb+k5NG9z3
+         Jr5mznEJPlx1a7/1Kk5W3Fkr1AbKyc9TtcXR8dsPz7f1Lg1+F00ty/PWSVg96bWSQoe/
+         2RZUJzKh2hbO0M6EUxd9LZ+cSHPtRXb5V/RhomdSRRgVofDp3bCANutP2HdbnVFT9egN
+         N1LZSomv99RObdRLzNXrH2s55OiEspzsTFrOFfaxRrRMO/vKAA0yNIbtfub81iKIofYU
+         vX82P4QwAqbhAid+Llebk5BANuzRxrPq2cs5kh0sNtltPfHo9/5evleDvBOWdZR1UoRo
+         tKpQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@buda.com header.s=intercom header.b=n1oO+nti;
+       spf=pass (google.com: domain of bounces+62058606073671@rp.budacom.intercom-mail.com designates 192.174.84.122 as permitted sender) smtp.mailfrom=bounces+62058606073671@rp.budacom.intercom-mail.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+Return-Path: <bounces+62058606073671@rp.budacom.intercom-mail.com>
+Received: from mta-174-84-122.intercom.com.sparkpostmail.com (mta-174-84-122.intercom.com.sparkpostmail.com. [192.174.84.122])
+        by mx.google.com with ESMTPS id y20si6322395pfm.301.2021.01.07.09.59.19
+        for <eduardo.sinning@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 07 Jan 2021 09:59:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounces+62058606073671@rp.budacom.intercom-mail.com designates 192.174.84.122 as permitted sender) client-ip=192.174.84.122;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@buda.com header.s=intercom header.b=n1oO+nti;
+       spf=pass (google.com: domain of bounces+62058606073671@rp.budacom.intercom-mail.com designates 192.174.84.122 as permitted sender) smtp.mailfrom=bounces+62058606073671@rp.budacom.intercom-mail.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=buda.com
+X-MSFBL: O4xmcQfzscDH43w0MuIFOuR7Ly30D/lPrnE8zvE0NyM=|eyJyIjoiZWR1YXJkby5
+	zaW5uaW5nQGdtYWlsLmNvbSIsInRlbmFudF9pZCI6ImludGVyY29tIiwiY3VzdG9
+	tZXJfaWQiOiIxIiwic3ViYWNjb3VudF9pZCI6Ijc1NTEiLCJtZXNzYWdlX2lkIjo
+	iNWZmNWY3NGJmNzVmZDM2MDI0NDkifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=buda.com;
+	s=intercom; t=1610042359; i=@buda.com;
+	bh=pWBX+lT6/rN3JAqCmIFRaL/sE/oh4kExEQiHvh3at38=;
+	h=To:Content-Type:Date:Subject:Message-ID:From;
+	b=n1oO+ntiusNkj9QWaTwwwIShh8jLib1gHEd2muCsaEFasSPb/tsY5CWKPlUwwV2Rm
+	 jA8LpEgsQj1Dhdy/LZFUuJ0qo41c74HaPa4AhhUOhcKV/ye8bDVPFPM0TcYnULqRBQ
+	 WunOVAzkx0BBKhQRtcnOi8AawJoI99MiLkgnwXjA=
+To: eduardo.sinning@gmail.com
+Content-Type: multipart/alternative; boundary="_----bl89hz2kzRTOT4ro/G/Xiw===_51/94-12471-7FB47FF5"
+MIME-Version: 1.0
+List-Unsubscribe: <mailto:unsubscribe_62058606073671_5a5817fd2f1161381d418cdf@budacom.intercom-mail.com>, <https://budacom.intercom-mail.com/subscriptions/unsubscribe?app_id=lmgaeqxd&conversation_id=62058606073671&user_id=5a5817fd2f1161381d418cdf>
+Date: Thu, 07 Jan 2021 17:59:18 +0000
+Reply-To: "Diego de Buda.com" <diego.vera@budacom.intercom-mail.com>
+X-Mailgun-Tag: user-personal
+X-Intercom-App-Id: lmgaeqxd
+X-Intercom-Bin: 160
+Subject: =?utf-8?B?wr9Mb3MgYmFuY29zIHB1ZWRlbiBtaW5hciBjcmlwdG9zPw==?=
+Message-ID: <ae0c0302-e4a24756-1610042358-62058606073671@budacom.intercom-mail-160.com>
+X-Report-Abuse: Please report spam or abuse to abuse@intercom.io
+From: "Diego de Buda.com" <soporte@buda.com>
+X-Auto-Response-Suppress: OOF, AutoReply
+X-Mailgun-Variables: {"app_id":"lmgaeqxd","conversation_id":"62058606073671","user_id":"5a5817fd2f1161381d418cdf","intercom_localized_email_content_id":"2825381"}
+Feedback-ID: email:39674856:lmgaeqxd:intercom
+
+--_----bl89hz2kzRTOT4ro/G/Xiw===_51/94-12471-7FB47FF5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola eduardo, =0D=0A Espero que est=C3=A9s bien. Antes de empezar, te cuent=
+o que estamos viendo un aumento explosivo en Buda.com, =C2=A1y estamos feli=
+ces!, pero eso hace que los servicios (como retiros cripto) y soporte est=
+=C3=A9n demorando m=C3=A1s tiempo de lo normal. Te pido paciencia y que si =
+tienes alg=C3=BAn/a amigo/a que est=C3=A1 reci=C3=A9n comenzando, ay=C3=BAd=
+alo/a y recomi=C3=A9ndale ir al canal de soporte :). El equipo est=C3=A1 tr=
+abajando al 1000% y estamos haci=C3=A9ndolo crecer para mejorar a=C3=BAn m=
+=C3=A1s Buda.com. =0D=0A D=C3=B3lar pierde fuerza y Bitcoin avanza =0D=0A L=
+a gran e inusual inyecci=C3=B3n de capital que ha hecho Estados Unidos dura=
+nte la pandemia (trillones de d=C3=B3lares) para evitar que su econom=C3=AD=
+a siga sufriendo, sumado a la incertidumbre que hay en materia pol=C3=ADtic=
+a, han hecho que el d=C3=B3lar pierda fuerza. =0D=0A Desde el primer paquet=
+e de est=C3=ADmulo econ=C3=B3mico anunciado en marzo por el gobierno estado=
+unidense, el USD a perdido terreno frente a las principales monedas del mun=
+do: =0D=0A [Image "rr4n4qL42OkjqBUn3XN2wESKxrdLwRHkNCKWaLw3b6s07rAJCZkatS6l=
+8HXnWB1MG6PB1og-bAaKCueagFz28bFpyNcIV62vw9-CtpLdVxf7jzq8MdQTe0JHNfIOuOO8ml6=
+QgLVV"] (toca la imagen para agrandar) =0D=0A =C2=BFY si miramos a Bitcoin=
+=3F =0D=0A =0D=0A Que Bitcoin suba de precio en relaci=C3=B3n al d=C3=B3lar=
+, significa que la moneda estadounidense pierde valor respecto a la criptom=
+oneda m=C3=A1s grande del mercado. =0D=0A Mira este gr=C3=A1fico que muestr=
+a c=C3=B3mo el d=C3=B3lar ha perdido terreno frente a Bitcoin en el tiempo.=
+ =0D=0A [Image "s0Sg-8KZM9kg_Q8iUBvk_OxFJL8M0QES9DxYlNz6vEAsj14lkGsmKv5_YMa=
+ctMhu1ySvWIvC9gOiX4T4kJW8fvDReazJr5VUqyp3KGzasn0ud97G3yeiigp1-agDFSbn139lYD=
+Oc"] (toca la imagen para agrandar) En abril de 2011, con 1 d=C3=B3lar pod=
+=C3=ADas comprar 100.000.000 sats, lo que es equivalente a 1 BTC. Hoy, con =
+el mismo d=C3=B3lar, puedes comprar algo as=C3=AD como 3.000 sats o 0,00003=
+ bitcoin. (=E2=80=9Csats=E2=80=9D o satoshis es la unidad en la cual se pue=
+de dividir bitcoin. 1 BTC =3D 100.000.000 sats) =0D=0A En s=C3=B3lo 1 a=C3=
+=B1o, el d=C3=B3lar pas=C3=B3 de poder comprar 14.000 sats (6 de enero, 202=
+0), a tan solo 3.000 (6 de enero 2021). Eso significa una reducci=C3=B3n de=
+l 78,5% en el poder de compra frente a bitcoin. =0D=0A Ac=C3=A1 puedes ver =
+en tiempo real cu=C3=A1ntos sats puedes comprar con 1 d=C3=B3lar. =0D=0A =
+=C2=BFCu=C3=A1ntas veces es Bitcoin el PIB de tu pa=C3=ADs=3F =0D=0A A medi=
+da que el precio de Bitcoin crece, su capitalizaci=C3=B3n de mercado tambi=
+=C3=A9n lo hace. Para obtener la capitalizaci=C3=B3n de mercado o market ca=
+p de Bitcoin, debemos multiplicar el precio actual por la cantidad de bitco=
+ins disponible. =0D=0A Actualmente, y con el precio rondando los USD $39.00=
+0, el market cap de Bitcoin es de USD $730 billones. Eso significa que Bitc=
+oin es: =0D=0A - 3.2 veces m=C3=A1s grande que el PIB (o PBI) de Per=C3=BA =
+(USD $226 B) =0D=0A- 2.9 veces m=C3=A1s grande que el PIB de Chile (USD $25=
+2 B) =0D=0A- 2.1 veces m=C3=A1s grande que el PIB de Colombia (USD $341 B) =
+=0D=0A- 1.4 veces m=C3=A1s grande que el PIB de Argentina (USD $509 B) =0D=
+=0A (cifras PIB 2019) =0D=0A Como puedes ver, Bitcoin es gigante y sigue cr=
+eciendo a un volumen extraordinario, pero as=C3=AD mismo como el precio sub=
+e, puede bajar de un momento a otro. Es por eso que si est=C3=A1s pensando =
+en comprar bitcoin, siempre, repito, SIEMPRE debes hacerlo de manera respon=
+sable. Invierte montos que no vayas a necesitar gastar en un periodo de al =
+menos, 2 a=C3=B1os, ya que si en alg=C3=BAn momento te ves obligado a vende=
+r, no queremos que asumas la p=C3=A9rdida en caso de que el precio de bitco=
+in est=C3=A9 bajo. =0D=0A Lee nuestra Gu=C3=ADa de Inversi=C3=B3n Responsab=
+le =0D=0A [Image "Tabla+precios+Diego+%2816%29.png"] Compra bitcoin en Buda=
+.com Veamos las noticias =0D=0A =0D=0A Regulador estadounidense permite a b=
+ancos usar stablecoins y participar en blockchains =0D=0A El regulador banc=
+ario estadounidense (OCC) envi=C3=B3 este lunes una carta a los bancos, en =
+la cual informa que estas entidades financieras ahora podr=C3=A1n usar stab=
+lecoins (como USDT, USDC, DAI, entre otras) para realizar pagos y otras fun=
+ciones bancarias. =0D=0A =C2=BFBye Bye SWIFT=3F =0D=0A En el mismo document=
+o, el regulador permiti=C3=B3 que los bancos participen en redes de verific=
+aci=C3=B3n de nodos independientes (INVN), tales como blockchains. Esto per=
+mite a los bancos validar, guardar y grabar transacciones que ocurran en un=
+a blockchain, o sea, actuar como un nodo. En esencia, la OCC abri=C3=B3 la =
+puerta para que los bancos entren de lleno en el ecosistema cripto, validan=
+do la transici=C3=B3n hacia una econom=C3=ADa digital. Qui=C3=A9n sabe, qui=
+z=C3=A1s pronto veamos a JP Morgan minando bitcoin. Lee ac=C3=A1 el documen=
+to presentado por la OCC. =0D=0A Bitcoin est=C3=A1 de cumplea=C3=B1os (=C2=
+=BFotra vez=3F) =0D=0A El pasado 3 de enero Bitcoin celebr=C3=B3 su 12=C2=
+=B0 cumplea=C3=B1os, ya que ese mismo d=C3=ADa, pero en 2009, el primer blo=
+que de la red fue minado, en donde el misterioso Satoshi Nakamoto adquiri=
+=C3=B3 por primera vez 50 bitcoin. El bloque ten=C3=ADa inscrito el siguien=
+te mensaje: =E2=80=9CEl canciller est=C3=A1 al borde de entregar un segundo=
+ rescate para los bancos=E2=80=9D. Frase que fue parte de la portada del di=
+ario The Times en Londres aquel 3 de enero de 2009. =0D=0A [Image "cRFF5Pg-=
+kcFd74bAS14oun2ZZy4VRAmQB-dHOye-tr_Rtr5sNjS0-6nmYe7ti2OcpxheDfSMvQ8onOiltND=
+VDqIJkSigUqtqLVr9MYiAo1MjohwWe9-9O5js9kDgfvwHpTqn7wiR"] No se confundan. Qu=
+iz=C3=A1s recuerdan que en octubre Bitcoin tambi=C3=A9n estuvo de cumplea=
+=C3=B1os. Bueno, es que el 31 de octubre pasado se cumplieron 12 a=C3=B1os =
+desde que Satoshi Nakamoto public=C3=B3 el whitepaper de esta maravillosa c=
+riptomoneda. Con tantos cumplea=C3=B1os, quiz=C3=A1s bitcoin madure antes d=
+e lo que algunos creen. =0D=0A Ethereum supera los USD $1.000 y se acerca a=
+ un nuevo m=C3=A1ximo hist=C3=B3rico =0D=0A La segunda criptomoneda m=C3=A1=
+s grande por capitalizaci=C3=B3n de mercado, ether, se acerca r=C3=A1pidame=
+nte a su m=C3=A1ximo hist=C3=B3rico de USD $1.448 alcanzado en 2017, y todo=
+ indica que no tendr=C3=A1 problemas para superarlo. =0D=0A Solo en los =C3=
+=BAltimos 7 d=C3=ADas, el precio de ether ha visto un incremento del 61%, a=
+lcanzando una capitalizaci=C3=B3n de mercado de USD $137 billones, 1/5 de B=
+itcoin. =0D=0A [Image "image.png"] A fines del a=C3=B1o pasado te contamos =
+que la fase 0 de Ethereum 2.0 hab=C3=ADa sido lanzada. Hoy, ya van m=C3=A1s=
+ de 1,7 billones de ETH participando de la red. Al precio actual, esos ethe=
+r equivalen a aproximadamente USD $2.04 trillones. =0D=0A JP Morgan dice qu=
+e Bitcoin llegar=C3=A1 a los USD $146.000 =0D=0A Uno de los bancos m=C3=A1s=
+ grandes del mundo - y ex archienemigo de Bitcoin - dijo que la criptomoned=
+a m=C3=A1s grande de todas podr=C3=ADa llegar a valer USD $146.000 en el la=
+rgo plazo. =0D=0A Para que esto suceda, escribi=C3=B3 el analista del banco=
+, la volatilidad de Bitcoin tiene que equiparar a la del oro en el largo pl=
+azo, solo as=C3=AD los inversionistas institucionales tendr=C3=A1n mayor co=
+nfianza e invertir=C3=A1n grandes cantidades en Bitcoin. =0D=0A El banco ag=
+reg=C3=B3 que =E2=80=9Cno cabe duda que el impulso institucional que est=C3=
+=A1 recibiendo Bitcoin es la principal diferencia entre el 2020 y lo que oc=
+urri=C3=B3 en 2017=E2=80=9D. =0D=0A Para lograr un precio de USD $146.000, =
+la capitalizaci=C3=B3n de mercado de BTC tendr=C3=ADa que multiplicarse por=
+ aproximadamente 3,5, teniendo en cuenta que la actual es de USD $730 billo=
+nes. =C2=BFEn cu=C3=A1nto tiempo podr=C3=ADa ocurrir esto=3F no lo sabemos,=
+ pero mira: el 29 de abril del a=C3=B1o pasado (2020), la capitalizaci=C3=
+=B3n de mercado de Bitcoin era de USD $161 billones, eso es casi exactament=
+e 4 veces menor a lo que es hoy, en menos de 9 meses. =0D=0A S=C3=AD, es ve=
+rdad que la cantidad de bitcoin que hab=C3=ADa en abril era menor, pero ten=
+iendo en cuenta que se crean 900 diarios, en un a=C3=B1o la diferencia que =
+genera esta variable es casi insignificante. =0D=0A Puedes leer la noticia =
+completa en ingl=C3=A9s ac=C3=A1. =0D=0A Si te gust=C3=B3 este newsletter, =
+puedes compartirlo con tus amigos/as y aprovechas de ganar el 20% de sus co=
+misiones cuando usen Buda.com =0D=0ACompratir S=C3=ADguenos en nuestras red=
+es sociales: =0D=0A YouTube | Twitter | Instagram | Facebook | LinkedIn
+--_----bl89hz2kzRTOT4ro/G/Xiw===_51/94-12471-7FB47FF5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w=
+3.org/TR/REC-html40/loose.dtd">=0D=0A<html>=0D=0A<head>=0D=0A<meta http-equ=
+iv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">=0D=0A<style typ=
+e=3D"text/css">=0D=0A  #PreviewIntercomModal .ic_message_content h1,=0D=0A =
+ #PreviewIntercomModal .ic_message_content h2 {=0D=0A    color: #0072b0 !im=
+portant;=0D=0A  }=0D=0A  #PreviewIntercomModal .ic_message_without_image > =
+.ic_message_internals > .ic_message_content {=0D=0A    border-color: #0072=
+b0 !important;=0D=0A  }=0D=0A  #PreviewIntercomModal .ic_user_comment_body =
+{=0D=0A    background-color: #0072b0 !important;=0D=0A    border-color: #00=
+72b0 !important;=0D=0A  }=0D=0A  #PreviewIntercomModal .ic_message_content =
+a {=0D=0A    color: #0072b0 !important;=0D=0A  }=0D=0A  #PreviewIntercomMod=
+al .ic_message_content a:hover {=0D=0A    color: #0072b0 !important;=0D=0A =
+ }=0D=0A  #PreviewIntercomModal .ic_user_comment_body {=0D=0A    background=
+-color: #0072b0 !important;=0D=0A    border-color: #0072b0 !important;=0D=
+=0A  }=0D=0A  .intercom-h2b-button br {=0D=0A    display: none;=0D=0A  }=0D=
+=0A</style>=0D=0A<style type=3D"text/css" data-premailer=3D"ignore">=0D=0A =
+ /* styles in here will not be inlined. Use for media queries etc */=0D=0A =
+ /* force Outlook to provide a "view in browser" menu link. */=0D=0A  #outl=
+ook a {padding:0;}=0D=0A  /* prevent Webkit and Windows Mobile platforms fr=
+om changing default font sizes.*/=0D=0A  body{width:100% !important; -webki=
+t-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}=
+=0D=0A  /* force Hotmail to display emails at full width */=0D=0A  .Externa=
+lClass {width:100%;}=0D=0A  /* force Hotmail to display normal line spacing=
+. http://www.emailonacid.com/forum/viewthread/43/ */=0D=0A  .ExternalClass=
+, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClas=
+s td, .ExternalClass div {line-height: 100%;}=0D=0A  /* fix a padding issue=
+ on Outlook 07, 10 */=0D=0A  table td {border-collapse: collapse;}=0D=0A  t=
+able {=0D=0A    table-layout: fixed;=0D=0A  }=0D=0A=0D=0A  @media only scre=
+en and (max-width: 480px)=0D=0A  {=0D=0A    br.hidden { display: block !imp=
+ortant; }=0D=0A    td.padding_cell { display: none !important; }=0D=0A    t=
+able.message_footer_table td {=0D=0A      font-size: 11px !important;=0D=0A=
+    }=0D=0A  }=0D=0A  @media only screen and (max-device-width: 480px)=0D=
+=0A  {=0D=0A    br.hidden { display: block !important; }=0D=0A    td.paddin=
+g_cell { display: none !important; }=0D=0A    table.message_footer_table td=
+ {=0D=0A      font-size: 11px !important;=0D=0A    }=0D=0A  }=0D=0A</style>=
+=0D=0A=0D=0A<style type=3D"text/css" data-premailer=3D"ignore">=0D=0A  /* s=
+tyles in here will not be inlined. Use for media queries etc */=0D=0A  /* f=
+orce Outlook to provide a "view in browser" menu link. */=0D=0A  #outlook a=
+ {padding:0;}=0D=0A  /* prevent Webkit and Windows Mobile platforms from ch=
+anging default font sizes.*/=0D=0A  body{width:100% !important; -webkit-tex=
+t-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;}=0D=0A =
+ /* force Hotmail to display emails at full width */=0D=0A  .ExternalClass =
+{width:100%;}=0D=0A  /* force Hotmail to display normal line spacing. http:=
+//www.emailonacid.com/forum/viewthread/43/ */=0D=0A  .ExternalClass, .Exter=
+nalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .E=
+xternalClass div {line-height: 100%;}=0D=0A  /* fix a padding issue on Outl=
+ook 07, 10 */=0D=0A  table td {border-collapse: collapse;}=0D=0A=0D=0A  @me=
+dia only screen and (max-width: 480px)=0D=0A  {=0D=0A    br.hidden { displa=
+y: block !important; }=0D=0A    td.padding_cell { display: none !important;=
+ }=0D=0A    table.message_footer_table td {=0D=0A      font-size: 11px !imp=
+ortant;=0D=0A    }=0D=0A  }=0D=0A  @media only screen and (max-device-width=
+: 480px)=0D=0A  {=0D=0A    br.hidden { display: block !important; }=0D=0A  =
+  td.padding_cell { display: none !important; }=0D=0A    table.message_foot=
+er_table td {=0D=0A      font-size: 11px !important;=0D=0A    }=0D=0A  }=0D=
+=0A</style>=0D=0A=0D=0A<style type=3D"text/css">=0D=0A=0D=0A  .admin_name b=
+ {=0D=0A    color: #6f6f6f;=0D=0A  }=0D=0A=0D=0A  .date_cell a {=0D=0A    c=
+olor: #999999;=0D=0A  }=0D=0A=0D=0A  .comment_header_td {=0D=0A    width: 1=
+00%;=0D=0A    background: #210e4a;=0D=0A    border: none;=0D=0A    font-fam=
+ily: 'Helvetica Neue',Arial,sans-serif=0D=0A  }=0D=0A=0D=0A  .content-td {=
+=0D=0A    color: #525252;=0D=0A    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.=
+05);=0D=0A    font-family: Helvetica, Arial, sans-serif;=0D=0A  }=0D=0A=0D=
+=0A  .content-td h1 {=0D=0A    font-size: 26px;=0D=0A    line-height: 33px;=
+=0D=0A    color: #282F33;=0D=0A    margin-bottom: 7px;=0D=0A    margin-top:=
+ 30px;=0D=0A    font-weight: normal;=0D=0A  }=0D=0A=0D=0A  .content-td h1 a=
+ {=0D=0A    color: #282F33;=0D=0A  }=0D=0A=0D=0A  .content-td h2 {=0D=0A   =
+ font-size: 18px;=0D=0A    font-weight: bold;=0D=0A    color: #282F33;=0D=
+=0A    margin: 30px 0 7px;=0D=0A  }=0D=0A=0D=0A  .content-td h2 a {=0D=0A  =
+  color: #282F33;=0D=0A  }=0D=0A=0D=0A  .content-td h1 + h2 {=0D=0A    marg=
+in-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .content-td h2 + h1 {=0D=0A    =
+margin-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .content-td h3 ,=0D=0A  .co=
+ntent-td h4 ,=0D=0A  .content-td h5 {=0D=0A    font-size: 16px;=0D=0A    fo=
+nt-weight: bold;=0D=0A    margin-bottom: 5px;=0D=0A  }=0D=0A=0D=0A  .conten=
+t-td p {=0D=0A    margin: 0 0 17px 0;=0D=0A    line-height: 1.5;=0D=0A  }=
+=0D=0A=0D=0A  .content-td p img,=0D=0A  .content-td h1 img,=0D=0A  .content=
+-td h2 img,=0D=0A  .content-td li img,=0D=0A  .content-td .intercom-h2b-but=
+ton img {=0D=0A    margin: 0;=0D=0A    padding: 0;=0D=0A  }=0D=0A=0D=0A  .c=
+ontent-td a {=0D=0A    color: #1251ba;=0D=0A  }=0D=0A=0D=0A  .content-td p.=
+intro {=0D=0A    font-size: 20px;=0D=0A    line-height: 30px;=0D=0A  }=0D=
+=0A=0D=0A  .content-td blockquote {=0D=0A    margin: 40px 0;=0D=0A    font-=
+style: italic;=0D=0A    color: #8C8C8C;=0D=0A    font-size: 18px;=0D=0A    =
+text-align: center;=0D=0A    padding: 0 30px;=0D=0A    font-family: Georgia=
+, sans-serif;=0D=0A    quotes: none;=0D=0A  }=0D=0A=0D=0A  .content-td bloc=
+kquote a {=0D=0A    color: #8C8C8C;=0D=0A  }=0D=0A=0D=0A  .content-td ul {=
+=0D=0A    list-style: disc;=0D=0A    margin: 0 0 20px 40px;=0D=0A    paddin=
+g: 0;=0D=0A  }=0D=0A=0D=0A  .content-td ol {=0D=0A    list-style: decimal;=
+=0D=0A    margin: 0 0 20px 40px;=0D=0A    padding: 0;=0D=0A  }=0D=0A=0D=0A =
+ .content-td img {=0D=0A    margin: 0;=0D=0A    max-width: 100%;=0D=0A  }=
+=0D=0A=0D=0A  .content-td .intercom-container {=0D=0A    margin-bottom: 16p=
+x;=0D=0A  }=0D=0A=0D=0A  .content-td div.intercom-container {=0D=0A    marg=
+in-bottom: 17px;=0D=0A    margin-top: 17px;=0D=0A    line-height: 0;=0D=0A =
+ }=0D=0A=0D=0A  .content-td hr {=0D=0A    border: none;=0D=0A    border-top=
+: 1px solid #DDD;=0D=0A    border-bottom: 0;=0D=0A    margin: 50px 30% 50px=
+ 30%;=0D=0A  }=0D=0A=0D=0A  /**/=0D=0A  .content-td pre {=0D=0A    margin: =
+0 0 10px;=0D=0A    padding: 10px;=0D=0A    background-color: #f5f5f5;=0D=0A=
+    overflow: auto;=0D=0A  }=0D=0A=0D=0A  .content-td pre code {=0D=0A    f=
+ont-family: Courier, monospace;=0D=0A    font-size: 14px;=0D=0A    line-hei=
+ght: 1.4;=0D=0A    white-space: nowrap;=0D=0A  }=0D=0A=0D=0A  table.interco=
+m-container {=0D=0A    margin: 17px 0;=0D=0A  }=0D=0A  table.intercom-conta=
+iner.intercom-align-center {=0D=0A    margin-left: auto;=0D=0A    margin-ri=
+ght: auto;=0D=0A  }=0D=0A=0D=0A  table.intercom-container td {=0D=0A    bac=
+kground-color: #210e4a;=0D=0A    padding: 12px 35px;=0D=0A    border-radius=
+: 3px;=0D=0A    font-family: Helvetica, Arial, sans-serif;=0D=0A    margin:=
+ 0;=0D=0A  }=0D=0A=0D=0A  .content-td .intercom-h2b-button {=0D=0A    font-=
+size: 14px;=0D=0A    color: #FFF;=0D=0A    font-weight: bold;=0D=0A    disp=
+lay: inline-block;=0D=0A    text-decoration: none;=0D=0A    background-colo=
+r: #210e4a;=0D=0A    border: none !important;=0D=0A    =0D=0A  }=0D=0A=0D=
+=0A  a.intercom-h2b-button {=0D=0A    background-color: #0E4595;=0D=0A    b=
+order-radius: 5px;=0D=0A    border: 1px solid rgba(0,0,0,0.2);=0D=0A    col=
+or:#fff;=0D=0A    display: inline-block;=0D=0A    font-size: 15px;=0D=0A   =
+ font-weight: bold;=0D=0A    min-height: 20px;=0D=0A    text-decoration: no=
+ne;=0D=0A  }=0D=0A=0D=0A  .content-td .intercom-h2b-button:hover {=0D=0A   =
+ background-color:#261057;=0D=0A  }=0D=0A=0D=0A  .message_footer_table .ava=
+tar {=0D=0A    -ms-interpolation-mode: bicubic;=0D=0A    -webkit-background=
+-clip: padding-box;=0D=0A    -webkit-border-radius: 20px;=0D=0A    backgrou=
+nd-clip: padding-box;=0D=0A    border-radius: 20px;=0D=0A    display: inlin=
+e-block;=0D=0A    height: 40px;=0D=0A    max-width: 100%;=0D=0A    outline:=
+ none;=0D=0A    text-decoration: none;=0D=0A    width: 40px;=0D=0A  }=0D=0A=
+=0D=0A  .powered-by-table .powered-by-text a {=0D=0A    font-weight: bold;=
+=0D=0A    text-decoration: none;=0D=0A    color: #999;=0D=0A  }=0D=0A=0D=0A=
+  .main_wrapper {=0D=0A    padding: 0 20px;=0D=0A  }=0D=0A=0D=0A  .margin-a=
+rrow {=0D=0A    display: none;=0D=0A    =0D=0A    visibility:hidden;=0D=0A =
+   width:0;=0D=0A    height:0;=0D=0A    max-width: 0;=0D=0A    max-height: =
+0;=0D=0A    overflow: hidden;=0D=0A    opacity: 0;=0D=0A  }=0D=0A=0D=0A  .c=
+ontent-td > :first-child {=0D=0A    margin-top: 0;=0D=0A    padding-top: 0;=
+=0D=0A  }=0D=0A=0D=0A  table.intercom-container td > a.intercom-h2b-button =
+{=0D=0A     padding: 0px;=0D=0A   }=0D=0A</style>=0D=0A=0D=0A<!-- Responsiv=
+e-->=0D=0A<style type=3D"text/css" data-premailer=3D"ignore">=0D=0A=0D=0A  =
+@media screen and (max-width: 635px) {=0D=0A    .main-wrap {=0D=0A      wid=
+th: 100% !important;=0D=0A    }=0D=0A  }=0D=0A=0D=0A  @media screen and (ma=
+x-width: 480px) {=0D=0A    .content-td {=0D=0A      padding: 30px 15px !imp=
+ortant;=0D=0A    }=0D=0A    .content-td h1 {=0D=0A      margin-bottom: 5px;=
+=0D=0A    }=0D=0A    .message_footer_table .space {=0D=0A      width: 20px =
+!important;=0D=0A    }=0D=0A=0D=0A    .message_footer_table .arrow-wrap {=
+=0D=0A      padding-left: 20px !important;=0D=0A    }=0D=0A=0D=0A    .messa=
+ge_footer_table .admin_name b{=0D=0A      display: block !important;=0D=0A =
+   }=0D=0A=0D=0A    .main_wrapper {=0D=0A      padding: 0;=0D=0A    }=0D=0A=
+=0D=0A    .image-arrow {=0D=0A      display: none !important;=0D=0A    }=0D=
+=0A=0D=0A    .margin-arrow {=0D=0A      display: table !important;=0D=0A   =
+   visibility:visible !important;=0D=0A      width: 100% !important;=0D=0A =
+     height: auto !important;=0D=0A      max-width: none !important;=0D=0A =
+     max-height: none !important;=0D=0A      opacity: 1 !important;=0D=0A  =
+    overflow: visible !important;=0D=0A    }=0D=0A=0D=0A    .comment_body {=
+=0D=0A      border-bottom: 1px solid #DDD !important;=0D=0A    }=0D=0A=0D=
+=0A    .footer-td-wrapper {=0D=0A      display: block !important;=0D=0A    =
+  width: 100% !important;=0D=0A      text-align: left !important;=0D=0A    =
+}=0D=0A    .footer-td-wrapper .date_cell {=0D=0A      text-align: left !imp=
+ortant;=0D=0A      padding: 15px 0 0 20px !important;=0D=0A    }=0D=0A  }=
+=0D=0A=0D=0A</style>=0D=0A=0D=0A=0D=0A<style type=3D"text/css" data-premail=
+er=3D"ignore">=0D=0A  .content-td blockquote + * {=0D=0A    margin-top: 20p=
+x !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content-td h1 {=0D=0A  =
+  padding: 20px 0 !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content=
+-td h2 {=0D=0A    padding: 0 0 5px !important;=0D=0A  }=0D=0A=0D=0A  .Exter=
+nalClass .content-td p {=0D=0A    padding: 10px 0 !important;=0D=0A  }=0D=
+=0A=0D=0A.ExternalClass .content-td .intercom-container {=0D=0A    padding:=
+ 5px 0 !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content-td hr + * =
+{=0D=0A    padding-top: 30px !important;=0D=0A  }=0D=0A=0D=0A  .ExternalCla=
+ss .content-td ol ,=0D=0A  .ExternalClass .content-td ul {=0D=0A    padding=
+: 0 0 20px 40px !important;=0D=0A    margin: 0 !important;=0D=0A  }=0D=0A=
+=0D=0A  .ExternalClass .content-td ol li,=0D=0A  .ExternalClass .content-td=
+ ul li {=0D=0A    padding: 3px 0 !important;=0D=0A    margin: 0 !important;=
+=0D=0A  }=0D=0A  .content-td > :first-child {=0D=0A    margin-top: 0 !impor=
+tant;=0D=0A    padding-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .ExternalCl=
+ass .content-td > :first-child {=0D=0A    margin-top: 0 !important;=0D=0A  =
+  padding-top: 0 !important;=0D=0A  }=0D=0A</style>=0D=0A=0D=0A=0D=0A=0D=0A=
+<style type=3D"text/css">=0D=0A  .intercom-align-right {=0D=0A  text-align:=
+ right !important;=0D=0A}=0D=0A.intercom-align-center {=0D=0A  text-align: =
+center !important;=0D=0A}=0D=0A.intercom-align-left {=0D=0A  text-align: le=
+ft !important;=0D=0A}=0D=0A/* Over-ride for RTL */=0D=0A.right-to-left .int=
+ercom-align-right{=0D=0A  text-align: left !important;=0D=0A}=0D=0A.right-t=
+o-left .intercom-align-left{=0D=0A  text-align: right !important;=0D=0A}=0D=
+=0A.right-to-left .intercom-align-left {=0D=0A  text-align:right !important=
+;=0D=0A}=0D=0A.right-to-left li {=0D=0A  text-align:right !important;=0D=0A=
+  direction: rtl;=0D=0A}=0D=0A.right-to-left .intercom-align-left img,=0D=
+=0A.right-to-left .intercom-align-left .intercom-h2b-button {=0D=0A  margin=
+-left: 0 !important;=0D=0A}=0D=0A.intercom-attachment,=0D=0A.intercom-attac=
+hments,=0D=0A.intercom-attachments td,=0D=0A.intercom-attachments th,=0D=0A=
+.intercom-attachments tr,=0D=0A.intercom-attachments tbody,=0D=0A.intercom=
+-attachments .icon,=0D=0A.intercom-attachments .icon img {=0D=0A  border: n=
+one !important;=0D=0A  box-shadow: none !important;=0D=0A  padding: 0 !impo=
+rtant;=0D=0A  margin: 0 !important;=0D=0A}=0D=0A.intercom-attachments {=0D=
+=0A  margin: 10px 0 !important;=0D=0A}=0D=0A.intercom-attachments .icon,=0D=
+=0A.intercom-attachments .icon img {=0D=0A  width: 16px !important;=0D=0A  =
+height: 16px !important;=0D=0A}=0D=0A.intercom-attachments .icon {=0D=0A  p=
+adding-right: 5px !important;=0D=0A}=0D=0A.intercom-attachment {=0D=0A  dis=
+play: inline-block !important;=0D=0A  margin-bottom: 5px !important;=0D=0A}=
+=0D=0A=0D=0A.intercom-interblocks-content-card {=0D=0A  width: 334px !impor=
+tant;=0D=0A  max-height: 136px !important;=0D=0A  max-width: 100% !importan=
+t;=0D=0A  overflow: hidden !important;=0D=0A  border-radius: 20px !importan=
+t;=0D=0A  font-size: 16px !important;=0D=0A  border: 1px solid #e0e0e0 !imp=
+ortant;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link,=0D=0A.intercom-interb=
+locks-article-card {=0D=0A  text-decoration: none !important;=0D=0A}=0D=0A=
+=0D=0A.intercom-interblocks-article-icon {=0D=0A  width: 22.5% !important;=
+=0D=0A  height: 136px !important;=0D=0A  float: left !important;=0D=0A  bac=
+kground-color: #fafafa !important;=0D=0A  background-image: url('https://bu=
+dacom.intercom-mail.com/assets/article_book-1a595be287f73c0d02f548f513bfc83=
+1.png') !important;=0D=0A  background-repeat: no-repeat !important;=0D=0A  =
+background-size: 32px !important;=0D=0A  background-position: center !impor=
+tant;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-article-text {=0D=0A  width: =
+77.5% !important;=0D=0A  float: right !important;=0D=0A  background-color: =
+#fff !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-title,=0D=0A.=
+intercom-interblocks-article-title {=0D=0A  color: #519dd4 !important;=0D=
+=0A  font-size: 15px !important;=0D=0A  margin: 16px 18px 12px !important;=
+=0D=0A  line-height: 1.3em !important;=0D=0A  overflow: hidden !important;=
+=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-description,=0D=0A.intercom-i=
+nterblocks-article-body {=0D=0A  margin: 0 18px 12px !important;=0D=0A  fon=
+t-size: 14px !important;=0D=0A  color: #65757c !important;=0D=0A  line-heig=
+ht: 1.3em !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-author,=
+=0D=0A.intercom-interblocks-article-author {=0D=0A  margin: 10px 15px !impo=
+rtant;=0D=0A  height: 24px !important;=0D=0A  line-height: normal !importan=
+t;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-author-avatar,=0D=0A.interc=
+om-interblocks-article-author-avatar {=0D=0A  width: 16px !important;=0D=0A=
+  height: 16px !important;=0D=0A  display: inline-block !important;=0D=0A  =
+vertical-align: middle !important;=0D=0A  float: left;=0D=0A  margin-right:=
+ 5px;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-link-author-avatar-image,=0D=
+=0A.intercom-interblocks-article-author-avatar-image {=0D=0A  width: 16px !=
+important;=0D=0A  height: 16px !important;=0D=0A  border-radius: 50% !impor=
+tant;=0D=0A  margin: 0 !important;=0D=0A  vertical-align: top !important;=
+=0D=0A  font-size: 12px !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks=
+-link-author-name,=0D=0A.intercom-interblocks-article-author-name {=0D=0A  =
+color: #74848b !important;=0D=0A  margin: 0 0 0 5px !important;=0D=0A  font=
+-size: 12px !important;=0D=0A  font-weight: 500 !important;=0D=0A  overflow=
+: hidden !important;=0D=0A}=0D=0A=0D=0A.intercom-interblocks-article-writte=
+n-by {=0D=0A  color: #8897a4 !important;=0D=0A  margin: 1px 0 0 5px !import=
+ant;=0D=0A  font-size: 12px !important;=0D=0A  overflow: hidden !important;=
+=0D=0A  vertical-align: middle !important;=0D=0A  float: left !important;=
+=0D=0A}=0D=0A=0D=0A</style>=0D=0A=0D=0A=0D=0A=0D=0A=0D=0A</head>=0D=0A<body=
+>=0D=0A<div style=3D"color:transparent;visibility:hidden;opacity:0;font-siz=
+e:0px;border:0;max-height:1px;width:1px;margin:0px;padding:0px;border-width=
+:0px!important;display:none!important;line-height:0px!important;"><img bord=
+er=3D"0" width=3D"1" height=3D"1" src=3D"https://budacom.intercom-mail.com/=
+q/8jW7kMwmPJkWAEUiuGuGnQ~~/AAAAAQA~/RgRh2dD3PVcIaW50ZXJjb21CCl_190v3X9NgJEl=
+SGWVkdWFyZG8uc2lubmluZ0BnbWFpbC5jb21YBAAAHX8~"/></div>=0D=0A=0D=0A=0D=0A=0D=
+=0A<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"bgtc pe=
+rsonal" align=3D"center" style=3D"background-color: #f9f9f9; border-collaps=
+e: collapse; line-height: 100% !important; margin: 0; padding: 0; width: 10=
+0% !important" bgcolor=3D"#f9f9f9">=0D=0A  <tbody>=0D=0A<tr>=0D=0A    <td>=
+=0D=0A    <!--[if (gte mso 10)]>=0D=0A      <tr>=0D=0A      <td>=0D=0A     =
+ <table style=3D"width: 600px">=0D=0A    <![endif]-->=0D=0A      <table sty=
+le=3D"border-collapse: collapse; margin: auto; max-width: 635px; min-width:=
+ 320px; width: 100%" class=3D"main-wrap">=0D=0A        <tbody>=0D=0A<tr>=0D=
+=0A          <td valign=3D"top">=0D=0A            <table cellpadding=3D"0" =
+cellspacing=3D"0" border=3D"0" class=3D"reply_header_table" style=3D"border=
+-collapse: collapse; color: #c0c0c0; font-family: 'Helvetica Neue',Arial,sa=
+ns-serif; font-size: 13px; line-height: 26px; margin: 0 auto 26px; width: 1=
+00%">=0D=0A            </table>=0D=0A          </td>=0D=0A        </tr>=0D=
+=0A        <tr>=0D=0A          <td valign=3D"top" class=3D"main_wrapper" st=
+yle=3D"padding: 0 20px">=0D=0A=0D=0A            <table cellpadding=3D"0" ce=
+llspacing=3D"0" border=3D"0" class=3D"comment_wrapper_table admin_comment" =
+align=3D"center" style=3D"-webkit-background-clip: padding-box; -webkit-bor=
+der-radius: 3px; background-clip: padding-box; border-collapse: collapse; b=
+order-radius: 3px; color: #545454; font-family: 'Helvetica Neue',Arial,sans=
+-serif; font-size: 13px; line-height: 20px; margin: 0 auto; width: 100%">=
+=0D=0A              <tbody>=0D=0A<tr>=0D=0A                <td valign=3D"to=
+p" class=3D"comment_wrapper_td">=0D=0A                  <table cellpadding=
+=3D"0" cellspacing=3D"0" border=3D"0" class=3D"comment_header" style=3D"bor=
+der: none; border-collapse: separate; font-size: 1px; height: 2px; line-hei=
+ght: 3px; width: 100%">=0D=0A                    <tbody>=0D=0A<tr>=0D=0A   =
+                   <td valign=3D"top" class=3D"comment_header_td" style=3D"=
+background-color: #210e4a; border: none; font-family: 'Helvetica Neue',Aria=
+l,sans-serif; width: 100%" bgcolor=3D"#210e4a">=C2=A0</td>=0D=0A           =
+         </tr>=0D=0A                  </tbody>=0D=0A</table>=0D=0A         =
+         <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"c=
+omment_body" style=3D"-webkit-background-clip: padding-box; -webkit-border-=
+radius: 0 0 3px 3px; background-clip: padding-box; border-collapse: collaps=
+e; border-color: #dddddd; border-radius: 0 0 3px 3px; border-style: solid s=
+olid none; border-width: 0 1px 1px; width: 100%">=0D=0A                    =
+<tbody>=0D=0A<tr>=0D=0A                      <td class=3D"comment_body_td c=
+ontent-td" style=3D"-webkit-background-clip: padding-box; -webkit-border-ra=
+dius: 0 0 3px 3px; background-clip: padding-box; background-color: white; b=
+order-radius: 0 0 3px 3px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05); col=
+or: #525252; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: 15p=
+x; line-height: 22px; overflow: hidden; padding: 40px 40px 30px" bgcolor=3D=
+"white">=0D=0A                        =0D=0A=0D=0A                        =
+=0D=0A                          <p class=3D"intercom-align-left" style=3D"l=
+ine-height: 1.5; margin: 0 0 17px; padding-top: 0; text-align: left !import=
+ant" align=3D"left">Hola eduardo,</p>=0D=0A<p class=3D"intercom-align-left"=
+ style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !important" =
+align=3D"left">Espero que est=C3=A9s bien. Antes de empezar, te cuento que =
+estamos viendo un aumento explosivo en Buda.com, =C2=A1y estamos felices!, =
+pero eso hace que los servicios (como retiros cripto) y soporte est=C3=A9n =
+demorando m=C3=A1s tiempo de lo normal. Te pido paciencia y que si tienes a=
+lg=C3=BAn/a amigo/a que est=C3=A1 reci=C3=A9n comenzando, ay=C3=BAdalo/a y =
+recomi=C3=A9ndale ir al canal de soporte :). El equipo est=C3=A1 trabajando=
+ al 1000% y estamos haci=C3=A9ndolo crecer para mejorar a=C3=BAn m=C3=A1s B=
+uda.com.</p>=0D=0A<h2 class=3D"intercom-align-left" style=3D"color: #282F33=
+; font-size: 18px; font-weight: bold; margin: 30px 0 7px; text-align: left =
+!important" align=3D"left">D=C3=B3lar pierde fuerza y Bitcoin avanza</h2>=
+=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0=
+ 0 17px; text-align: left !important" align=3D"left">La gran e inusual inye=
+cci=C3=B3n de capital que ha hecho Estados Unidos durante la pandemia (tril=
+lones de d=C3=B3lares) para evitar que su econom=C3=ADa siga sufriendo, sum=
+ado a la incertidumbre que hay en materia pol=C3=ADtica, han hecho que el d=
+=C3=B3lar pierda fuerza.</p>=0D=0A<p class=3D"intercom-align-left" style=3D=
+"line-height: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"=
+left">Desde el primer paquete de est=C3=ADmulo econ=C3=B3mico anunciado en =
+marzo por el gobierno estadounidense, <b>el USD a perdido terreno frente a =
+las principales monedas del mundo</b>:</p>=0D=0A<div class=3D"intercom-cont=
+ainer intercom-align-left" style=3D"line-height: 0; margin-bottom: 17px; ma=
+rgin-top: 17px; text-align: left !important" align=3D"left"><a target=3D"_b=
+lank" href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3D2fqQkNVDZopu=
+FIK1qPHJnr1SGYU0ahjY2ENFPPikiLU%3D&h=3Dc5f1a575fe501c33a1cfb150d89f768eae9f=
+870d-lmgaeqxd_62058606073671&l=3Dcbe328071f35c119dc6abbc9217f389a41fdb9f8-6=
+105901" style=3D"color: #1251ba"><img src=3D"https://budacom.intercom-mail.=
+com/i/o/284928996/6453652bd96d1dd4af4134ea/rr4n4qL42OkjqBUn3XN2wESKxrdLwRHk=
+NCKWaLw3b6s07rAJCZkatS6l8HXnWB1MG6PB1og-bAaKCueagFz28bFpyNcIV62vw9-CtpLdVxf=
+7jzq8MdQTe0JHNfIOuOO8ml6QgLVV" style=3D"margin: 0; max-width: 100%"></a></d=
+iv>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin=
+: 0 0 17px; text-align: left !important" align=3D"left">(toca la imagen par=
+a agrandar)</p>=0D=0A<h2 class=3D"intercom-align-left" style=3D"color: #282=
+F33; font-size: 18px; font-weight: bold; margin: 30px 0 7px; text-align: le=
+ft !important" align=3D"left">=C2=BFY si miramos a Bitcoin=3F <br>=0D=0A</h=
+2>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin:=
+ 0 0 17px; text-align: left !important" align=3D"left">Que Bitcoin suba de =
+precio en relaci=C3=B3n al d=C3=B3lar, significa que la moneda estadouniden=
+se pierde valor respecto a la criptomoneda m=C3=A1s grande del mercado.</p>=
+=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0=
+ 0 17px; text-align: left !important" align=3D"left">Mira este gr=C3=A1fico=
+ que muestra c=C3=B3mo el d=C3=B3lar ha perdido terreno frente a Bitcoin en=
+ el tiempo.</p>=0D=0A<div class=3D"intercom-container intercom-align-left" =
+style=3D"line-height: 0; margin-bottom: 17px; margin-top: 17px; text-align:=
+ left !important" align=3D"left"><a target=3D"_blank" href=3D"https://budac=
+om.intercom-clicks.com/via/e=3Fob=3DtLrVdSDR1OCD%2FgHT4V8st3fWP5WO46lsJ%2F9=
+FGQoduQo%3D&h=3D46b8d0388ee12a0feb3ef2af2907c5aae0285727-lmgaeqxd_620586060=
+73671&l=3D793d17c481699d94025e149e3bc0759a54893c9e-6105939" style=3D"color:=
+ #1251ba"><img src=3D"https://budacom.intercom-mail.com/i/o/284929002/7bb3f=
+d92a368ce0ef30dd0d1/s0Sg-8KZM9kg_Q8iUBvk_OxFJL8M0QES9DxYlNz6vEAsj14lkGsmKv5=
+_YMactMhu1ySvWIvC9gOiX4T4kJW8fvDReazJr5VUqyp3KGzasn0ud97G3yeiigp1-agDFSbn13=
+9lYDOc" style=3D"margin: 0; max-width: 100%"></a></div>=0D=0A<p class=3D"in=
+tercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align:=
+ left !important" align=3D"left">(toca la imagen para agrandar)<br><br>En a=
+bril de 2011, con 1 d=C3=B3lar pod=C3=ADas comprar 100.000.000 sats, lo que=
+ es equivalente a 1 BTC. Hoy, con el mismo d=C3=B3lar, puedes comprar algo =
+as=C3=AD como 3.000 sats o 0,00003 bitcoin. (=E2=80=9Csats=E2=80=9D o satos=
+his es la unidad en la cual se puede dividir bitcoin. 1 BTC =3D 100.000.000=
+ sats)</p>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5;=
+ margin: 0 0 17px; text-align: left !important" align=3D"left"><b>En s=C3=
+=B3lo 1 a=C3=B1o, el d=C3=B3lar pas=C3=B3 de poder comprar 14.000 sats (6 d=
+e enero, 2020), a tan solo 3.000 (6 de enero 2021). Eso significa una reduc=
+ci=C3=B3n del 78,5% en el poder de compra frente a bitcoin.=C2=A0</b></p>=
+=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0=
+ 0 17px; text-align: left !important" align=3D"left">Ac=C3=A1 puedes ver en=
+ tiempo real<a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3DKBa=
+gVnJRwpnOGPS8MHcDE6JFsLn75Az8eOglWMrm1XE%3D&h=3D5bbf35482d9ba6566a516fdbf30=
+2da9e8f612eb5-lmgaeqxd_62058606073671&l=3Dc63ebde3853309a0b4a52279b97067249=
+765836b-6105747" target=3D"_blank" style=3D"color: #1251ba"> cu=C3=A1ntos s=
+ats puedes comprar con 1 d=C3=B3lar</a>.</p>=0D=0A<h2 class=3D"intercom-ali=
+gn-left" style=3D"color: #282F33; font-size: 18px; font-weight: bold; margi=
+n: 30px 0 7px; text-align: left !important" align=3D"left">=C2=BFCu=C3=A1nt=
+as veces es Bitcoin el PIB de tu pa=C3=ADs=3F</h2>=0D=0A<p class=3D"interco=
+m-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left=
+ !important" align=3D"left">A medida que el precio de Bitcoin crece, su cap=
+italizaci=C3=B3n de mercado tambi=C3=A9n lo hace. Para obtener la capitaliz=
+aci=C3=B3n de mercado o <i>market cap</i> de Bitcoin, debemos multiplicar e=
+l precio actual por la cantidad de bitcoins disponible.</p>=0D=0A<p class=
+=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-=
+align: left !important" align=3D"left">Actualmente, y con el precio rondand=
+o los USD $39.000, el market cap de Bitcoin es de USD $730 billones. Eso si=
+gnifica que Bitcoin es:=C2=A0</p>=0D=0A<ul style=3D"list-style-type: disc; =
+margin: 0 0 20px 40px; padding: 0">=0D=0A<li>=0D=0A<b>3.2</b> veces m=C3=A1=
+s grande que el PIB (o PBI) de<b> Per=C3=BA</b> (USD $226 B)</li>=0D=0A<li>=
+=0D=0A<b>2.9</b> veces m=C3=A1s grande que el PIB de <b>Chile</b> (USD $252=
+ B)</li>=0D=0A<li>=0D=0A<b>2.1</b> veces m=C3=A1s grande que el PIB de <b>C=
+olombia</b> (USD $341 B)</li>=0D=0A<li>=0D=0A<b>1.4</b> veces m=C3=A1s gran=
+de que el PIB de <b>Argentina</b> (USD $509 B)</li>=0D=0A</ul>=0D=0A<p clas=
+s=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text=
+-align: left !important" align=3D"left">(cifras PIB 2019)</p>=0D=0A<p class=
+=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-=
+align: left !important" align=3D"left">Como puedes ver, Bitcoin es gigante =
+y sigue creciendo a un volumen extraordinario, pero as=C3=AD mismo como el =
+precio sube, puede bajar de un momento a otro. <b>Es por eso que si est=C3=
+=A1s pensando en comprar bitcoin, siempre, repito, SIEMPRE debes hacerlo de=
+ manera responsable</b>. Invierte montos que no vayas a necesitar gastar en=
+ un periodo de al menos, 2 a=C3=B1os, ya que si en alg=C3=BAn momento te ve=
+s obligado a vender, no queremos que asumas la p=C3=A9rdida en caso de que =
+el precio de bitcoin est=C3=A9 bajo.</p>=0D=0A<p class=3D"intercom-align-le=
+ft" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !importan=
+t" align=3D"left">Lee nuestra <a href=3D"https://budacom.intercom-clicks.co=
+m/via/e=3Fob=3DLzD0EeLx1sSyH2MmFBw%2BYJgMO3j1r67wE5YNEP1AMqrv0NmsA0YApmTQ5W=
+XgeSjJ&h=3Dd2d9c12ad2ec2b14359807930b6a34d3cd6be4f7-lmgaeqxd_62058606073671=
+&l=3Db40e0ce39af951867be27b9081d63edc949fe905-6105748" target=3D"_blank" st=
+yle=3D"color: #1251ba">Gu=C3=ADa de Inversi=C3=B3n Responsable</a></p>=0D=
+=0A<hr style=3D"border-bottom-width: 0; border-style: solid none none; bord=
+er-top-color: #DDD; border-top-width: 1px; margin: 50px 30%">=0D=0A<div cla=
+ss=3D"intercom-container intercom-align-left" style=3D"line-height: 0; marg=
+in-bottom: 17px; margin-top: 17px; text-align: left !important" align=3D"le=
+ft"><img src=3D"https://budacom.intercom-mail.com/i/o/284945572/4d33cf4af89=
+e56eba20f9e34/Tabla+precios+Diego+%2816%29.png" style=3D"margin: 0; max-wid=
+th: 100%"></div>=0D=0A<table class=3D"intercom-container intercom-align-cen=
+ter" align=3D"center" style=3D"margin: 17px auto 16px; text-align: center !=
+important"><tbody><tr><td style=3D"background-color: #210e4a; border-radius=
+: 3px; font-family: Helvetica, Arial, sans-serif; margin: 0; padding: 12px =
+35px" bgcolor=3D"#210e4a"><a class=3D"intercom-h2b-button" target=3D"_blank=
+" href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3DOB0mDef0Nviaw3CM=
+WLJf4Lu5XaC4h6rQGfO6HBJ0gPqBAZW3yh2O%2FurjRf4velWJd8BgidvxVFta95Al5czAGxrF0=
+R6Eh7a3la1gr4RnSr6i1SmUDgLJuNbjOEuM2xcT&h=3D3c4f8f1aa2ad85c4a8064aedb0850df=
+e62ff8af2-lmgaeqxd_62058606073671&l=3Dd0590f0b6e19c364607e3bde9d493d32eeff3=
+cfb-6106716" style=3D"background-color: #210e4a; border: 1px none rgba(0,0,=
+0,0.2); border-radius: 5px; color: #FFF; display: inline-block; font-size: =
+14px; font-weight: bold; min-height: 20px; padding: 0px; text-decoration: n=
+one">Compra bitcoin en Buda.com</a></td></tr></tbody></table>=0D=0A<hr styl=
+e=3D"border-bottom-width: 0; border-style: solid none none; border-top-colo=
+r: #DDD; border-top-width: 1px; margin: 50px 30%">=0D=0A<h1 class=3D"interc=
+om-align-left" style=3D"color: #282F33; font-size: 26px; font-weight: norma=
+l; line-height: 33px; margin-bottom: 7px; margin-top: 30px; text-align: lef=
+t !important" align=3D"left">Veamos las noticias</h1>=0D=0A<p class=3D"inte=
+rcom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: l=
+eft !important" align=3D"left"></p>=0D=0A<h2 class=3D"intercom-align-left" =
+style=3D"color: #282F33; font-size: 18px; font-weight: bold; margin: 30px 0=
+ 7px; text-align: left !important" align=3D"left">Regulador estadounidense =
+permite a bancos usar stablecoins y participar en blockchains</h2>=0D=0A<p =
+class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; =
+text-align: left !important" align=3D"left">El regulador bancario estadouni=
+dense (OCC) envi=C3=B3 este lunes <a href=3D"https://budacom.intercom-click=
+s.com/via/e=3Fob=3DfA%2BkwrVsFNfX6VUqfnrC3sskkibcOwVz%2FWTtvZ%2FZmMy7B1T5jf=
+WxVmOH3taKxqRHkSpDwY5wL5MHC4p8RP4V81lXC5BJEBi7n3s7uJO5wt8%3D&h=3De0b684e133=
+b8393ff793f0b418f3df262c2299ed-lmgaeqxd_62058606073671&l=3Dd0ad3a22e57ec26a=
+4eeac76d084cdcddaed01a0d-6105753" target=3D"_blank" style=3D"color: #1251ba=
+">una carta</a> a los bancos, en la cual informa que estas entidades financ=
+ieras ahora podr=C3=A1n <b>usar <i>stablecoins </i>(como USDT, USDC, DAI, e=
+ntre otras) para realizar pagos y otras funciones bancarias</b>.=C2=A0</p>=
+=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0=
+ 0 17px; text-align: left !important" align=3D"left"><b>=C2=BFBye Bye SWIFT=
+=3F</b></p>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5=
+; margin: 0 0 17px; text-align: left !important" align=3D"left">En el mismo=
+ documento, el regulador permiti=C3=B3 que los bancos participen en redes d=
+e verificaci=C3=B3n de nodos independientes (INVN), tales como blockchains.=
+ Esto <b>permite a los bancos validar, guardar y grabar transacciones que o=
+curran en una blockchain</b>, o sea, actuar como un nodo. <br><br>En esenci=
+a, la OCC abri=C3=B3 la puerta para que los bancos entren de lleno en el ec=
+osistema cripto, validando la transici=C3=B3n hacia una econom=C3=ADa digit=
+al. Qui=C3=A9n sabe, quiz=C3=A1s pronto veamos a JP Morgan minando bitcoin.=
+<br><br>Lee ac=C3=A1 el <a href=3D"https://budacom.intercom-clicks.com/via/=
+e=3Fob=3DDxQnWqA8Cg5q3e4AZl0tHNWMGyI%2F%2BFf95v9Tq05KR%2BbhqLj%2BaUGfmw%2Fv=
+psk4%2FUREXggoHu1rUV%2BpqOQspVKVvHa3H9R96TPDD65I52QNQGc%3D&h=3D24f44f3a99af=
+f61629268b29afa4fd2831aa50f3-lmgaeqxd_62058606073671&l=3Dae1cefd1b4a01aea8c=
+a6687c0848458c016987e3-6105754" target=3D"_blank" style=3D"color: #1251ba">=
+documento presentado por la OCC</a>.</p>=0D=0A<hr style=3D"border-bottom-wi=
+dth: 0; border-style: solid none none; border-top-color: #DDD; border-top-w=
+idth: 1px; margin: 50px 30%">=0D=0A<h2 class=3D"intercom-align-left" style=
+=3D"color: #282F33; font-size: 18px; font-weight: bold; margin: 30px 0 7px;=
+ text-align: left !important" align=3D"left">Bitcoin est=C3=A1 de cumplea=
+=C3=B1os (=C2=BFotra vez=3F)</h2>=0D=0A<p class=3D"intercom-align-left" sty=
+le=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !important" alig=
+n=3D"left">El pasado 3 de enero Bitcoin celebr=C3=B3 su 12=C2=B0 cumplea=C3=
+=B1os, ya que ese mismo d=C3=ADa, pero en 2009, el primer bloque de la red =
+fue minado, en donde el misterioso Satoshi Nakamoto adquiri=C3=B3 por prime=
+ra vez 50 bitcoin.<br><br>El bloque ten=C3=ADa inscrito el siguiente mensaj=
+e: =E2=80=9CEl canciller est=C3=A1 al borde de entregar un segundo rescate =
+para los bancos=E2=80=9D. Frase que fue parte de la portada del diario <i>T=
+he Times</i> en Londres aquel 3 de enero de 2009.</p>=0D=0A<div class=3D"in=
+tercom-container intercom-align-left" style=3D"line-height: 0; margin-botto=
+m: 17px; margin-top: 17px; text-align: left !important" align=3D"left"><img=
+ src=3D"https://budacom.intercom-mail.com/i/o/284929007/df28a2e285f2046ff26=
+ae550/cRFF5Pg-kcFd74bAS14oun2ZZy4VRAmQB-dHOye-tr_Rtr5sNjS0-6nmYe7ti2OcpxheD=
+fSMvQ8onOiltNDVDqIJkSigUqtqLVr9MYiAo1MjohwWe9-9O5js9kDgfvwHpTqn7wiR" style=
+=3D"margin: 0; max-width: 100%"></div>=0D=0A<p class=3D"intercom-align-left=
+" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !important"=
+ align=3D"left">No se confundan. Quiz=C3=A1s recuerdan que en octubre Bitco=
+in tambi=C3=A9n estuvo de cumplea=C3=B1os. Bueno, es que el 31 de octubre p=
+asado se cumplieron 12 a=C3=B1os desde que Satoshi Nakamoto public=C3=B3 el=
+ <a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3DrIIri7njjy0l%2=
+FChJzEGrbVDQ97L1uMGcJ9hPMFPXiYo%3D&h=3D06331372ffc4eb4b17f39dae3fce1179fcca=
+0eca-lmgaeqxd_62058606073671&l=3D8cffac1e543fa97e23a0256fb363b03b495c7886-6=
+105756" target=3D"_blank" style=3D"color: #1251ba">whitepaper </a>de esta m=
+aravillosa criptomoneda. Con tantos cumplea=C3=B1os, quiz=C3=A1s bitcoin ma=
+dure antes de lo que algunos creen.</p>=0D=0A<hr style=3D"border-bottom-wid=
+th: 0; border-style: solid none none; border-top-color: #DDD; border-top-wi=
+dth: 1px; margin: 50px 30%">=0D=0A<h2 class=3D"intercom-align-left" style=
+=3D"color: #282F33; font-size: 18px; font-weight: bold; margin: 30px 0 7px;=
+ text-align: left !important" align=3D"left">Ethereum supera los USD $1.000=
+ y se acerca a un nuevo m=C3=A1ximo hist=C3=B3rico</h2>=0D=0A<p class=3D"in=
+tercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align:=
+ left !important" align=3D"left">La segunda criptomoneda m=C3=A1s grande po=
+r capitalizaci=C3=B3n de mercado, ether, se acerca r=C3=A1pidamente a su m=
+=C3=A1ximo hist=C3=B3rico de USD $1.448 alcanzado en 2017, y todo indica qu=
+e no tendr=C3=A1 problemas para superarlo.=C2=A0</p>=0D=0A<p class=3D"inter=
+com-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: le=
+ft !important" align=3D"left">Solo en los =C3=BAltimos 7 d=C3=ADas, el prec=
+io de ether ha visto un <b>incremento del 61%</b>, alcanzando una capitaliz=
+aci=C3=B3n de mercado de USD $137 billones, 1/5 de Bitcoin.</p>=0D=0A<div c=
+lass=3D"intercom-container intercom-align-left" style=3D"line-height: 0; ma=
+rgin-bottom: 17px; margin-top: 17px; text-align: left !important" align=3D"=
+left"><img src=3D"https://budacom.intercom-mail.com/i/o/284924294/c98a96dd0=
+3db61e164094c94/image.png" style=3D"margin: 0; max-width: 100%"></div>=0D=
+=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 =
+17px; text-align: left !important" align=3D"left"><br>A fines del a=C3=B1o =
+pasado te contamos que la fase 0 de Ethereum 2.0 hab=C3=ADa sido lanzada. H=
+oy, ya van m=C3=A1s de <b>1,7 billones de ETH participando de la red</b>. A=
+l precio actual, esos ether equivalen a aproximadamente <b>USD $2.04 trillo=
+nes.</b></p>=0D=0A<hr style=3D"border-bottom-width: 0; border-style: solid =
+none none; border-top-color: #DDD; border-top-width: 1px; margin: 50px 30%"=
+>=0D=0A<h2 class=3D"intercom-align-left" style=3D"color: #282F33; font-size=
+: 18px; font-weight: bold; margin: 30px 0 7px; text-align: left !important"=
+ align=3D"left">JP Morgan dice que Bitcoin llegar=C3=A1 a los USD $146.000<=
+/h2>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margi=
+n: 0 0 17px; text-align: left !important" align=3D"left">Uno de los bancos =
+m=C3=A1s grandes del mundo - <a href=3D"https://budacom.intercom-clicks.com=
+/via/e=3Fob=3DPkn%2BoPL0nMIUOzJN9Edq7q7jHf1Bgn6jImXRCnCdaqsXOEoJQoJnX%2BmSo=
+0bm41L%2Fy%2B6OFusjCUdqD8sEvJeCjyK0XVFxVDNaEgFZPSwDe1C4h1%2FkwZqbydnktnhM21=
+zDJ4hYl4DAhBdD3kvhoSMxcs3%2BvLzBXwYdMaCvAvosh7o%3D&h=3D430f344489b03d567b10=
+bc4b12503224e48f7969-lmgaeqxd_62058606073671&l=3D9968036c05ece864e9f79a9f15=
+8fed6e71ea61e1-6105749" target=3D"_blank" style=3D"color: #1251ba">y ex arc=
+hienemigo de Bitcoin</a> - dijo que la criptomoneda m=C3=A1s grande de toda=
+s podr=C3=ADa llegar a valer<b> USD $146.000 </b>en el largo plazo.</p>=0D=
+=0A<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 =
+17px; text-align: left !important" align=3D"left">Para que esto suceda, esc=
+ribi=C3=B3 el analista del banco, la volatilidad de Bitcoin tiene que equip=
+arar a la del oro en el largo plazo, solo as=C3=AD los inversionistas insti=
+tucionales tendr=C3=A1n mayor confianza e invertir=C3=A1n grandes cantidade=
+s en Bitcoin.=C2=A0</p>=0D=0A<p class=3D"intercom-align-left" style=3D"line=
+-height: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left"=
+>El banco agreg=C3=B3 que =E2=80=9Cno cabe duda que el impulso instituciona=
+l que est=C3=A1 recibiendo Bitcoin es la principal diferencia entre el 2020=
+ y lo que ocurri=C3=B3 en 2017=E2=80=9D.</p>=0D=0A<p class=3D"intercom-alig=
+n-left" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !impo=
+rtant" align=3D"left">Para lograr un precio de USD $146.000, <b>la capitali=
+zaci=C3=B3n de mercado de BTC tendr=C3=ADa que multiplicarse por aproximada=
+mente 3,5</b>, teniendo en cuenta que la actual es de USD $730 billones. <b=
+r><br>=C2=BFEn cu=C3=A1nto tiempo podr=C3=ADa ocurrir esto=3F no lo sabemos=
+, pero mira: el 29 de abril del a=C3=B1o pasado (2020), la capitalizaci=C3=
+=B3n de mercado de Bitcoin era de USD $161 billones, eso es<b> casi exactam=
+ente 4 veces menor a lo que es hoy, en menos de 9 meses</b>.</p>=0D=0A<p cl=
+ass=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px; te=
+xt-align: left !important" align=3D"left">=C2=A0S=C3=AD, es verdad que la c=
+antidad de bitcoin que hab=C3=ADa en abril era menor, pero teniendo en cuen=
+ta que se crean 900 diarios, en un a=C3=B1o la diferencia que genera esta v=
+ariable es casi insignificante.=C2=A0</p>=0D=0A<p class=3D"intercom-align-l=
+eft" style=3D"line-height: 1.5; margin: 0 0 17px; text-align: left !importa=
+nt" align=3D"left">Puedes leer la <a href=3D"https://budacom.intercom-click=
+s.com/via/e=3Fob=3D6yztPeZcznMuUD3fM7SNJIemC4oQqLn1F20lXsn%2B8hKbgVeBArb05t=
+NA%2F%2Fm1ojcrsVvIut1s4OsB7564vejhQ5FaPI8%2BVVvYqAXKbMEXdCeCcoGbtggzml%2F8o=
+wsZe7ps3gmojahagLVODJv8BLYgtHrQhQggrpHO28ZT2ygbpKs%3D&h=3D2a73e263be999bc74=
+65d3cf4827ed2cd6ca8caca-lmgaeqxd_62058606073671&l=3Dffec0d127d9d94df2371746=
+63024a92dd57b8719-6105750" target=3D"_blank" style=3D"color: #1251ba">notic=
+ia completa en ingl=C3=A9s ac=C3=A1</a>.</p>=0D=0A<hr style=3D"border-botto=
+m-width: 0; border-style: solid none none; border-top-color: #DDD; border-t=
+op-width: 1px; margin: 50px 30%">=0D=0A<h2 class=3D"intercom-align-center" =
+style=3D"color: #282F33; font-size: 18px; font-weight: bold; margin: 30px 0=
+ 7px; text-align: center !important" align=3D"center">Si te gust=C3=B3 este=
+ newsletter, puedes compartirlo con tus amigos/as y aprovechas de ganar el =
+20% de sus comisiones cuando usen Buda.com</h2>=0D=0A<table class=3D"interc=
+om-container intercom-align-center" align=3D"center" style=3D"margin: 17px =
+auto 16px; text-align: center !important"><tbody><tr><td style=3D"backgroun=
+d-color: #210e4a; border-radius: 3px; font-family: Helvetica, Arial, sans-s=
+erif; margin: 0; padding: 12px 35px" bgcolor=3D"#210e4a"><a class=3D"interc=
+om-h2b-button" target=3D"_blank" href=3D"https://budacom.intercom-clicks.co=
+m/via/e=3Fob=3DHHiNeUh7l%2FgKA4bHU6xE8w3IzYJiqnqUcW9l4swIuwlpElZyvlMioIsCQe=
+GN%2Ff5EeA%2FkdcSTW2l5hANqIfScxaxBakaQeC00twHWxxAbszAHSbT8nfUMpCTP1wnsycFN&=
+h=3Daeb53a053805bea947d45b127487f85ed45fd9fc-lmgaeqxd_62058606073671&l=3D6c=
+bf233309a7b79974caacf7e40e5312cf87a1b4-6106670" style=3D"background-color: =
+#210e4a; border: 1px none rgba(0,0,0,0.2); border-radius: 5px; color: #FFF;=
+ display: inline-block; font-size: 14px; font-weight: bold; min-height: 20p=
+x; padding: 0px; text-decoration: none">Compratir</a></td></tr></tbody></ta=
+ble>=0D=0A<hr style=3D"border-bottom-width: 0; border-style: solid none non=
+e; border-top-color: #DDD; border-top-width: 1px; margin: 50px 30%">=0D=0A<=
+p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17px=
+; text-align: left !important" align=3D"left">S=C3=ADguenos en nuestras red=
+es sociales:</p>=0D=0A<p class=3D"intercom-align-left" style=3D"line-height=
+: 1.5; margin: 0 0 17px; text-align: left !important" align=3D"left"><a hre=
+f=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3DJwCOpNsGRwIOILOsaRxBz=
+Fsfl4jI8Ef%2FajQEJNNs864I6c5M%2FLBbOCvWoAUgQwGPLEd4N%2B1AlI%2BFlgddbdlgHA%3=
+D%3D&h=3Dbe2ae35fc194d1acf79f5d06293fc035faefbd9f-lmgaeqxd_62058606073671&l=
+=3D5bdeda2a780123a67d15598487737ce33b2ed4b5-6106671" target=3D"_blank" styl=
+e=3D"color: #1251ba">YouTube</a> | <a href=3D"https://budacom.intercom-clic=
+ks.com/via/e=3Fob=3DJwCOpNsGRwIOILOsaRxBzFsfl4jI8Ef%2FajQEJNNs864I6c5M%2FLB=
+bOCvWoAUgQwGPLEd4N%2B1AlI%2BFlgddbdlgHA%3D%3D&h=3Dbe2ae35fc194d1acf79f5d062=
+93fc035faefbd9f-lmgaeqxd_62058606073671&l=3D5bdeda2a780123a67d15598487737ce=
+33b2ed4b5-6106671" target=3D"_blank" style=3D"color: #1251ba">Twitter</a> |=
+ <a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3DG61cNkCF7J4ALU=
+TseWQ%2FU5trxDkaGf2zpOn7cyOBgn%2BhKJGDPADxzVhAQiz9wfFT&h=3Dc412c9127ba5c4d5=
+426d3dafd27353fd9bbae232-lmgaeqxd_62058606073671&l=3D6c32620c36419d2aeaa7d1=
+ca6687be26864dc231-6106672" target=3D"_blank" style=3D"color: #1251ba">Inst=
+agram</a> | <a href=3D"https://budacom.intercom-clicks.com/via/e=3Fob=3D5k3=
+OJf%2FsvEInGD8iSzF2fg%2BkRvV%2B2WWca9UGlr8FPx9fnOaZmwQVF2usonAmSwUR&h=3Dc99=
+1abc55f4d56425521f2b7de91a002c1eb0a26-lmgaeqxd_62058606073671&l=3D91e77e5b9=
+c07672ef43617716226b08f319e2860-6106673" target=3D"_blank" style=3D"color: =
+#1251ba">Facebook</a> | <a href=3D"https://budacom.intercom-clicks.com/via/=
+e=3Fob=3DZtqrbYKUdYqYe9xQbkMsrizZkUoN6KKCk33K9ocRWBYV0KRdcQln6BWSJJtSH8ZL&h=
+=3D10bdf3ef99a1ad08ba8d451baa920a80489797b0-lmgaeqxd_62058606073671&l=3D7ce=
+8653dd6137f2d7a5f9edfd3d8f74b0e22d00a-6106674" target=3D"_blank" style=3D"c=
+olor: #1251ba">LinkedIn</a></p>=0D=0A                        =0D=0A=0D=0A  =
+                      =0D=0A                      </td>=0D=0A              =
+      </tr>=0D=0A                   </tbody>=0D=0A</table>=0D=0A           =
+       </td>=0D=0A                 </tr>=0D=0A                </tbody>=0D=
+=0A</table>=0D=0A=0D=0A                <div class=3D"margin-arrow" style=3D=
+"display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflo=
+w: hidden; visibility: hidden; width: 0">=0D=0A                  <table cel=
+lpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"message_footer_table=
+ margin-arrow" align=3D"center" style=3D"border-collapse: collapse; color: =
+#545454; display: none; font-family: 'Helvetica Neue',Arial,sans-serif; fon=
+t-size: 13px; height: 0; line-height: 20px; margin: 0 auto; max-height: 0; =
+max-width: 100%; opacity: 0; overflow: hidden; visibility: hidden; width: 1=
+00%">=0D=0A                    <tbody>=0D=0A<tr>=0D=0A                     =
+ <td valign=3D"top" width=3D"80" class=3D"arrow-wrap" style=3D"color: #2727=
+27; height: 18px; padding-left: 40px; text-align: left" align=3D"left">=0D=
+=0A                        <img alt=3D"Triangle" class=3D"image_fix" height=
+=3D"18" src=3D"https://budacom.intercom-mail.com/assets/email/personal/tria=
+ngle-8747882e9ef8882f9bc057241fd3c049.png" style=3D"-ms-interpolation-mode:=
+ bicubic; display: inline-block; margin-top: -1px; max-width: 100%; outline=
+: none; text-decoration: none" width=3D"40">=0D=0A                      </t=
+d>=0D=0A                    </tr>=0D=0A                  </tbody>=0D=0A</ta=
+ble>=0D=0A                </div>=0D=0A                <div class=3D"image-a=
+rrow">=0D=0A                  <table cellpadding=3D"0" cellspacing=3D"0" bo=
+rder=3D"0" class=3D"message_footer_table image-arrow" align=3D"center" styl=
+e=3D"border-collapse: collapse; margin: 0 auto; max-width: 100%; width: 100=
+%">=0D=0A                    <tbody>=0D=0A<tr>=0D=0A                      <=
+td valign=3D"top" width=3D"100%">=0D=0A                        <img alt=3D"=
+" src=3D"https://budacom.intercom-mail.com/assets/email/personal/arrow-37f6=
+774809df6fd083bfc98e9d562e23ca6ede618e2b5e10c042de88d2f858dd.png" style=3D"=
+max-width: 100%; width: 100%">=0D=0A                      </td>=0D=0A      =
+              </tr>=0D=0A                  </tbody>=0D=0A</table>=0D=0A    =
+            </div>=0D=0A                <table cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" class=3D"message_footer_table" align=3D"center" style=
+=3D"border-collapse: collapse; color: #545454; font-family: 'Helvetica Neue=
+',Arial,sans-serif; font-size: 13px; line-height: 20px; margin: 0 auto; max=
+-width: 100%; width: 100%">=0D=0A                  <tbody><tr>=0D=0A       =
+           </tr></tbody>=0D=0A</table>=0D=0A<table width=3D"100%" cellpaddi=
+ng=3D"0" cellspacing=3D"0" border=3D"0">=0D=0A                      <tbody>=
+=0D=0A<tr>=0D=0A                        <td width=3D"75%" class=3D"footer-t=
+d-wrapper">=0D=0A                          <table width=3D"100%" cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse: collapse; =
+color: #545454; font-family: 'Helvetica Neue',Arial,sans-serif; font-size: =
+13px; line-height: 20px; margin: 0 auto; max-width: 100%; width: 100%" clas=
+s=3D"message_footer_table">=0D=0A                            <tbody>=0D=0A<=
+tr>=0D=0A                              <td width=3D"40" class=3D"space">=C2=
+=A0</td>=0D=0A                              =0D=0A                         =
+     <td class=3D"admin_name" style=3D"color: #999999">=0D=0A              =
+                  <b style=3D"color: #6f6f6f">Diego de Buda.com</b> =0D=0A=
+=0D=0A                              </td>=0D=0A                            =
+</tr>=0D=0A                          </tbody>=0D=0A</table>=0D=0A          =
+              </td>=0D=0A                        <td width=3D"25%" class=3D=
+"footer-td-wrapper">=0D=0A                          <table width=3D"100%" c=
+ellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border-collapse: c=
+ollapse; color: #545454; font-family: 'Helvetica Neue',Arial,sans-serif; fo=
+nt-size: 13px; line-height: 20px; margin: 0 auto; max-width: 100%; width: 1=
+00%" class=3D"message_footer_table">=0D=0A                            <tbod=
+y>=0D=0A<tr>=0D=0A                              <td valign=3D"middle" align=
+=3D"right" class=3D"date_cell" style=3D"color: #999999; font-size: 11px; te=
+xt-align: right">=0D=0A=0D=0A                                =0D=0A        =
+                          =0D=0A                                    <a href=
+=3D"https://budacom.intercom-mail.com/subscriptions/unsubscribe=3Fapp_id=3D=
+lmgaeqxd&conversation_id=3D62058606073671&user_id=3D5a5817fd2f1161381d418cd=
+f" style=3D"color: #999999">Cancelar suscripci=C3=B3n a nuestros correos el=
+ectr=C3=B3nicos</a>=0D=0A                                  =0D=0A          =
+                      =0D=0A                              </td>=0D=0A      =
+                      </tr>=0D=0A<tr>=0D=0A                          </tr>=
+=0D=0A</tbody>=0D=0A</table>=0D=0A                        </td>=0D=0A      =
+                </tr>=0D=0A                    </tbody>=0D=0A</table>=0D=0A=
+                  </td>=0D=0A</tr>=0D=0A                </tbody>=0D=0A</tab=
+le>=0D=0A              </td>=0D=0A            </tr>=0D=0A            <tr>=
+=0D=0A              <td valign=3D"top" height=3D"20"></td>=0D=0A           =
+ </tr>=0D=0A          </tbody>=0D=0A</table>=0D=0A          <!--[if (gte ms=
+o 10)]>=0D=0A            </td>=0D=0A            </tr>=0D=0A            </ta=
+ble>=0D=0A          <![endif]-->=0D=0A        =0D=0A      =0D=0A    =0D=0A =
+   =0D=0A        <table style=3D"background-color: #f9f9f9; border-collapse=
+: collapse; color: #545454; font-family: 'Helvetica Neue',Arial,sans-serif;=
+ font-size: 13px; letter-spacing: 0.02em; line-height: 20px; margin: 0 auto=
+; max-width: 100%; width: 100%" class=3D"powered-by-table" bgcolor=3D"#f9f9=
+f9">=0D=0A          <tbody>=0D=0A<tr>=0D=0A            <td class=3D"powered=
+-by-text" style=3D"color: #999999; font-size: 11px; padding: 15px 0; text-a=
+lign: center; width: 100%" align=3D"center">=0D=0A              Con la tecn=
+olog=C3=ADa de <a href=3D"https://budacom.intercom-mail.com/via/e=3Fob=3DLn=
+z%2FI%2BXSaq51BYuJBI%2BwWEIa3I4t%2FOJwPBtXZ2aq5VjOh%2F2ZcZN3nmsJQy77%2Fhh7G=
+6Jvc3HrmP36hm2tDPMGNt7YqoLiIyPuNc3a98mq9Pw%3D&h=3D88f1cabf135a7b248ab922d49=
+b89411cd10d5ba5-lmgaeqxd_62058606073671" style=3D"color: #999; font-weight:=
+ bold; text-decoration: none">Intercom</a><br>=0D=0A            </td>=0D=0A=
+          </tr>=0D=0A        </tbody>=0D=0A</table>=0D=0A    =0D=0A=0D=0A=
+=0D=0A<img src=3D"https://budacom.intercom-mail.com/via/o=3Fh=3D94d686dd634=
+a790d39f1bf270c4fb3d9a2238cf3-lmgaeqxd_62058606073671" width=3D"1" height=
+=3D"1" style=3D"display: block;" alt=3D"intercom">=0D=0A=0D=0A<img border=
+=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://budacom.intercom-ma=
+il.com/q/dGf1nDzNO_6SbRfcTPdKWg~~/AAAAAQA~/RgRh2dD3PlcIaW50ZXJjb21CCl_190v3=
+X9NgJElSGWVkdWFyZG8uc2lubmluZ0BnbWFpbC5jb21YBAAAHX8~">=0D=0A</body>=0D=0A</=
+html>
+--_----bl89hz2kzRTOT4ro/G/Xiw===_51/94-12471-7FB47FF5--
+

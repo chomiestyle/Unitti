@@ -42,7 +42,13 @@ def get_data(filename, cols=None):
     print(len(new_data.columns))
     for i in new_data.columns:
         print(i)
-    new_data.to_csv('C:/Users/56979/PycharmProjects/Unitti/Machine_learning/AnomalyDetection/prueba_metricas2.csv', index=False)
+    new_data.set_index("Time", inplace=True)
+    new_data=new_data.loc[(new_data!=0).any(axis=1)]
+    #new_data= new_data[(new_data.T != 0).any()]
+    new_data=new_data.dropna()
+    #new_data
+    print(new_data)
+    new_data.to_csv('C:/Users/56979/PycharmProjects/Unitti/Machine_learning/AnomalyDetection/prueba_metricas3.csv', index=True)
 
     # selected_data=data[col].dropna(inplace=False)
     # train, test = train_test_split(selected_data, test_size=0.2, shuffle=False)

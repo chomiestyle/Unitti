@@ -141,7 +141,8 @@ def compute(X,Y,MODEL_SELECTED,num_epoch,n_features):
         Computation : Find Anomaly using model based computation
     """
     if str(MODEL_SELECTED) == "lstmae":
-        model = LSTMAE(10,n_features)
+        model = LSTMAE(LOOKBACK_SIZE=LOOKBACK_SIZE,DIMENSION=n_features)
+        model = model.cuda()
         criterion = torch.nn.MSELoss(reduction='mean')
         optimizer = torch.optim.Adam(model.parameters(), lr=1e-5)
         train_data = torch.utils.data.TensorDataset(torch.tensor(X.astype(np.float32)), torch.tensor(X.astype(np.float32)))
@@ -151,15 +152,15 @@ def compute(X,Y,MODEL_SELECTED,num_epoch,n_features):
             loss_sum = 0.0
             ctr = 0
             for x_batch, y_batch in train_loader:
-                loss_train = train_step(x_batch, y_batch)
+                loss_train = train_step(x_batch.cuda(), y_batch.cuda())
                 loss_sum += loss_train
                 ctr += 1
             print("Training Loss: {0} - Epoch: {1}".format(float(loss_sum/ctr), epoch+1))
-        hypothesis = model(torch.tensor(X.astype(np.float32))).detach().numpy()
+        hypothesis = model(torch.tensor(X.astype(np.float32)).cuda()).cpu().detach().numpy()
         loss = np.linalg.norm(hypothesis - X, axis=(1,2))
         return loss.reshape(len(loss),1)
     elif str(MODEL_SELECTED) == "deepant":
-        model = DeepAnT(LOOKBACK_SIZE=20,DIMENSION=n_features)
+        model = DeepAnT(LOOKBACK_SIZE=LOOKBACK_SIZE,DIMENSION=n_features)
         model=model.cuda()
         criterion = torch.nn.MSELoss(reduction='mean')
         optimizer = torch.optim.Adam(list(model.parameters()), lr=1e-5)
@@ -194,7 +195,7 @@ def compare_compute(folder_path,type_model):
         #loss_df.index = pd.to_datetime(loss_df.index)
         loss_df["timestamp"] = T
         # loss_df["timestamp"] = pd.to_datetime(loss_df["timestamp"])
-        loss_df.to_csv(folder_path+'/loss_value_{}_{}.csv'.format(epoch,type_model),index=False)
+        loss_df.to_csv(folder_path+'/loss_value_{}_{}_2.csv'.format(epoch,type_model),index=False)
 
 
 

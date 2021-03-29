@@ -4,7 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from datetime import datetime
 
-filename_1='C:/Users/56979/PycharmProjects/Unitti/Machine_learning/AnomalyDetection/loss_value.csv'
+filename_1='C:/Users/56979/PycharmProjects/Unitti/Machine_learning/AnomalyDetection/result_data/loss_value_10_deepant.csv'
 filename_2='C:/Users/56979/PycharmProjects/Unitti/Machine_learning/AnomalyDetection/prueba_metricas.csv'
 def get_data(filename_loss,filename_data, cols=None):
     data_loss=pd.read_csv(filename_loss)
@@ -23,22 +23,17 @@ def get_data(filename_loss,filename_data, cols=None):
     data.set_index("Time", inplace=True)
     #data.index = pd.to_datetime(data.index)
     print(data)
-    max_data_value=data.loc[time]
-    print(max_data_value)
     data_loss['timestamp'] = data_loss['timestamp'].apply(lambda x: datetime.fromtimestamp(x / 1000))
     #data['Time'] = data['Time'].apply(lambda x: datetime.fromtimestamp(x / 1000))
-    return data_loss,max_data_value
+    return data_loss
 
-
-    #new_data.to_csv('C:/Users/56979/PycharmProjects/Unitti/Machine_learning/AnomalyDetection/prueba_metricas.csv', index=False)
-
-def visualization(loss_df):
+def visualization(loss_df,n_epochs):
     """
         Visualization
     """
     plt.figure(figsize=(20, 10))
     sns.set_style("darkgrid")
-    #print(loss_df["loss"])
+    print(loss_df["loss"])
     ax = sns.distplot(loss_df["loss"], bins=100, label="Frequency")
     ax.set_title("Frequency Distribution | Kernel Density Estimation")
     ax.set(xlabel='Anomaly Confidence Score', ylabel='Frequency (sample)')
@@ -51,6 +46,7 @@ def visualization(loss_df):
     ax.set(ylabel="Anomaly Confidence Score", xlabel="Timestamp")
     plt.legend()
     plt.show()
+    plt.savefig('C:/Users/56979/PycharmProjects/Unitti/Machine_learning/AnomalyDetection/result_data/{}.png'.format(n_epochs), dpi=300)
 
-loss_data,max_value=get_data(filename_1,filename_2)
-visualization(loss_data)
+loss_data=get_data(filename_1,filename_2)
+visualization(loss_data,n_epochs=10)

@@ -25,10 +25,10 @@ from sklearn.model_selection import train_test_split
 
 
 from datetime import datetime
-
-timestamp = 1545730073
-dt_object = datetime.fromtimestamp(timestamp)
-print(dt_object)
+#
+# timestamp = 1545730073
+# dt_object = datetime.fromtimestamp(timestamp)
+# print(dt_object)
 def get_data(filename, cols=None):
     data=pd.read_csv(filename)
     #print(data['Time'])
@@ -97,9 +97,9 @@ system_columns={'cpu':['system.cpu.idle','system.cpu.guest','system.cpu.context_
 
 def main():
     get_data(filename,postgresql_columns['temp_files'])
-    X_train,X_test=get_data(filename,postgresql_columns['temp_files'])
+    X_train,X_test=get_data(filename=filename,cols=postgresql_columns['temp_files']+postgresql_columns['conn']+postgresql_columns['row']+postgresql_columns['commit'])
     pred,score=knn(X_train=X_train,X_test=X_test)
     print(len(pred))
     print(len(score))
 
-get_data(filename)
+get_data(filename=filename,cols=postgresql_columns['temp_files']+postgresql_columns['conn']+postgresql_columns['row']+postgresql_columns['commit'])

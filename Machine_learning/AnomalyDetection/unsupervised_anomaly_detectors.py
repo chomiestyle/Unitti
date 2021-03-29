@@ -1,6 +1,12 @@
 import numpy as np
 import pandas as pd
 import torch
+
+
+print(torch.cuda.is_available())
+print(torch.cuda.current_device())
+
+print(torch.cuda.get_device_name(0))
 from sklearn.preprocessing import MinMaxScaler
 
 #MODEL_SELECTED = 'deepant' # Possible Values ['deepant', 'lstmae']
@@ -62,7 +68,7 @@ class DeepAnT(torch.nn.Module):
         self.maxpooling_2_layer = torch.nn.MaxPool1d(kernel_size=2,)
         self.flatten_layer = torch.nn.Flatten()
         #self.dense_1_layer = torch.nn.Linear(1136, 32)
-        self.dense_1_layer = torch.nn.Linear(in_features=1088, out_features=64)
+        self.dense_1_layer = torch.nn.Linear(in_features=16, out_features=64)
         self.relu_3_layer = torch.nn.ReLU()
         self.dropout_layer = torch.nn.Dropout(p=0.25)
         self.dense_2_layer = torch.nn.Linear(64, DIMENSION)
@@ -130,12 +136,12 @@ def make_train_step(model, loss_fn, optimizer):
         return loss.item()
     return train_step
 
-def compute(X,Y,MODEL_SELECTED,num_epoch):
+def compute(X,Y,MODEL_SELECTED,num_epoch,n_features):
     """
         Computation : Find Anomaly using model based computation
     """
     if str(MODEL_SELECTED) == "lstmae":
-        model = LSTMAE(10,26)
+        model = LSTMAE(10,n_features)
         criterion = torch.nn.MSELoss(reduction='mean')
         optimizer = torch.optim.Adam(model.parameters(), lr=1e-5)
         train_data = torch.utils.data.TensorDataset(torch.tensor(X.astype(np.float32)), torch.tensor(X.astype(np.float32)))
@@ -153,21 +159,23 @@ def compute(X,Y,MODEL_SELECTED,num_epoch):
         loss = np.linalg.norm(hypothesis - X, axis=(1,2))
         return loss.reshape(len(loss),1)
     elif str(MODEL_SELECTED) == "deepant":
-        model = DeepAnT(20,281)
+        model = DeepAnT(LOOKBACK_SIZE=20,DIMENSION=n_features)
+        model=model.cuda()
         criterion = torch.nn.MSELoss(reduction='mean')
         optimizer = torch.optim.Adam(list(model.parameters()), lr=1e-5)
         train_data = torch.utils.data.TensorDataset(torch.tensor(X.astype(np.float32)), torch.tensor(Y.astype(np.float32)))
+
         train_loader = torch.utils.data.DataLoader(dataset=train_data, batch_size=32, shuffle=False)
         train_step = make_train_step(model, criterion, optimizer)
         for epoch in range(num_epoch):
             loss_sum = 0.0
             ctr = 0
             for x_batch, y_batch in train_loader:
-                loss_train = train_step(x_batch, y_batch)
+                loss_train = train_step(x_batch.cuda(), y_batch.cuda())
                 loss_sum += loss_train
                 ctr += 1
             print("Training Loss: {0} - Epoch: {1}".format(float(loss_sum/ctr), epoch+1))
-        hypothesis = model(torch.tensor(X.astype(np.float32))).detach().numpy()
+        hypothesis = model(torch.tensor(X.astype(np.float32)).cuda()).cpu().detach().numpy()
         loss = np.linalg.norm(hypothesis - Y, axis=1)
         return loss.reshape(len(loss),1)
     else:
@@ -179,7 +187,7 @@ def compare_compute(folder_path,type_model):
     data, _data = read_modulate_data(filename_datadog)
     X, Y, T = data_pre_processing(data)
     for epoch in [1,10,20,30,40,50,60]:
-        loss = compute(X, Y,MODEL_SELECTED=type_model,num_epoch=epoch)
+        loss = compute(X, Y,MODEL_SELECTED=type_model,num_epoch=epoch,n_features=10)
         #_data['loss']=loss
         loss_df = pd.DataFrame(loss, columns=["loss"])
         loss_df.index = T
@@ -195,6 +203,5 @@ def compare_compute(folder_path,type_model):
 folder='C:/Users/56979/PycharmProjects/Unitti/Machine_learning/AnomalyDetection/result_data'
 compare_compute(folder_path=folder,type_model='deepant')
 
-#file_name='C:/Users/56979/PycharmProjects/Unitti/Machine_learning/AnomalyDetection/Canadian_climate_history.csv'
 
 
